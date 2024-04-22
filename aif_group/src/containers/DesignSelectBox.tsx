@@ -1,11 +1,18 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import { IconSample } from '../../public/icons';
 import Image from 'next/image';
 import ImageItem from './ImageItem';
 
-const arr = new Array(8).fill(1);
+const arr = new Array(8).fill(false);
 
 function DesignSelectBox() {
+  const [currentImage, setCurrentImage] = useState(undefined);
+
+  function handleCurrentImage(image) {
+    setCurrentImage(image);
+  }
+
   return (
     <section className="w-[39.75rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
       <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center">
@@ -24,12 +31,12 @@ function DesignSelectBox() {
           <div className="w-[12.625rem] h-[25.375rem]">
             <ul className="grid gap-[0.625rem] h-full grid-cols-2">
               {arr.map((item, idx) => (
-                <ImageItem key={idx} />
+                <ImageItem image={IconSample} onSelect={handleCurrentImage} key={idx} idx={idx} />
               ))}
             </ul>
           </div>
           <div className="w-[21.6875rem] h-[25.375rem]">
-            <Image src={IconSample} width={347} height={406} alt="선택된 ai 디자인" />
+            <Image src={currentImage ? currentImage : undefined} width={345} height={345} alt="선택된 ai 디자인" />
             <div className="w-full h-[3.83125rem] bg-black flex justify-center items-center ">
               <p className="text-main_active font-semibold">디자인 선택</p>
               <input type="checkbox" className="w-[1rem] h-[1rem] ml-[0.8125rem] accent-main_active rounded-xl" />
