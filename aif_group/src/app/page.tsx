@@ -1,4 +1,4 @@
-import DesignSelectBox from '@/containers/DesignSelectBox';
+import DesignSelectBox from '@/containers/design/DesignSelectBox';
 
 export default function Home() {
   return (

@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { IconSample } from '../../public/icons';
+import { IconSample } from '../../../public/icons';
 import Image from 'next/image';
 import ImageItem from './ImageItem';
 

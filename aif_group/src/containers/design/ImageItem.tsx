@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import { IconSample } from '../../public/icons';
+import { IconSample } from '../../../public/icons';
 
 function ImageItem({ onSelect, image }) {
   const [size, setSize] = useState({ width: 87, height: 87 });
