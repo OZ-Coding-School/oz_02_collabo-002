@@ -15,7 +15,7 @@ export default function HowToCustomSection() {
               src={'/images/how_to_custom_1.svg'}
               width={210}
               height={212}
-              className="drop-shadow-[0_0_20px_rgba(0,0,0,0.25)]"
+              className="drop-shadow-gray"
             />
             <div className="w-[10.8125rem] h-[7.625rem] flex flex-col justify-between items-center">
               <div className="font-bold text-[1.5rem] leading-[37px] tracking-[-0.06em] mb-[17px]">디자인 키워드</div>
@@ -30,7 +30,7 @@ export default function HowToCustomSection() {
               src={'/images/how_to_custom_2.svg'}
               width={165}
               height={218}
-              className="drop-shadow-[0_0_20px_rgba(0,0,0,0.25)]"
+              className="drop-shadow-gray"
             />
             <div className="w-[10.8125rem] h-[7.625rem] flex flex-col justify-between items-center">
               <div className="font-bold text-[1.5rem] leading-[37px] tracking-[-0.06em]">디자인 스타일</div>
@@ -46,7 +46,7 @@ export default function HowToCustomSection() {
               src={'/images/how_to_custom_3.svg'}
               width={210}
               height={210}
-              className="drop-shadow-[0px_0px_30px_rgba(0,255,209,0.32)]"
+              className="drop-shadow-mint"
             />
             <div className="w-[10.8125rem] h-[7.625rem] flex flex-col justify-between items-center">
               <div className="font-bold text-[1.5rem] leading-[37px] tracking-[-0.06em] flex">
@@ -67,7 +67,7 @@ export default function HowToCustomSection() {
               src={'/images/how_to_custom_4.svg'}
               width={166}
               height={227}
-              className="drop-shadow-[0_0_20px_rgba(0,0,0,0.25)]"
+              className="drop-shadow-gray"
             />
             <div className="w-[10.8125rem] h-[7.625rem] flex flex-col justify-between items-center">
               <div className="font-bold text-[1.5rem] leading-[37px] tracking-[-0.06em]">디자인 선택하기</div>
@@ -82,7 +82,7 @@ export default function HowToCustomSection() {
               src={'/images/how_to_custom_5.svg'}
               width={210}
               height={228}
-              className="drop-shadow-[0_0_20px_rgba(0,0,0,0.25)]"
+              className="drop-shadow-gray"
             />
             <div className="w-[10.8125rem] h-[7.625rem] flex flex-col justify-between items-center">
               <div className="font-bold text-[1.5rem] leading-[37px] tracking-[-0.06em]">티셔츠 미리보기</div>

@@ -27,28 +27,18 @@ export default function AIImageSection() {
             <div className="w-[3860px] h-[387px] flex flex-row animate-slide1">
               {latestImageList.map((image, index) => {
                 return (
-                  <Image
-                    key={index}
-                    alt={`${index}`}
-                    src={image}
-                    width={375}
-                    height={387}
-                    className="mr-[0.6875rem] bg-sample_img_bg p-[20px]"
-                  />
+                  <li key={index} className="bg-sample_img_bg p-[20px] list-none mr-[0.6875rem] rounded-md">
+                    <Image alt={`${index}`} src={image} width={375} height={387} />
+                  </li>
                 );
               })}
             </div>
             <div className="w-[3860px] h-[387px] flex flex-row absolute left-[3860px] animate-slide2">
               {latestImageList.map((image, index) => {
                 return (
-                  <Image
-                    key={index}
-                    alt={`${index}`}
-                    src={image}
-                    width={375}
-                    height={387}
-                    className="mr-[0.6875rem] bg-sample_img_bg p-[20px]"
-                  />
+                  <li key={index} className="bg-sample_img_bg p-[20px] list-none mr-[0.6875rem] rounded-md">
+                    <Image alt={`${index}`} src={image} width={375} height={387} />
+                  </li>
                 );
               })}
             </div>
