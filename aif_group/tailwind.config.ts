@@ -12,6 +12,10 @@ const config: Config = {
         btn_bg: '#b4b4b4',
         btn_text: '#6c6c6c',
         bg: '#f7f7f7',
+        sample_img_bg: '#C3DBD7',
+      },
+      fontFamily: {
+        saira: ['Saira', 'sans-serif'],
       },
       height: {
         header: '142px',
