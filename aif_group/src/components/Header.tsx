@@ -11,8 +11,8 @@ export default function Header() {
           <button className="text-[1.375rem] text-[#3A3A3A] font-medium">about</button>
           <button className="text-[1.375rem] text-[#3A3A3A] font-medium">생성 이미지</button>
           <button className="text-[1.375rem] text-[#3A3A3A] font-medium">사용 방법</button>
-          <button className="text-[1.375rem] w-[12.5rem] h-[3.25rem] bg-black text-main_active group hover:bg-main_active rounded-md font-bold">
-            <div className="group-hover:text-black">디자인 시작하기</div>
+          <button className="text-[1.375rem] w-[12.5rem] h-[3.25rem] bg-black text-main_active group hover:bg-main_active active:bg-main_active rounded-md font-bold">
+            <div className="group-hover:text-black group-active:text-black">디자인 시작하기</div>
           </button>
         </div>
       </div>
