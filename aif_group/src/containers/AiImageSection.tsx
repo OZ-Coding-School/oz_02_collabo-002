@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function AiImageSection() {
+export default function AIImageSection() {
   let latestImageList = [
     '/images/sample_img_1.png',
     '/images/sample_img_2.png',
@@ -14,7 +14,7 @@ export default function AiImageSection() {
     '/images/sample_img_10.png',
   ];
   return (
-    <main className="w-full h-banner flex justify-center items-center">
+    <main className="w-full h-banner flex justify-center items-center bg-bg">
       <section className="w-full h-[33.1875rem]">
         <div className="flex flex-col justify-center items-center">
           <div className="font-bold text-[2.625rem] leading-[58px] tracking-wider">AI 생성 이미지</div>
