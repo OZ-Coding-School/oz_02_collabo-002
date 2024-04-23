@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from 'next/image';
 
 const DesignStartBox = () => {
@@ -30,7 +31,7 @@ const DesignStartBox = () => {
           <div className="flex flex-col items-center">
             <button className="w-20 h-20 rounded-full border overflow-hidden focus:outline-none focus:ring-4 focus:ring-main_active">
               <Image
-                src="/Ellipse 152.png"
+                src="/icons/Ellipse 152.svg"
                 alt="레트로"
                 width={500}
                 height={300}
@@ -42,7 +43,7 @@ const DesignStartBox = () => {
           <div className="flex flex-col items-center">
             <button className="w-20 h-20 rounded-full border overflow-hidden focus:outline-none focus:ring-4 focus:ring-main_active">
               <Image
-                src="/Ellipse 153.png"
+                src="/icons/Ellipse 153.svg"
                 alt="꼴라쥬"
                 width={500}
                 height={300}
@@ -54,7 +55,7 @@ const DesignStartBox = () => {
           <div className="flex flex-col items-center">
             <button className="w-20 h-20 rounded-full border overflow-hidden focus:outline-none focus:ring-4 focus:ring-main_active">
               <Image
-                src="/Ellipse 154.png"
+                src="/icons/Ellipse 154.svg"
                 alt="데코"
                 width={500}
                 height={300}
@@ -66,7 +67,7 @@ const DesignStartBox = () => {
           <div className="flex flex-col items-center">
             <button className="w-20 h-20 rounded-full border overflow-hidden focus:outline-none focus:ring-4 focus:ring-main_active">
               <Image
-                src="/Ellipse 155.png"
+                src="/icons/Ellipse 155.svg"
                 alt="그라피티"
                 width={500}
                 height={300}
@@ -78,7 +79,7 @@ const DesignStartBox = () => {
           <div className="flex flex-col items-center">
             <button className="w-20 h-20 rounded-full border overflow-hidden focus:outline-none focus:ring-4 focus:ring-main_active">
               <Image
-                src="/Ellipse 156.png"
+                src="/icons/Ellipse 156.svg"
                 alt="키덜트"
                 width={500}
                 height={300}
@@ -90,7 +91,7 @@ const DesignStartBox = () => {
           <div className="flex flex-col items-center">
             <button className="w-20 h-20 rounded-full border overflow-hidden focus:outline-none focus:ring-4 focus:ring-main_active">
               <Image
-                src="/Ellipse 157.png"
+                src="/icons/Ellipse 157.svg"
                 alt="라인아트"
                 width={500}
                 height={300}
@@ -102,7 +103,7 @@ const DesignStartBox = () => {
           <div className="flex flex-col items-center">
             <button className="w-20 h-20 rounded-full border overflow-hidden focus:outline-none focus:ring-4 focus:ring-main_active">
               <Image
-                src="/Ellipse 158.png"
+                src="/icons/Ellipse 158.svg"
                 alt="스테인글라스"
                 width={500}
                 height={300}
@@ -114,7 +115,7 @@ const DesignStartBox = () => {
           <div className="flex flex-col items-center">
             <button className="w-20 h-20 rounded-full border overflow-hidden focus:outline-none focus:ring-4 focus:ring-main_active">
               <Image
-                src="/Ellipse 159.png"
+                src="/icons/Ellipse 159.svg"
                 alt="빈티지포스터"
                 width={500}
                 height={300}
@@ -126,7 +127,7 @@ const DesignStartBox = () => {
           <div className="flex flex-col items-center">
             <button className="w-20 h-20 rounded-full border overflow-hidden focus:outline-none focus:ring-4 focus:ring-main_active">
               <Image
-                src="/Ellipse 160.png"
+                src="/icons/Ellipse 160.svg"
                 alt="엠블럼"
                 width={500}
                 height={300}
@@ -138,7 +139,7 @@ const DesignStartBox = () => {
           <div className="flex flex-col items-center">
             <button className="w-20 h-20 rounded-full border overflow-hidden focus:outline-none focus:ring-4 focus:ring-main_active">
               <Image
-                src="/Ellipse 161.png"
+                src="/icons/Ellipse 16.svg"
                 alt="애니메이션"
                 width={500}
                 height={300}
