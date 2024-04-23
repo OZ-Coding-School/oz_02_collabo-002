@@ -13,6 +13,7 @@ const config: Config = {
         btn_text: '#6c6c6c',
         bg: '#f7f7f7',
         sample_img_bg: '#C3DBD7',
+        footer_text: '#787878',
       },
       fontFamily: {
         saira: ['Saira', 'sans-serif'],
