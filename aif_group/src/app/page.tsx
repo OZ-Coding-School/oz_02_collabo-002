@@ -1,10 +1,11 @@
-import DesignStartBox from '@/containers/DesignStartBox';
-import Image from 'next/image';
+import DesignSelectBox from '@/containers/design/DesignSelectBox';
+
 
 export default function Home() {
   return (
     <div className="flex justify-center items-center h-[100vh]">
-      <DesignStartBox />
+      <DesignSelectBox />
+
     </div>
   );
 }

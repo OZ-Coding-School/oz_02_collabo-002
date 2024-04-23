@@ -3,5 +3,6 @@
 @tailwind utilities;
 
 * {
-  box-sizing: content-box;
+  box-sizing:border-box;
 }
+
