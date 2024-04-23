@@ -1,11 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}', './src/**/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       colors: {
@@ -13,7 +9,7 @@ const config: Config = {
         main_passive: '#92EADA',
         text: '#858585',
         input_bg: '#f5f5f5',
-        btn_bg: '#b4b4b4',
+        btn_border: '#b4b4b4',
         btn_text: '#6c6c6c',
         bg: '#f7f7f7',
       },
