@@ -9,7 +9,7 @@ const config: Config = {
         main_passive: '#92EADA',
         text: '#858585',
         input_bg: '#f5f5f5',
-        btn_bg: '#b4b4b4',
+        btn_border: '#b4b4b4',
         btn_text: '#6c6c6c',
         bg: '#f7f7f7',
         sample_img_bg: '#C3DBD7',
