@@ -19,13 +19,14 @@ const config: Config = {
         saira: ['Saira', 'sans-serif'],
       },
       height: {
-        header: '142px',
-        banner: '820px',
-        footer: '300px',
+        header: '8.875rem',
+        banner: '51.25rem',
+        footer: '18.75rem',
       },
       animation: {
         slide1: '64s linear 0s infinite normal forwards running slide1',
         slide2: '64s linear 0s infinite normal forwards running slide2',
+        up_fadeIn: '1s linear 0s up_fadeIn',
       },
       keyframes: {
         slide1: {
@@ -37,6 +38,10 @@ const config: Config = {
         slide2: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-200%)' },
+        },
+        up_fadeIn: {
+          '0%': { transform: 'translateY(20%)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
         },
       },
       dropShadow: {
