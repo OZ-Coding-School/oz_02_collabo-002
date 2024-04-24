@@ -1,8 +1,22 @@
+'use client';
 import Input from '@/components/admin/inputField/Input';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 function LoginForm() {
+  const router = useRouter();
+
+  function handleSignupButtonClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    e.preventDefault();
+    router.push('/admin/signup');
+  }
+  function handleLoginButtonClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    e.preventDefault();
+    // login 검증 로직...
+
+    router.push('admin/manage/manager');
+  }
   return (
     <div className="mt-[9.9375rem] flex flex-col justify-center items-center text-center">
       <h2 className="text-[2.5rem] mb-[3.5rem] w-min-[3.75rem]">관리자 로그인</h2>
@@ -14,10 +28,14 @@ function LoginForm() {
           </div>
 
           <div>
-            <button className="w-[15.875rem] h-[4.3125rem] text-[1.875rem] border-btn_border text-center items-center border-[1px] rounded-[0.875rem] bg-white mr-[1.0625rem] hover:">
-              <Link href={'/admin/signup'}>관리자 가입</Link>
+            <button
+              className="w-[15.875rem] h-[4.3125rem] text-[1.875rem] border-btn_border text-center items-center border-[1px] rounded-[0.875rem] bg-white mr-[1.0625rem] hover:"
+              onClick={handleSignupButtonClick}>
+              관리자 가입
             </button>
-            <button className="w-[15.875rem] h-[4.3125rem] text-[1.875rem] border-btn_border text-center items-center border-[1px] rounded-[0.875rem] bg-main_active">
+            <button
+              className="w-[15.875rem] h-[4.3125rem] text-[1.875rem] border-btn_border text-center items-center border-[1px] rounded-[0.875rem] bg-main_active"
+              onClick={handleLoginButtonClick}>
               로그인
             </button>
           </div>
