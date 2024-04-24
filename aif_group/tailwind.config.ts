@@ -13,6 +13,16 @@ const config: Config = {
         btn_text: '#6c6c6c',
         bg: '#f7f7f7',
       },
+      height: {
+        header: '142px',
+        banner: '820px',
+        footer: '300px',
+      },
+      screens: {
+        sm: { min: '393px', max: '768px' },
+        md: { min: '768px', max: '1023px' },
+        lg: { min: '1080px' },
+      },
     },
   },
   plugins: [],
