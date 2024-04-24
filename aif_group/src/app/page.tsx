@@ -1,10 +1,10 @@
-import Header from '@/components/Header';
-import AboutSection from '@/containers/AboutSection';
-import MainBanner from '@/containers/MainBanner';
-import HowToCustomSection from '@/containers/HowToCustomSection';
-import LastBanner from '@/containers/LastBanner';
-import Footer from '@/components/Footer';
-import AIImageSection from '@/containers/AIImageSection';
+import Header from '@/containers/main/Header';
+import AboutSection from '@/containers/main/AboutSection';
+import MainBanner from '@/containers/main/MainBanner';
+import HowToCustomSection from '@/containers/main/HowToCustomSection';
+import LastBanner from '@/containers/main/LastBanner';
+import Footer from '@/containers/main/Footer';
+import AIImageSection from '@/containers/main/AIImageSection';
 import ScrollUpButton from '@/components/ScrollUpButton';
 import React from 'react';
 
