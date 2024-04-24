@@ -11,6 +11,7 @@ const config: Config = {
         input_bg: '#f5f5f5',
         btn_border: '#b4b4b4',
         btn_text: '#6c6c6c',
+        btn_bg: '#d9d9d9',
         bg: '#f7f7f7',
       },
       height: {

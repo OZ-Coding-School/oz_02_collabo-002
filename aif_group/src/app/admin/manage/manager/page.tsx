@@ -1,7 +1,7 @@
-import React from 'react';
+import ManagerContent from '@/containers/admin/ManagerContent';
 
 function ManagerPage() {
-  return <div></div>;
+  return <ManagerContent />;
 }
 
 export default ManagerPage;

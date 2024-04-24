@@ -1,11 +1,12 @@
 import DesignSelectBox from '@/containers/design/DesignSelectBox';
-
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="flex justify-center items-center h-[100vh]">
-      <DesignSelectBox />
-
+    <div className="">
+      <Link href={'/admin'}>
+        <p>admin</p>
+      </Link>
     </div>
   );
 }

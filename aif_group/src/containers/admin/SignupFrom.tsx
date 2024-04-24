@@ -7,7 +7,7 @@ import React from 'react';
 function SignupFrom() {
   const router = useRouter();
 
-  function handleSubmit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     // signup 폼 제출
     router.push('/admin');
