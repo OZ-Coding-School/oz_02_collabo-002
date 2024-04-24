@@ -24,13 +24,12 @@ export default function AboutSection() {
           </div>
           <DesignStartButton />
         </div>
-        <div className="w-[536px] h-[536px] block">
+        <div className="w-[536px] h-[536px]">
           <Image
             alt="about_section_image"
             src={'/images/about_section_image.png'}
             width={536}
             height={536}
-            layout="responsive"
             className="min-w-[28.125rem] min-h-[28.125rem] max-w-[35.1875rem] max-h-[35.1875rem]"
           />
         </div>
