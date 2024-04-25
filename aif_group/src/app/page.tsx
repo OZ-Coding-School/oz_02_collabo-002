@@ -1,28 +1,32 @@
-import DesignHeader from '@/containers/design/DesignHeader';
-import DesignLoadingBox from '@/containers/design/DesignLoadingBox';
-import DesignPreviewBox from '@/containers/design/DesignPreviewBox';
-import DesignStartBox from '@/containers/design/DesignStartBox';
-import ErrorAlert1 from '@/containers/modal/ErrorAlert1';
-import ErrorAlert2 from '@/containers/modal/ErrorAlert2';
-import ErrorAlert3 from '@/containers/modal/ErrorAlert3';
-import FinalBox from '@/containers/design/FinalBox';
-import InputAlert from '@/containers/modal/InputAlert';
-import Image from 'next/image';
-import ImageSample from '@/containers/modal/ImageSample';
+import Header from '@/containers/main/Header';
+import AboutSection from '@/containers/main/AboutSection';
+import MainBanner from '@/containers/main/MainBanner';
+import HowToCustomSection from '@/containers/main/HowToCustomSection';
+import LastBanner from '@/containers/main/LastBanner';
+import Footer from '@/containers/main/Footer';
+import AIImageSection from '@/containers/main/AIImageSection';
+import ScrollUpButton from '@/components/ScrollUpButton';
+import React from 'react';
 
 export default function Home() {
   return (
-    <div className="flex justify-center items-center h-[100vh]">
-      {/* <DesignStartBox /> */}
-      {/* <DesignLoadingBox /> */}
-      {/* <DesignPreviewBox /> */}
-      {/* <ErrorAlert1 /> */}
-      {/* <ErrorAlert2 /> */}
-      {/* <ErrorAlert3 /> */}
-      {/* <InputAlert /> */}
-      {/* <FinalBox /> */}
-      {/* <DesignHeader /> */}
-      <ImageSample />
-    </div>
+    <>
+      <Header />
+      <main>
+        <MainBanner />
+        <div id="about">
+          <AboutSection />
+        </div>
+        <div id="ai">
+          <AIImageSection />
+        </div>
+        <div id="how">
+          <HowToCustomSection />
+        </div>
+        <LastBanner />
+      </main>
+      <Footer />
+      <ScrollUpButton />
+    </>
   );
 }
