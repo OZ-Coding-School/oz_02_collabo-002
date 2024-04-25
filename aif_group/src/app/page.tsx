@@ -1,10 +1,14 @@
-import DesignLoadingBox from '@/containers/DesignLoadingBox';
-import DesignPreviewBox from '@/containers/DesignPreviewBox';
-import DesignStartBox from '@/containers/DesignStartBox';
-import ErrorAlert1 from '@/containers/ErrorAlert1';
-import ErrorAlert2 from '@/containers/ErrorAlert2';
-import ErrorAlert3 from '@/containers/ErrorAlert3';
+import DesignHeader from '@/containers/design/DesignHeader';
+import DesignLoadingBox from '@/containers/design/DesignLoadingBox';
+import DesignPreviewBox from '@/containers/design/DesignPreviewBox';
+import DesignStartBox from '@/containers/design/DesignStartBox';
+import ErrorAlert1 from '@/containers/modal/ErrorAlert1';
+import ErrorAlert2 from '@/containers/modal/ErrorAlert2';
+import ErrorAlert3 from '@/containers/modal/ErrorAlert3';
+import FinalBox from '@/containers/design/FinalBox';
+import InputAlert from '@/containers/modal/InputAlert';
 import Image from 'next/image';
+import ImageSample from '@/containers/modal/ImageSample';
 
 export default function Home() {
   return (
@@ -13,8 +17,12 @@ export default function Home() {
       {/* <DesignLoadingBox /> */}
       {/* <DesignPreviewBox /> */}
       {/* <ErrorAlert1 /> */}
-      <ErrorAlert2 />
+      {/* <ErrorAlert2 /> */}
       {/* <ErrorAlert3 /> */}
+      {/* <InputAlert /> */}
+      {/* <FinalBox /> */}
+      {/* <DesignHeader /> */}
+      <ImageSample />
     </div>
   );
 }

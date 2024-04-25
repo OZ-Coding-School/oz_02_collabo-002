@@ -5,3 +5,10 @@
 * {
   box-sizing: content-box;
 }
+
+@font-face {
+  font-family: 'SairaStencilOne';
+  src: url('/fonts/SairaStencilOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

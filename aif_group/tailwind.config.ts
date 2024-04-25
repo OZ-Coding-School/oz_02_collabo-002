@@ -13,8 +13,12 @@ const config: Config = {
         btn_text: '#6c6c6c',
         bg: '#f7f7f7',
       },
+      fontFamily: {
+        saira: ['SairaStencilOne', 'sans-serif'],
+      },
     },
   },
   plugins: [],
 };
+
 export default config;
