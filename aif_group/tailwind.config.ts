@@ -48,8 +48,12 @@ const config: Config = {
         gray: '0 0 20px rgba(0, 0, 0, 0.25)',
         mint: '0 0 30px rgba(0, 255, 209, 0.32)',
       },
+      fontFamily: {
+        saira: ['SairaStencilOne', 'sans-serif'],
+      },
     },
   },
   plugins: [],
 };
+
 export default config;
