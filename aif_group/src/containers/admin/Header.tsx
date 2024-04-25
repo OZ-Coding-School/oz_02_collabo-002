@@ -17,7 +17,7 @@ function Header() {
         </Link>
         {shouldRender && (
           <div>
-            <button>로그아웃</button>
+            <button className="text-[1.25rem]">로그아웃</button>
           </div>
         )}
       </div>
