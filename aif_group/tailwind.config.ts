@@ -13,6 +13,8 @@ const config: Config = {
         btn_text: '#6c6c6c',
         btn_bg: '#d9d9d9',
         bg: '#f7f7f7',
+        table_bg: '#e9e9e9',
+        table_border: '#c4c4c4',
       },
       height: {
         header: '142px',

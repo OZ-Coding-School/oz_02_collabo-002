@@ -12,7 +12,7 @@ function SideBar({ setActiveContent, activeContent }: SideBarProps) {
 
   console.log(activeContent);
   function handleButtonClick(contentId) {
-    router.replace(`/admin/manage/${contentId}`, { scroll: false });
+    router.replace(`/admin/manage/${contentId}`, { scroll: true });
     setActiveContent(contentId);
   }
 
