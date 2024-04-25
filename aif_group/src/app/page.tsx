@@ -10,9 +10,9 @@ import React from 'react';
 
 export default function Home() {
   return (
-    <>
+    <main>
       <Header />
-      <main>
+      <section>
         <MainBanner />
         <div id="about">
           <AboutSection />
@@ -24,9 +24,9 @@ export default function Home() {
           <HowToCustomSection />
         </div>
         <LastBanner />
-      </main>
+      </section>
       <Footer />
       <ScrollUpButton />
-    </>
+    </main>
   );
 }
