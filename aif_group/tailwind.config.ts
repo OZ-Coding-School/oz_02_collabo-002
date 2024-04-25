@@ -26,6 +26,9 @@ const config: Config = {
         md: { min: '768px', max: '1023px' },
         lg: { min: '1080px' },
       },
+      backgroundImage: {
+        arrow: "url('/public/icons/arrow.svg')",
+      },
     },
   },
   plugins: [],

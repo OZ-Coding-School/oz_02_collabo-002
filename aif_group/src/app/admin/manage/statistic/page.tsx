@@ -1,7 +1,8 @@
+import StatisticContent from '@/containers/admin/StatisticContent';
 import React from 'react';
 
 function StatisticsPage() {
-  return <div></div>;
+  return <StatisticContent />;
 }
 
 export default StatisticsPage;
