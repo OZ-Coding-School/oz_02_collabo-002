@@ -1,6 +1,6 @@
 import SideBarButton from '@/components/admin/button/SideBarButton';
 import { useRouter } from 'next/navigation';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 interface SideBarProps {
   setActiveContent: (contentId: string) => void;
@@ -10,7 +10,6 @@ interface SideBarProps {
 function SideBar({ setActiveContent, activeContent }: SideBarProps) {
   const router = useRouter();
 
-  console.log(activeContent);
   function handleButtonClick(contentId) {
     router.replace(`/admin/manage/${contentId}`, { scroll: true });
     setActiveContent(contentId);
