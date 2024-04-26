@@ -8,7 +8,7 @@ function UserContent() {
 
   return (
     <div className="mt-[3.3125rem] mx-[5.4375rem]">
-      <table className="w-[76.125rem] table-fixed text-[#828282] text-[1rem]">
+      <table className="w-[100%] table-fixed text-[#828282] text-[1rem]">
         <thead className="h-[4.5625rem] bg-table_bg">
           <tr className="font-normal">
             <th className="border-t-[1px] border-table_border w-[8.9490968801%]">번호</th>

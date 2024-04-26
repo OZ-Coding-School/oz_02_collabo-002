@@ -1,7 +1,8 @@
+import HomepageContent from '@/containers/admin/HomepageContent';
 import React from 'react';
 
 function HomePage() {
-  return <div></div>;
+  return <HomepageContent />;
 }
 
 export default HomePage;

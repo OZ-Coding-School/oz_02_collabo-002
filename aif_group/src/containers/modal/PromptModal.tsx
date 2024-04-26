@@ -34,7 +34,7 @@ function PromptModal({ children, onSelect }: { children: React.ReactNode; onSele
         {children}
       </button>
 
-      <ReactModal style={customStyle} isOpen={showModal}>
+      <ReactModal style={customStyle} isOpen={showModal} onRequestClose={() => setShowModal(false)}>
         <div className="">
           <div className="flex justify-end">
             <button onClick={() => setShowModal(false)}>

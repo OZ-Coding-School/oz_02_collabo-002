@@ -9,7 +9,7 @@ function ManagerButton() {
   return (
     <button
       onClick={handleClickButton}
-      className={`w-[6.1875rem] h-[2.375rem] hover:bg-btn_border text-white rounded-[4px] ${
+      className={`w-90%] h-[2.375rem] hover:bg-btn_border text-white rounded-[4px] ${
         isActive ? 'bg-text' : 'bg-btn_bg'
       }`}>
       {isActive ? '승인' : '승인 취소'}
