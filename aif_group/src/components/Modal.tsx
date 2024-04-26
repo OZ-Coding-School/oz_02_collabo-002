@@ -1,7 +1,6 @@
 'use client';
-import React from 'react';
-import { useRouter } from 'next/navigation';
-import ReactModal from 'react-modal';
+import React, { useRef, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 export interface ModalProps {
@@ -9,54 +8,70 @@ export interface ModalProps {
 }
 
 const Modal = ({ children }: ModalProps) => {
+  const [toggleBtn, setToggleBtn] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
+  const layoutRef = useRef<Element | null>(null);
 
-  const customModalStyles: ReactModal.Styles = {
-    overlay: {
-      backgroundColor: ' rgba(0, 0, 0, 0.4)',
-      width: '100%',
-      height: '100vh',
-      zIndex: '10',
-      position: 'fixed',
-      top: '0',
-      left: '0',
-    },
-    content: {
-      width: '75rem',
-      height: '92%',
-      zIndex: '150',
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      borderRadius: '50px',
-      boxShadow: '2px 2px 2px rgba(0, 0, 0, 0.25)',
-      backgroundColor: 'white',
-      justifyContent: 'center',
-      overflow: 'auto',
-      padding: 0,
-      scrollbarWidth: 'none',
-    },
+  const handleScroll = () => {
+    layoutRef.current = document.getElementById('modal');
+    const scrollTop = layoutRef.current?.scrollTop;
+
+    if (scrollTop) {
+      scrollTop > 100 ? setToggleBtn(true) : setToggleBtn(false);
+    }
+  };
+
+  // useEffect(() => {
+  //   if (layoutRef.current) {
+  //     layoutRef.current.addEventListener('scroll', handleScroll);
+  //     return () => layoutRef.current?.removeEventListener('scroll', handleScroll);
+  //   }
+  // }, []);
+
+  const goToTop = () => {
+    layoutRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <ReactModal
-      isOpen={true}
-      onRequestClose={() => router.back()}
-      style={customModalStyles}
-      ariaHideApp={false}
-      contentLabel="Pop up Message"
-      shouldCloseOnOverlayClick={true}>
-      <div className="w-full h-[7rem] flex justify-center items-end fixed top-0">
-        <div className="w-[90%] flex justify-between items-center mb-[1rem]">
-          <div className="font-light font-saira text-[2rem] leading-[80%] tracking-[-0.002em]">AI Fashionista</div>
-          <button onClick={() => router.back()} className="p-3">
-            <Image alt="close_icon" src={'/icons/close.svg'} width={25} height={25} />
-          </button>
-        </div>
-      </div>
-      <div className="overflow-auto w-full h-[calc(100%-9.5rem)] fixed bottom-10">{children}</div>
-    </ReactModal>
+    <>
+      {pathname === '/design/howtouse' ? (
+        <main>
+          <div
+            className="bg-[rgba(0,0,0,0.4)] w-full h-screen fixed top-0 left-0 z-30"
+            onClick={() => {
+              router.replace('/design');
+            }}></div>
+          <div className="w-[75rem] h-[92%] z-50 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-[50px]">
+            <div className="w-full h-[7rem] flex justify-center items-end fixed top-0">
+              <div className="w-[90%] flex justify-between items-center mb-[1rem]">
+                <div className="font-light font-saira text-[2rem] leading-[80%] tracking-[-0.002em]">
+                  AI Fashionista
+                </div>
+                <button onClick={() => router.back()} className="p-3">
+                  <Image alt="close_icon" src={'/icons/close.svg'} width={25} height={25} />
+                </button>
+              </div>
+            </div>
+            <div
+              className="overflow-auto w-full h-[calc(100%-9.5rem)] fixed bottom-10"
+              id="modal"
+              onScroll={handleScroll}>
+              {children}
+            </div>
+            {toggleBtn ? (
+              <button className={`fixed bottom-[6rem] right-[2.8rem] animate-up_fadeIn z-10`} onClick={goToTop}>
+                <Image alt="scroll_up" src={'/icons/scroll_up.svg'} width={40} height={40} />
+              </button>
+            ) : (
+              ''
+            )}
+          </div>
+        </main>
+      ) : (
+        ''
+      )}
+    </>
   );
 };
 

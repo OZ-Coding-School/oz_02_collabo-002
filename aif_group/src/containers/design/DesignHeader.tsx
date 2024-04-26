@@ -6,12 +6,11 @@ import { useState } from 'react';
 export default function DesignHeader() {
   const [isMouseHoverToQuestion, setIsMouseHoverToQuestion] = useState(false);
   const [isMouseHoverToImage, setIsMouseHoverToImage] = useState(false);
-
   const router = useRouter();
 
   return (
     <div className="w-full h-header px-[3rem] py-[2.3125rem] flex justify-center items-center">
-      <div className="w-[78.75rem] flex flex-row justify-between items-center">
+      <div className="w-[78.75rem] flex justify-between items-center">
         <button onClick={() => router.push('/')}>
           <Image alt="logo" src={'/icons/logo.svg'} width={237} height={68} />
         </button>
