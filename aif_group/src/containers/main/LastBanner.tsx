@@ -12,7 +12,7 @@ export default function LastBanner() {
         </div>
         <div className="text-[1.375rem] text-[#EDEDED] text-center mb-[1.3125rem]">
           원하는 디자인을 간략한 키워드 작성과 스타일 선택으로 간결하고 쉽게 입력하세요. <br />
-          디자인을 몰라도 누구나 손쉽게 자인만의 그래픽 이미지를 만들 수 있습니다.
+          디자인을 몰라도 누구나 손쉽게 자신만의 그래픽 이미지를 만들 수 있습니다.
         </div>
         <DesignStartButton />
         <Image alt="last_banner_img" src={'/images/last_banner_img.svg'} width={750} height={370} />
