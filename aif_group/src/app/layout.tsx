@@ -3,7 +3,13 @@ import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from 'antd';
+import KakaoScript from '@/services/kakaoScript';
 
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -27,6 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+          <KakaoScript />
         <div id="modal-root" />
         <AntdRegistry>
           <ConfigProvider theme={theme}>{children}</ConfigProvider>
