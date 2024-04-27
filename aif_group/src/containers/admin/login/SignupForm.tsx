@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import React from 'react';
 
-function SignupFrom() {
+function SignupForm() {
   const router = useRouter();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -39,4 +39,4 @@ function SignupFrom() {
   );
 }
 
-export default SignupFrom;
+export default SignupForm;

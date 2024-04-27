@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import React from 'react';
-import { IconLogo } from '../../../public/icons';
+import { IconLogo } from '../../../../public/icons';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 

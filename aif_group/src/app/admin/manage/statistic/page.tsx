@@ -1,4 +1,4 @@
-import StatisticContent from '@/containers/admin/StatisticContent';
+import StatisticContent from '@/containers/admin/statistic/StatisticContent';
 import React from 'react';
 
 function StatisticsPage() {

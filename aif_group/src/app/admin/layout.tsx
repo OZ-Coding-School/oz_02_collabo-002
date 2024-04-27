@@ -1,6 +1,6 @@
 'use client';
-import Header from '@/containers/admin/Header';
-import SideBar from '@/containers/admin/SideBar';
+import Header from '@/containers/admin/common/Header';
+import SideBar from '@/containers/admin/common/SideBar';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 

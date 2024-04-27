@@ -1,4 +1,4 @@
-import ManagerContent from '@/containers/admin/ManagerContent';
+import ManagerContent from '@/containers/admin/manager/ManagerContent';
 
 function ManagerPage() {
   return <ManagerContent />;
