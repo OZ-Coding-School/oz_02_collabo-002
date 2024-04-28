@@ -7,11 +7,12 @@ import Footer from '@/containers/main/Footer';
 import AIImageSection from '@/containers/main/AIImageSection';
 import ScrollUpButton from '@/components/ScrollUpButton';
 import React from 'react';
+import FeedbackPopup from '@/containers/modal/FeedbackPopup';
 
 export default function Home() {
   return (
     <>
-      <Header />
+      {/* <Header />
       <main>
         <MainBanner />
         <div id="about">
@@ -26,7 +27,8 @@ export default function Home() {
         <LastBanner />
       </main>
       <Footer />
-      <ScrollUpButton />
+      <ScrollUpButton /> */}
+      <FeedbackPopup />
     </>
   );
 }
