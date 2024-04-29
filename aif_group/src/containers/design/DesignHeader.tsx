@@ -30,7 +30,8 @@ export default function DesignHeader() {
           <button
             className="text-xl font-medium w-[13.75rem] h-[3.25rem] bg-black text-main_active group hover:bg-main_active active:bg-main_active rounded-md flex justify-center items-center"
             onMouseEnter={() => setIsMouseHoverToImage(true)}
-            onMouseLeave={() => setIsMouseHoverToImage(false)}>
+            onMouseLeave={() => setIsMouseHoverToImage(false)}
+            onClick={() => router.push('/design/sampleImage')}>
             {isMouseHoverToImage ? (
               <Image alt="image_icon_hover" src={'/icons/image_icon_hover.svg'} width={34.14} height={32.45} />
             ) : (

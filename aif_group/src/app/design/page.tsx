@@ -1,4 +1,6 @@
 import DesignHeader from '@/containers/design/DesignHeader';
+import FeedbackPopup from '@/containers/modal/FeedbackPopup';
+import FormModal from '@/containers/modal/FormModal';
 
 export default function Design() {
   return (

@@ -35,7 +35,9 @@ const Modal = ({ children }: ModalProps) => {
 
   return (
     <>
-      {pathname === '/design/howtouse' ? (
+      {pathname === '/design' ? (
+        ''
+      ) : (
         <main>
           <div
             className="bg-[rgba(0,0,0,0.4)] w-full h-screen fixed top-0 left-0 z-30"
@@ -68,8 +70,6 @@ const Modal = ({ children }: ModalProps) => {
             )}
           </div>
         </main>
-      ) : (
-        ''
       )}
     </>
   );

@@ -12,14 +12,12 @@ import React from 'react';
 import { useEffect } from 'react';
 import ReactModal from 'react-modal';
 
-
 export default function Home() {
-      useEffect(() => {
+  useEffect(() => {
     ReactModal.setAppElement('#modal-root');
   }, []);
-  
-  return (
 
+  return (
     <main>
       <Header />
       <section>
@@ -37,8 +35,6 @@ export default function Home() {
       </section>
       <Footer />
       <ScrollUpButton />
-      <FeedbackPopup />
     </main>
-
   );
 }
