@@ -8,8 +8,10 @@ import Footer from '@/containers/main/Footer';
 import AIImageSection from '@/containers/main/AIImageSection';
 import ScrollUpButton from '@/components/ScrollUpButton';
 import React from 'react';
+
 import { useEffect } from 'react';
 import ReactModal from 'react-modal';
+
 
 export default function Home() {
       useEffect(() => {
@@ -17,6 +19,7 @@ export default function Home() {
   }, []);
   
   return (
+
     <main>
       <Header />
       <section>
@@ -34,6 +37,8 @@ export default function Home() {
       </section>
       <Footer />
       <ScrollUpButton />
+      <FeedbackPopup />
     </main>
+
   );
 }
