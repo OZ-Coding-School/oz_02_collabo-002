@@ -1,4 +1,4 @@
-import UserContent from '@/containers/admin/UserContent';
+import UserContent from '@/containers/admin/user/UserContent';
 import React from 'react';
 
 function UserPage() {

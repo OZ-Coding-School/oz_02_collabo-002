@@ -13,7 +13,7 @@ function FormContent() {
         <PieChart title={'AIF 서비스 사용 여부'} />
       </div>
       <div>
-        <BarChart />
+        <BarChart title={'서비스 개선되면 좋을 부분'} />
       </div>
     </div>
   );
