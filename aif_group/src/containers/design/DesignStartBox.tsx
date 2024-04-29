@@ -79,6 +79,7 @@ const DesignStartBox = () => {
           <div className="flex flex-col items-center">
             <button className="w-20 h-20 rounded-full border overflow-hidden focus:outline-none focus:ring-4 focus:ring-main_active">
               <Image
+
                 src="/icons/Ellipse 156.svg"
                 alt="키덜트"
                 width={500}
@@ -91,7 +92,7 @@ const DesignStartBox = () => {
           <div className="flex flex-col items-center">
             <button className="w-20 h-20 rounded-full border overflow-hidden focus:outline-none focus:ring-4 focus:ring-main_active">
               <Image
-                src="/icons/Ellipse 157.svg"
+        src="/icons/Ellipse 157.svg"
                 alt="라인아트"
                 width={500}
                 height={300}
@@ -103,7 +104,7 @@ const DesignStartBox = () => {
           <div className="flex flex-col items-center">
             <button className="w-20 h-20 rounded-full border overflow-hidden focus:outline-none focus:ring-4 focus:ring-main_active">
               <Image
-                src="/icons/Ellipse 158.svg"
+         src="/icons/Ellipse 158.svg"
                 alt="스테인글라스"
                 width={500}
                 height={300}
@@ -127,7 +128,7 @@ const DesignStartBox = () => {
           <div className="flex flex-col items-center">
             <button className="w-20 h-20 rounded-full border overflow-hidden focus:outline-none focus:ring-4 focus:ring-main_active">
               <Image
-                src="/icons/Ellipse 160.svg"
+            src="/icons/Ellipse 160.svg"
                 alt="엠블럼"
                 width={500}
                 height={300}
@@ -139,7 +140,7 @@ const DesignStartBox = () => {
           <div className="flex flex-col items-center">
             <button className="w-20 h-20 rounded-full border overflow-hidden focus:outline-none focus:ring-4 focus:ring-main_active">
               <Image
-                src="/icons/Ellipse 16.svg"
+            src="/icons/Ellipse 16.svg"
                 alt="애니메이션"
                 width={500}
                 height={300}

@@ -1,3 +1,4 @@
+'use client';
 import Header from '@/containers/main/Header';
 import AboutSection from '@/containers/main/AboutSection';
 import MainBanner from '@/containers/main/MainBanner';
@@ -7,13 +8,21 @@ import Footer from '@/containers/main/Footer';
 import AIImageSection from '@/containers/main/AIImageSection';
 import ScrollUpButton from '@/components/ScrollUpButton';
 import React from 'react';
-import FeedbackPopup from '@/containers/modal/FeedbackPopup';
+
+import { useEffect } from 'react';
+import ReactModal from 'react-modal';
+
 
 export default function Home() {
+      useEffect(() => {
+    ReactModal.setAppElement('#modal-root');
+  }, []);
+  
   return (
-    <>
-      {/* <Header />
-      <main>
+
+    <main>
+      <Header />
+      <section>
         <MainBanner />
         <div id="about">
           <AboutSection />
@@ -25,10 +34,11 @@ export default function Home() {
           <HowToCustomSection />
         </div>
         <LastBanner />
-      </main>
+      </section>
       <Footer />
-      <ScrollUpButton /> */}
+      <ScrollUpButton />
       <FeedbackPopup />
-    </>
+    </main>
+
   );
 }

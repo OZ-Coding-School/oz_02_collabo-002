@@ -18,7 +18,7 @@ export default function HowToCustomSection() {
               className="drop-shadow-gray"
             />
             <div className="w-[10.8125rem] h-[7.625rem] flex flex-col justify-between items-center">
-              <div className="font-bold text-[1.5rem] leading-[37px] tracking-[-0.06em] mb-[17px]">디자인 키워드</div>
+              <div className="font-bold text-[1.5rem] leading-[37px]">디자인 키워드</div>
               <div className="h-[60px] text-[1.125rem] tracking-[-0.06em] text-center text-[#555555]">
                 만들려고 하는 이미지를 <br /> 키워드로 작성하세요.
               </div>
@@ -33,7 +33,7 @@ export default function HowToCustomSection() {
               className="drop-shadow-gray"
             />
             <div className="w-[10.8125rem] h-[7.625rem] flex flex-col justify-between items-center">
-              <div className="font-bold text-[1.5rem] leading-[37px] tracking-[-0.06em]">디자인 스타일</div>
+              <div className="font-bold text-[1.5rem] leading-[37px]">디자인 스타일</div>
               <div className="h-[60px] text-[1.125rem] tracking-[-0.06em] text-center text-[#555555]">
                 원하는 이미지 스타일 <br /> 옵션을 선택하세요.
               </div>
@@ -49,7 +49,7 @@ export default function HowToCustomSection() {
               className="drop-shadow-mint"
             />
             <div className="w-[10.8125rem] h-[7.625rem] flex flex-col justify-between items-center">
-              <div className="font-bold text-[1.5rem] leading-[37px] tracking-[-0.06em] flex">
+              <div className="font-bold text-[1.5rem] leading-[37px] flex">
                 디자인 생성
                 <span className="relative top-1.5 left-1.5">
                   <Image alt="cursor_icon" src={'/icons/cursor_icon.svg'} width={39} height={39} />
@@ -70,7 +70,7 @@ export default function HowToCustomSection() {
               className="drop-shadow-gray"
             />
             <div className="w-[10.8125rem] h-[7.625rem] flex flex-col justify-between items-center">
-              <div className="font-bold text-[1.5rem] leading-[37px] tracking-[-0.06em]">디자인 선택하기</div>
+              <div className="font-bold text-[1.5rem] leading-[37px]">디자인 선택하기</div>
               <div className="h-[60px] text-[1.125rem] tracking-[-0.06em] text-center text-[#555555]">
                 생성된 이미지 중 <br /> 최대 3개를 선택 해주세요.
               </div>
@@ -85,7 +85,7 @@ export default function HowToCustomSection() {
               className="drop-shadow-gray"
             />
             <div className="w-[10.8125rem] h-[7.625rem] flex flex-col justify-between items-center">
-              <div className="font-bold text-[1.5rem] leading-[37px] tracking-[-0.06em]">티셔츠 미리보기</div>
+              <div className="font-bold text-[1.5rem] leading-[37px]">티셔츠 미리보기</div>
               <div className="h-[60px] text-[1.125rem] tracking-[-0.06em] text-center text-[#555555]">
                 선택한 프린트 디자인 <br /> 티셔츠를 확인하세요.
               </div>
