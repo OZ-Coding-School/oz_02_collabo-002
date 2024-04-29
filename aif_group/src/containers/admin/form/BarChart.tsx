@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
-import FormModal from '@/containers/modal/FormModal';
+import { useRouter } from 'next/navigation';
 
 const BAR_COLOR = ['#4986e6', '#78E8C1', '#3AD49E', '#214832', '#003080', '#D6D6D6'];
 const dummy_data = {
@@ -16,8 +16,8 @@ const dummy_data = {
 
 function BarChart({ title }) {
   const chartRef = useRef(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedLegend, setSelectedLegend] = useState('');
+  const router = useRouter();
 
   useEffect(() => {
     const ctx = chartRef.current?.getContext('2d');
@@ -86,7 +86,7 @@ function BarChart({ title }) {
           legend: {
             onClick: (e, legendItem, legend) => {
               setSelectedLegend(legendItem.text);
-              setIsModalOpen(true);
+              router.push('/admin/manage/form/result');
             },
             labels: {
               pointStyle: 'rect',
@@ -108,7 +108,6 @@ function BarChart({ title }) {
       <h2 className="text-[1.25rem]">{title}</h2>
       <div className="bg-white rounded-xl">
         <canvas className="m-[2rem] relative z-10" ref={chartRef} />
-        <FormModal isModalOpen={isModalOpen} selectedLegend={selectedLegend} closeModal={closeModal} />
       </div>
     </div>
   );

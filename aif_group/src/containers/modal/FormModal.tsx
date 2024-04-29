@@ -19,15 +19,15 @@ const customStyle = {
   },
 };
 
-function FormModal({ isModalOpen, selectedLegend, closeModal }) {
+function FormModal({ selectedLegend }) {
   const title =
     selectedLegend === '기타' ? '기타 답변' : selectedLegend === '예' ? '서비스 사용 용도' : ' "아니요"를 선택한 이유';
 
   return (
-    <ReactModal style={customStyle} isOpen={isModalOpen} onRequestClose={closeModal} contentLabel="Legend Modal">
+    <ReactModal style={customStyle} onRequestClose={''} contentLabel="Legend Modal">
       <div className="">
         <div className="flex justify-end">
-          <button onClick={closeModal}>
+          <button onClick={''}>
             <Image src={IconClose} alt="창닫기 버튼" />
           </button>
         </div>
