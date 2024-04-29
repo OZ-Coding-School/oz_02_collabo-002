@@ -32,7 +32,7 @@ export default function Header() {
 
   return (
     <div className="w-full h-header px-[3rem] py-[2.3125rem] flex justify-center items-center">
-      <div className="w-[78.75rem] flex flex-row justify-between items-center ">
+      <div className="w-[78.75rem] flex justify-between items-center ">
         <button onClick={() => router.push('/')}>
           <Image alt="logo" src={'/icons/logo.svg'} width={237} height={68} />
         </button>
@@ -47,7 +47,9 @@ export default function Header() {
             <button className="text-[1.375rem] text-[#3A3A3A] font-medium" onClick={moveToHow}>
               사용방법
             </button>
-            <button className="text-[1.375rem] w-[12.5rem] h-[3.25rem] bg-black text-main_active group hover:bg-main_active active:bg-main_active rounded-md font-bold">
+            <button
+              className="text-[1.375rem] w-[12.5rem] h-[3.25rem] bg-black text-main_active group hover:bg-main_active active:bg-main_active rounded-md font-bold"
+              onClick={() => router.push('/design')}>
               <div className="group-hover:text-black group-active:text-black">디자인 시작하기</div>
             </button>
           </div>
