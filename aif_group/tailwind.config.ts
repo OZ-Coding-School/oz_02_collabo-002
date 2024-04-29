@@ -11,9 +11,18 @@ const config: Config = {
         input_bg: '#f5f5f5',
         btn_border: '#b4b4b4',
         btn_text: '#6c6c6c',
+        btn_bg: '#d9d9d9',
         bg: '#f7f7f7',
+        table_bg: '#e9e9e9',
+        table_border: '#c4c4c4',
         sample_img_bg: '#C3DBD7',
         footer_text: '#787878',
+      },
+      
+      screens: {
+        sm: { min: '393px', max: '768px' },
+        md: { min: '768px', max: '1023px' },
+        lg: { min: '1080px' },
       },
       fontFamily: {
         saira: ['Saira', 'sans-serif'],

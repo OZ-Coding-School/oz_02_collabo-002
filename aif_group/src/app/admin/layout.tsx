@@ -1,0 +1,22 @@
+'use client';
+import Header from '@/containers/admin/Header';
+import SideBar from '@/containers/admin/SideBar';
+import { usePathname } from 'next/navigation';
+import React, { useState } from 'react';
+
+function AdminLayout({ children }) {
+  const currenPath = usePathname();
+  const shouldRender = currenPath.startsWith('/admin/manage');
+  const [activeContent, setActiveContent] = useState('manager');
+  return (
+    <section className="bg-bg h-full">
+      <Header />
+      <div className={`${shouldRender && 'flex w-full '}`}>
+        {shouldRender && <SideBar setActiveContent={setActiveContent} activeContent={activeContent} />}
+        <main>{children}</main>
+      </div>
+    </section>
+  );
+}
+
+export default AdminLayout;
