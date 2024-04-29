@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef, useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 
 export interface ModalProps {
@@ -9,9 +9,10 @@ export interface ModalProps {
 
 const Modal = ({ children }: ModalProps) => {
   const [toggleBtn, setToggleBtn] = useState(false);
-  const router = useRouter();
-  const pathname = usePathname();
   const layoutRef = useRef<Element | null>(null);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const scrollY = searchParams.get('scroll');
 
   const handleScroll = () => {
     layoutRef.current = document.getElementById('modal');
@@ -22,27 +23,22 @@ const Modal = ({ children }: ModalProps) => {
     }
   };
 
-  // useEffect(() => {
-  //   if (layoutRef.current) {
-  //     layoutRef.current.addEventListener('scroll', handleScroll);
-  //     return () => layoutRef.current?.removeEventListener('scroll', handleScroll);
-  //   }
-  // }, []);
-
   const goToTop = () => {
     layoutRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <>
-      {pathname === '/design/howtouse' ? (
+      {
         <main>
           <div
             className="bg-[rgba(0,0,0,0.4)] w-full h-screen fixed top-0 left-0 z-30"
             onClick={() => {
-              router.replace('/design');
-            }}></div>
-          <div className="w-[75rem] h-[92%] z-50 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-[50px]">
+              router.back();
+            }}
+          />
+          <div
+            className={`w-[75rem] h-[92%] z-50 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-[50px]`}>
             <div className="w-full h-[7rem] flex justify-center items-end fixed top-0">
               <div className="w-[90%] flex justify-between items-center mb-[1rem]">
                 <div className="font-light font-saira text-[2rem] leading-[80%] tracking-[-0.002em]">
@@ -54,7 +50,7 @@ const Modal = ({ children }: ModalProps) => {
               </div>
             </div>
             <div
-              className="overflow-auto w-full h-[calc(100%-9.5rem)] fixed bottom-10"
+              className="overflow-auto w-full h-[calc(100%-9.5rem)] fixed bottom-10 flex justify-center"
               id="modal"
               onScroll={handleScroll}>
               {children}
@@ -68,9 +64,7 @@ const Modal = ({ children }: ModalProps) => {
             )}
           </div>
         </main>
-      ) : (
-        ''
-      )}
+      }
     </>
   );
 };

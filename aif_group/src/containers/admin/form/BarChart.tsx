@@ -16,7 +16,6 @@ const dummy_data = {
 
 function BarChart({ title }) {
   const chartRef = useRef(null);
-  const [selectedLegend, setSelectedLegend] = useState('');
   const router = useRouter();
 
   useEffect(() => {
@@ -85,8 +84,7 @@ function BarChart({ title }) {
         plugins: {
           legend: {
             onClick: (e, legendItem, legend) => {
-              setSelectedLegend(legendItem.text);
-              router.push('/admin/manage/form/result');
+              router.push(`/admin/manage/form/result?legend=${legendItem.text}`, { scroll: false });
             },
             labels: {
               pointStyle: 'rect',
@@ -100,8 +98,6 @@ function BarChart({ title }) {
       barChart.destroy();
     };
   }, []);
-
-  const closeModal = () => setIsModalOpen(false);
 
   return (
     <div className="m-[2rem] relative w-[90%] flex justify-center flex-col">
