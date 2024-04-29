@@ -9,8 +9,10 @@ export default function Thanks() {
       objectType: 'feed',
       content: {
         title: 'AI Fashionista',
-        description: '내가 디자인하는 나만의 AI 맞춤형 티셔츠',
-        imageUrl: 'https://dev.woodaebbang.com/image/buyingRecommend/buying_recommend_og_image.png', // 이미지 링크 바꿔주기
+        description: '누구나 패션디자이너가 되는 곳 AI Fashionista',
+        // imageUrl: 'https://dev.woodaebbang.com/image/buyingRecommend/buying_recommend_og_image.png', // 이미지 링크 바꿔주기
+        imageUrl:
+          'https://cdn.discordapp.com/attachments/1229713851218657300/1233237563494633483/KakaoTalk_20240426_110343089.png?ex=662c5d7b&is=662b0bfb&hm=9124f79d0575fecdb788143fde1be1009aae9e80c15c3d4ac952173cc8e1133d&', // 이미지 링크 바꿔주기
         link: {
           // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
           mobileWebUrl: 'https://localhost:3000',
