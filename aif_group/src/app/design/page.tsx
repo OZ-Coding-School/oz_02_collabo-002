@@ -1,14 +1,19 @@
 import DesignHeader from '@/containers/design/DesignHeader';
-import FeedbackPopup from '@/containers/modal/FeedbackPopup';
-import FormModal from '@/containers/modal/FormModal';
+import DesignLoadingBox from '@/containers/design/DesignLoadingBox';
+import DesignPreviewBox from '@/containers/design/DesignPreviewBox';
+import DesignSelectBox from '@/containers/design/DesignSelectBox';
+import DesignStartBox from '@/containers/design/DesignStartBox';
 
 export default function Design() {
   return (
     <main className="h-screen">
       <DesignHeader />
       <section className="bg-bg w-full h-[calc(100vh-8.875rem)] flex justify-center items-center">
-        <div>
-          <div>디자인 페이지</div>
+        <div className="w-full flex flex-row justify-around items-center">
+          {/* <DesignStartBox /> */}
+          {/* <DesignLoadingBox /> */}
+          {/* <DesignSelectBox /> */}
+          <DesignPreviewBox />
         </div>
       </section>
     </main>

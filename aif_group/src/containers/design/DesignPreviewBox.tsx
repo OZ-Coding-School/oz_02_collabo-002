@@ -1,7 +1,11 @@
+'use client';
 import React from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const DesignPreviewBox = () => {
+  const router = useRouter();
+
   return (
     <div className="w-[27rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
       <section className="bg-black rounded-t-[14px] w-full h-[9.9375rem] flex flex-col justify-center items-center mb-10">
@@ -45,7 +49,9 @@ const DesignPreviewBox = () => {
         <Image src="/icons/arrow_right.svg" alt="T-shirt" width={50} height={50} objectFit="cover" priority />
       </section>
       <div className="w-[15rem] h-[2.5rem] mt-[3.1375rem] mx-[6.1875rem] flex justify-between">
-        <button className="w-[15rem] h-full text-btn_text border-btn_border border-[1px] rounded-[4px] hover:bg-main_active hover:border-none hover:text-black">
+        <button
+          className="w-[15rem] h-full text-btn_text border-btn_border border-[1px] rounded-[4px] hover:bg-main_active hover:border-none hover:text-black"
+          onClick={() => router.push('/design/feedback')}>
           다운로드
         </button>
       </div>
