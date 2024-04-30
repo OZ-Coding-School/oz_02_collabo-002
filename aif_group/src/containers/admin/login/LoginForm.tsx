@@ -1,10 +1,14 @@
 'use client';
 import Input from '@/components/admin/inputField/Input';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 
 function LoginForm() {
   const router = useRouter();
+  const [inputValue, setInputValue] = useState({
+    email: '',
+    password: '',
+  });
 
   function handleSignupButtonClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
@@ -16,6 +20,8 @@ function LoginForm() {
 
     router.push('admin/manage/manager');
   }
+  function handleChangeInput(type: string, e: React.ChangeEvent<HTMLInputElement>) {}
+
   return (
     <div className="mt-[9.9375rem] flex flex-col justify-center items-center text-center">
       <h2 className="text-[2.5rem] mb-[3.5rem] w-min-[3.75rem]">관리자 로그인</h2>
