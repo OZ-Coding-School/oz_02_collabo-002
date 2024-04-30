@@ -5,8 +5,11 @@ import Image from 'next/image';
 import ImageItem from './ImageItem';
 
 const arr = new Array(8).fill(false);
+interface DesignSelectBoxProps {
+  onSelectDesign: () => void;
+}
 
-function DesignSelectBox() {
+const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign }) => {
   const [currentImage, setCurrentImage] = useState(undefined);
 
   function handleCurrentImage(image) {
@@ -44,16 +47,18 @@ function DesignSelectBox() {
           </div>
         </div>
         <div className="w-[33.375rem] h-[2.5rem] mb-[1.9375rem] mx-[3.1875rem] flex justify-between">
-          <button className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active">
+          <button className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text hover:border-none hover:text-black">
             다시 생성하기
           </button>
-          <button className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active">
+          <button
+            onClick={onSelectDesign}
+            className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text hover:border-none hover:text-black">
             디자인 선택하기
           </button>
         </div>
       </div>
     </section>
   );
-}
+};
 
 export default DesignSelectBox;
