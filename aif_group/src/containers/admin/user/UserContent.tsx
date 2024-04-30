@@ -1,10 +1,15 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import React from 'react';
-import PromptModal from '../../modal/PromptModal';
 
 function UserContent() {
-  function handleClickPromptButton() {}
-  function handleClickFormButton() {}
+  const router = useRouter();
+  function handleClickPromptButton() {
+    router.push('/admin/manage/user/prompt?selected=prompt');
+  }
+  function handleClickFormButton() {
+    router.push('/admin/manage/user/prompt?selected=form');
+  }
 
   return (
     <div className="mt-[3.3125rem] mx-[5.4375rem]">
@@ -26,10 +31,10 @@ function UserContent() {
             <td className="bg-white border-x-[1px] border-b-[1px] border-table_border"></td>
             <td className="bg-white border-x-[1px] border-b-[1px] border-table_border"></td>
             <td className="bg-white border-x-[1px] border-b-[1px] border-table_border text-center">
-              <PromptModal onSelect={handleClickPromptButton}>adfas</PromptModal>
+              <button onClick={handleClickPromptButton}>{'프롬프트1'}</button>
             </td>
             <td className="bg-white border-b-[1px] border-table_border text-center">
-              <button onClick={handleClickFormButton}>설문1</button>
+              <button onClick={handleClickFormButton}>{'설문1'}</button>
             </td>
           </tr>
 

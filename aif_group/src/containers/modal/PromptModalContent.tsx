@@ -2,8 +2,8 @@ import React from 'react';
 
 function PromptModalContent() {
   return (
-    <>
-      <table>
+    <main className="w-[63.5625rem]">
+      <table className="w-full">
         <thead className="h-[4.5625rem] bg-table_bg">
           <tr className="font-normal">
             <th className="border-t-[1px] border-table_border w-[5.9490968801%]">번호</th>
@@ -45,8 +45,8 @@ function PromptModalContent() {
         </thead>
         <tbody>
           <tr className="">
-            <td className="bg-white border-b-[1px] border-table_border border-r-[1px] text-center">
-              <div className="grid grid-cols-2 gap-[1.3125rem] p-[1.3125rem]">
+            <td className="bg-white border-b-[1px] border-table_border border-r-[1px]">
+              <div className="grid grid-cols-2 gap-[1.3125rem] p-[1.3125rem] place-items-center">
                 <div className="bg-btn_text w-[9.58125rem] h-[9.58125rem]">생성 이미지</div>
                 <div className="bg-btn_text w-[9.58125rem] h-[9.58125rem]">생성 이미지</div>
                 <div className="bg-btn_text w-[9.58125rem] h-[9.58125rem]">생성 이미지</div>
@@ -54,7 +54,7 @@ function PromptModalContent() {
               </div>
             </td>
             <td className="bg-white border-b-[1px] border-table_border">
-              <div className="grid grid-cols-2 gap-[1.3125rem] p-[1.3125rem]">
+              <div className="grid grid-cols-2 gap-[1.3125rem] p-[1.3125rem] place-items-center">
                 <div className="bg-btn_text w-[9.58125rem] h-[9.58125rem]">티셔츠 이미지</div>
                 <div className="bg-btn_text w-[9.58125rem] h-[9.58125rem]">티셔츠 이미지</div>
                 <div className="bg-btn_text w-[9.58125rem] h-[9.58125rem]">티셔츠 이미지</div>
@@ -67,7 +67,7 @@ function PromptModalContent() {
           </tr>
         </tbody>
       </table>
-    </>
+    </main>
   );
 }
 
