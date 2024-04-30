@@ -10,9 +10,9 @@ interface DesignSelectBoxProps {
 }
 
 const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign }) => {
-  const [currentImage, setCurrentImage] = useState(undefined);
+  const [currentImage, setCurrentImage] = useState<string | undefined>(undefined);
 
-  function handleCurrentImage(image) {
+  function handleCurrentImage(image: string) {
     setCurrentImage(image);
   }
 
@@ -34,12 +34,12 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign }) => 
           <div className="w-[12.625rem] h-[25.375rem]">
             <ul className="grid gap-[0.625rem] h-full grid-cols-2">
               {arr.map((item, idx) => (
-                <ImageItem image={IconSample} onSelect={handleCurrentImage} key={idx} idx={idx} />
+                <ImageItem image={IconSample} onSelect={handleCurrentImage} key={idx} />
               ))}
             </ul>
           </div>
           <div className="w-[21.6875rem] h-[25.375rem]">
-            <Image src={currentImage ? currentImage : undefined} width={345} height={345} alt="선택된 ai 디자인" />
+            {currentImage && <Image src={currentImage} width={345} height={345} alt="선택된 ai 디자인" />}
             <div className="w-full h-[3.83125rem] bg-black flex justify-center items-center ">
               <p className="text-main_active font-semibold">디자인 선택</p>
               <input type="checkbox" className="w-[1rem] h-[1rem] ml-[0.8125rem] accent-main_active rounded-xl" />
