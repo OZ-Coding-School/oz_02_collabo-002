@@ -21,13 +21,6 @@ const Modal = ({ children }: ModalProps) => {
     }
   };
 
-  // useEffect(() => {
-  //   if (layoutRef.current) {
-  //     layoutRef.current.addEventListener('scroll', handleScroll);
-  //     return () => layoutRef.current?.removeEventListener('scroll', handleScroll);
-  //   }
-  // }, []);
-
   const goToTop = () => {
     layoutRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
   };

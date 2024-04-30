@@ -4,7 +4,7 @@ function StatisticContent() {
   return (
     <div className="mt-[3.3125rem] mx-[5.4375rem] flex flex-col items-center">
       <div className="mb-[4.375rem] flex gap-[2.875rem] w-[100%] justify-around">
-        <select className="w-[8%] h-[3.6875rem] border-[#afafaf] border-[1px] rounded-[15px] shadow-xl flex justify-center items-center gap-[1.6875rem] text-[1.5rem] px-[1rem]">
+        <select className="min-w-[20%] h-[3.6875rem] border-[#afafaf] border-[1px] rounded-[15px] shadow-xl flex justify-center items-center gap-[1.6875rem] text-[1.5rem] px-[1rem] text-center">
           <option value="일간">일간</option>
           <option value="주간">주간</option>
         </select>
