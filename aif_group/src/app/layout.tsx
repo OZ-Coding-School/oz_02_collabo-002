@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-          <KakaoScript />
+        <KakaoScript />
         <div id="modal-root" />
         <AntdRegistry>
           <ConfigProvider theme={theme}>{children}</ConfigProvider>
