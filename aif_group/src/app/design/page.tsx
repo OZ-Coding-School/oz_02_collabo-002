@@ -27,8 +27,10 @@ export default function Design() {
 
   const handleDesignSelection = () => {
     setShowPreviewBox(true);
-    setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 1000);
+    if (!showPreviewBox) {
+      setIsLoading(true);
+      setTimeout(() => setIsLoading(false), 1000);
+    }
   };
 
   return (
