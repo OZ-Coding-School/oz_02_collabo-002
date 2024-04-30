@@ -1,5 +1,3 @@
 import { createReducer } from '@reduxjs/toolkit';
 
-const adminReducer = createReducer([], builder => {
-  builder.addCase('');
-});
+const adminReducer = createReducer([], builder => {});
