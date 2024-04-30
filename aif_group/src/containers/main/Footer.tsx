@@ -4,7 +4,6 @@ import Link from 'next/link';
 export default function Footer() {
   return (
     <main className="w-full h-footer flex flex-col justify-center items-center relative">
-      <div className="w-3/4 border-t-[1px] border-footer_text absolute top-2"></div>
       <div className="w-3/4 flex justify-between align-top">
         <div>
           <div className="text-[1rem] text-footer_text mb-[15.5px]">AI Fashionista l AI 패셔니스타</div>
