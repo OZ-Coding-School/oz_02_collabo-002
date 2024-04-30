@@ -14,12 +14,16 @@ const dummy_data = {
   //각 연령별 1번 고른 횟수
 };
 
-function BarChart({ title }) {
-  const chartRef = useRef(null);
+function BarChart({ title }: { title: string }) {
+  const chartRef = useRef<HTMLCanvasElement>(null);
   const router = useRouter();
 
   useEffect(() => {
+    if (!chartRef.current) return;
+
     const ctx = chartRef.current?.getContext('2d');
+    if (!ctx) return; // 캔버스 레퍼런스가 없으면 초기화 x
+
     const barChart = new Chart(ctx, {
       type: 'bar',
       data: {
@@ -97,7 +101,7 @@ function BarChart({ title }) {
     return () => {
       barChart.destroy();
     };
-  }, []);
+  }, [router]);
 
   return (
     <div className="m-[2rem] relative w-[90%] flex justify-center flex-col">

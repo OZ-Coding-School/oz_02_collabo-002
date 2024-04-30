@@ -1,5 +1,4 @@
 'use client';
-import handler from '@/api/time';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 

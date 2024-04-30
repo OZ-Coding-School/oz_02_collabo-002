@@ -4,7 +4,7 @@ import SideBar from '@/containers/admin/common/SideBar';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 
-function AdminLayout({ children }) {
+function AdminLayout({ children }: { children: React.ReactNode }) {
   const currenPath = usePathname();
   const shouldRender = currenPath.startsWith('/admin/manage');
   const [activeContent, setActiveContent] = useState('manager');

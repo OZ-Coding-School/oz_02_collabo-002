@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 export interface ModalProps {
@@ -11,7 +11,6 @@ const Modal = ({ children }: ModalProps) => {
   const [toggleBtn, setToggleBtn] = useState(false);
   const layoutRef = useRef<Element | null>(null);
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   const handleScroll = () => {
     layoutRef.current = document.getElementById('modal');

@@ -3,12 +3,15 @@ import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 import { useRouter } from 'next/navigation';
 
-function PieChart({ title }) {
-  const chartRef = useRef(null);
+function PieChart({ title }: { title: string }) {
+  const chartRef = useRef<HTMLCanvasElement>(null);
   const router = useRouter();
 
   useEffect(() => {
+    if (!chartRef.current) return;
     const ctx = chartRef.current?.getContext('2d');
+    if (!ctx) return;
+
     const pieChart = new Chart(ctx, {
       type: 'pie',
       data: {
@@ -40,7 +43,7 @@ function PieChart({ title }) {
     return () => {
       pieChart.destroy();
     };
-  }, []);
+  }, [router]);
 
   return (
     <div className="m-[2rem] relative w-[90%]">
