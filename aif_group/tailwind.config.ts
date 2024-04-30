@@ -17,8 +17,9 @@ const config: Config = {
         table_border: '#c4c4c4',
         sample_img_bg: '#C3DBD7',
         footer_text: '#787878',
+        form_color: '#8F8F8F',
       },
-      
+
       screens: {
         sm: { min: '393px', max: '768px' },
         md: { min: '768px', max: '1023px' },
