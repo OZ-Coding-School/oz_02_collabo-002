@@ -88,7 +88,7 @@ const SampleImageModal = () => {
         {moreShow ? (
           <button
             className="w-[10rem] h-[3.5rem] bg-black group hover:bg-main_active active:bg-main_active flex justify-center items-center rounded-[4px] mt-[5rem] mb-2"
-            onClick={() => router.replace('/design')}>
+            onClick={() => router.back()}>
             <div className='font-bold text-[1.4rem] text-main_active group-hover:text-black group-active:text-black"'>
               창닫기
             </div>

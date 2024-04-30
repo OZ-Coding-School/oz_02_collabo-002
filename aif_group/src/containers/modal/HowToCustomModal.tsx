@@ -13,12 +13,13 @@ function HowToCustomModal() {
         <div className="w-[65rem] h-1 border-t border-black mt-[1.6875rem] mb-[2.6rem]"></div>
       </div>
       <div className="flex flex-col justify-center items-center">
-        <Image alt="how_to_custom_step1" src={'/images/how_to_custom_step1.svg'} width={1017} height={788} />
+        <Image alt="how_to_custom_step1" src={'/images/how_to_custom_step1.svg'} width={1017} height={788} priority />
         <Image
           alt="how_to_custom_step2"
           src={'/images/how_to_custom_step2.svg'}
           width={1017}
           height={788}
+          priority
           className="mt-[4.125rem]"
         />
         <Image
@@ -26,11 +27,12 @@ function HowToCustomModal() {
           src={'/images/how_to_custom_step3.svg'}
           width={1017}
           height={788}
+          priority
           className="mt-[4.125rem]"
         />
         <button
           className="w-[10rem] h-[3.5rem] bg-black group hover:bg-main_active active:bg-main_active flex justify-center items-center rounded-[4px] mt-[5rem] mb-2"
-          onClick={() => router.replace('/design')}>
+          onClick={() => router.back()}>
           <div className='font-bold text-[1.4rem] text-main_active group-hover:text-black group-active:text-black"'>
             창닫기
           </div>
