@@ -4,11 +4,9 @@ interface InputProps {
   title: string;
   type: string;
   placeholder: string;
-  value: string;
-  setInputValue: () => void;
 }
 
-function Input({ title, type, placeholder, value, setInputValue }: InputProps) {
+function Input({ title, type, placeholder }: InputProps) {
   return (
     <div className="flex justify-between items-center mb-[2.125rem]">
       <label htmlFor={type} className="font-bold">

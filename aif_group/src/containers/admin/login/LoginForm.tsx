@@ -20,26 +20,16 @@ function LoginForm() {
 
     router.push('admin/manage/manager');
   }
+  function handleChangeInput(type: string, e: React.ChangeEvent<HTMLInputElement>) {}
+
   return (
     <div className="mt-[9.9375rem] flex flex-col justify-center items-center text-center">
       <h2 className="text-[2.5rem] mb-[3.5rem] w-min-[3.75rem]">관리자 로그인</h2>
       <div className="w-[32.8125rem] border-t-[1px] border-black  pt-[5.0625rem] pb-[22.0625rem]">
         <form>
           <div className="mb-[4rem]">
-            <Input
-              title={'이메일 주소'}
-              type={'email'}
-              placeholder={'이메일 형식 입력'}
-              value={inputValue.email}
-              setInputValue={setInputValue}
-            />
-            <Input
-              title={'비밀번호'}
-              type={'password'}
-              placeholder={'8글자 이상, 영문 및 숫자 혼합'}
-              value={inputValue.password}
-              setInputValue={setInputValue}
-            />
+            <Input title={'이메일 주소'} type={'email'} placeholder={'이메일 형식 입력'} />
+            <Input title={'비밀번호'} type={'password'} placeholder={'8글자 이상, 영문 및 숫자 혼합'} />
           </div>
 
           <div>
