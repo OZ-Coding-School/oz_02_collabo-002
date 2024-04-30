@@ -1,15 +1,17 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
-import FormModal from '@/containers/modal/FormModal';
+import { useRouter } from 'next/navigation';
 
-function PieChart({ title }) {
-  const chartRef = useRef(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedLegend, setSelectedLegend] = useState('');
+function PieChart({ title }: { title: string }) {
+  const chartRef = useRef<HTMLCanvasElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
+    if (!chartRef.current) return;
     const ctx = chartRef.current?.getContext('2d');
+    if (!ctx) return;
+
     const pieChart = new Chart(ctx, {
       type: 'pie',
       data: {
@@ -25,8 +27,7 @@ function PieChart({ title }) {
         plugins: {
           legend: {
             onClick: (e, legendItem, legend) => {
-              setSelectedLegend(legendItem.text);
-              setIsModalOpen(true);
+              router.push(`/admin/manage/form/result?legend=${legendItem.text}`, { scroll: false });
             },
             position: 'right',
             align: 'end',
@@ -42,15 +43,12 @@ function PieChart({ title }) {
     return () => {
       pieChart.destroy();
     };
-  }, []);
-
-  const closeModal = () => setIsModalOpen(false);
+  }, [router]);
 
   return (
     <div className="m-[2rem] relative w-[90%]">
       <h2 className="text-[1.25rem]">{title}</h2>
       <canvas className="relative z-10 w-[]" ref={chartRef} />
-      <FormModal isModalOpen={isModalOpen} selectedLegend={selectedLegend} closeModal={closeModal} />
       <div className="w-[100%] h-[70%] bg-white absolute bottom-[0px] left-[30px] rounded-xl" />
     </div>
   );

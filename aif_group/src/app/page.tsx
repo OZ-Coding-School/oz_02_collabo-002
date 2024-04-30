@@ -11,7 +11,6 @@ import React from 'react';
 
 import { useEffect } from 'react';
 import ReactModal from 'react-modal';
-import FeedbackPopup from '@/containers/modal/FeedbackPopup';
 
 export default function Home() {
   useEffect(() => {
