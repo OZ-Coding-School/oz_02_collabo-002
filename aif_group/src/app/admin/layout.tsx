@@ -11,7 +11,7 @@ function AdminLayout({ children }) {
   return (
     <section className="bg-bg h-full">
       <Header />
-      <div className={`${shouldRender && 'flex w-full '}`}>
+      <div className={`${shouldRender && 'flex w-full min-w-[1080px]'}`}>
         {shouldRender && <SideBar setActiveContent={setActiveContent} activeContent={activeContent} />}
         <main>{children}</main>
       </div>
