@@ -1,10 +1,14 @@
 'use client';
 import Input from '@/components/admin/inputField/Input';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 
 function LoginForm() {
   const router = useRouter();
+  const [inputValue, setInputValue] = useState({
+    email: '',
+    password: '',
+  });
 
   function handleSignupButtonClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
@@ -22,8 +26,20 @@ function LoginForm() {
       <div className="w-[32.8125rem] border-t-[1px] border-black  pt-[5.0625rem] pb-[22.0625rem]">
         <form>
           <div className="mb-[4rem]">
-            <Input title={'이메일 주소'} type={'email'} placeholder={'이메일 형식 입력'} />
-            <Input title={'비밀번호'} type={'password'} placeholder={'8글자 이상, 영문 및 숫자 혼합'} />
+            <Input
+              title={'이메일 주소'}
+              type={'email'}
+              placeholder={'이메일 형식 입력'}
+              value={inputValue.email}
+              setInputValue={setInputValue}
+            />
+            <Input
+              title={'비밀번호'}
+              type={'password'}
+              placeholder={'8글자 이상, 영문 및 숫자 혼합'}
+              value={inputValue.password}
+              setInputValue={setInputValue}
+            />
           </div>
 
           <div>
