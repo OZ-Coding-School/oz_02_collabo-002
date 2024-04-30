@@ -12,7 +12,7 @@ interface DesignSelectBoxProps {
 const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign }) => {
   const [currentImage, setCurrentImage] = useState(undefined);
 
-  function handleCurrentImage(image) {
+  function handleCurrentImage(image: string) {
     setCurrentImage(image);
   }
 
