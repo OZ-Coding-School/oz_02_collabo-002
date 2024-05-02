@@ -10,12 +10,9 @@ import ScrollUpButton from '@/components/ScrollUpButton';
 import React from 'react';
 
 import { useEffect } from 'react';
-import ReactModal from 'react-modal';
 
 export default function Home() {
-  useEffect(() => {
-    ReactModal.setAppElement('#modal-root');
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <main>

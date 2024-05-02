@@ -1,27 +1,27 @@
 'use client';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import { IconSample } from '../../../public/icons';
 
 interface ImageItemProps {
-  onSelect: (image: string) => void;
+  onSelect: (image: string, idx: number) => void;
   image: string;
+  idx: number;
+  isSelected: boolean;
+  isCurrent: boolean;
 }
 
-function ImageItem({ onSelect, image }: ImageItemProps) {
+function ImageItem({ onSelect, image, idx, isSelected, isCurrent }: ImageItemProps) {
   const [size, setSize] = useState({ width: 87, height: 87 });
-  const [isSelected, setIseSelected] = useState(false);
 
   return (
     <li
       onClick={() => {
-        setIseSelected(state => !state);
-        onSelect(image);
+        onSelect(image, idx);
       }}
-      className={`border-[0.25rem] border-white hover:border-main_passive flex justify-center items-center ${
-        isSelected ? 'border-main_active' : ''
-      }`}>
-      <Image src={IconSample} width={size.width} height={size.height} alt="ai 디자인" />
+      className={`border-[0.25rem] hover:scale-110 flex justify-center items-center ${
+        isSelected ? 'border-main_active' : 'border-white'
+      } ${isCurrent && 'scale-125'}`}>
+      <Image src={image} width={size.width} height={size.height} alt="ai 디자인" />
     </li>
   );
 }
