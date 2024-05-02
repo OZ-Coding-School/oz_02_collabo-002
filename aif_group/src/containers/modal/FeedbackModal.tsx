@@ -22,10 +22,6 @@ const FeedbackModal = () => {
           }
         }
       });
-      // const imageUrl = router.query.imageDataUrl;
-      //   const imageName = 'ai생성이미지1.png';
-      //   console.log(imageUrl);
-      //   downloadImage(imageUrl, imageName);
       router.replace('/thanks');
     } catch (e) {
       alert(`${e}번 문항에 답변해주세요`);
