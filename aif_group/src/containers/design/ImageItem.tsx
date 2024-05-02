@@ -13,7 +13,7 @@ function ImageItem({ onSelect, image }) {
         setIseSelected(state => !state);
         onSelect(image);
       }}
-      className={`border-[0.25rem] border-white hover:border-main_passive flex justify-center items-center ${
+      className={`border-[0.25rem] border-white hover:border-main_active flex justify-center items-center ${
         isSelected ? 'border-main_active' : undefined
       }`}>
       <Image src={IconSample} width={size.width} height={size.height} alt="ai 디자인" />

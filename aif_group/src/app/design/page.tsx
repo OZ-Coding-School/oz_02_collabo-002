@@ -40,10 +40,16 @@ export default function Design() {
             <InputAlert onClose={handleStartDesign} />
           </div>
         )}
-        <div className="flex space-x-10 opacity-100 transition-opacity duration-300">
+        <div className="flex space-x-7 opacity-100 transition-opacity duration-500">
           <DesignStartBox onCreateDesign={handleCreateDesign} />
-          {showSelectBox && <DesignSelectBox onSelectDesign={handleDesignSelection} />}
-          {showPreviewBox && <DesignPreviewBox />}
+          <div
+            className={`transition-opacity duration-2000 ease-in-out ${showSelectBox ? 'opacity-100' : 'opacity-0'}`}>
+            {showSelectBox && <DesignSelectBox onSelectDesign={handleDesignSelection} />}
+          </div>
+          <div
+            className={`transition-opacity duration-2000 ease-in-out ${showPreviewBox ? 'opacity-100' : 'opacity-0'}`}>
+            {showPreviewBox && <DesignPreviewBox />}
+          </div>
         </div>
       </section>
     </main>
