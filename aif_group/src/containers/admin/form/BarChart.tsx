@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
-import FormModal from '@/containers/modal/FormModal';
+import { useRouter } from 'next/navigation';
 
 const BAR_COLOR = ['#4986e6', '#78E8C1', '#3AD49E', '#214832', '#003080', '#D6D6D6'];
 const dummy_data = {
@@ -14,13 +14,16 @@ const dummy_data = {
   //각 연령별 1번 고른 횟수
 };
 
-function BarChart({ title }) {
-  const chartRef = useRef(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedLegend, setSelectedLegend] = useState('');
+function BarChart({ title }: { title: string }) {
+  const chartRef = useRef<HTMLCanvasElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
+    if (!chartRef.current) return;
+
     const ctx = chartRef.current?.getContext('2d');
+    if (!ctx) return; // 캔버스 레퍼런스가 없으면 초기화 x
+
     const barChart = new Chart(ctx, {
       type: 'bar',
       data: {
@@ -85,8 +88,7 @@ function BarChart({ title }) {
         plugins: {
           legend: {
             onClick: (e, legendItem, legend) => {
-              setSelectedLegend(legendItem.text);
-              setIsModalOpen(true);
+              router.push(`/admin/manage/form/result?legend=${legendItem.text}`, { scroll: false });
             },
             labels: {
               pointStyle: 'rect',
@@ -99,16 +101,13 @@ function BarChart({ title }) {
     return () => {
       barChart.destroy();
     };
-  }, []);
-
-  const closeModal = () => setIsModalOpen(false);
+  }, [router]);
 
   return (
     <div className="m-[2rem] relative w-[90%] flex justify-center flex-col">
       <h2 className="text-[1.25rem]">{title}</h2>
       <div className="bg-white rounded-xl">
         <canvas className="m-[2rem] relative z-10" ref={chartRef} />
-        <FormModal isModalOpen={isModalOpen} selectedLegend={selectedLegend} closeModal={closeModal} />
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ interface DesignCreate {
 
 // 디자인 선택하기 버튼 post
 interface SelectDesign {
-  image: file;
+  image: File;
 }
 
 //설문 폼

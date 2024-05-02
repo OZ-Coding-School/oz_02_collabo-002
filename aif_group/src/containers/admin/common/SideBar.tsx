@@ -10,7 +10,7 @@ interface SideBarProps {
 function SideBar({ setActiveContent, activeContent }: SideBarProps) {
   const router = useRouter();
 
-  function handleButtonClick(contentId) {
+  function handleButtonClick(contentId: string) {
     router.replace(`/admin/manage/${contentId}`, { scroll: true });
     setActiveContent(contentId);
   }

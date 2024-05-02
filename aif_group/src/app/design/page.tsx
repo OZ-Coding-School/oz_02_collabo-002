@@ -1,6 +1,7 @@
 'use client';
 
 import DesignHeader from '@/containers/design/DesignHeader';
+import DesignLoadingBox from '@/containers/design/DesignLoadingBox';
 import DesignPreviewBox from '@/containers/design/DesignPreviewBox';
 import DesignSelectBox from '@/containers/design/DesignSelectBox';
 import DesignStartBox from '@/containers/design/DesignStartBox';
@@ -25,6 +26,10 @@ export default function Design() {
 
   const handleDesignSelection = () => {
     setShowPreviewBox(true);
+    if (!showPreviewBox) {
+      setIsLoading(true);
+      setTimeout(() => setIsLoading(false), 1000);
+    }
   };
 
   return (
@@ -41,6 +46,7 @@ export default function Design() {
         )}
         <div className="flex space-x-7">
           <DesignStartBox onCreateDesign={handleCreateDesign} />
+
           <div
             className={`transition-opacity duration-1000 ease-in-out ${showSelectBox ? 'opacity-100' : 'opacity-0'}`}>
             {showSelectBox && <DesignSelectBox onSelectDesign={handleDesignSelection} />}
@@ -49,6 +55,7 @@ export default function Design() {
             className={`transition-opacity duration-1000 ease-in-out ${showPreviewBox ? 'opacity-100' : 'opacity-0'}`}>
             {showPreviewBox && <DesignPreviewBox />}
           </div>
+
         </div>
       </section>
     </main>

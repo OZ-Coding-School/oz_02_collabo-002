@@ -28,7 +28,7 @@ export default function Header() {
     aboutRef.current = document.querySelector('#about');
     aiRef.current = document.querySelector('#ai');
     howRef.current = document.querySelector('#how');
-  }, []);
+  }, [aboutRef, aiRef, howRef]);
 
   return (
     <div className="w-full h-header px-[3rem] py-[2.3125rem] flex justify-center items-center">
