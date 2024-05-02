@@ -12,7 +12,6 @@ export default function Design() {
   const [showAlert, setShowAlert] = useState(true);
   const [showSelectBox, setShowSelectBox] = useState(true);
   const [showPreviewBox, setShowPreviewBox] = useState(true);
-  const [isLoading, setIsLoading] = useState(false); // 로딩 박스 구현 예정
 
   const handleStartDesign = () => {
     setShowSelectBox(false);
@@ -45,11 +44,18 @@ export default function Design() {
             <InputAlert onClose={handleStartDesign} />
           </div>
         )}
-        <div className="flex space-x-10 opacity-100 transition-opacity duration-300">
+        <div className="flex space-x-7">
           <DesignStartBox onCreateDesign={handleCreateDesign} />
-          {!isLoading && showSelectBox && <DesignSelectBox onSelectDesign={handleDesignSelection} />}
-          {isLoading && <DesignLoadingBox />}
-          {!isLoading && showPreviewBox && <DesignPreviewBox />}
+
+          <div
+            className={`transition-opacity duration-1000 ease-in-out ${showSelectBox ? 'opacity-100' : 'opacity-0'}`}>
+            {showSelectBox && <DesignSelectBox onSelectDesign={handleDesignSelection} />}
+          </div>
+          <div
+            className={`transition-opacity duration-1000 ease-in-out ${showPreviewBox ? 'opacity-100' : 'opacity-0'}`}>
+            {showPreviewBox && <DesignPreviewBox />}
+          </div>
+
         </div>
       </section>
     </main>
