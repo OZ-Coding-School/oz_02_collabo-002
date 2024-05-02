@@ -1,3 +1,4 @@
+'use client';
 import DesignHeader from '@/containers/design/DesignHeader';
 import DesignLoadingBox from '@/containers/design/DesignLoadingBox';
 import DesignPreviewBox from '@/containers/design/DesignPreviewBox';
