@@ -60,12 +60,12 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign }) => 
           </div>
         </div>
         <div className="w-[33.375rem] h-[2.5rem] mb-[1.9375rem] mx-[3.1875rem] flex justify-between">
-          <button className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text hover:border-none hover:text-black">
+          <button className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text">
             다시 생성하기
           </button>
           <button
             onClick={onSelectDesign}
-            className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text hover:border-none hover:text-black">
+            className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text hover:text-black hover:border-none">
             디자인 선택하기
           </button>
         </div>
