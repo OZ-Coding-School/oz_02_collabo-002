@@ -8,7 +8,6 @@ import InputAlert from '@/containers/modal/InputAlert';
 import useShowBox from '@/hooks/useShowBox';
 
 export default function Design() {
-
   const { handleCreateDesign, handleStartDesign, handleDesignSelection, show, isLoading } = useShowBox();
 
   return (
@@ -25,14 +24,14 @@ export default function Design() {
         <div className="flex space-x-7">
           <DesignStartBox onCreateDesign={handleCreateDesign} />
           <div
-            className={`transition-opacity duration-1000 ease-in-out ${showSelectBox ? 'opacity-100' : 'opacity-0'}`}>
+            className={`transition-opacity duration-1000 ease-in-out ${show.selectBox ? 'opacity-100' : 'opacity-0'}`}>
             {!isLoading.create && show.selectBox && <DesignSelectBox onSelectDesign={handleDesignSelection} />}
           </div>
           {isLoading.create && <DesignLoadingBox type={'select'} />}
           {isLoading.select && <DesignLoadingBox type={'preview'} />}
-         <div
-            className={`transition-opacity duration-1000 ease-in-out ${showPreviewBox ? 'opacity-100' : 'opacity-0'}`}>
-          {!isLoading.select && show.previewBox && <DesignPreviewBox />}
+          <div
+            className={`transition-opacity duration-1000 ease-in-out ${show.previewBox ? 'opacity-100' : 'opacity-0'}`}>
+            {!isLoading.select && show.previewBox && <DesignPreviewBox />}
           </div>
         </div>
       </section>
