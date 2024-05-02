@@ -8,15 +8,17 @@ const DesignPreviewBox = () => {
 
   return (
     <div className="w-[27rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
-      <section className="bg-black rounded-t-[14px] w-full h-[9.9375rem] flex flex-col justify-center items-center mb-10">
-        <span className="bg-main_active text-sm w-[4.375rem] h-[1.25rem] rounded-sm mb-2 text-center">
-          STEP
-          <span className="bg-main_active font-bold"> 03</span>
-        </span>
-        <p className="text-main_active text-2xl font-bold mb-2">티셔츠 미리보기</p>
-        <p className="text-white text-xs">디자인 실력이 대단하시네요!</p>
-        <p className="text-white text-xs">패셔너블한 티셔츠가 완성됐어요!</p>
-      </section>
+      <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center mb-10">
+        <div className="bg-main_active flex mt-[1.9375rem] w-[4.375rem] h-[1.25rem] justify-center items-center rounded-[3px]">
+          <p>STEP</p>
+          <p className="font-black ml-[2px]">03</p>
+        </div>
+        <h2 className="text-main_active h-[3.125rem] flex items-center text-[1.5rem] font-bold">티셔츠 미리보기</h2>
+        <div className="text-[0.8rem] flex flex-col items-center">
+          <p className="text-white">디자인 실력이 대단하시네요!</p>
+          <p className="text-white">패셔너블한 티셔츠가 완성됐어요!</p>
+        </div>
+      </div>
       {/* 티셔츠 색상 버튼 */}
       <div className="grid grid-cols-2 w-[5.15rem] ml-80">
         <div className="flex flex-col items-center">

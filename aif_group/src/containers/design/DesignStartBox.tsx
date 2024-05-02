@@ -8,15 +8,17 @@ interface DesignStartBoxProps {
 const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign }) => {
   return (
     <div className="w-[27rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
-      <section className="bg-black rounded-t-[14px] w-full h-[9.9375rem] flex flex-col justify-center items-center mb-7">
-        <span className="bg-main_active text-sm w-[4.375rem] h-[1.25rem] rounded-sm mb-2 text-center">
-          STEP
-          <span className="bg-main_active font-bold"> 01</span>
-        </span>
-        <p className="text-main_active text-2xl font-bold mb-2">디자인 하기</p>
-        <p className="text-white text-xs">텍스트를 디자인으로 생성합니다.</p>
-        <p className="text-white text-xs">상상을 현실로 만들어보세요.</p>
-      </section>
+      <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center  mb-7">
+        <div className="bg-main_active flex mt-[1.9375rem] w-[4.375rem] h-[1.25rem] justify-center items-center rounded-[3px]">
+          <p>STEP</p>
+          <p className="font-black ml-[2px]">01</p>
+        </div>
+        <h2 className="text-main_active h-[3.125rem] flex items-center text-[1.5rem] font-bold">디자인 하기</h2>
+        <div className="text-[0.8rem] flex flex-col items-center">
+          <p className="text-white">텍스트를 디자인으로 생성합니다.</p>
+          <p className="text-white">상상을 현실로 만들어보세요.</p>
+        </div>
+      </div>
       <div className="ml-4">
         <span className="text-lg font-bold">키워드</span>
         <span className="text-text text-sm"> 한글, 숫자를 &quot;,&quot; 로 구분하여 작성하세요.</span>
