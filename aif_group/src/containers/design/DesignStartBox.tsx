@@ -6,7 +6,7 @@ interface DesignStartBoxProps {
 }
 
 const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign }) => {
-  const [selectedStyle, setSelectedStyle] = useState(null);
+  const [selectedStyle, setSelectedStyle] = useState<string>('');
 
   const styles = [
     { id: '레트로', src: '/icons/Ellipse 152.svg' },
@@ -21,7 +21,7 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign }) => {
     { id: '애니메이션', src: '/icons/Ellipse 161.svg' },
   ];
 
-  const handleStyleSelect = styleId => {
+  const handleStyleSelect = (styleId: string) => {
     setSelectedStyle(styleId);
   };
 
