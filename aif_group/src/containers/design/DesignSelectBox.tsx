@@ -12,10 +12,10 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign }) => 
       <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center">
         <div className="bg-main_active flex mt-[1.9375rem] w-[4.375rem] h-[1.25rem] justify-center items-center rounded-[3px]">
           <p>STEP</p>
-          <p className="font-bold ml-[2px]">02</p>
+          <p className="font-black ml-[2px]">02</p>
         </div>
         <h2 className="text-main_active h-[3.125rem] flex items-center text-[1.5rem] font-bold">디자인 선택</h2>
-        <div className="text-[0.75rem] flex flex-col items-center">
+        <div className="text-[0.8rem] flex flex-col items-center">
           <p className="text-white">생성된 디자인이 마음에 드시나요?</p>
           <p className="text-white">원하는 디자인을 최대 3개 선택하세요.</p>
         </div>
