@@ -5,7 +5,7 @@ export default function AboutSection() {
   return (
     <main className="w-full h-banner bg-[#E6E6E6] flex justify-center items-center">
       <section className="w-[78.5625rem] h-[33.5rem] flex justify-between items-center mx-4">
-        <div>
+        <div className="flex flex-col justify-start items-start">
           <div className="flex justify-start items-center">
             <div className="w-[5rem] h-[1.5rem] bg-black rounded-[6px] flex justify-center items-center">
               <div className="font-bold text-[1.125rem] text-main_active leading-[90%] tracking-[-0.02em]">About</div>
