@@ -1,5 +1,5 @@
 'use client';
-import React, { RefObject, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { default as NextImage } from 'next/image';
 import { useRouter } from 'next/navigation';
 import downloadImage from '@/utils/downloadImages';

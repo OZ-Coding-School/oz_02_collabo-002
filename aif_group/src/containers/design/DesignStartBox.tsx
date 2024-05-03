@@ -5,23 +5,23 @@ interface DesignStartBoxProps {
   onCreateDesign: () => void;
 }
 
+const styles = [
+  { id: '레트로', src: '/icons/Ellipse 152.svg' },
+  { id: '꼴라쥬', src: '/icons/Ellipse 153.svg' },
+  { id: '데코', src: '/icons/Ellipse 154.svg' },
+  { id: '그라피티', src: '/icons/Ellipse 155.svg' },
+  { id: '키덜트', src: '/icons/Ellipse 156.svg' },
+  { id: '라인아트', src: '/icons/Ellipse 157.svg' },
+  { id: '스테인글라스', src: '/icons/Ellipse 158.svg' },
+  { id: '빈티지포스터', src: '/icons/Ellipse 159.svg' },
+  { id: '엠블럼', src: '/icons/Ellipse 160.svg' },
+  { id: '애니메이션', src: '/icons/Ellipse 161.svg' },
+];
+
 const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign }) => {
-  const [selectedStyle, setSelectedStyle] = useState(null);
+  const [selectedStyle, setSelectedStyle] = useState('');
 
-  const styles = [
-    { id: '레트로', src: '/icons/Ellipse 152.svg' },
-    { id: '꼴라쥬', src: '/icons/Ellipse 153.svg' },
-    { id: '데코', src: '/icons/Ellipse 154.svg' },
-    { id: '그라피티', src: '/icons/Ellipse 155.svg' },
-    { id: '키덜트', src: '/icons/Ellipse 156.svg' },
-    { id: '라인아트', src: '/icons/Ellipse 157.svg' },
-    { id: '스테인글라스', src: '/icons/Ellipse 158.svg' },
-    { id: '빈티지포스터', src: '/icons/Ellipse 159.svg' },
-    { id: '엠블럼', src: '/icons/Ellipse 160.svg' },
-    { id: '애니메이션', src: '/icons/Ellipse 161.svg' },
-  ];
-
-  const handleStyleSelect = styleId => {
+  const handleStyleSelect = (styleId: string) => {
     setSelectedStyle(styleId);
   };
 

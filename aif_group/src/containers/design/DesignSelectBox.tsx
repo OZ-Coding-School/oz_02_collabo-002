@@ -6,7 +6,7 @@ import useSelectImage from '@/hooks/useSelectImage';
 
 const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign }) => {
   const { toggleCheck, handleSelectImage, selectImage, currentImage, checkboxRef } = useSelectImage();
-
+  console.log(selectImage.image);
   return (
     <section className="w-[39.75rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
       <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center">
