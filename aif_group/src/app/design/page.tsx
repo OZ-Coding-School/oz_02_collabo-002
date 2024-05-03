@@ -12,6 +12,7 @@ export default function Design() {
   const [showAlert, setShowAlert] = useState(true);
   const [showSelectBox, setShowSelectBox] = useState(true);
   const [showPreviewBox, setShowPreviewBox] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleStartDesign = () => {
     setShowSelectBox(false);
@@ -55,7 +56,6 @@ export default function Design() {
             className={`transition-opacity duration-1000 ease-in-out ${showPreviewBox ? 'opacity-100' : 'opacity-0'}`}>
             {showPreviewBox && <DesignPreviewBox />}
           </div>
-
         </div>
       </section>
     </main>
