@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 
 interface DesignStartBoxProps {
@@ -6,8 +6,28 @@ interface DesignStartBoxProps {
 }
 
 const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign }) => {
+  const [selectedStyle, setSelectedStyle] = useState(null);
+
+  const styles = [
+    { id: '레트로', src: '/icons/Ellipse 152.svg' },
+    { id: '꼴라쥬', src: '/icons/Ellipse 153.svg' },
+    { id: '데코', src: '/icons/Ellipse 154.svg' },
+    { id: '그라피티', src: '/icons/Ellipse 155.svg' },
+    { id: '키덜트', src: '/icons/Ellipse 156.svg' },
+    { id: '라인아트', src: '/icons/Ellipse 157.svg' },
+    { id: '스테인글라스', src: '/icons/Ellipse 158.svg' },
+    { id: '빈티지포스터', src: '/icons/Ellipse 159.svg' },
+    { id: '엠블럼', src: '/icons/Ellipse 160.svg' },
+    { id: '애니메이션', src: '/icons/Ellipse 161.svg' },
+  ];
+
+  const handleStyleSelect = styleId => {
+    setSelectedStyle(styleId);
+  };
+
   return (
     <div className="w-[27rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
+
       <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center  mb-7">
         <div className="bg-main_active flex mt-[1.9375rem] w-[4.375rem] h-[1.25rem] justify-center items-center rounded-[3px]">
           <p>STEP</p>
@@ -153,17 +173,18 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign }) => {
               />
             </button>
             <span className="text-sm text-text">애니메이션</span>
+
           </div>
         </div>
-      </div>
 
-      <div className="w-[15rem] h-[2.5rem] mt-[1.4375rem] mx-[6.1875rem] flex justify-between">
-        <button
-          onClick={onCreateDesign}
-          className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active hover:border-none text-btn_text hover:text-black">
-          디자인 생성하기
-        </button>
-      </div>
+        <div className="w-[15rem] h-[2.5rem] mt-[1.4375rem] mx-[6.1875rem] flex justify-between">
+          <button
+            onClick={onCreateDesign}
+            className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active hover:border-none text-btn_text hover:text-black">
+            디자인 생성하기
+          </button>
+        </div>
+      </section>
     </div>
   );
 };

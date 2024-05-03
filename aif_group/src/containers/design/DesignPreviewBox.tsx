@@ -91,7 +91,7 @@ const DesignPreviewBox = () => {
         </div>
         <NextImage src="/icons/arrow_right.svg" alt="right_arrow" width={50} height={50} priority />
       </section>
-      <div className="w-[15rem] h-[2.5rem] mt-[3.1375rem] mx-[6.1875rem] flex justify-between">
+      <div className="w-[15rem] h-[2.5rem] mt-[3.7rem] mx-[6.1875rem] flex justify-between">
         <button
           className="w-[15rem] h-full text-btn_text border-btn_border border-[1px] rounded-[4px] hover:bg-main_active hover:border-none hover:text-black"
           // onClick={() => router.push('/design/feedback')}

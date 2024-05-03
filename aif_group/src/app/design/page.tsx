@@ -1,55 +1,38 @@
 'use client';
-
 import DesignHeader from '@/containers/design/DesignHeader';
 import DesignLoadingBox from '@/containers/design/DesignLoadingBox';
 import DesignPreviewBox from '@/containers/design/DesignPreviewBox';
 import DesignSelectBox from '@/containers/design/DesignSelectBox';
 import DesignStartBox from '@/containers/design/DesignStartBox';
 import InputAlert from '@/containers/modal/InputAlert';
-import { useState } from 'react';
+import useShowBox from '@/hooks/useShowBox';
 
 export default function Design() {
-  const [showAlert, setShowAlert] = useState(true);
-  const [showSelectBox, setShowSelectBox] = useState(true);
-  const [showPreviewBox, setShowPreviewBox] = useState(true);
-  const [isLoading, setIsLoading] = useState(false); // 로딩 박스 구현 예정
-
-  const handleStartDesign = () => {
-    setShowSelectBox(false);
-    setShowPreviewBox(false);
-    setShowAlert(false);
-  };
-
-  const handleCreateDesign = () => {
-    setShowSelectBox(true);
-    setShowPreviewBox(false);
-  };
-
-  const handleDesignSelection = () => {
-    setShowPreviewBox(true);
-    if (!showPreviewBox) {
-      setIsLoading(true);
-      setTimeout(() => setIsLoading(false), 1000);
-    }
-  };
+  const { handleCreateDesign, handleStartDesign, handleDesignSelection, show, isLoading } = useShowBox();
 
   return (
     <main className="h-screen">
       <DesignHeader />
       <section
-        className={`bg-bg w-full h-[calc(100vh-8.875rem)] flex justify-center items-center ${
-          showAlert ? 'relative' : ''
-        }`}>
-        {showAlert && (
+        className={`bg-bg w-full h-[calc(100vh-8.875rem)] flex justify-center items-center ${show.alert && 'relative'}
+        `}>
+        {show.alert && (
           <div className="absolute inset-0 bg-black bg-opacity-50 z-10 flex justify-center items-center">
             <InputAlert onClose={handleStartDesign} />
           </div>
         )}
-        <div className="flex space-x-10 opacity-100 transition-opacity duration-300">
+        <div className="flex space-x-7">
           <DesignStartBox onCreateDesign={handleCreateDesign} />
-          {!isLoading && showSelectBox && <DesignSelectBox onSelectDesign={handleDesignSelection} />}
-          {isLoading && <DesignLoadingBox />}
-          {!isLoading && showPreviewBox && <DesignPreviewBox />}
+          <div
+            className={`transition-opacity duration-1000 ease-in-out ${show.selectBox ? 'opacity-100' : 'opacity-0'}`}>
+            {!isLoading.create && show.selectBox && <DesignSelectBox onSelectDesign={handleDesignSelection} />}
+          </div>
+          {isLoading.create && <DesignLoadingBox type={'select'} />}
+          {isLoading.select && <DesignLoadingBox type={'preview'} />}
+          <div
+            className={`transition-opacity duration-1000 ease-in-out ${show.previewBox ? 'opacity-100' : 'opacity-0'}`}>
+            {!isLoading.select && show.previewBox && <DesignPreviewBox />}
+          </div>
         </div>
       </section>
     </main>

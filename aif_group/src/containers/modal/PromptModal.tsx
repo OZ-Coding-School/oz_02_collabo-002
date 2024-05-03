@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import ReactModal from 'react-modal';
-import { IconClose } from '../../../public/icons';
+import { IconClose } from '../../../public';
 import Image from 'next/image';
 import PromptModalContent from './PromptModalContent';
 
