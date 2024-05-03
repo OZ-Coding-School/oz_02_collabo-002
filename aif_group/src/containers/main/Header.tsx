@@ -34,7 +34,7 @@ export default function Header() {
     <div className="w-full h-header px-[3rem] py-[2.3125rem] flex justify-center items-center">
       <div className="w-[78.75rem] flex justify-between items-center ">
         <button onClick={() => router.push('/')}>
-          <Image alt="logo" src={'/icons/logo.svg'} width={237} height={68} />
+          <Image alt="logo" src={'/icons/logo.svg'} width={237} height={68} priority />
         </button>
         {pathname === '/' ? (
           <div className="w-[49.8125rem] flex justify-between ml-12">
