@@ -10,8 +10,23 @@
 }
 
 :root {
+  -webkit-text-size-adjust: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-smooth: always;
 }
 
 * {
   box-sizing: border-box;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+  color: black !important;
+}
+
+.swiper-pagination-bullet {
+  background: black !important;
 }
