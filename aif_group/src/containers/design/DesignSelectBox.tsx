@@ -5,8 +5,7 @@ import { DesignSelectBoxProps } from '@/types/designSelectBoxType';
 import useSelectImage from '@/hooks/useSelectImage';
 
 const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign }) => {
-  const { toggleCheck, handleSelectImage, selectImage, currentImage, checkboxRef } = useSelectImage();
-  console.log(selectImage.image);
+  const { handleSelectImage, handleClickImage, selectImage, currentImage, checkboxRef, isDisabled } = useSelectImage();
   return (
     <section className="w-[39.75rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
       <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center">
@@ -28,14 +27,15 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign }) => 
                 const isSelected = selectImage.idx.includes(idx);
                 const isCurrent = currentImage.idx === idx;
                 return (
-                  <ImageItem
-                    image={image}
-                    onSelect={handleSelectImage}
-                    key={idx}
-                    idx={idx}
-                    isSelected={isSelected}
-                    isCurrent={isCurrent}
-                  />
+                  <div key={idx}>
+                    <ImageItem
+                      image={image}
+                      onSelect={handleClickImage}
+                      idx={idx}
+                      isSelected={isSelected}
+                      isCurrent={isCurrent}
+                    />
+                  </div>
                 );
               })}
             </ul>
@@ -49,18 +49,21 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign }) => 
             )}
             <div
               className="w-full h-[3.83125rem] bg-black flex justify-center items-center hover:bg-[#3f3f3f]"
-              onClick={toggleCheck}>
+              onClick={() => {
+                currentImage.idx !== undefined && handleSelectImage(currentImage.image, currentImage.idx);
+              }}>
               <p className="text-main_active font-semibold">디자인 선택</p>
               <input
                 type="checkbox"
-                className="w-[1rem] h-[1rem] ml-[0.8125rem] accent-main_active rounded-xl"
+                className="w-[1rem] h-[1rem] ml-[0.8125rem] accent-main_active rounded-xl "
                 ref={checkboxRef}
+                disabled={isDisabled}
               />
             </div>
           </div>
         </div>
         <div className="w-[33.375rem] h-[2.5rem] mb-[1.9375rem] mx-[3.1875rem] flex justify-between">
-          <button className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text">
+          <button className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text ">
             다시 생성하기
           </button>
           <button
