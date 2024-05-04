@@ -2,14 +2,15 @@
 import React, { useEffect, useState } from 'react';
 import { default as NextImage } from 'next/image';
 import { useRouter } from 'next/navigation';
-import downloadImage from '@/utils/downloadImages';
 import useSelectImage from '@/hooks/useSelectImage';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
-
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { useAppDispatch } from '@/hooks/reduxHooks';
+import { setImgFileUrl } from '@/states/imageSlice';
+import drawSelectedImage from '@/utils/drawSelectedImage';
 
 const DesignPreviewBox = () => {
   const [selectedColorArray, setSelectedColorArray] = useState<string[]>(['white', 'white', 'white']);
@@ -18,14 +19,15 @@ const DesignPreviewBox = () => {
   const router = useRouter();
   // const { selectImage } = useSelectImage();
   // console.log(selectImage);
+  const selectImage = {
+    image: ['/images/aiImage1.png', '/images/aiImage2.png', '/images/aiImage3.png'],
+  };
+
+  const dispatch = useAppDispatch();
 
   const tShirtImage = {
     white: '/images/t-shirt_white.png',
     black: '/images/t-shirt_black.png',
-  };
-
-  const selectImage = {
-    image: ['/images/aiImage1.png', '/images/aiImage2.png', '/images/aiImage3.png'],
   };
 
   const setTshirtColor = (color: string) => {
@@ -34,43 +36,10 @@ const DesignPreviewBox = () => {
     setSelectedColorArray(copyColorArray);
   };
 
-  const drawSelectedImage = () => {
-    selectImage.image.map((img, index) => {
-      const canvas = document.createElement('canvas');
-      canvas.width = 1800;
-      canvas.height = 1800;
-      const context = canvas.getContext('2d');
-      context?.clearRect(0, 0, canvas.width, canvas.height);
-      const Tshirt = new Image();
-      Tshirt.crossOrigin = 'anonymous';
-      Tshirt.src = selectedColorArray[index] === 'white' ? tShirtImage.white : tShirtImage.black;
-      console.log(selectedColorArray[index], Tshirt.src);
-      Tshirt.onload = () => {
-        context?.clearRect(0, 0, canvas.width, canvas.height);
-        context?.drawImage(Tshirt, 0, 0, canvas.width, canvas.height);
-
-        const image = new Image();
-        image.crossOrigin = 'anonymous';
-        image.src = img;
-        image.onload = () => {
-          context?.drawImage(image, canvas.width / 2 - 540 / 2, canvas.height / 2 - 540 / 2, 540, 540);
-
-          const dataUrl = canvas.toDataURL(`image/png`);
-          setImageFile(prev => [
-            ...prev,
-            { imageUrl: dataUrl, imageName: `티셔츠합성이미지${index}` },
-            { imageUrl: img, imageName: `ai생성이미지${index}` },
-          ]);
-        };
-      };
-    });
-  };
-
   useEffect(() => {
-    console.log(imageFile);
-    if (imageFile.length !== 0) {
-      downloadImage(imageFile);
-    }
+    imageFile.map(image => {
+      dispatch(setImgFileUrl(image));
+    });
   }, [imageFile]);
 
   return (
@@ -140,8 +109,10 @@ const DesignPreviewBox = () => {
       <div className="w-[15rem] h-[2.5rem] mt-[2.1rem] mx-[6.1875rem] flex justify-between">
         <button
           className="w-[15rem] h-full text-btn_text border-btn_border border-[1px] rounded-[4px] hover:bg-main_active hover:border-none hover:text-black"
-          // onClick={() => router.push('/design/feedback')}
-          onClick={() => drawSelectedImage()}>
+          onClick={() => {
+            drawSelectedImage({ selectImage, selectedColorArray, tShirtImage, setImageFile });
+            router.push('/design/feedback');
+          }}>
           다운로드
         </button>
       </div>
