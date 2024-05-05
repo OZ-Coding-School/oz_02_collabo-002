@@ -1,11 +1,18 @@
+'use client';
 import { dummyDesignData } from '../../../public';
 import Image from 'next/image';
 import ImageItem from './ImageItem';
 import { DesignSelectBoxProps } from '@/types/designSelectBoxType';
 import useSelectImage from '@/hooks/useSelectImage';
+import { useImages } from '@/hooks/useImages';
 
 const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign }) => {
   const { handleSelectImage, handleClickImage, selectImage, currentImage, checkboxRef, isDisabled } = useSelectImage();
+  const { data, isLoading, error } = useImages('obama', 'painting');
+  if (isLoading) return <div>is loading...</div>;
+  if (error) return <div>{error.message}</div>;
+  console.log(data);
+
   return (
     <section className="w-[39.75rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
       <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center">
