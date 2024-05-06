@@ -13,7 +13,7 @@ function encodeFormData(data) {
 }
 
 // POST 요청 보내기
-export async function getImages(keyword: string, style: string) {
+export async function createImages(keyword: string, style: string) {
   try {
     const email = 'b4ur2old@naver.com';
     const data = {
@@ -28,6 +28,22 @@ export async function getImages(keyword: string, style: string) {
     });
 
     console.log('Response:', response.data);
+  } catch (error) {
+    console.error('Error:', error.response ? error.response.data : error.message);
+  }
+}
+
+export async function getImages() {
+  try {
+    const email = 'b4ur2old@naver.com';
+    const response = await apiClient.get('/image/show-samples', {
+      headers: {
+        Cookie: `email=${email}`,
+      },
+    });
+
+    console.log('Response:', response.data);
+    return response.data;
   } catch (error) {
     console.error('Error:', error.response ? error.response.data : error.message);
   }

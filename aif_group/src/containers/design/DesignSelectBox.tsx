@@ -6,12 +6,24 @@ import { DesignSelectBoxProps } from '@/types/designSelectBoxType';
 import useSelectImage from '@/hooks/useSelectImage';
 import { useImages } from '@/hooks/useImages';
 
+interface ImageData {
+  img_id: number;
+  img_url: string;
+  keyword_input: string;
+  member_id: number;
+  style_code: string;
+}
+interface FetchImageData {
+  data: ImageData[];
+  isLoading: boolean;
+  error: Error | null;
+}
+
 const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign }) => {
   const { handleSelectImage, handleClickImage, selectImage, currentImage, checkboxRef, isDisabled } = useSelectImage();
-  const { data, isLoading, error } = useImages('obama', 'painting');
+  const { data, isLoading, error }: FetchImageData = useImages('obama', 'painting');
   if (isLoading) return <div>is loading...</div>;
   if (error) return <div>{error.message}</div>;
-  console.log(data);
 
   return (
     <section className="w-[39.75rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
@@ -30,13 +42,13 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign }) => 
         <div className="w-[35.75rem] h-[25.375rem] flex mt-[2.8125rem] mx-[1.875rem] mb-[4.3125rem] gap-[1.6875rem]">
           <div className="w-[12.625rem] h-[25.375rem]">
             <ul className="grid gap-[0.625rem] h-full grid-cols-2">
-              {dummyDesignData.map((image, idx) => {
+              {data.map((image, idx) => {
                 const isSelected = selectImage.idx.includes(idx);
                 const isCurrent = currentImage.idx === idx;
                 return (
-                  <div key={idx}>
+                  <div key={image.img_id}>
                     <ImageItem
-                      image={image}
+                      image={image.img_url}
                       onSelect={handleClickImage}
                       idx={idx}
                       isSelected={isSelected}
