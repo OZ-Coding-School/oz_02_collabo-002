@@ -36,10 +36,6 @@ html {
   height: 100%;
 }
 
-.section {
-  transition: all 3s ease-in-out;
-}
-
 .select-box {
   display: grid;
   grid-template-columns: 0fr;
@@ -51,17 +47,6 @@ html {
 .box-display {
   grid-template-columns: 1fr;
   opacity: 1;
-}
-
-@keyframes box-show {
-  0% {
-    grid-template-columns: 0fr;
-    opacity: 0;
-  }
-  100% {
-    grid-template-columns: 1fr;
-    opacity: 1;
-  }
 }
 
 .swiper-button-prev:after,
