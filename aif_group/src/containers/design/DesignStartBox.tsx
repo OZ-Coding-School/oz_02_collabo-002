@@ -91,7 +91,6 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign, onError
             ))}
           </div>
         </div>
-
         <div className="w-[15rem] h-[2.5rem] mt-[1.4375rem] mx-[6.1875rem] flex justify-between">
           <button
             onClick={handleCreateDesign}

@@ -6,8 +6,13 @@ import Question2 from '@/components/feedbackModal/Question2';
 import Question3 from '@/components/feedbackModal/Question3';
 import Question4 from '@/components/feedbackModal/Question4';
 import Question56 from '@/components/feedbackModal/Question56';
+import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
+import { RootState } from '@/states/store';
+import downloadImage from '@/utils/downloadImages';
 
 const FeedbackModal = () => {
+  const imgFile = useAppSelector((state: RootState) => state.ref);
+  const dispatch = useAppDispatch();
   const router = useRouter();
 
   const handleError = (data: { [key: string]: FormDataEntryValue | FormDataEntryValue[] | null }) => {
@@ -22,6 +27,11 @@ const FeedbackModal = () => {
           }
         }
       });
+
+      const downloadImgFilter = imgFile.filter(img => img.imageUrl !== '' && img.imageName !== '');
+      if (downloadImgFilter.length !== 0) {
+        downloadImage(downloadImgFilter);
+      }
       router.replace('/thanks');
     } catch (e) {
       alert(`${e}번 문항에 답변해주세요`);
