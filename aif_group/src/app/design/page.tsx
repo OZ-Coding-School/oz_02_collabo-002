@@ -49,7 +49,7 @@ export default function Design() {
           showAlert ? 'relative' : ''
         }`}>
         {showAlert && (
-          <div className="absolute inset-0 bg-black bg-opacity-50 z-10 flex justify-center items-center">
+          <div className="absolute inset-0 bg-black bg-opacity-70 z-40 flex justify-center items-center">
             <InputAlert onClose={handleStartDesign} />
           </div>
         )}
