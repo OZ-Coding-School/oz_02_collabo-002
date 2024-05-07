@@ -6,23 +6,8 @@ import { DesignSelectBoxProps } from '@/types/designSelectBoxType';
 import useSelectImage from '@/hooks/useSelectImage';
 import { useImages } from '@/hooks/useImages';
 
-interface ImageData {
-  img_id: number;
-  img_url: string;
-  keyword_input: string;
-  member_id: number;
-  style_code: string;
-}
-interface FetchImageData {
-  data: ImageData[];
-  isLoading: boolean;
-  error: Error | null;
-}
-
-const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign }) => {
+const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data, error }) => {
   const { handleSelectImage, handleClickImage, selectImage, currentImage, checkboxRef, isDisabled } = useSelectImage();
-  const { data, isLoading, error }: FetchImageData = useImages('obama', 'painting');
-  if (isLoading) return <div>is loading...</div>;
   if (error) return <div>{error.message}</div>;
 
   return (

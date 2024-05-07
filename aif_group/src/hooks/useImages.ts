@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const email = 'b4ur2old@naver.com';
 export const useImages = (keyword: string, style: string) => {
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['getImageDataApi', email],
     queryFn: () =>
       getImages()
@@ -12,6 +12,7 @@ export const useImages = (keyword: string, style: string) => {
           console.error(err);
           return [];
         }),
+    enabled: false,
   });
-  return { data, isLoading, error };
+  return { data, isLoading, error, refetch };
 };

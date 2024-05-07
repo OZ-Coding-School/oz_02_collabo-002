@@ -5,10 +5,21 @@ import DesignPreviewBox from '@/containers/design/DesignPreviewBox';
 import DesignSelectBox from '@/containers/design/DesignSelectBox';
 import DesignStartBox from '@/containers/design/DesignStartBox';
 import InputAlert from '@/containers/modal/InputAlert';
+import { useImages } from '@/hooks/useImages';
 import useShowBox from '@/hooks/useShowBox';
+import { FetchImageData } from '@/types/designSelectBoxType';
 
 export default function Design() {
-  const { handleCreateDesign, handleStartDesign, handleDesignSelection, show, isLoading } = useShowBox();
+  const {
+    handleCreateDesign,
+    handleStartDesign,
+    handleDesignSelection,
+    show,
+    isLoading,
+    data,
+    error,
+    isCreateLoading,
+  } = useShowBox();
 
   return (
     <main className="h-screen">
@@ -25,9 +36,11 @@ export default function Design() {
           <DesignStartBox onCreateDesign={handleCreateDesign} />
           <div
             className={`transition-opacity duration-1000 ease-in-out ${show.selectBox ? 'opacity-100' : 'opacity-0'}`}>
-            {!isLoading.create && show.selectBox && <DesignSelectBox onSelectDesign={handleDesignSelection} />}
+            {!isCreateLoading && show.selectBox && (
+              <DesignSelectBox onSelectDesign={handleDesignSelection} data={data} error={error} />
+            )}
           </div>
-          {isLoading.create && <DesignLoadingBox type={'select'} />}
+          {isCreateLoading && <DesignLoadingBox type={'select'} />}
           {isLoading.select && <DesignLoadingBox type={'preview'} />}
           <div
             className={`transition-opacity duration-1000 ease-in-out ${show.previewBox ? 'opacity-100' : 'opacity-0'}`}>

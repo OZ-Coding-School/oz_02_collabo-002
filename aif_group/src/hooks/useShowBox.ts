@@ -1,12 +1,27 @@
 'use client';
+import { FetchImageData } from '@/types/designSelectBoxType';
 import { useState } from 'react';
+import { useImages } from './useImages';
 
 function useShowBox() {
+  const [userInput, setUserInput] = useState({
+    keyword: '',
+    style: '',
+  });
+
+  const {
+    data,
+    isLoading: isCreateLoading,
+    error,
+    refetch,
+  }: FetchImageData = useImages(userInput.keyword, userInput.style);
+
   const [show, setShow] = useState({
     alert: true,
     selectBox: false,
     previewBox: false,
   });
+
   const [isLoading, setIsLoading] = useState({
     create: false,
     select: false,
@@ -19,21 +34,10 @@ function useShowBox() {
     }));
   };
 
-  const handleCreateDesign = () => {
-    if (!show.selectBox) {
-      setIsLoading(state => ({
-        ...state,
-        create: true,
-      }));
-      setTimeout(
-        () =>
-          setIsLoading(state => ({
-            ...state,
-            create: false,
-          })),
-        1000,
-      );
-    }
+  const handleCreateDesign = (keyword: string, style: string) => {
+    setUserInput(state => ({ keyword, style }));
+    console.log(userInput.keyword, userInput.style);
+    refetch();
     setShow(state => ({
       ...state,
       selectBox: true,
@@ -62,7 +66,16 @@ function useShowBox() {
     }));
   };
 
-  return { handleCreateDesign, handleDesignSelection, handleStartDesign, show, isLoading };
+  return {
+    handleCreateDesign,
+    handleDesignSelection,
+    handleStartDesign,
+    show,
+    isLoading,
+    isCreateLoading,
+    data,
+    error,
+  };
 }
 
 export default useShowBox;

@@ -1,8 +1,9 @@
+'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
 
 interface DesignStartBoxProps {
-  onCreateDesign: () => void;
+  onCreateDesign: (keyword: string, style: string) => void;
 }
 
 const styles = [
@@ -20,9 +21,13 @@ const styles = [
 
 const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign }) => {
   const [selectedStyle, setSelectedStyle] = useState('');
+  const [inputKeyword, setInputKeyword] = useState('');
 
   const handleStyleSelect = (styleId: string) => {
     setSelectedStyle(styleId);
+  };
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputKeyword(e.target.value);
   };
 
   return (
@@ -45,6 +50,8 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign }) => {
           type="text"
           placeholder="ex)테니스,호랑이,여성1명,얼굴..."
           className="placeholder-[#92EADA] bg-gray-100 text-[15px] px-2 w-[23.625rem] mt-1 h-[2.5rem] ml-4 mb-7 rounded-sm"
+          value={inputKeyword}
+          onChange={handleChangeInput}
         />
       </section>
 
@@ -78,7 +85,7 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign }) => {
         </div>
         <div className="w-[15rem] h-[2.5rem] mt-[1.4375rem] mx-[6.1875rem] flex justify-between">
           <button
-            onClick={onCreateDesign}
+            onClick={() => onCreateDesign(inputKeyword, selectedStyle)}
             className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active hover:border-none text-btn_text hover:text-black">
             디자인 생성하기
           </button>

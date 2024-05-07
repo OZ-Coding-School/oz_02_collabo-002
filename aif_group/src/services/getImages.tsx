@@ -21,16 +21,12 @@ function encodeFormData(data: ImageCreationRequest) {
 // POST 요청 보내기
 export async function createImages(keyword: string, style: string): Promise<void> {
   try {
-    const email = 'b4ur2old@naver.com';
     const data = {
       keyword,
       style,
     };
-    console.log(encodeFormData(data));
     const response = await apiClient.post('/image/create', encodeFormData(data), {
-      headers: {
-        Cookie: `email=${email}`,
-      },
+      withCredentials: true, //header에 쿠키 포함
     });
 
     console.log('Response:', response.data);
