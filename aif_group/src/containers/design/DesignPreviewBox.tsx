@@ -56,7 +56,7 @@ const DesignPreviewBox = () => {
         </div>
       </div>
       {/* 티셔츠 색상 버튼 */}
-      <div className="grid grid-cols-2 w-[5.15rem] ml-80 mb-2">
+      <div className="grid grid-cols-2 w-[6rem] ml-80 mb-2">
         <div className="flex flex-col items-center">
           <button
             className={`w-8 h-8 rounded-full border border-text overflow-hidden focus:outline-none ${
