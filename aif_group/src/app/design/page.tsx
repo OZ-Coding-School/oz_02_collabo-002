@@ -5,9 +5,7 @@ import DesignPreviewBox from '@/containers/design/DesignPreviewBox';
 import DesignSelectBox from '@/containers/design/DesignSelectBox';
 import DesignStartBox from '@/containers/design/DesignStartBox';
 import InputAlert from '@/containers/modal/InputAlert';
-import { useImages } from '@/hooks/useImages';
 import useShowBox from '@/hooks/useShowBox';
-import { FetchImageData } from '@/types/designSelectBoxType';
 
 export default function Design() {
   const {

@@ -8,11 +8,8 @@ export const apiClient = axios.create({
 
 export async function getImages() {
   try {
-    const email = 'b4ur2old@naver.com';
     const response = await apiClient.get('/image/show-samples', {
-      headers: {
-        Cookie: `email=${email}`,
-      },
+      withCredentials: true,
     });
 
     console.log('Response:', response.data);

@@ -34,10 +34,10 @@ function useShowBox() {
     }));
   };
 
-  const handleCreateDesign = (keyword: string, style: string) => {
+  const handleCreateDesign = async (keyword: string, style: string) => {
     setUserInput(state => ({ keyword, style }));
     console.log(userInput.keyword, userInput.style);
-    refetch();
+    await refetch();
     setShow(state => ({
       ...state,
       selectBox: true,
