@@ -6,10 +6,11 @@ import ImageItem from './ImageItem';
 
 const arr = new Array(8).fill(false);
 interface DesignSelectBoxProps {
-  onSelectDesign: () => void;
+  onSelectDesign: () => void; // 디자인 선택하기 버튼 핸들러
+  onRetry: () => void; // 다시 생성하기 버튼 핸들러
 }
 
-const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign }) => {
+const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, onRetry }) => {
   const [currentImage, setCurrentImage] = useState<string | undefined>(undefined);
 
   function handleCurrentImage(image: string) {
@@ -47,7 +48,9 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign }) => 
           </div>
         </div>
         <div className="w-[33.375rem] h-[2.5rem] mb-[1.9375rem] mx-[3.1875rem] flex justify-between">
-          <button className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text">
+          <button
+            onClick={onRetry}
+            className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text hover:text-black hover:border-none">
             다시 생성하기
           </button>
           <button

@@ -41,7 +41,7 @@ const InputAlert: React.FC<InputAlertProps> = ({ onClose }) => {
           <p className="text-xs text-btn_text mb-3">
             &bull; 이메일 주소를 입력하면 AI이미지와 티셔츠 이미지를 다운로드할 수 있습니다.
             <br /> &bull; 개인정보 이용에 동의하십니까? (미동의시 서비스 이용에 제한이 있습니다)&nbsp;
-            <input type="checkbox" required />
+            <input required type="checkbox" className="accent-[#C6C6C6]" />
           </p>
           <input
             type="email"

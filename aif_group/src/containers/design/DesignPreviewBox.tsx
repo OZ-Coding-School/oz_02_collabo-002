@@ -1,10 +1,15 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 const DesignPreviewBox = () => {
   const router = useRouter();
+  const [selectedColor, setSelectedColor] = useState('');
+
+  const handleColorSelect = (color: string) => {
+    setSelectedColor(color);
+  };
 
   return (
     <div className="w-[27rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
@@ -17,17 +22,26 @@ const DesignPreviewBox = () => {
         <p className="text-white text-xs">디자인 실력이 대단하시네요!</p>
         <p className="text-white text-xs">패셔너블한 티셔츠가 완성됐어요!</p>
       </section>
-      {/* 티셔츠 색상 버튼 */}
+
       <div className="grid grid-cols-2 w-[5.15rem] ml-80">
         <div className="flex flex-col items-center">
-          <button className="w-8 h-8 rounded-full border overflow-hidden focus:outline-none focus:ring-4 focus:ring-main_active"></button>
+          <button
+            onClick={() => handleColorSelect('white')}
+            className={`w-8 h-8 rounded-full border overflow-hidden focus:outline-none ${
+              selectedColor === 'white' ? 'ring-4 ring-main_active bg-white' : 'bg-none'
+            }`}></button>
           <span className="text-sm text-text mt-1">화이트</span>
         </div>
         <div className="flex flex-col items-center">
-          <button className="w-8 h-8 rounded-full border overflow-hidden focus:outline-none focus:ring-4 focus:ring-main_active bg-black"></button>
+          <button
+            onClick={() => handleColorSelect('black')}
+            className={`w-8 h-8 rounded-full border overflow-hidden focus:outline-none bg-black ${
+              selectedColor === 'black' ? 'ring-4 ring-main_active bg-black' : 'bg-none'
+            }`}></button>
           <span className="text-sm text-text mt-1">블랙</span>
         </div>
       </div>
+
       <section className="relative flex justify-center items-center">
         <Image src="/icons/arrow_left.svg" alt="T-shirt" width={50} height={50} objectFit="cover" priority />
         <Image
