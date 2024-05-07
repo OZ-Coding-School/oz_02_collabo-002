@@ -1,19 +1,14 @@
 import { dummyDesignData } from '../../../public';
 import Image from 'next/image';
 import ImageItem from './ImageItem';
-
-const arr = new Array(8).fill(false);
+import useSelectImage from '@/hooks/useSelectImage';
 interface DesignSelectBoxProps {
   onSelectDesign: () => void; // 디자인 선택하기 버튼 핸들러
   onRetry: () => void; // 다시 생성하기 버튼 핸들러
 }
 
 const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, onRetry }) => {
-  const [currentImage, setCurrentImage] = useState<string | undefined>(undefined);
-
-  function handleCurrentImage(image: string) {
-    setCurrentImage(image);
-  }
+  const { toggleCheck, handleSelectImage, selectImage, currentImage, checkboxRef } = useSelectImage();
 
   return (
     <section className="w-[39.75rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
