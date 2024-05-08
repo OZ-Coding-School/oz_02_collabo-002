@@ -1,8 +1,10 @@
 'use client';
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Image from 'next/image';
+import ErrorAlert1 from '../modal/ErrorAlert1';
 
 interface DesignStartBoxProps {
+
   onCreateDesign: (keyword: string, style: string) => void;
   setUserInput: Dispatch<
     SetStateAction<{
@@ -11,6 +13,8 @@ interface DesignStartBoxProps {
     }>
   >;
   userInput: { keyword: string; style: string };
+  onError: () => void;
+  disabled: boolean;
 }
 
 const styles = [
@@ -26,7 +30,8 @@ const styles = [
   { id: '애니메이션', src: '/icons/Ellipse 161.svg' },
 ];
 
-const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign, setUserInput, userInput }) => {
+
+const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign, setUserInput, userInput, onError, disabled }) => {
   const [selectedStyle, setSelectedStyle] = useState('');
   const [inputKeyword, setInputKeyword] = useState('');
 
@@ -38,37 +43,44 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign, setUser
     setUserInput(state => ({ ...state, keyword: e.target.value }));
   };
 
-  const handleCreateDesign = () => onCreateDesign();
+  const handleCreateDesign = () => {  if (!inputText.trim() || !selectedStyle) {
+      onError();
+      return;
+    }; 
+     onCreateDesign()};
 
   return (
     <div className="w-[27rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
-      <header className="bg-black rounded-t-[14px] w-full h-[9.9375rem] flex flex-col justify-center items-center mb-7">
-        <span className="bg-main_active text-sm w-[4.375rem] h-[1.25rem] rounded-sm mb-2 text-center">
-          STEP
-          <span className="bg-main_active font-bold"> 01</span>
-        </span>
-        <p className="text-main_active text-2xl font-bold mb-2">디자인 하기</p>
-        <p className="text-white text-xs">텍스트를 디자인으로 생성합니다.</p>
-        <p className="text-white text-xs">상상을 현실로 만들어보세요.</p>
-      </header>
+      <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center mb-10">
+        <div className="bg-main_active flex mt-[1.9375rem] w-[4.375rem] h-[1.25rem] justify-center items-center rounded-[3px]">
+          <p>STEP</p>
+          <p className="font-black ml-[2px]">01</p>
+        </div>
+        <h2 className="text-main_active h-[3.125rem] flex items-center text-[1.5rem] font-bold">디자인 하기</h2>
+        <div className="text-[0.8rem] flex flex-col items-center">
+          <p className="text-white">텍스트를 디자인으로 생성합니다.</p>
+          <p className="text-white">상상을 현실로 만들어보세요.</p>
+        </div>
+      </div>
       <section>
         <div className="ml-4">
           <span className="text-lg font-bold">키워드</span>
-          <span className="text-text text-sm"> 한글, 영어, 숫자를 &quot;,&quot; 로 구분하여 작성하세요.</span>
+          <span className="text-text text-base ml-2"> 한글, 영어, 숫자를 &quot;,&quot; 로 구분하여 작성하세요.</span>
         </div>
         <input
           type="text"
-          placeholder="ex)테니스,호랑이,여성1명,얼굴..."
+          placeholder="ex)테니스, 호랑이, 여성1명, 얼굴..."
           className="placeholder-[#92EADA] bg-gray-100 text-[15px] px-2 w-[23.625rem] mt-1 h-[2.5rem] ml-4 mb-7 rounded-sm"
           onChange={handleChangeInput}
           value={userInput.keyword}
+          disabled={disabled}
         />
       </section>
 
       <section>
         <div className="ml-4">
           <span className="text-lg font-bold">스타일</span>
-          <span className="text-text text-sm"> 원하는 스타일 1개를 선택 해 주세요.</span>
+          <span className="text-text text-base ml-2"> 원하는 스타일 1개를 선택 해 주세요.</span>
         </div>
 
         <div className="justify-center items-center text-center flex scroll-pt-11">

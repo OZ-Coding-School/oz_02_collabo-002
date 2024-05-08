@@ -17,10 +17,8 @@ export default function Thanks() {
           // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
           mobileWebUrl: 'https://localhost:3000',
           webUrl: 'https://localhost:3000',
-          // webUrl: location.href,
         },
       },
-
       buttons: [
         {
           title: 'AIF 바로가기',
@@ -48,10 +46,10 @@ export default function Thanks() {
   };
 
   return (
-    <main className="h-screen">
+    <main className="h-full">
       <Header />
-      <section className="bg-bg w-full h-[calc(100vh-8.875rem)] flex justify-center">
-        <div className="bg-white w-2/3 h-[46.5rem] mx-5 rounded-[15px] shadow-[0_0_10px_rgba(0,0,0,0.25)] mt-[3.375rem]">
+      <section className="bg-bg w-full h-[calc(100%-8.875rem)] flex justify-center py-14">
+        <div className="bg-white w-2/3 h-[46.5rem] mx-5 rounded-[15px] shadow-[0_0_10px_rgba(0,0,0,0.25)]">
           <div className="h-full flex flex-col justify-center items-center">
             <div className="font-saira text-[1.875rem] leading-[90%] tracking-[-0.02em]">AI Fashionista</div>
             <div className="font-bold text-[2rem] leading-[3.9375rem] mt-[3.375rem]">
@@ -66,13 +64,13 @@ export default function Thanks() {
                 <button onClick={handleShearToKakao}>
                   <Image alt="kakao_link_icon" src={'/icons/kakao_link_icon.svg'} width={56} height={56} />
                 </button>
-                <div className="text-[0.9375rem]">카카오톡</div>
+                <div className="text-[1rem]">카카오톡</div>
               </div>
               <div className="h-[5.625rem] flex flex-col justify-between items-center">
                 <button onClick={handleCopyClick}>
                   <Image alt="link_icon" src={'/icons/link_icon.svg'} width={56} height={56} />
                 </button>
-                <div className="text-[0.9375rem]">링크공유</div>
+                <div className="text-[1rem]">링크공유</div>
               </div>
             </div>
           </div>

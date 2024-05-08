@@ -6,8 +6,13 @@ import Question2 from '@/components/feedbackModal/Question2';
 import Question3 from '@/components/feedbackModal/Question3';
 import Question4 from '@/components/feedbackModal/Question4';
 import Question56 from '@/components/feedbackModal/Question56';
+import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
+import { RootState } from '@/states/store';
+import downloadImage from '@/utils/downloadImages';
 
 const FeedbackModal = () => {
+  const imgFile = useAppSelector((state: RootState) => state.ref);
+  const dispatch = useAppDispatch();
   const router = useRouter();
 
   const handleError = (data: { [key: string]: FormDataEntryValue | FormDataEntryValue[] | null }) => {
@@ -22,6 +27,11 @@ const FeedbackModal = () => {
           }
         }
       });
+
+      const downloadImgFilter = imgFile.filter(img => img.imageUrl !== '' && img.imageName !== '');
+      if (downloadImgFilter.length !== 0) {
+        downloadImage(downloadImgFilter);
+      }
       router.replace('/thanks');
     } catch (e) {
       alert(`${e}번 문항에 답변해주세요`);
@@ -84,13 +94,19 @@ const FeedbackModal = () => {
           <Question56 />
 
           <div className="w-full text-center flex flex-col justify-center items-center">
-            <p className="text-btn_text text-lg font-normal">
-              &bull; 서비스 제공을 위한 현황조사 및 향후 서비스 개선을 위한 목적으로 수집합니다.{' '}
-            </p>
-            <p className="text-btn_text text-lg font-normal flex items-center">
-              &bull; 개인정보 수집에 동의하십니까? (미동의시 서비스 이용에 제한이 있습니다)
-              <input type="checkbox" className="ml-2 w-[1.125rem] h-[1.125rem]" required />
-            </p>
+            <div className="w-fit flex flex-col justify-start">
+              <p className="text-btn_text text-lg font-normal">
+                &bull; 서비스 제공을 위한 현황조사 및 향후 서비스 개선을 위한 목적으로 수집합니다.{' '}
+              </p>
+              <p className="text-btn_text text-lg font-normal flex items-center">
+                &bull; 개인정보 수집에 동의하십니까? (미동의시 서비스 이용에 제한이 있습니다)
+                <input
+                  type="checkbox"
+                  required
+                  className="h-[1.4rem] w-[1.4rem] ml-1.5 appearance-none border-[2px] border-form_color rounded-md active:border-black checked:border-black checked:bg-black checked:bg-[url('/icons/checked_icon.svg')] bg-center"
+                />
+              </p>
+            </div>
 
             <p className="text-[28px] mt-5">설문에 참여해 주셔서 감사합니다!</p>
             <p className="text-xl font-medium">설문 완료시 이미지 다운로드가 자동으로 실행됩니다.</p>
