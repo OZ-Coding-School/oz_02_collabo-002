@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import ErrorAlert1 from '../modal/ErrorAlert1';
 
 interface DesignStartBoxProps {
   onCreateDesign: () => void;
+  onError: () => void;
+  disabled: boolean;
 }
 
-const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign }) => {
-  const [selectedStyle, setSelectedStyle] = useState<string>('');
+const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign, onError, disabled }) => {
+  const [inputText, setInputText] = useState('');
+  const [selectedStyle, setSelectedStyle] = useState('');
 
   const styles = [
     { id: '레트로', src: '/icons/Ellipse 152.svg' },
@@ -23,6 +27,14 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign }) => {
 
   const handleStyleSelect = (styleId: string) => {
     setSelectedStyle(styleId);
+  };
+
+  const handleCreateDesign = () => {
+    if (!inputText.trim() || !selectedStyle) {
+      onError();
+      return;
+    }
+    onCreateDesign();
   };
 
   return (
@@ -47,6 +59,9 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign }) => {
           type="text"
           placeholder="ex)테니스, 호랑이, 여성1명, 얼굴..."
           className="placeholder-[#92EADA] bg-gray-100 text-[15px] px-2 w-[23.625rem] mt-1 h-[2.5rem] ml-4 mb-7 rounded-sm"
+          value={inputText}
+          onChange={e => setInputText(e.target.value)}
+          disabled={disabled}
         />
       </section>
 
@@ -80,7 +95,7 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign }) => {
         </div>
         <div className="w-[15rem] h-[2.5rem] mt-[1.4375rem] mx-[6.1875rem] flex justify-between">
           <button
-            onClick={onCreateDesign}
+            onClick={handleCreateDesign}
             className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active hover:border-none text-btn_text hover:text-black">
             디자인 생성하기
           </button>
