@@ -57,6 +57,8 @@ const config: Config = {
       dropShadow: {
         gray: '0 0 20px rgba(0, 0, 0, 0.25)',
         mint: '0 0 30px rgba(0, 255, 209, 0.32)',
+        tShirt: '0 4px 4px rgba(0, 0, 0, 0.2)',
+        tShirtMini: '0 1.6px 1.6px rgba(0, 0, 0, 0.2)',
       },
     },
   },
