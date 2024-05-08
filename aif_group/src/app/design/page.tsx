@@ -6,18 +6,25 @@ import DesignSelectBox from '@/containers/design/DesignSelectBox';
 import DesignStartBox from '@/containers/design/DesignStartBox';
 import ErrorAlert1 from '@/containers/modal/ErrorAlert1';
 import ErrorAlert2 from '@/containers/modal/ErrorAlert2';
+import ErrorAlert3 from '@/containers/modal/ErrorAlert3';
 import InputAlert from '@/containers/modal/InputAlert';
 import useShowBox from '@/hooks/useShowBox';
 import { useState } from 'react';
 
 export default function Design() {
   const [showErrorAlert1, setShowErrorAlert1] = useState(false);
-  const [showErrorAlert2, setShowErrorAlert2] = useState(false);
+  const [designCreateCount, setDesignCreateCount] = useState(0);
 
-  const { handleCreateDesign, handleStartDesign, handleDesignSelection, show, isLoading } = useShowBox();
+  const { handleCreateDesign, handleStartDesign, handleDesignSelection, handleRetryDesign, show, isLoading, setShow } =
+    useShowBox();
 
-  const handleRetryDesign = () => {
-    setShowErrorAlert2(true); // ErrorAlert2를 표시
+  const confirmRetryDesign = () => {
+    if (designCreateCount < 2) {
+      setDesignCreateCount(prev => prev + 1);
+      setShow(prev => ({ ...prev, errorAlert2: false }));
+    } else {
+      setShow(prev => ({ ...prev, errorAlert3: true }));
+    }
   };
 
   return (
@@ -31,13 +38,13 @@ export default function Design() {
             <InputAlert onClose={handleStartDesign} />
           </div>
         )}
-        {showErrorAlert2 && (
+        {show.errorAlert2 && (
           <div className="absolute inset-0 bg-opacity-50 z-20 flex justify-center items-center">
-            <ErrorAlert2 onClose={() => setShowErrorAlert2(false)} />
+            <ErrorAlert2 onClose={() => setShow(prev => ({ ...prev, errorAlert2: false }))} />
           </div>
         )}
-
-        <div className="flex space-x-7 relative z-10 justify-center">
+        {show.errorAlert3 && <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} />}
+        <div className="flex relative z-10 justify-center">
           {showErrorAlert1 && (
             <div className="absolute top-0 mt-5 transform -translate-y-full z-30">
               <ErrorAlert1 onClose={() => setShowErrorAlert1(false)} show={showErrorAlert1} />
@@ -46,7 +53,7 @@ export default function Design() {
           <DesignStartBox
             onCreateDesign={handleCreateDesign}
             onError={() => setShowErrorAlert1(true)}
-            disabled={showErrorAlert1}
+            disabled={isLoading.create || isLoading.select}
           />
           <div
             className={`transition-opacity duration-1000 ease-in-out ${show.selectBox ? 'opacity-100' : 'opacity-0'}`}>
