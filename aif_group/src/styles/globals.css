@@ -70,7 +70,7 @@ html {
 
 .swiper-button-prev,
 .swiper-button-next {
-  transform: translateY(-30%);
+  transform: translateY(-50%);
 }
 
 .swiper-button-prev:after,

@@ -97,11 +97,11 @@ const DesignPreviewBox = () => {
             },
           }}
           modules={[Navigation, Pagination]}
-          className="px-4 w-full h-[420px]">
+          className="px-4 w-full h-[415px]">
           {selectImage.image?.map((item, index) => {
             return (
               <SwiperSlide key={index} className={'flex justify-center items-center absolute top-0'}>
-                <div className="w-[330px] h-[340px] relative -top-3 left-[50%] translate-x-[-50%] flex justify-center items-center">
+                <div className="w-[330px] h-[340px] relative -top-5 left-[50%] translate-x-[-50%] flex justify-center items-center">
                   <NextImage
                     src={selectedColorArray[index] === 'white' ? tShirtImage.white : tShirtImage.black}
                     alt="T-shirt"
@@ -129,7 +129,7 @@ const DesignPreviewBox = () => {
           })}
         </div>
       </section>
-      <div className="w-[15rem] h-[2.5rem] mt-[0.4rem] mx-[6.1875rem] flex justify-between">
+      <div className="w-[15rem] h-[2.5rem] mt-[0.6rem] mx-[6.1875rem] flex justify-between">
         <button
           className="w-[15rem] h-full text-btn_text border-btn_border border-[1px] rounded-[4px] hover:bg-main_active hover:border-none hover:text-black"
           onClick={() => {
