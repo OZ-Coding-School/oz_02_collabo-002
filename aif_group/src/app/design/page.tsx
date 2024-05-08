@@ -23,13 +23,13 @@ export default function Design() {
           <li>
             <DesignStartBox onCreateDesign={handleCreateDesign} />
           </li>
-          <li className={`ml-5 select-box ${show.selectBox ? 'box-display' : ''}`}>
+          <li className={`ml-5 select-box ${isLoading.create && show.selectBox ? 'box-display' : ''}`}>
             {isLoading.create && show.selectBox && <DesignLoadingBox type={'select'} />}
           </li>
           <li className={`select-box ${show.selectBox ? 'box-display' : ''}`}>
             {!isLoading.create && show.selectBox && <DesignSelectBox onSelectDesign={handleDesignSelection} />}
           </li>
-          <li className={`ml-5 select-box ${show.selectBox ? 'box-display' : ''}`}>
+          <li className={`ml-5 select-box ${isLoading.select && show.selectBox ? 'box-display' : ''}`}>
             {isLoading.select && show.selectBox && <DesignLoadingBox type={'preview'} />}
           </li>
           <li className={`select-box ${show.previewBox ? 'box-display' : ''}`}>

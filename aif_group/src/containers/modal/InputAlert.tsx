@@ -48,7 +48,7 @@ const InputAlert: React.FC<InputAlertProps> = ({ onClose }) => {
               <input
                 type="checkbox"
                 required
-                className="h-[1.2rem] w-[1.2rem] mr-1 peer appearance-none border-[2px] border-form_color rounded-md active:border-black checked:border-black checked:bg-black checked:bg-[url('/icons/checked_icon.svg')] bg-center"
+                className="h-[1.2rem] w-[1.2rem] appearance-none border-[2px] border-form_color rounded-md active:border-black checked:border-black checked:bg-black checked:bg-[url('/icons/checked_icon.svg')] bg-center"
               />
             </p>
           </div>
