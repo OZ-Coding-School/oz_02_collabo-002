@@ -110,7 +110,10 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({
         <div className="w-[15rem] h-[2.5rem] mt-[1.4375rem] mx-[6.1875rem] flex justify-between">
           <button
             onClick={handleCreateDesign}
-            className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active hover:border-none text-btn_text hover:text-black">
+            disabled={disabled}
+            className={`w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active hover:border-none text-btn_text hover:text-black ${
+              disabled ? 'opacity-50 cursor-not-allowed bg-main_active' : ''
+            }`}>
             디자인 생성하기
           </button>
         </div>
