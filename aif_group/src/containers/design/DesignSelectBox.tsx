@@ -1,14 +1,13 @@
 'use client';
-import { dummyDesignData } from '../../../public';
 import Image from 'next/image';
 import ImageItem from './ImageItem';
 import { DesignSelectBoxProps } from '@/types/designSelectBoxType';
 import useSelectImage from '@/hooks/useSelectImage';
-import { useImages } from '@/hooks/useImages';
 
 const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data, error }) => {
   const { handleSelectImage, handleClickImage, selectImage, currentImage, checkboxRef, isDisabled } = useSelectImage();
   if (error) return <div>{error.message}</div>;
+  const slicingData = data?.slice(0, 8);
 
   return (
     <section className="w-[39.75rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
@@ -27,7 +26,7 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
         <div className="w-[35.75rem] h-[25.375rem] flex mt-[2.8125rem] mx-[1.875rem] mb-[4.3125rem] gap-[1.6875rem]">
           <div className="w-[12.625rem] h-[25.375rem]">
             <ul className="grid gap-[0.625rem] h-full grid-cols-2">
-              {data?.map((image, idx) => {
+              {slicingData?.map((image, idx) => {
                 const isSelected = selectImage.idx.includes(idx);
                 const isCurrent = currentImage.idx === idx;
                 return (

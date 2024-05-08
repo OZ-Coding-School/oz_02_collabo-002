@@ -1,5 +1,6 @@
 import { AxiosError } from 'axios';
 import { apiClient } from './getImages';
+import { CreationResult } from '@/hooks/useImages';
 
 interface ImageCreationRequest {
   keyword: string;
@@ -15,17 +16,18 @@ function encodeFormData(data: ImageCreationRequest) {
 }
 
 // POST 요청 보내기
-export async function createImages(keyword: string, style: string): Promise<void> {
+export async function createImages(keyword: string, style: string): Promise<CreationResult | void> {
   try {
     const data = {
       keyword,
       style,
     };
+    console.log(encodeFormData(data));
     const response = await apiClient.post('/image/tmp_create', encodeFormData(data), {
       withCredentials: true, //header에 쿠키 포함
     });
-
     console.log('Response:', response.data);
+    return response.data;
   } catch (error) {
     const axiosError = error as AxiosError;
     if (axiosError.response) {

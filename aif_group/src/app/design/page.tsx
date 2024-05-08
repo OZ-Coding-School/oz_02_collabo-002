@@ -9,6 +9,8 @@ import useShowBox from '@/hooks/useShowBox';
 
 export default function Design() {
   const {
+    userInput,
+    setUserInput,
     handleCreateDesign,
     handleStartDesign,
     handleDesignSelection,
@@ -31,7 +33,7 @@ export default function Design() {
           </div>
         )}
         <div className="flex space-x-7">
-          <DesignStartBox onCreateDesign={handleCreateDesign} />
+          <DesignStartBox onCreateDesign={handleCreateDesign} userInput={userInput} setUserInput={setUserInput} />
           <div
             className={`transition-opacity duration-1000 ease-in-out ${show.selectBox ? 'opacity-100' : 'opacity-0'}`}>
             {!isCreateLoading && show.selectBox && (

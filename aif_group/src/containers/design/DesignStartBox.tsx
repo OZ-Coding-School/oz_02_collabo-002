@@ -1,9 +1,16 @@
 'use client';
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Image from 'next/image';
 
 interface DesignStartBoxProps {
   onCreateDesign: (keyword: string, style: string) => void;
+  setUserInput: Dispatch<
+    SetStateAction<{
+      keyword: string;
+      style: string;
+    }>
+  >;
+  userInput: { keyword: string; style: string };
 }
 
 const styles = [
@@ -19,16 +26,19 @@ const styles = [
   { id: '애니메이션', src: '/icons/Ellipse 161.svg' },
 ];
 
-const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign }) => {
+const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign, setUserInput, userInput }) => {
   const [selectedStyle, setSelectedStyle] = useState('');
   const [inputKeyword, setInputKeyword] = useState('');
 
   const handleStyleSelect = (styleId: string) => {
-    setSelectedStyle(styleId);
+    setUserInput(state => ({ ...state, style: styleId }));
   };
+
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputKeyword(e.target.value);
+    setUserInput(state => ({ ...state, keyword: e.target.value }));
   };
+
+  const handleCreateDesign = () => onCreateDesign();
 
   return (
     <div className="w-[27rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
@@ -50,8 +60,8 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign }) => {
           type="text"
           placeholder="ex)테니스,호랑이,여성1명,얼굴..."
           className="placeholder-[#92EADA] bg-gray-100 text-[15px] px-2 w-[23.625rem] mt-1 h-[2.5rem] ml-4 mb-7 rounded-sm"
-          value={inputKeyword}
           onChange={handleChangeInput}
+          value={userInput.keyword}
         />
       </section>
 
@@ -68,7 +78,7 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign }) => {
                 <button
                   onClick={() => handleStyleSelect(style.id)}
                   className={`w-20 h-20 rounded-full border overflow-hidden ${
-                    selectedStyle === style.id ? 'ring-4 ring-main_active' : 'ring-1 ring-[#AFAFAF]'
+                    userInput.style === style.id ? 'ring-4 ring-main_active' : 'ring-1 ring-[#AFAFAF]'
                   } focus:outline-none`}>
                   <Image
                     src={style.src}
@@ -85,7 +95,7 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign }) => {
         </div>
         <div className="w-[15rem] h-[2.5rem] mt-[1.4375rem] mx-[6.1875rem] flex justify-between">
           <button
-            onClick={() => onCreateDesign(inputKeyword, selectedStyle)}
+            onClick={handleCreateDesign}
             className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active hover:border-none text-btn_text hover:text-black">
             디자인 생성하기
           </button>

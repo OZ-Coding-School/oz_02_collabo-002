@@ -1,6 +1,6 @@
 'use client';
 import { FetchImageData } from '@/types/designSelectBoxType';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useImages } from './useImages';
 
 function useShowBox() {
@@ -34,9 +34,8 @@ function useShowBox() {
     }));
   };
 
-  const handleCreateDesign = async (keyword: string, style: string) => {
-    setUserInput(state => ({ keyword, style }));
-    console.log(userInput.keyword, userInput.style);
+  const handleCreateDesign = async () => {
+    console.log(userInput);
     await refetch();
     setShow(state => ({
       ...state,
@@ -67,6 +66,8 @@ function useShowBox() {
   };
 
   return {
+    userInput,
+    setUserInput,
     handleCreateDesign,
     handleDesignSelection,
     handleStartDesign,
