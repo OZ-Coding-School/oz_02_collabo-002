@@ -9,12 +9,7 @@ function useShowBox() {
     style: '',
   });
 
-  const {
-    data,
-    isLoading: isCreateLoading,
-    error,
-    refetch,
-  }: FetchImageData = useImages(userInput.keyword, userInput.style);
+  const { data, isLoading: isCreateLoading, error, createMutation } = useImages();
 
   const [show, setShow] = useState({
     alert: true,
@@ -36,7 +31,8 @@ function useShowBox() {
 
   const handleCreateDesign = async () => {
     console.log(userInput);
-    await refetch();
+    //await refetch();
+    createMutation.mutateAsync({ keyword: userInput.keyword, style: userInput.style });
     setShow(state => ({
       ...state,
       selectBox: true,
@@ -76,6 +72,7 @@ function useShowBox() {
     isCreateLoading,
     data,
     error,
+    createMutation,
   };
 }
 
