@@ -32,18 +32,28 @@ const InputAlert: React.FC<InputAlertProps> = ({ onClose }) => {
       </div>
 
       <div className="flex flex-col justify-center items-center mt-11">
-        <p className="bg-main_active text-[28px] font-bold px-2 mb-3">이메일 주소를 입력해주세요.</p>
-        <p className="text-lg mb-5">
+        <p className="bg-main_active text-[28px] font-bold px-2 mb-4">이메일 주소를 입력해주세요.</p>
+        <p className="text-xl mb-3">
           <span className="font-bold">이메일주소</span> 등록 시 이미지를&nbsp;
           <span className="font-bold">최대 8개 무료로 생성</span>할 수 있습니다.
         </p>
 
         <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center">
-          <p className="text-xs text-btn_text mb-3">
-            &bull; 이메일 주소를 입력하면 AI이미지와 티셔츠 이미지를 다운로드할 수 있습니다.
-            <br /> &bull; 개인정보 이용에 동의하십니까? (미동의시 서비스 이용에 제한이 있습니다)&nbsp;
-            <input required type="checkbox" className="accent-[#C6C6C6]" />
-          </p>
+
+          <div className="w-fit flex flex-col justify-start">
+            <p className="text-base text-btn_text">
+              &bull; 이메일 주소를 입력하면 AI이미지와 티셔츠 이미지를 다운로드할 수 있습니다.
+            </p>
+            <p className="text-base text-btn_text mb-3 flex items-center">
+              &bull; 개인정보 이용에 동의하십니까? (미동의시 서비스 이용에 제한이 있습니다)&nbsp;
+              <input
+                type="checkbox"
+                required
+                className="h-[1.2rem] w-[1.2rem] appearance-none border-[2px] border-form_color rounded-md active:border-black checked:border-black checked:bg-black checked:bg-[url('/icons/checked_icon.svg')] bg-center"
+              />
+            </p>
+          </div>
+
           <input
             type="email"
             onChange={handleEmailChange}

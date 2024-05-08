@@ -21,12 +21,11 @@ export default function Design() {
   };
 
   return (
-    <main className="h-screen">
+    <main className="w-full h-full bg-bg">
       <DesignHeader />
-      <section
-        className={`bg-bg w-full h-[calc(100vh-8.875rem)] flex justify-center items-center ${show.alert && 'relative'}
-        `}>
+      <section className="bg-bg w-fit h-[calc(100%-8.875rem)] flex justify-center items-center m-auto">
         {show.alert && (
+
           <div className="absolute inset-0 bg-black bg-opacity-50 z-20 flex justify-center items-center">
             <InputAlert onClose={handleStartDesign} />
           </div>
@@ -58,9 +57,10 @@ export default function Design() {
           {isLoading.select && <DesignLoadingBox type={'preview'} />}
           <div
             className={`transition-opacity duration-1000 ease-in-out ${show.previewBox ? 'opacity-100' : 'opacity-0'}`}>
+
             {!isLoading.select && show.previewBox && <DesignPreviewBox />}
-          </div>
-        </div>
+          </li>
+        </ul>
       </section>
     </main>
   );

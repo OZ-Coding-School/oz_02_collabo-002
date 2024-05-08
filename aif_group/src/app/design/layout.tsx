@@ -7,8 +7,8 @@ const designLayout = ({ children, modal }: Readonly<{ children: React.ReactNode;
   return (
     <>
       <Provider store={store}>
-        <div>{children}</div>
-        <div>{modal}</div>
+        {children}
+        {modal}
       </Provider>
     </>
   );
