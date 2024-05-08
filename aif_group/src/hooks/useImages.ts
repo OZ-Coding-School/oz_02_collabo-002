@@ -12,7 +12,7 @@ export const useImages = (keyword: string, style: string) => {
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['getImageDataApi', keyword, style],
     queryFn: async () => {
-      await createImages(keyword, style);
+      //await createImages(keyword, style);
       return await getImages();
     },
     enabled: false,

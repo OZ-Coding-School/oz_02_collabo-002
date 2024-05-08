@@ -5,9 +5,8 @@ import '@/styles/globals.css';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from 'antd';
 import KakaoScript from '@/services/kakaoScript';
-
-import { QueryClient } from '@tanstack/react-query';
 import { ReactQueryClientProvider } from '@/components/ReactQueryClientProvider';
+import { useEffect, useState } from 'react';
 
 declare global {
   interface Window {
@@ -28,8 +27,6 @@ const theme = {
     },
   },
 };
-
-const queryClient = new QueryClient();
 
 export default function RootLayout({
   children,
@@ -59,6 +56,5 @@ export default function RootLayout({
         </body>
       </html>
     </ReactQueryClientProvider>
-
   );
 }

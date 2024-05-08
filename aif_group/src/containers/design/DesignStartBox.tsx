@@ -4,7 +4,6 @@ import Image from 'next/image';
 import ErrorAlert1 from '../modal/ErrorAlert1';
 
 interface DesignStartBoxProps {
-
   onCreateDesign: (keyword: string, style: string) => void;
   setUserInput: Dispatch<
     SetStateAction<{
@@ -30,11 +29,13 @@ const styles = [
   { id: '애니메이션', src: '/icons/Ellipse 161.svg' },
 ];
 
-
-const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign, setUserInput, userInput, onError, disabled }) => {
-  const [selectedStyle, setSelectedStyle] = useState('');
-  const [inputKeyword, setInputKeyword] = useState('');
-
+const DesignStartBox: React.FC<DesignStartBoxProps> = ({
+  onCreateDesign,
+  setUserInput,
+  userInput,
+  onError,
+  disabled,
+}) => {
   const handleStyleSelect = (styleId: string) => {
     setUserInput(state => ({ ...state, style: styleId }));
   };
@@ -43,11 +44,13 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign, setUser
     setUserInput(state => ({ ...state, keyword: e.target.value }));
   };
 
-  const handleCreateDesign = () => {  if (!inputText.trim() || !selectedStyle) {
+  const handleCreateDesign = () => {
+    if (!userInput.keyword.trim() || !userInput.style) {
       onError();
       return;
-    }; 
-     onCreateDesign()};
+    }
+    onCreateDesign();
+  };
 
   return (
     <div className="w-[27rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
