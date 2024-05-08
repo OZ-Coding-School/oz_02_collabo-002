@@ -8,8 +8,8 @@ export default function HowToCustomSection() {
           <div className="font-bold text-[2.625rem] leading-[58px]">How to Custom</div>
           <div className="text-[1.3125rem] leading-[37px] text-[#555555]">AIF 디자인 툴 사용 방법</div>
         </div>
-        <div className="w-[78.375rem] h-[23.0625rem] flex justify-center items-center mt-[67px]">
-          <div className="w-[13.125rem] h-[23.0625rem] flex flex-col justify-between items-center mr-[4.25rem]">
+        <div className="max-w-[84rem] w-[90%] h-[23.0625rem] flex justify-between items-center mt-[67px] space-x-4">
+          <div className="w-[13.125rem] h-[23.0625rem] flex flex-col justify-between items-center">
             <Image
               alt="how_to_custom_1"
               src={'/images/how_to_custom_1.svg'}
@@ -24,7 +24,7 @@ export default function HowToCustomSection() {
               </div>
             </div>
           </div>
-          <div className="w-[13.125rem] h-[23.0625rem] flex flex-col justify-between items-center mr-[2.375rem]">
+          <div className="w-[13.125rem] h-[23.0625rem] flex flex-col justify-between items-center">
             <Image
               alt="how_to_custom_2"
               src={'/images/how_to_custom_2.svg'}
@@ -39,29 +39,31 @@ export default function HowToCustomSection() {
               </div>
             </div>
           </div>
-          <div className="w-1 h-[314px] border-l-[2.5px] border-white mr-[1.875rem]"></div>
-          <div className="w-[13.125rem] h-[23.0625rem] flex flex-col justify-between items-center mr-[1.875rem]">
-            <Image
-              alt="how_to_custom_3"
-              src={'/images/how_to_custom_3.svg'}
-              width={210}
-              height={210}
-              className="drop-shadow-mint"
-            />
-            <div className="w-[13.125rem] h-[7.625rem] flex flex-col justify-between items-center">
-              <div className="font-bold text-[1.5rem] leading-[37px] flex">
-                디자인 생성
-                <span className="relative top-1.5 left-1.5">
-                  <Image alt="cursor_icon" src={'/icons/cursor_icon.svg'} width={39} height={39} />
-                </span>
-              </div>
-              <div className="h-[3.75rem] text-[1.125rem] tracking-[-0.06em] text-center text-[#555555]">
-                디자인 생성 클릭 시 <br /> 이미지가 4개 생성됩니다.
+          <div className="w-[16rem] h-[23.0625rem] flex justify-between items-center">
+            <div className="w-1 h-[314px] border-l-[2.5px] border-white mr-[1.875rem]"></div>
+            <div className="w-full h-full flex flex-col justify-between items-center">
+              <Image
+                alt="how_to_custom_3"
+                src={'/images/how_to_custom_3.svg'}
+                width={210}
+                height={210}
+                className="drop-shadow-mint"
+              />
+              <div className="w-[13.125rem] h-[7.625rem] flex flex-col justify-between items-center">
+                <div className="font-bold text-[1.5rem] leading-[37px] flex">
+                  디자인 생성
+                  <span className="relative top-1.5 left-1.5">
+                    <Image alt="cursor_icon" src={'/icons/cursor_icon.svg'} width={39} height={39} />
+                  </span>
+                </div>
+                <div className="h-[3.75rem] text-[1.125rem] tracking-[-0.06em] text-center text-[#555555]">
+                  디자인 생성 클릭 시 <br /> 이미지가 4개 생성됩니다.
+                </div>
               </div>
             </div>
+            <div className="w-1 h-[314px] border-l-[2.5px] border-white ml-[1.875rem]"></div>
           </div>
-          <div className="w-1 h-[314px] border-l-[2.5px] border-white mr-[2.375rem]"></div>
-          <div className="w-[13.125rem] h-[23.0625rem] flex flex-col justify-between items-center mr-[4.25rem]">
+          <div className="w-[13.125rem] h-[23.0625rem] flex flex-col justify-between items-center">
             <Image
               alt="how_to_custom_4"
               src={'/images/how_to_custom_4.svg'}

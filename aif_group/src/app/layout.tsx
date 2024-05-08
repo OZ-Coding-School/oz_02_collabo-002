@@ -47,7 +47,7 @@ export default function RootLayout({
   }, []);
   return (
     <ReactQueryClientProvider>
-      <html lang="en">
+      <html lang="en" className={`${os === 'windows' ? 'windows' : 'mac'}`}>
         <body className={inter.className}>
           <KakaoScript />
           <AntdRegistry>
