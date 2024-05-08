@@ -1,10 +1,9 @@
 'use client';
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Image from 'next/image';
-import ErrorAlert1 from '../modal/ErrorAlert1';
 
 interface DesignStartBoxProps {
-  onCreateDesign: (keyword: string, style: string) => void;
+  onCreateDesign: () => void;
   setUserInput: Dispatch<
     SetStateAction<{
       keyword: string;

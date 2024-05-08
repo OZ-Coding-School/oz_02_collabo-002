@@ -2,10 +2,7 @@
 import Image from 'next/image';
 import ImageItem from './ImageItem';
 import useSelectImage from '@/hooks/useSelectImage';
-interface DesignSelectBoxProps {
-  onSelectDesign: () => void; // 디자인 선택하기 버튼 핸들러
-  onRetry: () => void; // 다시 생성하기 버튼 핸들러
-}
+import { DesignSelectBoxProps } from '@/types/designSelectBoxType';
 
 const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data, error, onRetry }) => {
   const { handleSelectImage, handleClickImage, selectImage, currentImage, checkboxRef, isDisabled } = useSelectImage();

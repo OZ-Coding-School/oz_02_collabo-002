@@ -32,7 +32,7 @@ function useShowBox() {
   const handleCreateDesign = async () => {
     console.log(userInput);
     //await refetch();
-    createMutation.mutateAsync({ keyword: userInput.keyword, style: userInput.style });
+    createMutation.mutate(userInput);
     setShow(state => ({
       ...state,
       selectBox: true,

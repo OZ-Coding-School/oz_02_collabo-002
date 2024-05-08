@@ -22,6 +22,7 @@ export default function Design() {
     data,
     error,
     isCreateLoading,
+    createMutation,
   } = useShowBox();
 
   const [showErrorAlert1, setShowErrorAlert1] = useState(false);
@@ -62,7 +63,7 @@ export default function Design() {
           />
           <div
             className={`transition-opacity duration-1000 ease-in-out ${show.selectBox ? 'opacity-100' : 'opacity-0'}`}>
-            {!isLoading.create && show.selectBox && (
+            {!isCreateLoading && !createMutation.isPending && show.selectBox && (
               <DesignSelectBox
                 onSelectDesign={handleDesignSelection}
                 onRetry={handleRetryDesign}
@@ -71,7 +72,7 @@ export default function Design() {
               />
             )}
           </div>
-          {isCreateLoading && <DesignLoadingBox type={'select'} />}
+          {(isCreateLoading || createMutation.isPending) && <DesignLoadingBox type={'select'} />}
           {isLoading.select && <DesignLoadingBox type={'preview'} />}
           <div
             className={`transition-opacity duration-1000 ease-in-out ${show.previewBox ? 'opacity-100' : 'opacity-0'}`}>

@@ -2,7 +2,8 @@ import { QueryObserverResult, RefetchOptions } from '@tanstack/react-query';
 
 export interface DesignSelectBoxProps {
   onSelectDesign: () => void;
-  data: ImageData[];
+  onRetry: () => void;
+  data?: ImageData[];
   error: Error | null;
 }
 export interface SelectImage {
