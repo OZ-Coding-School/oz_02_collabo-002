@@ -24,22 +24,11 @@ export default function Design() {
     error,
     isCreateLoading,
     createMutation,
+    handleRetryDesign,
+    setShow,
   } = useShowBox();
 
   const [showErrorAlert1, setShowErrorAlert1] = useState(false);
-  const [designCreateCount, setDesignCreateCount] = useState(0);
-
-const { handleCreateDesign, handleStartDesign, handleDesignSelection, handleRetryDesign, show, isLoading, setShow } =
-    useShowBox();
-
-  const confirmRetryDesign = () => {
-    if (designCreateCount < 2) {
-      setDesignCreateCount(prev => prev + 1);
-      setShow(prev => ({ ...prev, errorAlert2: false }));
-    } else {
-      setShow(prev => ({ ...prev, errorAlert3: true }));
-    }
-  };
 
   return (
     <main className="w-full h-full bg-bg">
@@ -51,7 +40,6 @@ const { handleCreateDesign, handleStartDesign, handleDesignSelection, handleRetr
           </div>
         )}
         {show.errorAlert2 && (
-
           <div className="absolute inset-0 bg-opacity-50 z-20 flex justify-center items-center">
             <ErrorAlert2 onClose={() => setShow(prev => ({ ...prev, errorAlert2: false }))} />
           </div>

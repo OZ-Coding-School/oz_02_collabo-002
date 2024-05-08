@@ -36,16 +36,16 @@ function useShowBox() {
   const handleCreateDesign = async () => {
     if (designCreateCount < 2) {
       console.log(userInput);
-    createMutation.mutate(userInput);
-    setShow(state => ({
-      ...state,
-      selectBox: true,
-      previewBox: false,
-    }));
-    setDesignCreateCount(prev => prev + 1);
+      createMutation.mutate(userInput);
+      setShow(state => ({
+        ...state,
+        selectBox: true,
+        previewBox: false,
+      }));
+      setDesignCreateCount(prev => prev + 1);
     } else {
       setShow(state => ({ ...state, errorAlert3: true }));
-    }      
+    }
   };
 
   const handleDesignSelection = () => {
@@ -78,7 +78,7 @@ function useShowBox() {
     error,
     createMutation,
     designCreateCount,
-    setShow
+    setShow,
   };
 }
 
