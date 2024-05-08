@@ -5,7 +5,9 @@ import '@/styles/globals.css';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from 'antd';
 import KakaoScript from '@/services/kakaoScript';
-import { useEffect, useState } from 'react';
+
+import { QueryClient } from '@tanstack/react-query';
+import { ReactQueryClientProvider } from '@/components/ReactQueryClientProvider';
 
 declare global {
   interface Window {
@@ -27,6 +29,8 @@ const theme = {
   },
 };
 
+const queryClient = new QueryClient();
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -45,14 +49,16 @@ export default function RootLayout({
     console.log(navigator.userAgent);
   }, []);
   return (
-    <html lang="en" className={`${os === 'windows' ? 'windows' : 'mac'}`}>
-      <body className={inter.className}>
-        <KakaoScript />
-        <div id="modal-root" />
-        <AntdRegistry>
-          <ConfigProvider theme={theme}>{children}</ConfigProvider>
-        </AntdRegistry>
-      </body>
-    </html>
+    <ReactQueryClientProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          <KakaoScript />
+          <AntdRegistry>
+            <ConfigProvider theme={theme}>{children}</ConfigProvider>
+          </AntdRegistry>
+        </body>
+      </html>
+    </ReactQueryClientProvider>
+
   );
 }

@@ -1,4 +1,4 @@
-import { dummyDesignData } from '../../../public';
+'use client';
 import Image from 'next/image';
 import ImageItem from './ImageItem';
 import useSelectImage from '@/hooks/useSelectImage';
@@ -7,8 +7,11 @@ interface DesignSelectBoxProps {
   onRetry: () => void; // 다시 생성하기 버튼 핸들러
 }
 
-const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, onRetry }) => {
-  const { toggleCheck, handleSelectImage, selectImage, currentImage, checkboxRef } = useSelectImage();
+const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data, error }) => {
+  const { handleSelectImage, handleClickImage, selectImage, currentImage, checkboxRef, isDisabled } = useSelectImage();
+  if (error) return <div>{error.message}</div>;
+  const slicingData = data?.slice(0, 8);
+
 
   return (
     <section className="w-[39.75rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
@@ -27,18 +30,19 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, onRet
         <div className="w-[35.75rem] h-[25.375rem] flex mt-[2.8125rem] mx-[1.875rem] mb-[4.3125rem] gap-[1.6875rem]">
           <div className="w-[12.625rem] h-[25.375rem]">
             <ul className="grid gap-[0.625rem] h-full grid-cols-2">
-              {dummyDesignData.map((image, idx) => {
+              {slicingData?.map((image, idx) => {
                 const isSelected = selectImage.idx.includes(idx);
                 const isCurrent = currentImage.idx === idx;
                 return (
-                  <ImageItem
-                    image={image}
-                    onSelect={handleSelectImage}
-                    key={idx}
-                    idx={idx}
-                    isSelected={isSelected}
-                    isCurrent={isCurrent}
-                  />
+                  <div key={image.img_id}>
+                    <ImageItem
+                      image={image.img_url}
+                      onSelect={handleClickImage}
+                      idx={idx}
+                      isSelected={isSelected}
+                      isCurrent={isCurrent}
+                    />
+                  </div>
                 );
               })}
             </ul>
@@ -52,12 +56,15 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, onRet
             )}
             <div
               className="w-full h-[3.83125rem] bg-black flex justify-center items-center hover:bg-[#3f3f3f]"
-              onClick={toggleCheck}>
+              onClick={() => {
+                currentImage.idx !== undefined && handleSelectImage(currentImage.image, currentImage.idx);
+              }}>
               <p className="text-main_active font-semibold">디자인 선택</p>
               <input
                 type="checkbox"
-                className="w-[1rem] h-[1rem] ml-[0.8125rem] accent-main_active rounded-xl"
+                className="w-[1rem] h-[1rem] ml-[0.8125rem] accent-main_active rounded-xl "
                 ref={checkboxRef}
+                disabled={isDisabled}
               />
             </div>
           </div>
@@ -66,6 +73,7 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, onRet
           <button
             onClick={onRetry}
             className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text hover:text-black hover:border-none">
+
             다시 생성하기
           </button>
           <button

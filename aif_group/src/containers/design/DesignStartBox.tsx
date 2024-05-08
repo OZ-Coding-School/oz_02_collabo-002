@@ -1,41 +1,53 @@
-import React, { useState } from 'react';
+'use client';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Image from 'next/image';
 import ErrorAlert1 from '../modal/ErrorAlert1';
 
 interface DesignStartBoxProps {
-  onCreateDesign: () => void;
+
+  onCreateDesign: (keyword: string, style: string) => void;
+  setUserInput: Dispatch<
+    SetStateAction<{
+      keyword: string;
+      style: string;
+    }>
+  >;
+  userInput: { keyword: string; style: string };
   onError: () => void;
   disabled: boolean;
 }
 
-const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign, onError, disabled }) => {
-  const [inputText, setInputText] = useState('');
-  const [selectedStyle, setSelectedStyle] = useState('');
+const styles = [
+  { id: '레트로', src: '/icons/Ellipse 152.svg' },
+  { id: '꼴라쥬', src: '/icons/Ellipse 153.svg' },
+  { id: '데코', src: '/icons/Ellipse 154.svg' },
+  { id: '그라피티', src: '/icons/Ellipse 155.svg' },
+  { id: '키덜트', src: '/icons/Ellipse 156.svg' },
+  { id: '라인아트', src: '/icons/Ellipse 157.svg' },
+  { id: '스테인글라스', src: '/icons/Ellipse 158.svg' },
+  { id: '빈티지포스터', src: '/icons/Ellipse 159.svg' },
+  { id: '엠블럼', src: '/icons/Ellipse 160.svg' },
+  { id: '애니메이션', src: '/icons/Ellipse 161.svg' },
+];
 
-  const styles = [
-    { id: '레트로', src: '/icons/Ellipse 152.svg' },
-    { id: '꼴라쥬', src: '/icons/Ellipse 153.svg' },
-    { id: '데코', src: '/icons/Ellipse 154.svg' },
-    { id: '그라피티', src: '/icons/Ellipse 155.svg' },
-    { id: '키덜트', src: '/icons/Ellipse 156.svg' },
-    { id: '라인아트', src: '/icons/Ellipse 157.svg' },
-    { id: '스테인글라스', src: '/icons/Ellipse 158.svg' },
-    { id: '빈티지포스터', src: '/icons/Ellipse 159.svg' },
-    { id: '엠블럼', src: '/icons/Ellipse 160.svg' },
-    { id: '애니메이션', src: '/icons/Ellipse 161.svg' },
-  ];
+
+const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign, setUserInput, userInput, onError, disabled }) => {
+  const [selectedStyle, setSelectedStyle] = useState('');
+  const [inputKeyword, setInputKeyword] = useState('');
 
   const handleStyleSelect = (styleId: string) => {
-    setSelectedStyle(styleId);
+    setUserInput(state => ({ ...state, style: styleId }));
   };
 
-  const handleCreateDesign = () => {
-    if (!inputText.trim() || !selectedStyle) {
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserInput(state => ({ ...state, keyword: e.target.value }));
+  };
+
+  const handleCreateDesign = () => {  if (!inputText.trim() || !selectedStyle) {
       onError();
       return;
-    }
-    onCreateDesign();
-  };
+    }; 
+     onCreateDesign()};
 
   return (
     <div className="w-[27rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
@@ -59,8 +71,8 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign, onError
           type="text"
           placeholder="ex)테니스, 호랑이, 여성1명, 얼굴..."
           className="placeholder-[#92EADA] bg-gray-100 text-[15px] px-2 w-[23.625rem] mt-1 h-[2.5rem] ml-4 mb-7 rounded-sm"
-          value={inputText}
-          onChange={e => setInputText(e.target.value)}
+          onChange={handleChangeInput}
+          value={userInput.keyword}
           disabled={disabled}
         />
       </section>
@@ -78,7 +90,7 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({ onCreateDesign, onError
                 <button
                   onClick={() => handleStyleSelect(style.id)}
                   className={`w-20 h-20 rounded-full border overflow-hidden ${
-                    selectedStyle === style.id ? 'ring-4 ring-main_active' : 'ring-1 ring-[#AFAFAF]'
+                    userInput.style === style.id ? 'ring-4 ring-main_active' : 'ring-1 ring-[#AFAFAF]'
                   } focus:outline-none`}>
                   <Image
                     src={style.src}

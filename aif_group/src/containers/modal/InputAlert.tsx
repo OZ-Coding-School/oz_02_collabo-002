@@ -2,6 +2,8 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useQuery } from '@tanstack/react-query';
+import { postValidation } from '@/services/postValidation';
 interface InputAlertProps {
   onClose: () => void;
 }
@@ -16,6 +18,7 @@ const InputAlert: React.FC<InputAlertProps> = ({ onClose }) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    //refetch();
     onClose();
   };
 

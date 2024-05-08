@@ -48,7 +48,7 @@ function PieChart({ title }: { title: string }) {
   return (
     <div className="m-[2rem] relative w-[90%]">
       <h2 className="text-[1.25rem]">{title}</h2>
-      <canvas className="relative z-10 w-[]" ref={chartRef} />
+      <canvas className="relative z-10 " ref={chartRef} />
       <div className="w-[100%] h-[70%] bg-white absolute bottom-[0px] left-[30px] rounded-xl" />
     </div>
   );

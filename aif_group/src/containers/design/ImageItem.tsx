@@ -18,9 +18,9 @@ function ImageItem({ onSelect, image, idx, isSelected, isCurrent }: ImageItemPro
       onClick={() => {
         onSelect(image, idx);
       }}
-      className={`border-[0.25rem] hover:scale-110 flex justify-center items-center ${
-        isSelected ? 'border-main_active' : undefined
-      } ${isCurrent && 'scale-125'}`}>
+      className={`border-[0.25rem] flex justify-center items-center ${isSelected && 'border-main_active'} ${
+        isCurrent && ''
+      }`}>
       <Image src={image} width={size.width} height={size.height} alt="ai 디자인" />
     </li>
   );
