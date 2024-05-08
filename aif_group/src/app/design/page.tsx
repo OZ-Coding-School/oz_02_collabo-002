@@ -43,7 +43,11 @@ export default function Design() {
             <ErrorAlert2 onClose={() => setShow(prev => ({ ...prev, errorAlert2: false }))} />
           </div>
         )}
-        {show.errorAlert3 && <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} />}
+        {show.errorAlert3 && (
+          <div className="absolute inset-0 bg-opacity-50 z-20 flex justify-center items-center">
+            <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} />
+          </div>
+        )}
         <div className="flex relative z-10 justify-center">
           {showErrorAlert1 && (
             <div className="absolute top-0 mt-5 transform -translate-y-full z-30">
