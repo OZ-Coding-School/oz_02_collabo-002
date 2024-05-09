@@ -39,7 +39,7 @@ const DesignPreviewBox = () => {
     imageFile.map(image => {
       dispatch(setImgFileUrl(image));
     });
-  }, [imageFile]);
+  }, [dispatch, imageFile]);
 
   return (
     <div className="w-[27rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
