@@ -28,6 +28,13 @@ const theme = {
   },
 };
 
+async function fetchData() {
+  const res = await fetch(navigator.userAgent);
+  const data = await res.json();
+  // console.log(data);
+  return data;
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -45,6 +52,7 @@ export default function RootLayout({
     }
     console.log(navigator.userAgent);
   }, []);
+
   return (
     <ReactQueryClientProvider>
       <html lang="en" className={`${os === 'windows' ? 'windows' : 'mac'}`}>
