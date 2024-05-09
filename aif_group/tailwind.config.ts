@@ -19,11 +19,11 @@ const config: Config = {
         footer_text: '#787878',
         form_color: '#8F8F8F',
       },
-
       screens: {
         sm: { min: '393px', max: '768px' },
-        md: { min: '768px', max: '1023px' },
-        lg: { min: '1080px' },
+        mmd: { min: '768px', max: '974px' },
+        md: { min: '768px', max: '1220px' },
+        lg: { min: '1220px' },
       },
       fontFamily: {
         saira: ['Saira', 'sans-serif'],

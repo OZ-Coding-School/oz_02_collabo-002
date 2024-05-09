@@ -34,9 +34,9 @@ export default function Design() {
   return (
     <main className="w-full h-full bg-bg">
       <DesignHeader />
-      <section className="bg-bg w-fit h-[calc(100%-8.875rem)] flex justify-center items-center m-auto">
+      <section className="bg-bg w-full min-w-fit h-[calc(100%-8.875rem)] flex justify-center items-center relative">
         {show.alert && (
-          <div className="absolute inset-0 bg-black bg-opacity-50 z-20 flex justify-center items-center">
+          <div className="absolute inset-0 bg-black bg-opacity-50 z-10 flex flex-row justify-center items-center">
             <InputAlert onClose={handleStartDesign} />
           </div>
         )}
