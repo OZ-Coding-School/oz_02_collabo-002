@@ -1,7 +1,8 @@
+import { ImageInfo } from '@/types/designSelectBoxType';
 import { SetStateAction } from 'react';
 
 type drawPropsType = {
-  selectImage: { image: string[] };
+  selectImage: ImageInfo[];
   selectedColorArray: string[];
   tShirtImage: { white: string; black: string };
   setImageFile: React.Dispatch<
@@ -15,7 +16,7 @@ type drawPropsType = {
 };
 
 const drawSelectedImage = async (props: drawPropsType) => {
-  props.selectImage.image.map((img, index) => {
+  props.selectImage.map((img, index) => {
     const canvas = document.createElement('canvas');
     canvas.width = 1800;
     canvas.height = 1800;
@@ -30,7 +31,7 @@ const drawSelectedImage = async (props: drawPropsType) => {
 
       const image = new Image();
       image.crossOrigin = 'anonymous';
-      image.src = img;
+      image.src = img.img_url;
       image.onload = () => {
         context?.drawImage(image, canvas.width / 2 - 540 / 2, canvas.height / 2 - 540 / 2, 540, 540);
 
@@ -38,7 +39,7 @@ const drawSelectedImage = async (props: drawPropsType) => {
         props.setImageFile(prev => [
           ...prev,
           { imageUrl: dataUrl, imageName: `티셔츠합성이미지${index}` },
-          { imageUrl: img, imageName: `ai생성이미지${index}` },
+          { imageUrl: img.img_url, imageName: `ai생성이미지${index}` },
         ]);
       };
     };

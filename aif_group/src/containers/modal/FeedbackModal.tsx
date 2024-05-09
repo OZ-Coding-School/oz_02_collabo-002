@@ -28,11 +28,11 @@ const FeedbackModal = () => {
         }
       });
 
-      const downloadImgFilter = imgFile.filter(img => img.imageUrl !== '' && img.imageName !== '');
+      const downloadImgFilter = imgFile.filter(img => img.img_url !== '');
       if (downloadImgFilter.length !== 0) {
         downloadImage(downloadImgFilter);
       }
-      router.replace('/thanks');
+      router.push('/thanks');
     } catch (e) {
       alert(`${e}번 문항에 답변해주세요`);
     }

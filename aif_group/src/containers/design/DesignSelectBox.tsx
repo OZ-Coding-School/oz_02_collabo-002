@@ -26,26 +26,19 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
         <div className="w-[35.75rem] h-[25.375rem] flex mt-[2.8125rem] mx-[1.875rem] mb-[4.3125rem] gap-[1.6875rem]">
           <div className="w-[12.625rem] h-[25.375rem]">
             <ul className="grid gap-[0.625rem] h-full grid-cols-2">
-              {slicingData?.map((image, idx) => {
-                const isSelected = selectImage.idx.includes(idx);
-                const isCurrent = currentImage.idx === idx;
+              {slicingData?.map(image => {
+                const isSelected = selectImage.some(selectImage => selectImage.img_id === image.img_id);
                 return (
                   <div key={image.img_id}>
-                    <ImageItem
-                      image={image.img_url}
-                      onSelect={handleClickImage}
-                      idx={idx}
-                      isSelected={isSelected}
-                      isCurrent={isCurrent}
-                    />
+                    <ImageItem image={image} onSelect={handleClickImage} isSelected={isSelected} />
                   </div>
                 );
               })}
             </ul>
           </div>
           <div className="w-[21.6875rem] h-[25.375rem]">
-            {currentImage.image && <Image src={currentImage.image} width={345} height={345} alt="선택된 ai 디자인" />}
-            {!currentImage.image && (
+            {currentImage && <Image src={currentImage.img_url} width={345} height={345} alt="선택된 ai 디자인" />}
+            {!currentImage && (
               <div className="w-full h-[21.5625rem] bg-sample_img_bg flex items-center justify-center font-semibold text-xl">
                 사진을 선택하세요
               </div>
@@ -53,7 +46,7 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
             <div
               className="w-full h-[3.83125rem] bg-black flex justify-center items-center hover:bg-[#3f3f3f]"
               onClick={() => {
-                currentImage.idx !== undefined && handleSelectImage(currentImage.image, currentImage.idx);
+                currentImage !== undefined && handleSelectImage(currentImage);
               }}>
               <p className="text-main_active font-semibold">디자인 선택</p>
               <input
