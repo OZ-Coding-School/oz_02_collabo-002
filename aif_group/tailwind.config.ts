@@ -21,8 +21,8 @@ const config: Config = {
       },
       screens: {
         sm: { min: '393px', max: '768px' },
-        mmd: { min: '768px', max: '974px' },
-        md: { min: '768px', max: '1220px' },
+        mmd: { min: '393px', max: '974px' },
+        md: { min: '393px', max: '1220px' },
         lg: { min: '1220px' },
       },
       fontFamily: {
