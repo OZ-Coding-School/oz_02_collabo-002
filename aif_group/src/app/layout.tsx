@@ -13,7 +13,11 @@ declare global {
     Kakao: any;
   }
 }
-const inter = Inter({ subsets: ['latin'] });
+// const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
 
 // export const metadata: Metadata = {
 //   title: 'Create Next App',
@@ -27,13 +31,6 @@ const theme = {
     },
   },
 };
-
-async function fetchData() {
-  const res = await fetch(navigator.userAgent);
-  const data = await res.json();
-  // console.log(data);
-  return data;
-}
 
 export default function RootLayout({
   children,
@@ -55,8 +52,8 @@ export default function RootLayout({
 
   return (
     <ReactQueryClientProvider>
-      <html lang="en" className={`${os === 'windows' ? 'windows' : 'mac'}`}>
-        <body className={inter.className}>
+      <html lang="en">
+        <body className={`${inter.variable}`}>
           <KakaoScript />
           <AntdRegistry>
             <ConfigProvider theme={theme}>{children}</ConfigProvider>

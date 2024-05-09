@@ -27,6 +27,7 @@ const config: Config = {
       },
       fontFamily: {
         saira: ['Saira', 'sans-serif'],
+        inter: ['var(--font-inter)'],
       },
       height: {
         header: '8.875rem',

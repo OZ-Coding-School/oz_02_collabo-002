@@ -27,6 +27,10 @@ html {
   height: 100%;
 }
 
+body {
+  font-family: var(--font-inter);
+}
+
 .windows {
   letter-spacing: -0.005em;
 }

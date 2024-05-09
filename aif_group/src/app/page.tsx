@@ -11,7 +11,11 @@ import React, { useEffect, useState } from 'react';
 import MobileMainBanner from '@/containers/main/MobileMainBanner';
 
 export default function Home() {
-  const [innerWidth, setInnerWidth] = useState(0);
+  const [innerWidth, setInnerWidth] = useState(1220);
+
+  useEffect(() => {
+    setInnerWidth(window.innerWidth);
+  }, []);
 
   const resizeListener = () => {
     setInnerWidth(window.innerWidth);

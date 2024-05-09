@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 export default function Header() {
-  const [innerWidth, setInnerWidth] = useState(0);
+  const [innerWidth, setInnerWidth] = useState(1220);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -30,9 +30,12 @@ export default function Header() {
     howRef.current = document.querySelector('#how');
   }, [aboutRef, aiRef, howRef]);
 
+  useEffect(() => {
+    setInnerWidth(window.innerWidth);
+  }, []);
+
   const resizeListener = () => {
     setInnerWidth(window.innerWidth);
-    // console.log('innerWidth', innerWidth);
   };
 
   useEffect(() => {
