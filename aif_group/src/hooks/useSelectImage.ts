@@ -2,6 +2,9 @@
 import { MAX_SELECTIONS } from '@/constants';
 import { CurrentImage, SelectImage } from '@/types/designSelectBoxType';
 import { useRef, useState } from 'react';
+import { useAppDispatch, useAppSelector } from './reduxHooks';
+import { RootState } from '@/states/store';
+import { deleteImgFile } from '@/states/imageSlice';
 
 function useSelectImage() {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -10,13 +13,12 @@ function useSelectImage() {
     image: '',
     idx: undefined,
   });
-  const [selectImage, setSelectImage] = useState<SelectImage>({
-    image: [],
-    idx: [],
-  });
+
+  const selectImage = useAppSelector((state: RootState) => state.ref);
+  const dispatch = useAppDispatch();
 
   function handleDisabled(idx: number) {
-    if (selectImage.idx.length === MAX_SELECTIONS && !selectImage.idx.includes(idx)) {
+    if (selectImage.length === MAX_SELECTIONS && !selectImage.filter(image => image.imageName === idx.toString())) {
       setIsDisabled(true);
     } else {
       setIsDisabled(false);
@@ -24,26 +26,24 @@ function useSelectImage() {
   }
 
   function handleSelectImage(image: string, idx: number) {
-    if (selectImage.idx.includes(idx)) {
-      // selectImage에서 빼는 로직
-      setSelectImage(prevState => ({
-        ...prevState,
-        idx: selectImage.idx.filter(item => item !== idx),
-        image: selectImage.image.filter(item => item !== image),
-      }));
-      setCurrentImage({ image: '', idx: undefined });
-      if (!checkboxRef.current) return;
-      checkboxRef.current.checked = false;
-    } else {
-      if (selectImage.idx.length < MAX_SELECTIONS) {
-        setSelectImage(prevState => ({
-          image: [...prevState.image, image],
-          idx: [...prevState.idx, idx],
-        }));
+    selectImage.forEach(image => {
+      if (image.imageName === idx.toString()) {
+        // selectImage에서 빼는 로직
+        dispatch(deleteImgFile(idx));
+        setCurrentImage({ image: '', idx: undefined });
         if (!checkboxRef.current) return;
-        checkboxRef.current.checked = true;
+        checkboxRef.current.checked = false;
+      } else {
+        if (selectImage.idx.length < MAX_SELECTIONS) {
+          setSelectImage(prevState => ({
+            image: [...prevState.image, image],
+            idx: [...prevState.idx, idx],
+          }));
+          if (!checkboxRef.current) return;
+          checkboxRef.current.checked = true;
+        }
       }
-    }
+    });
   }
 
   function handleClickImage(image: string, idx: number) {

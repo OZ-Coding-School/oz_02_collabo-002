@@ -7,8 +7,11 @@ const imageSlice = createSlice({
     setImgFileUrl: (state, action) => {
       state.push(action.payload);
     },
+    deleteImgFile: (state, { payload: imageName }) => {
+      state = state.filter(image => image.imageName !== imageName);
+    },
   },
 });
 
-export const { setImgFileUrl } = imageSlice.actions;
+export const { setImgFileUrl, deleteImgFile } = imageSlice.actions;
 export default imageSlice.reducer;

@@ -20,8 +20,6 @@ const DesignPreviewBox = () => {
   const [imageFile, setImageFile] = useState<{ imageUrl: string; imageName: string }[]>([]);
   const router = useRouter();
 
-  // const { selectImage } = useSelectImage();
-  // console.log(selectImage);
   const selectImage = {
     image: ['/images/aiImage1.png', '/images/aiImage2.png', '/images/aiImage3.png'],
   };
@@ -71,7 +69,6 @@ const DesignPreviewBox = () => {
         </div>
         <div className="flex flex-col items-center">
           <button
-
             className={`w-8 h-8 rounded-full border border-text overflow-hidden focus:outline-none bg-black ${
               selectedColorArray[currentId] === 'black' ? 'ring ring-main_active' : ''
             }`}
@@ -139,7 +136,6 @@ const DesignPreviewBox = () => {
             drawSelectedImage({ selectImage, selectedColorArray, tShirtImage, setImageFile });
             router.push('/design/feedback');
           }}>
-
           다운로드
         </button>
       </div>
