@@ -1,8 +1,7 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { default as NextImage } from 'next/image';
 import { useRouter } from 'next/navigation';
-import useSelectImage from '@/hooks/useSelectImage';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -13,12 +12,10 @@ import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import drawSelectedImage from '@/utils/drawSelectedImage';
 import ThumbnailImage from '@/components/ThumbnailImage';
 import { RootState } from '@/states/store';
-import { setImgFileUrl } from '@/states/imageSlice';
 
 const DesignPreviewBox = () => {
   const [selectedColorArray, setSelectedColorArray] = useState<string[]>(['white', 'white', 'white']);
   const [currentId, setCurrentId] = useState(0);
-  const [imageFile, setImageFile] = useState<{ imageUrl: string; imageName: string }[]>([]);
   const router = useRouter();
 
   const selectImage = useAppSelector((state: RootState) => state.ref);
@@ -34,12 +31,6 @@ const DesignPreviewBox = () => {
     copyColorArray[currentId] = color;
     setSelectedColorArray(copyColorArray);
   };
-
-  useEffect(() => {
-    imageFile.map(image => {
-      dispatch(setImgFileUrl(image));
-    });
-  }, [dispatch, imageFile]);
 
   return (
     <div className="w-[27rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
@@ -131,7 +122,7 @@ const DesignPreviewBox = () => {
         <button
           className="w-[15rem] h-full text-btn_text border-btn_border border-[1px] rounded-[4px] hover:bg-main_active hover:border-none hover:text-black"
           onClick={() => {
-            drawSelectedImage({ selectImage, selectedColorArray, tShirtImage, setImageFile });
+            drawSelectedImage({ selectImage, selectedColorArray, tShirtImage, dispatch });
             router.push('/design/feedback');
           }}>
           다운로드

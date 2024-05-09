@@ -12,7 +12,6 @@ import downloadImage from '@/utils/downloadImages';
 
 const FeedbackModal = () => {
   const imgFile = useAppSelector((state: RootState) => state.ref);
-  const dispatch = useAppDispatch();
   const router = useRouter();
 
   const handleError = (data: { [key: string]: FormDataEntryValue | FormDataEntryValue[] | null }) => {
@@ -27,7 +26,6 @@ const FeedbackModal = () => {
           }
         }
       });
-
       const downloadImgFilter = imgFile.filter(img => img.img_url !== '');
       if (downloadImgFilter.length !== 0) {
         downloadImage(downloadImgFilter);
