@@ -31,15 +31,6 @@ body {
   font-family: var(--font-inter);
 }
 
-.windows {
-  letter-spacing: -0.005em;
-}
-
-.mac body {
-  width: 100%;
-  height: 100%;
-}
-
 .select-box {
   display: grid;
   grid-template-columns: 0fr;

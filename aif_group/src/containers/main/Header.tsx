@@ -47,19 +47,23 @@ export default function Header() {
 
   return (
     <div className="w-full h-header px-[3rem] py-[2.3125rem] flex justify-center items-center mmd:px-8">
-      <div className="lg:w-[78.75rem] flex justify-between items-center">
-        <button onClick={() => router.refresh()}>
-          <Image alt="logo" src={'/icons/logo.svg'} width={237} height={68} priority />
+      <div className="lg:w-[78.75rem] w-full flex justify-between items-center">
+        <button
+          onClick={() => {
+            pathname === '/' ? router.refresh() : router.replace('/');
+          }}
+          className="w-[237px] h-[68px] relative">
+          <Image alt="logo" src={'/icons/logo.svg'} fill priority />
         </button>
         {pathname === '/' ? (
-          <div className="w-[49.8125rem] flex justify-between ml-12 mmd:w-[43rem] mmd:ml-6">
-            <button className="text-[1.375rem] text-[#3A3A3A] font-medium" onClick={moveToAbout}>
+          <div className="w-[49.8125rem] flex justify-between ml-12 md:w-[38rem] mmd:ml-5">
+            <button className="text-[1.375rem] text-[#3A3A3A] font-medium mmd:text-[1.3rem]" onClick={moveToAbout}>
               About
             </button>
-            <button className="text-[1.375rem] text-[#3A3A3A] font-medium" onClick={moveToAi}>
+            <button className="text-[1.375rem] text-[#3A3A3A] font-medium mmd:text-[1.3rem]" onClick={moveToAi}>
               생성 이미지
             </button>
-            <button className="text-[1.375rem] text-[#3A3A3A] font-medium" onClick={moveToHow}>
+            <button className="text-[1.375rem] text-[#3A3A3A] font-medium mmd:text-[1.3rem]" onClick={moveToHow}>
               사용방법
             </button>
             <button
@@ -69,7 +73,7 @@ export default function Header() {
             </button>
           </div>
         ) : (
-          <div className="w-[49.8125rem] flex justify-end ml-12 mmd:w-[43rem] mmd:ml-5">
+          <div className="w-[49.8125rem] flex justify-end ml-12 md:w-[38rem] mmd:w-[28rem] mmd:ml-7">
             <button
               className="text-[1.375rem] w-[12.5rem] h-[3.25rem] bg-black text-main_active group hover:bg-main_active active:bg-main_active rounded-md font-bold"
               onClick={() => router.push('/')}>

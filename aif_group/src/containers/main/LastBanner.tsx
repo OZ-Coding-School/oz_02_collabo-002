@@ -15,7 +15,7 @@ export default function LastBanner() {
           디자인을 몰라도 누구나 손쉽게 자신만의 그래픽 이미지를 만들 수 있습니다.
         </div>
         <DesignStartButton />
-        <div className="w-full h-fit">
+        <div className="w-full h-fit flex justify-center items-center">
           <Image
             alt="last_banner_img"
             src={'/images/last_banner_img.svg'}
