@@ -4,7 +4,7 @@ import Image from 'next/image';
 export default function AboutSection() {
   return (
     <main className="w-full h-banner md:h-fit bg-[#E6E6E6] flex justify-center items-center">
-      <section className="w-[78.5625rem] h-[33.5rem] flex justify-between items-center mx-6 md:flex-col md:w-[80%] md:h-fit sm:w-[90%]">
+      <section className="w-[78.5625rem] h-[33.5rem] flex justify-between items-center mx-6 md:flex-col md:w-[80%] md:h-fit">
         <div className="flex flex-col justify-start items-start mr-5 mt-28 md:mr-0 md:mt-10">
           <div className="flex justify-start items-center md:hidden">
             <div className="w-[5rem] h-[1.5rem] bg-black rounded-[6px] flex justify-center items-center">

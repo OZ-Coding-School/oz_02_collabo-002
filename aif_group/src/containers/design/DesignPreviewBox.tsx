@@ -23,7 +23,7 @@ const DesignPreviewBox = () => {
   // const { selectImage } = useSelectImage();
   // console.log(selectImage);
   const selectImage = {
-    image: ['/images/reels/reels_image_1.png', '/images/reels/reels_image_3.png', '/images/reels/reels_image_8.png'],
+    image: ['/images/aiImage1.png', '/images/aiImage2.png', '/images/aiImage3.png'],
   };
 
   const dispatch = useAppDispatch();
