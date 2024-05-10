@@ -30,7 +30,9 @@ const ErrorAlert2: React.FC<ErrorAlert2Props> = ({ onClose }) => {
               아니요
             </button>
             <button
-              onClick={onClose}
+              onClick={() => {
+                onClose();
+              }}
               className="text-main_active bg-black hover:bg-main_active hover:text-black w-[13.07rem] h-[3.25rem] rounded-br-[14px]">
               네, 다시 생성하기
             </button>

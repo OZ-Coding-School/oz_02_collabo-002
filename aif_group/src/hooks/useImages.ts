@@ -1,21 +1,20 @@
 import { createImages } from '@/services/createImages';
 import { getImages } from '@/services/getImages';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 
-export interface CreationResult {
-  status_code: 201 | 400;
-  detail: string;
-  header: string;
-}
-
-export const useImages = (keyword: string, style: string) => {
+export const useImages = () => {
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ['getImageDataApi', keyword, style],
-    queryFn: async () => {
-      //await createImages(keyword, style);
-      return await getImages();
-    },
+    queryKey: ['getImages'],
+    queryFn: () => getImages(),
     enabled: false,
   });
-  return { data, isLoading, error, refetch };
+
+  const createMutation = useMutation({
+    mutationFn: (data: { keyword: string; style: string }) => createImages(data.keyword, data.style),
+    onSuccess: () => {
+      // createImage 호출 성공 후 getImages 쿼리를 트리거
+      refetch();
+    },
+  });
+  return { data, isLoading, error, createMutation };
 };

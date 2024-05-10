@@ -6,6 +6,7 @@ import DesignSelectBox from '@/containers/design/DesignSelectBox';
 import DesignStartBox from '@/containers/design/DesignStartBox';
 import ErrorAlert1 from '@/containers/modal/ErrorAlert1';
 import ErrorAlert2 from '@/containers/modal/ErrorAlert2';
+import ErrorAlert3 from '@/containers/modal/ErrorAlert3';
 import InputAlert from '@/containers/modal/InputAlert';
 import useShowBox from '@/hooks/useShowBox';
 import { useState } from 'react';
@@ -22,14 +23,12 @@ export default function Design() {
     data,
     error,
     isCreateLoading,
+    createMutation,
+    handleRetryDesign,
+    setShow,
   } = useShowBox();
 
   const [showErrorAlert1, setShowErrorAlert1] = useState(false);
-  const [showErrorAlert2, setShowErrorAlert2] = useState(false);
-
-  const handleRetryDesign = () => {
-    setShowErrorAlert2(true); // ErrorAlert2를 표시
-  };
 
   return (
     <main className="w-full h-full bg-bg">
@@ -40,19 +39,19 @@ export default function Design() {
             <InputAlert onClose={handleStartDesign} />
           </div>
         )}
-
-        {showErrorAlert2 && (
+        {show.errorAlert2 && (
           <div className="absolute inset-0 bg-opacity-50 z-20 flex justify-center items-center">
-            <ErrorAlert2 onClose={() => setShowErrorAlert2(false)} />
+            <ErrorAlert2 onClose={() => setShow(prev => ({ ...prev, errorAlert2: false }))} />
           </div>
         )}
 
         <ul className="w-fit h-full m-auto px-5 flex justify-center items-center flex-1 list-none relative">
-          {showErrorAlert1 && (
-            <div className="absolute top-0 mt-5 transform -translate-y-full z-30">
-              <ErrorAlert1 onClose={() => setShowErrorAlert1(false)} show={showErrorAlert1} />
-            </div>
-          )}
+          {show.errorAlert3 && (
+          <div className="absolute inset-0 bg-opacity-50 z-20 flex justify-center items-center">
+            <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} />
+          </div>
+        )}
+
           <li>
             <DesignStartBox
               onCreateDesign={handleCreateDesign}
@@ -63,16 +62,17 @@ export default function Design() {
             />
           </li>
           <li className={`ml-5 select-box ${isCreateLoading ? 'box-display' : ''}`}>
-            {isCreateLoading && <DesignLoadingBox type={'select'} />}
+            {(isCreateLoading || createMutation.isPending) && <DesignLoadingBox type={'select'} />}
           </li>
           <li className={`select-box ${!isLoading.create && show.selectBox ? 'box-display' : ''}`}>
             {!isLoading.create && show.selectBox && (
-              <DesignSelectBox
-                onSelectDesign={handleDesignSelection}
-                onRetry={handleRetryDesign}
-                data={data}
-                error={error}
-              />
+               <DesignStartBox
+            onCreateDesign={handleCreateDesign}
+            userInput={userInput}
+            setUserInput={setUserInput}
+            onError={() => setShowErrorAlert1(true)}
+            disabled={isLoading.create || isLoading.select}
+            />
             )}
           </li>
           <li className={`ml-5 select-box ${isLoading.select ? 'box-display' : ''}`}>
