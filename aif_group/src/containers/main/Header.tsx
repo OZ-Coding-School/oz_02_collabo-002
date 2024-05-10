@@ -46,7 +46,7 @@ export default function Header() {
   }, [innerWidth]);
 
   return (
-    <div className="w-full h-header px-[3rem] py-[2.3125rem] flex justify-center items-center">
+    <div className="w-full h-header px-[3rem] py-[2.3125rem] flex justify-center items-center mmd:px-8">
       <div className="lg:w-[78.75rem] flex justify-between items-center">
         <button onClick={() => router.refresh()}>
           <Image alt="logo" src={'/icons/logo.svg'} width={237} height={68} priority />
