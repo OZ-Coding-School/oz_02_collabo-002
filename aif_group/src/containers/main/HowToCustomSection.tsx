@@ -11,7 +11,7 @@ export default function HowToCustomSection() {
           <div className="text-[1.3125rem] leading-[37px] text-[#555555] sm:text-lg">AIF 디자인 툴 사용 방법</div>
         </div>
         <div className="max-w-[84rem] h-[23.0625rem] flex justify-between items-center mt-[4.1875rem] space-x-4 md:h-fit md:grid md:grid-cols-6 md:gap-x-2 md:gap-y-16 md:justify-items-center mmd:grid-cols-1 mmd:gap-0 mmd:mt-[3rem] mmd:space-x-0 sm:w-[80%] sm:!mt-10">
-          <div className="w-[13.125rem] h-[23.0625rem] flex flex-col justify-between items-center md:col-span-2 mmd:col-span-1 mmd:w-[27rem] mmd:flex-row mmd:h-[18rem] sm:justify-center sm:!h-[14rem]">
+          <div className="w-[13.125rem] h-[23.0625rem] flex flex-col justify-between items-center md:col-span-2 mmd:col-span-1 mmd:w-[27rem] mmd:flex-row mmd:h-[18rem] sm:justify-center sm:!h-[14rem] sm:!w-full">
             <Image
               alt="how_to_custom_1"
               src={'/images/how_to_custom_1.svg'}
@@ -26,7 +26,7 @@ export default function HowToCustomSection() {
               </div>
             </div>
           </div>
-          <div className="w-[13.125rem] h-[23.0625rem] flex flex-col justify-between items-center md:col-span-2 mmd:col-span-1 mmd:w-[27rem] mmd:flex-row mmd:h-[18rem] sm:justify-center sm:!h-[14rem]">
+          <div className="w-[13.125rem] h-[23.0625rem] flex flex-col justify-between items-center md:col-span-2 mmd:col-span-1 mmd:w-[27rem] mmd:flex-row mmd:h-[18rem] sm:justify-center sm:!h-[14rem] sm:!w-full">
             <div className="w-[13.125rem] flex justify-center items-center sm:w-[8.75rem]">
               <Image
                 alt="how_to_custom_2"
@@ -43,7 +43,7 @@ export default function HowToCustomSection() {
               </div>
             </div>
           </div>
-          <div className="w-fit h-[23.0625rem] flex justify-between items-center md:col-span-2 mmd:col-span-1 mmd:h-[18rem] sm:justify-center sm:!h-[14rem]">
+          <div className="w-fit h-[23.0625rem] flex justify-between items-center md:col-span-2 mmd:col-span-1 mmd:h-[18rem] sm:justify-center sm:!h-[14rem] sm:!w-full">
             <div className="w-1 h-[314px] border-l-[2.5px] border-white mr-[1.875rem] md:hidden"></div>
             <div className="w-full h-full flex flex-col justify-between items-center mmd:w-[27rem] mmd:flex-row sm:justify-center">
               <Image
@@ -73,7 +73,7 @@ export default function HowToCustomSection() {
             </div>
             <div className="w-1 h-[314px] border-l-[2.5px] border-white ml-[1.875rem] md:hidden"></div>
           </div>
-          <div className="w-[13.125rem] h-[23.0625rem] flex flex-col justify-between items-center md:col-start-2 md:col-end-4 mmd:col-span-1 mmd:w-[27rem] mmd:flex-row mmd:h-[18rem] sm:justify-center sm:!h-[14rem]">
+          <div className="w-[13.125rem] h-[23.0625rem] flex flex-col justify-between items-center md:col-start-2 md:col-end-4 mmd:col-span-1 mmd:w-[27rem] mmd:flex-row mmd:h-[18rem] sm:justify-center sm:!h-[14rem] sm:!w-full">
             <div className="w-[13.125rem] flex justify-center items-center sm:w-[8.75rem]">
               <Image
                 alt="how_to_custom_4"
@@ -90,7 +90,7 @@ export default function HowToCustomSection() {
               </div>
             </div>
           </div>
-          <div className="w-[13.125rem] h-[23.0625rem] flex flex-col justify-between items-center md:col-start-4 md:col-end-6 mmd:col-span-1 mmd:w-[27rem] mmd:flex-row mmd:h-[18rem] sm:justify-center sm:!h-[14rem]">
+          <div className="w-[13.125rem] h-[23.0625rem] flex flex-col justify-between items-center md:col-start-4 md:col-end-6 mmd:col-span-1 mmd:w-[27rem] mmd:flex-row mmd:h-[18rem] sm:justify-center sm:!h-[14rem] sm:!w-full">
             <Image
               alt="how_to_custom_5"
               src={'/images/how_to_custom_5.svg'}
