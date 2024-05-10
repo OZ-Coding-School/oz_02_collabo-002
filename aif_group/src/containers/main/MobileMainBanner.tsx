@@ -1,10 +1,12 @@
 import DesignStartButton from '@/components/DesignStartButton';
 import SideNavigationMenu from '@/components/SideNavigationMenu';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export default function MobileMainBanner() {
   const [showSideMenu, setShowSideMenu] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (showSideMenu) {
@@ -18,13 +20,15 @@ export default function MobileMainBanner() {
     <main className="w-full h-[50rem] relative">
       <div className="w-full h-full relative">
         <div className="w-full h-[8rem] flex justify-between items-center absolute top-0 z-10">
-          <Image
-            alt="main-logo"
-            src={'/icons/logo_mint.svg'}
-            width={300}
-            height={100}
-            className="ml-[1.75rem] mt-[1.75rem]"
-          />
+          <button onClick={() => router.refresh()}>
+            <Image
+              alt="main-logo"
+              src={'/icons/logo_mint.svg'}
+              width={300}
+              height={100}
+              className="ml-[1.75rem] mt-[1.75rem]"
+            />
+          </button>
           <button onClick={() => setShowSideMenu(true)}>
             <Image alt="hamburger-menu" src={'/icons/hamburger_icon.svg'} width={30} height={30} className="mr-6" />
           </button>
