@@ -17,7 +17,7 @@ export default function HowToCustomSection() {
               src={'/images/how_to_custom_1.svg'}
               width={210}
               height={212}
-              className="drop-shadow-gray sm:w-[8.75rem] sm:h-[8.75rem]"
+              className="w-[13.125rem] h-[13.25rem] drop-shadow-gray sm:w-[8.75rem] sm:h-[8.75rem]"
             />
             <div className="w-[13.125rem] h-[7.625rem] flex flex-col justify-between items-center">
               <div className="font-bold text-[1.5rem] leading-[37px]">디자인 키워드</div>
@@ -51,7 +51,7 @@ export default function HowToCustomSection() {
                 src={'/images/how_to_custom_3.svg'}
                 width={210}
                 height={210}
-                className="drop-shadow-mint sm:w-[8.75rem] sm:h-[8.75rem]"
+                className="w-[13.125rem] h-[13.125rem] drop-shadow-mint sm:w-[8.75rem] sm:h-[8.75rem]"
               />
               <div className="w-[13.125rem] h-[7.625rem] flex flex-col justify-between items-center">
                 <div className="font-bold text-[1.5rem] leading-[37px] flex">
@@ -96,7 +96,7 @@ export default function HowToCustomSection() {
               src={'/images/how_to_custom_5.svg'}
               width={210}
               height={228}
-              className="drop-shadow-gray sm:w-[8.8rem] sm:h-[8.8rem]"
+              className="w-[13.125rem] h-[14.25rem] drop-shadow-gray sm:w-[8.8rem] sm:h-[8.8rem]"
             />
             <div className="w-[13.125rem] h-[7.625rem] flex flex-col justify-between items-center">
               <div className="font-bold text-[1.5rem] leading-[37px]">티셔츠 미리보기</div>

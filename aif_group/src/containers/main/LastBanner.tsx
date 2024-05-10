@@ -21,7 +21,7 @@ export default function LastBanner() {
             src={'/images/last_banner_img.svg'}
             width={750}
             height={370}
-            className="object-contain"
+            className="w-[46.875rem] h-[23.125rem] object-contain"
           />
         </div>
       </section>
