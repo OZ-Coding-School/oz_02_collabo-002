@@ -37,6 +37,8 @@ const config: Config = {
       animation: {
         slide1: '64s linear 0s infinite normal forwards running slide1',
         slide2: '64s linear 0s infinite normal forwards running slide2',
+        slide1_reverse: '64s linear 0s infinite normal forwards running slide1_reverse',
+        slide2_reverse: '64s linear 0s infinite normal forwards running slide2_reverse',
         up_fadeIn: '1s linear 0s up_fadeIn',
       },
       keyframes: {
@@ -46,9 +48,19 @@ const config: Config = {
           '50.01%': { transform: 'translateX(100%)' },
           '100%': { transform: 'translateX(0)' },
         },
+        slide1_reverse: {
+          '0%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(100%)' },
+          '50.01%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
         slide2: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-200%)' },
+        },
+        slide2_reverse: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(200%)' },
         },
         up_fadeIn: {
           '0%': { transform: 'translateY(20%)', opacity: '0' },

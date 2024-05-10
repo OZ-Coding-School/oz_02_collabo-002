@@ -11,7 +11,7 @@ declare global {
     Kakao: any;
   }
 }
-// const inter = Inter({ subsets: ['latin'] });
+
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
