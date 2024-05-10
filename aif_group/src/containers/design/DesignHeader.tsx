@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function DesignHeader() {
   const [isMouseHoverToQuestion, setIsMouseHoverToQuestion] = useState(false);
@@ -14,9 +14,9 @@ export default function DesignHeader() {
         <button onClick={() => router.push('/')}>
           <Image alt="logo" src={'/icons/logo.svg'} width={237} height={68} priority />
         </button>
-        <div className="w-[49.8125rem] flex justify-end ml-12">
+        <div className="w-[46rem] flex justify-end ml-3 space-x-6 mmd:w-[43rem] mmd:ml-5">
           <button
-            className="text-xl font-medium w-[13.75rem] h-[3.25rem] bg-black text-main_active group hover:bg-main_active active:bg-main_active rounded-md flex justify-center items-center mr-10"
+            className="text-xl font-medium w-[13.75rem] h-[3.25rem] bg-black text-main_active group hover:bg-main_active active:bg-main_active rounded-md flex justify-center items-center"
             onMouseEnter={() => setIsMouseHoverToQuestion(true)}
             onMouseLeave={() => setIsMouseHoverToQuestion(false)}
             onClick={() => router.push(`/design/howtouse`)}>

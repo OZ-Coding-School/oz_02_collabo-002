@@ -33,9 +33,9 @@ export default function Design() {
   return (
     <main className="w-full h-full bg-bg">
       <DesignHeader />
-      <section className="bg-bg w-fit h-[calc(100%-8.875rem)] flex justify-center items-center m-auto">
+      <section className="bg-bg w-full min-w-fit min-h-[calc(100vh-8.875rem)] h-[calc(100%-8.875rem)] flex justify-center items-center relative">
         {show.alert && (
-          <div className="absolute inset-0 bg-black bg-opacity-50 z-20 flex justify-center items-center">
+          <div className="absolute inset-0 bg-black bg-opacity-50 z-10 flex flex-row justify-center items-center">
             <InputAlert onClose={handleStartDesign} />
           </div>
         )}
@@ -44,42 +44,44 @@ export default function Design() {
             <ErrorAlert2 onClose={() => setShow(prev => ({ ...prev, errorAlert2: false }))} />
           </div>
         )}
-        {show.errorAlert3 && (
+
+        <ul className="w-fit h-full m-auto px-5 flex justify-center items-center flex-1 list-none relative">
+          {show.errorAlert3 && (
           <div className="absolute inset-0 bg-opacity-50 z-20 flex justify-center items-center">
             <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} />
           </div>
         )}
-        <div className="flex relative z-10 justify-center">
-          {showErrorAlert1 && (
-            <div className="absolute top-0 mt-5 transform -translate-y-full z-30">
-              <ErrorAlert1 onClose={() => setShowErrorAlert1(false)} show={showErrorAlert1} />
-            </div>
-          )}
-          <DesignStartBox
+
+          <li>
+            <DesignStartBox
+              onCreateDesign={handleCreateDesign}
+              userInput={userInput}
+              setUserInput={setUserInput}
+              onError={() => setShowErrorAlert1(true)}
+              disabled={showErrorAlert1}
+            />
+          </li>
+          <li className={`ml-5 select-box ${isCreateLoading ? 'box-display' : ''}`}>
+            {(isCreateLoading || createMutation.isPending) && <DesignLoadingBox type={'select'} />}
+          </li>
+          <li className={`select-box ${!isLoading.create && show.selectBox ? 'box-display' : ''}`}>
+            {!isLoading.create && show.selectBox && (
+               <DesignStartBox
             onCreateDesign={handleCreateDesign}
             userInput={userInput}
             setUserInput={setUserInput}
             onError={() => setShowErrorAlert1(true)}
             disabled={isLoading.create || isLoading.select}
-          />
-          <div
-            className={`transition-opacity duration-1000 ease-in-out ${show.selectBox ? 'opacity-100' : 'opacity-0'}`}>
-            {!isCreateLoading && !createMutation.isPending && show.selectBox && (
-              <DesignSelectBox
-                onSelectDesign={handleDesignSelection}
-                onRetry={handleRetryDesign}
-                data={data}
-                error={error}
-              />
+            />
             )}
-          </div>
-          {(isCreateLoading || createMutation.isPending) && <DesignLoadingBox type={'select'} />}
-          {isLoading.select && <DesignLoadingBox type={'preview'} />}
-          <div
-            className={`transition-opacity duration-1000 ease-in-out ${show.previewBox ? 'opacity-100' : 'opacity-0'}`}>
+          </li>
+          <li className={`ml-5 select-box ${isLoading.select ? 'box-display' : ''}`}>
+            {isLoading.select && <DesignLoadingBox type={'preview'} />}
+          </li>
+          <li className={`select-box ${show.previewBox ? 'box-display' : ''}`}>
             {!isLoading.select && show.previewBox && <DesignPreviewBox />}
-          </div>
-        </div>
+          </li>
+        </ul>
       </section>
     </main>
   );

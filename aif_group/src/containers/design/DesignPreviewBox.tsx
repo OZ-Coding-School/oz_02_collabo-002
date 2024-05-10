@@ -71,7 +71,6 @@ const DesignPreviewBox = () => {
         </div>
         <div className="flex flex-col items-center">
           <button
-
             className={`w-8 h-8 rounded-full border border-text overflow-hidden focus:outline-none bg-black ${
               selectedColorArray[currentId] === 'black' ? 'ring ring-main_active' : ''
             }`}
@@ -113,7 +112,7 @@ const DesignPreviewBox = () => {
                     sizes="(min-width: 720px) 50vw, 100vw"
                     className="drop-shadow-tShirt"
                   />
-                  <NextImage src={item} alt="T-shirt" priority width={120} height={120} className="z-10" />
+                  <NextImage src={item} alt="T-shirt" priority width={125} height={125} className="z-10" />
                 </div>
               </SwiperSlide>
             );
@@ -139,7 +138,6 @@ const DesignPreviewBox = () => {
             drawSelectedImage({ selectImage, selectedColorArray, tShirtImage, setImageFile });
             router.push('/design/feedback');
           }}>
-
           다운로드
         </button>
       </div>

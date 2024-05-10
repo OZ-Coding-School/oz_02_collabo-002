@@ -1,3 +1,4 @@
+'use client';
 import Header from '@/containers/main/Header';
 import AboutSection from '@/containers/main/AboutSection';
 import MainBanner from '@/containers/main/MainBanner';
@@ -6,14 +7,32 @@ import LastBanner from '@/containers/main/LastBanner';
 import Footer from '@/containers/main/Footer';
 import AIImageSection from '@/containers/main/AIImageSection';
 import ScrollUpButton from '@/components/ScrollUpButton';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import MobileMainBanner from '@/containers/main/MobileMainBanner';
 
 export default function Home() {
+  const [innerWidth, setInnerWidth] = useState(1220);
+
+  useEffect(() => {
+    setInnerWidth(window.innerWidth);
+  }, []);
+
+  const resizeListener = () => {
+    setInnerWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', resizeListener);
+    return () => {
+      window.removeEventListener('resize', resizeListener);
+    };
+  }, [innerWidth]);
+
   return (
     <main>
-      <Header />
+      {innerWidth >= 768 && <Header />}
       <section>
-        <MainBanner />
+        {innerWidth >= 768 ? <MainBanner /> : <MobileMainBanner />}
         <div id="about">
           <AboutSection />
         </div>

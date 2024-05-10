@@ -42,7 +42,6 @@ const InputAlert: React.FC<InputAlertProps> = ({ onClose }) => {
         </p>
 
         <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center">
-
           <div className="w-fit flex flex-col justify-start">
             <p className="text-base text-btn_text">
               &bull; 이메일 주소를 입력하면 AI이미지와 티셔츠 이미지를 다운로드할 수 있습니다.
