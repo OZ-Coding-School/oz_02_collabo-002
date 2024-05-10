@@ -21,7 +21,7 @@ export default function SideNavigationMenu({ setShowSideMenu }: { setShowSideMen
   return (
     <section className="w-full h-screen absolute top-0 right-0 z-20">
       <div className="w-full h-full bg-black opacity-50 absolute top-0" onClick={setShowSideMenu}></div>
-      <div className="w-[40%] h-full bg-black absolute right-0 flex flex-col justify-start items-start space-y-9 pl-9 pt-24">
+      <div className="w-[40%] h-full bg-black absolute right-0 flex flex-col justify-start items-start space-y-9 pl-9 pt-24 animate-fadeIn_sideMenu">
         <button className="mb-12" onClick={setShowSideMenu}>
           <Image
             alt="close"

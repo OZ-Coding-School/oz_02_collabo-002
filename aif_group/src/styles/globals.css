@@ -35,7 +35,7 @@ body {
   display: grid;
   grid-template-columns: 0fr;
   opacity: 0;
-  transition: opacity 1s, grid-template-columns 10s;
+  transition: opacity 1s, grid-template-columns 5s;
   will-change: opacity, grid-template-columns;
 }
 

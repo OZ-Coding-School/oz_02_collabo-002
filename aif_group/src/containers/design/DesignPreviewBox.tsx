@@ -107,7 +107,6 @@ const DesignPreviewBox = () => {
                   <NextImage
                     src={selectedColorArray[index] === 'white' ? tShirtImage.white : tShirtImage.black}
                     alt="T-shirt"
-                    priority
                     fill
                     sizes="(min-width: 720px) 50vw, 100vw"
                     className="drop-shadow-tShirt"

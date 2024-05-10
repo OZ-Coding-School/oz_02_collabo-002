@@ -45,7 +45,7 @@ export default function Design() {
           </div>
         )}
 
-        <ul className="w-fit h-full m-auto px-5 flex justify-center items-center flex-1 list-none relative">
+        <ul className="w-fit h-full m-auto px-5 py-6 flex justify-center items-center flex-1 list-none relative">
           {show.errorAlert3 && (
             <div className="absolute inset-0 bg-opacity-50 z-20 flex justify-center items-center">
               <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} />
@@ -63,16 +63,16 @@ export default function Design() {
           <li className={`ml-5 select-box ${isCreateLoading ? 'box-display' : ''}`}>
             {(isCreateLoading || createMutation.isPending) && <DesignLoadingBox type={'select'} />}
           </li>
-          <li className={`select-box ${!isLoading.create && show.selectBox ? 'box-display' : ''}`}>
-            {!isCreateLoading && !createMutation.isPending && show.selectBox && (
-              <DesignSelectBox
-                onSelectDesign={handleDesignSelection}
-                onRetry={handleRetryDesign}
-                data={data}
-                error={error}
-              />
-            )}
-          </li>
+          {/* <li className={`select-box ${!isLoading.create && show.selectBox ? 'box-display' : ''}`}> */}
+          {/* {!isCreateLoading && !createMutation.isPending && show.selectBox && ( */}
+          <DesignSelectBox
+            onSelectDesign={handleDesignSelection}
+            onRetry={handleRetryDesign}
+            data={data}
+            error={error}
+          />
+          {/* )} */}
+          {/* </li> */}
           <li className={`ml-5 select-box ${isLoading.select ? 'box-display' : ''}`}>
             {isLoading.select && <DesignLoadingBox type={'preview'} />}
           </li>
