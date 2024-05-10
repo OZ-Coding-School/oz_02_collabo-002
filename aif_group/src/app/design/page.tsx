@@ -47,32 +47,30 @@ export default function Design() {
 
         <ul className="w-fit h-full m-auto px-5 flex justify-center items-center flex-1 list-none relative">
           {show.errorAlert3 && (
-          <div className="absolute inset-0 bg-opacity-50 z-20 flex justify-center items-center">
-            <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} />
-          </div>
-        )}
-
+            <div className="absolute inset-0 bg-opacity-50 z-20 flex justify-center items-center">
+              <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} />
+            </div>
+          )}
           <li>
             <DesignStartBox
               onCreateDesign={handleCreateDesign}
               userInput={userInput}
               setUserInput={setUserInput}
               onError={() => setShowErrorAlert1(true)}
-              disabled={showErrorAlert1}
+              disabled={isLoading.create || isLoading.select}
             />
           </li>
           <li className={`ml-5 select-box ${isCreateLoading ? 'box-display' : ''}`}>
             {(isCreateLoading || createMutation.isPending) && <DesignLoadingBox type={'select'} />}
           </li>
           <li className={`select-box ${!isLoading.create && show.selectBox ? 'box-display' : ''}`}>
-            {!isLoading.create && show.selectBox && (
-               <DesignStartBox
-            onCreateDesign={handleCreateDesign}
-            userInput={userInput}
-            setUserInput={setUserInput}
-            onError={() => setShowErrorAlert1(true)}
-            disabled={isLoading.create || isLoading.select}
-            />
+            {!isCreateLoading && !createMutation.isPending && show.selectBox && (
+              <DesignSelectBox
+                onSelectDesign={handleDesignSelection}
+                onRetry={handleRetryDesign}
+                data={data}
+                error={error}
+              />
             )}
           </li>
           <li className={`ml-5 select-box ${isLoading.select ? 'box-display' : ''}`}>
