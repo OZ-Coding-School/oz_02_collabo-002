@@ -2,7 +2,7 @@ import React from 'react';
 
 const Question3 = () => {
   return (
-    <div className="w-[43.8125rem]">
+    <div className="max-w-[43.8125rem] w-[90%]">
       <p className="font-bold text-2xl mb-3">3. 해당 이미지 제작 서비스 편의성에 대한 만족도를 체크 해 주세요.</p>
       <div className="bg-input_bg w-full h-[11.75rem] flex justify-between px-16 py-16 mb-14">
         <label className="w-[7rem] h-[4.3125rem] text-xl text-form_color flex flex-col justify-center items-center">

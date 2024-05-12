@@ -10,7 +10,7 @@ const Question56 = () => {
   }, []);
 
   return (
-    <div className="w-[43.8125rem]">
+    <div className="max-w-[43.8125rem] w-[90%]">
       <p className="font-bold text-2xl mb-3">
         5. AI로 자신이 직접 만든 이미지를 프린팅 티셔츠로 제작해주는 서비스가 있다면 이용할 생각이 있으신가요?
       </p>

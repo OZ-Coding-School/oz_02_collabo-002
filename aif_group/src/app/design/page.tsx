@@ -9,7 +9,8 @@ import ErrorAlert2 from '@/containers/modal/ErrorAlert2';
 import ErrorAlert3 from '@/containers/modal/ErrorAlert3';
 import InputAlert from '@/containers/modal/InputAlert';
 import useShowBox from '@/hooks/useShowBox';
-import { useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function Design() {
   const {
@@ -29,6 +30,15 @@ export default function Design() {
   } = useShowBox();
 
   const [showErrorAlert1, setShowErrorAlert1] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (pathname !== '/') {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
+  }, [pathname]);
 
   return (
     <main className="w-full h-full bg-bg">

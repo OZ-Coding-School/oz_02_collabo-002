@@ -15,7 +15,7 @@ const Question4 = () => {
   }, []);
 
   return (
-    <div className="w-[43.8125rem]">
+    <div className="max-w-[43.8125rem] w-[90%]">
       <p className="font-bold text-2xl mb-3">
         4. 해당 서비스에 개선이 필요한 부분을 선택 해 주세요.
         <span className="font-normal text-xl ml-1.5">(중복선택 가능)</span>
