@@ -9,6 +9,7 @@ import Question56 from '@/components/feedbackModal/Question56';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import { RootState } from '@/states/store';
 import downloadImage from '@/utils/downloadImages';
+import { getSurveys } from '@/services/getSurveys';
 
 const FeedbackModal = () => {
   const imgFile = useAppSelector((state: RootState) => state.ref);
@@ -27,12 +28,12 @@ const FeedbackModal = () => {
           }
         }
       });
-
-      const downloadImgFilter = imgFile.filter(img => img.imageUrl !== '' && img.imageName !== '');
-      if (downloadImgFilter.length !== 0) {
-        downloadImage(downloadImgFilter);
-      }
-      router.replace('/thanks');
+      // const downloadImgFilter = imgFile.filter(img => img.imageUrl !== '' && img.imageName !== '');
+      // if (downloadImgFilter.length !== 0) {
+      //   downloadImage(downloadImgFilter);
+      // }
+      // router.replace('/thanks');
+      return 'true';
     } catch (e) {
       alert(`${e}번 문항에 답변해주세요`);
     }
@@ -52,12 +53,17 @@ const FeedbackModal = () => {
       6: formData.get('reason'),
     };
 
-    handleError(data);
+    const resultError = handleError(data);
+    console.log('resultError:', resultError);
 
     const JSONdata = JSON.stringify(data);
 
+    if (resultError === 'true') {
+      getSurveys();
+    }
+
     // // Define the API endpoint where the form data will be sent
-    // const endpoint = '/api/submit';
+    // const endpoint = 'api/surveys/answer/1';
 
     // // Set up options for the fetch request
     // const options = {
@@ -65,7 +71,7 @@ const FeedbackModal = () => {
     //   headers: {
     //     'Content-Type': 'application/json', // Specify the content type as JSON
     //   },
-    //   body: JSONdata, // Set the request body to the JSON data
+    //   // body: JSONdata, // Set the request body to the JSON data
     // };
 
     // // Send the form data to the API endpoint using fetch
@@ -73,20 +79,21 @@ const FeedbackModal = () => {
 
     // // Analyse the response data as JSON
     // const result = await response.json();
+    // console.log('result:', result);
 
     console.log(JSONdata);
   };
 
   return (
-    <main>
-      <div className="flex flex-col justify-start items-center mt-[3rem]">
-        <div className="font-bold text-[2.725rem]">디자인 제작 경험 어떠셨나요?</div>
-        <div className="font-bold text-[2.725rem] mb-4">사용자의 의견을 들려주세요!</div>
-        <div className="text-[1.6rem]">설문을 완료하시면 이미지가 자동으로 다운로드 됩니다.</div>
-        <div className="w-[65rem] h-1 border-t border-black mt-[1.6875rem] mb-[4rem]"></div>
+    <main className="w-full h-full">
+      <div className="w-full flex flex-col justify-center items-center mt-[3rem] mx-auto sm:w-[80%]">
+        <div className="font-bold text-[2.725rem] text-center sm:text-3xl">디자인 제작 경험 어떠셨나요?</div>
+        <div className="font-bold text-[2.725rem] text-center mb-4 sm:text-3xl">사용자의 의견을 들려주세요!</div>
+        <div className="text-[1.6rem] sm:text-xl">설문을 완료하시면 이미지가 자동으로 다운로드 됩니다.</div>
+        <div className="w-[90%] h-1 border-t border-black mt-[1.6875rem] mb-[4rem]"></div>
       </div>
-      <div className="flex flex-col justify-center items-center font-bold">
-        <form className="w-[43.8125rem] h-full flex flex-col items-start" onSubmit={handleSubmit}>
+      <div className="w-full flex flex-col justify-center items-center font-bold">
+        <form className="max-w-[43.8125rem] w-[90%] h-full flex flex-col items-center" onSubmit={handleSubmit}>
           <Question1 />
           <Question2 />
           <Question3 />
