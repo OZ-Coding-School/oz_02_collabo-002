@@ -56,7 +56,7 @@ const Question2 = () => {
             value={'상관없음'}
             onChange={handleCheckedRadioChange}
           />
-          <span className="w-[90%] peer-checked:text-black sm:text-lg">
+          <span className="w-[90%] peer-checked:text-black sm:text-lg mr-2">
             나만의 디자인을 가질 수 있다면 가격은 상관없다!
           </span>
         </label>
@@ -86,7 +86,7 @@ const Question2 = () => {
               value={otherPrice}
               maxLength={300}
               required={isOtherPriceChecked}
-              className="font-normal text-base bg-input_bg border-b-2 border-form_color w-[22.25rem] ml-3 absolute bottom-2 sm:w-[70%]"
+              className="font-normal text-base bg-input_bg border-b-2 border-form_color w-[22.25rem] ml-3 absolute bottom-1 sm:w-[70%] sm:text-sm sm:bottom-3"
             />
           </span>
         </label>

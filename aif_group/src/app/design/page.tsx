@@ -43,7 +43,7 @@ export default function Design() {
   return (
     <main className="w-full h-full bg-bg">
       <DesignHeader />
-      <section className="bg-bg w-full min-w-fit min-h-[calc(100vh-8.875rem)] h-[calc(100%-8.875rem)] flex justify-center items-center relative">
+      <section className="bg-bg w-full min-w-fit min-h-[calc(100vh-9rem)] h-[calc(100%-9rem)] flex justify-center items-center relative">
         {show.alert && (
           <div className="absolute inset-0 bg-black bg-opacity-50 z-10 flex flex-row justify-center items-center">
             <InputAlert onClose={handleStartDesign} />
@@ -55,7 +55,7 @@ export default function Design() {
           </div>
         )}
 
-        <ul className="w-fit h-full m-auto px-5 py-6 flex justify-center items-center flex-1 list-none relative">
+        <ul className="w-fit h-fit m-6 flex justify-center items-center flex-1 list-none relative">
           {show.errorAlert3 && (
             <div className="absolute inset-0 bg-opacity-50 z-20 flex justify-center items-center">
               <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} />
