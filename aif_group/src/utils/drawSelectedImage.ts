@@ -1,21 +1,26 @@
+import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
+import { setImgFileUrl } from '@/states/imageSlice';
+import { RootState } from '@/states/store';
+import { ImageInfo } from '@/types/designSelectBoxType';
+import { Dispatch, ThunkDispatch, UnknownAction } from '@reduxjs/toolkit';
 import { SetStateAction } from 'react';
 
 type drawPropsType = {
-  selectImage: { image: string[] };
+  selectImage: ImageInfo[];
   selectedColorArray: string[];
   tShirtImage: { white: string; black: string };
-  setImageFile: React.Dispatch<
-    SetStateAction<
-      {
-        imageUrl: string;
-        imageName: string;
-      }[]
-    >
-  >;
+  dispatch: ThunkDispatch<
+    {
+      ref: ImageInfo[];
+    },
+    undefined,
+    UnknownAction
+  > &
+    Dispatch<UnknownAction>;
 };
 
 const drawSelectedImage = async (props: drawPropsType) => {
-  props.selectImage.image.map((img, index) => {
+  props.selectImage.map((img, index) => {
     const canvas = document.createElement('canvas');
     canvas.width = 1800;
     canvas.height = 1800;
@@ -30,16 +35,12 @@ const drawSelectedImage = async (props: drawPropsType) => {
 
       const image = new Image();
       image.crossOrigin = 'anonymous';
-      image.src = img;
+      image.src = img.img_url;
       image.onload = () => {
         context?.drawImage(image, canvas.width / 2 - 540 / 2, canvas.height / 2 - 540 / 2, 540, 540);
 
         const dataUrl = canvas.toDataURL(`image/png`);
-        props.setImageFile(prev => [
-          ...prev,
-          { imageUrl: dataUrl, imageName: `티셔츠합성이미지${index}` },
-          { imageUrl: img, imageName: `ai생성이미지${index}` },
-        ]);
+        props.dispatch(setImgFileUrl({ img_url: dataUrl, img_id: `티셔츠합성이미지${index}` }));
       };
     };
   });

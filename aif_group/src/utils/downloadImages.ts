@@ -1,16 +1,17 @@
 import JSZip from 'jszip';
 import saveAs from 'file-saver';
+import { ImageInfo } from '@/types/designSelectBoxType';
 
-const downloadImage = async (files: { imageUrl: string; imageName: string }[]) => {
+const downloadImage = async (files: ImageInfo[]) => {
   const zip = new JSZip();
-  const remoteZips = files.map(async (file: { imageUrl: string; imageName: string }) => {
-    const fetchedFile = await fetch(file.imageUrl)
+  const remoteZips = files.map(async file => {
+    const fetchedFile = await fetch(file.img_url)
       .then((res: Response) => {
         if (res.status === 200) return res.blob();
       })
       .catch((err: any) => console.log(err));
     if (fetchedFile) {
-      zip.file(`${file.imageName}.png`, fetchedFile, {
+      zip.file(`${file.img_id}.png`, fetchedFile, {
         binary: true,
       });
     }

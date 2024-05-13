@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { apiClient } from './getImages';
+import { apiClient } from './instance';
 
 interface ImageCreationRequest {
   keyword: string;

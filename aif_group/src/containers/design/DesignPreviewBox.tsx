@@ -1,31 +1,25 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { default as NextImage } from 'next/image';
 import { useRouter } from 'next/navigation';
-import useSelectImage from '@/hooks/useSelectImage';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
-import { useAppDispatch } from '@/hooks/reduxHooks';
-import { setImgFileUrl } from '@/states/imageSlice';
+import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import drawSelectedImage from '@/utils/drawSelectedImage';
 import ThumbnailImage from '@/components/ThumbnailImage';
+import { RootState } from '@/states/store';
+import { useSaveImages } from '@/hooks/useSaveImages';
 
 const DesignPreviewBox = () => {
   const [selectedColorArray, setSelectedColorArray] = useState<string[]>(['white', 'white', 'white']);
   const [currentId, setCurrentId] = useState(0);
-  const [imageFile, setImageFile] = useState<{ imageUrl: string; imageName: string }[]>([]);
   const router = useRouter();
 
-  // const { selectImage } = useSelectImage();
-  // console.log(selectImage);
-  const selectImage = {
-    image: ['/images/aiImage1.png', '/images/aiImage2.png', '/images/aiImage3.png'],
-  };
-
+  const selectImage = useAppSelector((state: RootState) => state.ref);
   const dispatch = useAppDispatch();
 
   const tShirtImage = {
@@ -38,13 +32,9 @@ const DesignPreviewBox = () => {
     copyColorArray[currentId] = color;
     setSelectedColorArray(copyColorArray);
   };
+  const { error, refetch } = useSaveImages(selectImage);
 
-  useEffect(() => {
-    imageFile.map(image => {
-      dispatch(setImgFileUrl(image));
-    });
-  }, [imageFile]);
-
+  if (error) return <div>{error.message}</div>;
   return (
     <div className="w-[27rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
       <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center mb-10">
@@ -100,7 +90,7 @@ const DesignPreviewBox = () => {
           }}
           modules={[Navigation, Pagination]}
           className="px-4 w-full h-[415px]">
-          {selectImage.image?.map((item, index) => {
+          {selectImage?.map((item, index) => {
             return (
               <SwiperSlide key={index} className={'flex justify-center items-center absolute top-0'}>
                 <div className="w-[330px] h-[340px] relative -top-5 left-[50%] translate-x-[-50%] flex justify-center items-center">
@@ -110,19 +100,20 @@ const DesignPreviewBox = () => {
                     fill
                     className="drop-shadow-tShirt"
                   />
-                  <NextImage src={item} alt="T-shirt" priority width={125} height={125} className="z-10" />
+                  <NextImage src={item.img_url} alt="T-shirt" priority width={120} height={120} className="z-10" />
+
                 </div>
               </SwiperSlide>
             );
           })}
         </Swiper>
         <div className="w-full h-[4.8rem] flex justify-center items-center absolute bottom-2">
-          {selectImage.image?.map((item, index) => {
+          {selectImage?.map((item, index) => {
             return (
               <ThumbnailImage
                 key={index}
                 tShirtImage={selectedColorArray[index] === 'white' ? tShirtImage.white : tShirtImage.black}
-                image={item}
+                image={item.img_url}
                 isSelected={currentId === index ? true : false}
               />
             );
@@ -133,8 +124,9 @@ const DesignPreviewBox = () => {
         <button
           className="w-[15rem] h-full text-btn_text border-btn_border border-[1px] rounded-[4px] hover:bg-main_active hover:border-none hover:text-black"
           onClick={() => {
-            drawSelectedImage({ selectImage, selectedColorArray, tShirtImage, setImageFile });
+            drawSelectedImage({ selectImage, selectedColorArray, tShirtImage, dispatch });
             router.push('/design/feedback');
+            refetch();
           }}>
           다운로드
         </button>

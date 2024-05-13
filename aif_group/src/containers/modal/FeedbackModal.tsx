@@ -13,7 +13,6 @@ import { getSurveys } from '@/services/getSurveys';
 
 const FeedbackModal = () => {
   const imgFile = useAppSelector((state: RootState) => state.ref);
-  const dispatch = useAppDispatch();
   const router = useRouter();
 
   const handleError = (data: { [key: string]: FormDataEntryValue | FormDataEntryValue[] | null }) => {
@@ -28,12 +27,11 @@ const FeedbackModal = () => {
           }
         }
       });
-      // const downloadImgFilter = imgFile.filter(img => img.imageUrl !== '' && img.imageName !== '');
-      // if (downloadImgFilter.length !== 0) {
-      //   downloadImage(downloadImgFilter);
-      // }
-      // router.replace('/thanks');
-      return 'true';
+      const downloadImgFilter = imgFile.filter(img => img.img_url !== '');
+      if (downloadImgFilter.length !== 0) {
+        downloadImage(downloadImgFilter);
+      }
+      router.replace('/thanks');
     } catch (e) {
       alert(`${e}번 문항에 답변해주세요`);
     }
