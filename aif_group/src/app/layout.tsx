@@ -37,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <ReactQueryClientProvider>
-      <html lang="en">
+      <html lang="ko">
         <body className={`${inter.variable}`}>
           <KakaoScript />
           <AntdRegistry>

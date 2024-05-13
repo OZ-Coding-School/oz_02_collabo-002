@@ -48,13 +48,15 @@ export default function Header() {
   return (
     <div className="w-full h-header px-[3rem] py-[2.3125rem] flex justify-center items-center mmd:px-8">
       <div className="lg:w-[78.75rem] w-full flex justify-between items-center">
-        <button
-          onClick={() => {
-            pathname === '/' ? router.refresh() : router.replace('/');
-          }}
-          className="w-[237px] h-[68px] relative">
-          <Image alt="logo" src={'/icons/logo.svg'} fill priority />
-        </button>
+        {innerWidth >= 768 && (
+          <button
+            onClick={() => {
+              pathname === '/' ? router.refresh() : router.replace('/');
+            }}
+            className="w-[237px] h-[68px] relative">
+            <Image alt="logo" src={'/icons/logo.svg'} fill priority />
+          </button>
+        )}
         {pathname === '/' ? (
           <div className="w-[49.8125rem] flex justify-between ml-12 md:w-[38rem] mmd:ml-5">
             <button className="text-[1.375rem] text-[#3A3A3A] font-medium mmd:text-[1.3rem]" onClick={moveToAbout}>
@@ -73,12 +75,18 @@ export default function Header() {
             </button>
           </div>
         ) : (
-          <div className="w-[49.8125rem] flex justify-end ml-12 md:w-[38rem] mmd:w-[28rem] mmd:ml-7">
-            <button
-              className="text-[1.375rem] w-[12.5rem] h-[3.25rem] bg-black text-main_active group hover:bg-main_active active:bg-main_active rounded-md font-bold"
-              onClick={() => router.push('/')}>
-              <div className="group-hover:text-black group-active:text-black">Home</div>
-            </button>
+          <div className="w-[49.8125rem] flex justify-end ml-12 md:w-[38rem] mmd:w-[28rem] mmd:ml-7 sm:!w-full sm:mr-10">
+            {innerWidth >= 768 ? (
+              <button
+                className="text-[1.375rem] w-[12.5rem] h-[3.25rem] bg-black text-main_active group hover:bg-main_active active:bg-main_active rounded-md font-bold"
+                onClick={() => router.push('/')}>
+                <div className="group-hover:text-black group-active:text-black">Home</div>
+              </button>
+            ) : (
+              <button className="w-[12.5rem] h-[3.25rem] flex justify-end" onClick={() => router.push('/')}>
+                <Image alt="home_btn" src={'/icons/home_icon.svg'} width={40} height={40} />
+              </button>
+            )}
           </div>
         )}
       </div>

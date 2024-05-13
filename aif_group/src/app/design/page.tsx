@@ -9,7 +9,8 @@ import ErrorAlert2 from '@/containers/modal/ErrorAlert2';
 import ErrorAlert3 from '@/containers/modal/ErrorAlert3';
 import InputAlert from '@/containers/modal/InputAlert';
 import useShowBox from '@/hooks/useShowBox';
-import { useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function Design() {
   const {
@@ -29,11 +30,20 @@ export default function Design() {
   } = useShowBox();
 
   const [showErrorAlert1, setShowErrorAlert1] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (pathname !== '/') {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
+  }, [pathname]);
 
   return (
     <main className="w-full h-full bg-bg">
       <DesignHeader />
-      <section className="bg-bg w-full min-w-fit min-h-[calc(100vh-8.875rem)] h-[calc(100%-8.875rem)] flex justify-center items-center relative">
+      <section className="bg-bg w-full min-w-fit min-h-[calc(100vh-9rem)] h-[calc(100%-9rem)] flex justify-center items-center relative">
         {show.alert && (
           <div className="absolute inset-0 bg-black bg-opacity-50 z-10 flex flex-row justify-center items-center">
             <InputAlert onClose={handleStartDesign} />
@@ -44,11 +54,16 @@ export default function Design() {
             <ErrorAlert2 onClose={() => setShow(prev => ({ ...prev, errorAlert2: false }))} />
           </div>
         )}
+        {show.errorAlert3 && (
+          <div className="absolute inset-0 bg-opacity-50 z-20 flex justify-center items-center">
+            <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} />
+          </div>
+        )}
 
-        <ul className="w-fit h-full m-auto px-5 flex justify-center items-center flex-1 list-none relative">
-          {show.errorAlert3 && (
-            <div className="absolute inset-0 bg-opacity-50 z-20 flex justify-center items-center">
-              <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} />
+        <ul className="w-fit h-fit m-6 flex justify-center items-center flex-1 list-none relative">
+          {showErrorAlert1 && (
+            <div className="absolute top-0 mt-5 transform -translate-y-full z-30">
+              <ErrorAlert1 onClose={() => setShowErrorAlert1(false)} show={showErrorAlert1} />
             </div>
           )}
           <li>

@@ -35,7 +35,7 @@ body {
   display: grid;
   grid-template-columns: 0fr;
   opacity: 0;
-  transition: opacity 1s, grid-template-columns 10s;
+  transition: opacity 1s, grid-template-columns 3s;
   will-change: opacity, grid-template-columns;
 }
 
@@ -63,9 +63,24 @@ body {
   cursor: pointer;
 }
 
-.swiper-button-prev,
+/* .swiper-button-prev,
 .swiper-button-next {
   transform: translateY(-50%);
+} */
+
+.swiper-button-prev {
+  top: 40% !important;
+  left: 15px !important;
+}
+
+.swiper-button-next {
+  top: 40% !important;
+  right: 15px !important;
+}
+
+.mobile-swiper .swiper-button-prev,
+.mobile-swiper .swiper-button-next {
+  top: 50% !important;
 }
 
 .swiper-button-prev:after,
