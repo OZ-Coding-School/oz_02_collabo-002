@@ -9,19 +9,18 @@ const ErrorAlert3: React.FC<ErrorAlert3Props> = ({ onClose, show }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-    let intervalRef: NodeJS.Timeout;
+    let timerIsOpen: NodeJS.Timeout;
+    let timerShow: NodeJS.Timeout;
     if (show) {
       setIsOpen(true);
-      console.log('isOpen:', isOpen);
-      intervalRef = setTimeout(() => onClose(), 4000);
+      timerShow = setTimeout(() => onClose(), 3000);
     } else {
-      timer = setTimeout(() => setIsOpen(false), 600);
+      timerIsOpen = setTimeout(() => setIsOpen(false), 500);
     }
 
     return () => {
-      clearInterval(intervalRef);
-      clearTimeout(timer);
+      clearTimeout(timerIsOpen);
+      clearTimeout(timerShow);
     };
   }, [show]);
 
@@ -33,7 +32,7 @@ const ErrorAlert3: React.FC<ErrorAlert3Props> = ({ onClose, show }) => {
     <div
       className={`${
         show ? 'animate-fadeIn_opacity' : 'animate-fadeOut_opacity'
-      } absolute inset-0 bg-opacity-50 z-20 flex justify-center items-center`}>
+      } absolute mt-5 z-20 flex justify-center items-center`}>
       {/* 경고03 */}
       <div className="w-[28rem] h-fit bg-main_active border-[2px] border-black rounded-[16px] shadow-xl relative flex flex-col justify-center items-center">
         <div className="w-[90%] flex justify-center items-center pt-7 relative">

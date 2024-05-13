@@ -44,7 +44,13 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({
   };
 
   const handleCreateDesign = () => {
+    const specialChar = /[~!@\#$%^&*\()\-=+_'\;<>\/.\`:\"\\[\]?|{}]/gi;
+    const notFullKorean = /[ㄱ-ㅎㅏ-ㅣ]/gi;
     if (!userInput.keyword.trim() || !userInput.style) {
+      console.log(userInput.keyword);
+      onError();
+      return;
+    } else if (userInput.keyword.match(specialChar) || userInput.keyword.match(notFullKorean)) {
       onError();
       return;
     }
@@ -102,7 +108,7 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({
                     className="object-cover w-full h-full"
                   />
                 </button>
-                <span className="text-sm text-text">{style.id}</span>
+                <span className="text-sm text-text mt-1">{style.id}</span>
               </div>
             ))}
           </div>

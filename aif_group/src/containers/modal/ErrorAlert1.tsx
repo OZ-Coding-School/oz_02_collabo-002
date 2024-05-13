@@ -10,19 +10,18 @@ const ErrorAlert1: React.FC<ErrorAlert1Props> = ({ onClose, show }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-    let intervalRef: NodeJS.Timeout;
+    let timerIsOpen: NodeJS.Timeout;
+    let timerShow: NodeJS.Timeout;
     if (show) {
       setIsOpen(true);
-      console.log('isOpen:', isOpen);
-      intervalRef = setTimeout(() => onClose(), 4000);
+      timerShow = setTimeout(() => onClose(), 4000);
     } else {
-      timer = setTimeout(() => setIsOpen(false), 600);
+      timerIsOpen = setTimeout(() => setIsOpen(false), 500);
     }
 
     return () => {
-      clearInterval(intervalRef);
-      clearTimeout(timer);
+      clearTimeout(timerIsOpen);
+      clearTimeout(timerShow);
     };
   }, [show]);
 
@@ -35,7 +34,7 @@ const ErrorAlert1: React.FC<ErrorAlert1Props> = ({ onClose, show }) => {
       className={`${
         show ? 'animate-fadeIn_opacity' : 'animate-fadeOut_opacity'
       } absolute top-0 mt-5 transform -translate-y-3/4 z-30`}>
-      <div className="w-[28rem] h-[6rem] bg-main_active border-[2px] border-black rounded-[16px] shadow-xl flex justify-around items-center">
+      <div className="w-[28rem] h-[7rem] bg-main_active border-[2px] border-black rounded-[16px] shadow-xl flex justify-around items-center">
         <Image src="/icons/error1.svg" alt="error" width={40} height={40} />
         <p className="text-base">
           유효한 키워드와 스타일 1개를 선택하세요. <br />

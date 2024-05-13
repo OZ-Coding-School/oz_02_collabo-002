@@ -71,16 +71,16 @@ export default function Design() {
           <li className={`ml-5 select-box ${isCreateLoading ? 'box-display' : ''}`}>
             {(isCreateLoading || createMutation.isPending) && <DesignLoadingBox type={'select'} />}
           </li>
-          {/* <li className={`select-box ${!isLoading.create && show.selectBox ? 'box-display' : ''}`}> */}
-          {/* {!isCreateLoading && !createMutation.isPending && show.selectBox && ( */}
-          <DesignSelectBox
-            onSelectDesign={handleDesignSelection}
-            onRetry={handleRetryDesign}
-            data={data}
-            error={error}
-          />
-          {/* )} */}
-          {/* </li> */}
+          <li className={`select-box ${!isLoading.create && show.selectBox ? 'box-display' : ''}`}>
+            {!isCreateLoading && !createMutation.isPending && show.selectBox && (
+              <DesignSelectBox
+                onSelectDesign={handleDesignSelection}
+                onRetry={handleRetryDesign}
+                data={data}
+                error={error}
+              />
+            )}
+          </li>
           <li className={`ml-5 select-box ${isLoading.select ? 'box-display' : ''}`}>
             {isLoading.select && <DesignLoadingBox type={'preview'} />}
           </li>
