@@ -37,7 +37,7 @@ const Modal = ({ children }: ModalProps) => {
         className={`max-w-[75rem] w-[90%] h-[92%] z-50 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-[50px]`}>
         <div className="w-full h-[7rem] flex justify-center items-end fixed top-0 sm:h-24">
           <div className="w-[90%] flex justify-between items-center mb-[1rem]">
-            <div className="font-light font-saira text-[2rem] leading-[80%] tracking-[-0.002em] sm:text-xl sm:ml-2">
+            <div className="font-light font-saira text-[2rem] leading-[80%] tracking-[-0.002em] sm:text-2xl sm:ml-2">
               AI Fashionista
             </div>
             <button onClick={() => router.back()} className="p-3">

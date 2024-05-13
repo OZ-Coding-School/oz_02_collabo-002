@@ -110,7 +110,7 @@ const FeedbackModal = () => {
                 <input
                   type="checkbox"
                   required
-                  className="h-[1.4rem] w-[1.4rem] ml-1.5 appearance-none border-[2px] border-form_color rounded-md active:border-black checked:border-black checked:bg-black checked:bg-[url('/icons/checked_icon.svg')] bg-center absolute bottom-1 sm:bottom-0.5"
+                  className="h-[1.4rem] w-[1.4rem] ml-1.5 appearance-none border-[2px] border-form_color rounded-md active:border-black checked:border-black checked:bg-black checked:bg-[url('/icons/checked_icon.svg')] bg-center absolute bottom-1 sm:bottom-0.5 sm:w-[1.2rem] sm:h-[1.2rem]"
                 />
               </p>
             </div>
