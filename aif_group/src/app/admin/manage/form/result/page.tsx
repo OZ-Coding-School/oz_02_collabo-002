@@ -1,10 +1,13 @@
 import Modal from '@/components/Modal';
 import FormModal from '@/containers/modal/FormModal';
+import { Suspense } from 'react';
 
 function FormResultModal() {
   return (
     <Modal>
-      <FormModal />
+      <Suspense>
+        <FormModal />
+      </Suspense>
     </Modal>
   );
 }
