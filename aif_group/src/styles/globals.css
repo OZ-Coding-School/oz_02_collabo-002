@@ -63,11 +63,6 @@ body {
   cursor: pointer;
 }
 
-/* .swiper-button-prev,
-.swiper-button-next {
-  transform: translateY(-50%);
-} */
-
 .swiper-button-prev {
   top: 40% !important;
   left: 15px !important;

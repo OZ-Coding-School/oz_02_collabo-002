@@ -41,6 +41,8 @@ const config: Config = {
         slide2_reverse: '64s linear 0s infinite normal forwards running slide2_reverse',
         up_fadeIn: '1s linear 0s up_fadeIn',
         fadeIn_sideMenu: '0.6s linear 0s fadeIn_sideMenu',
+        fadeIn_opacity: '0.6s linear 0s fadeIn_opacity',
+        fadeOut_opacity: '0.6s linear 0s fadeOut_opacity',
       },
       keyframes: {
         slide1: {
@@ -70,6 +72,14 @@ const config: Config = {
         fadeIn_sideMenu: {
           '0%': { transform: 'translateX(50%)' },
           '100%': { transform: 'translateX(0)' },
+        },
+        fadeIn_opacity: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        fadeOut_opacity: {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' },
         },
       },
       dropShadow: {

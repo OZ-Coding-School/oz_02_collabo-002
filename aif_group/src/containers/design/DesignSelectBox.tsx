@@ -22,7 +22,7 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
           <p className="text-white">원하는 디자인을 최대 3개 선택하세요.</p>
         </div>
       </div>
-      <div className="w-full h-[36.9375rem] rounded-b-[14px]">
+      <div className="w-full h-fit rounded-b-[14px]">
         <div className="w-[35.75rem] h-[25.375rem] flex mt-[2.8125rem] mx-[1.875rem] mb-[4.3125rem] gap-[1.6875rem]">
           <div className="w-[12.625rem] h-[25.375rem]">
             <ul className="grid gap-[0.625rem] h-full grid-cols-2">
