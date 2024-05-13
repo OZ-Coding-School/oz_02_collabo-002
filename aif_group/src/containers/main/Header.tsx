@@ -46,7 +46,7 @@ export default function Header() {
   }, [innerWidth]);
 
   return (
-    <div className="w-full h-header px-[3rem] py-[2.3125rem] flex justify-center items-center mmd:px-8">
+    <div className="w-full h-header px-[3rem] py-[2.3125rem] flex justify-center items-center mmd:px-8 sm:h-[7rem] sm:!px-4">
       <div className="lg:w-[78.75rem] w-full flex justify-between items-center">
         {innerWidth >= 768 && (
           <button
@@ -75,7 +75,7 @@ export default function Header() {
             </button>
           </div>
         ) : (
-          <div className="w-[49.8125rem] flex justify-end ml-12 md:w-[38rem] mmd:w-[28rem] mmd:ml-7 sm:!w-full sm:mr-10">
+          <div className="w-[49.8125rem] flex justify-end ml-12 md:w-[38rem] mmd:w-[28rem] mmd:ml-7 sm:!w-full sm:mr-4">
             {innerWidth >= 768 ? (
               <button
                 className="text-[1.375rem] w-[12.5rem] h-[3.25rem] bg-black text-main_active group hover:bg-main_active active:bg-main_active rounded-md font-bold"
@@ -84,7 +84,7 @@ export default function Header() {
               </button>
             ) : (
               <button className="w-[12.5rem] h-[3.25rem] flex justify-end" onClick={() => router.push('/')}>
-                <Image alt="home_btn" src={'/icons/home_icon.svg'} width={40} height={40} />
+                <Image alt="home_btn" src={'/icons/home_icon.svg'} width={36} height={36} />
               </button>
             )}
           </div>

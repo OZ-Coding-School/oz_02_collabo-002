@@ -56,10 +56,10 @@ export default function Design() {
           </div>
         )}
 
-        <ul className="w-fit h-fit m-6 flex justify-center items-center flex-1 list-none relative">
+        <div className="w-fit h-fit m-6 flex justify-center items-center flex-1 list-none relative">
           <ErrorAlert1 onClose={() => setShowErrorAlert1(false)} show={showErrorAlert1} />
           <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} show={show.errorAlert3} />
-          <li>
+          <div>
             <DesignStartBox
               onCreateDesign={handleCreateDesign}
               userInput={userInput}
@@ -67,11 +67,11 @@ export default function Design() {
               onError={() => setShowErrorAlert1(true)}
               disabled={isLoading.create || isLoading.select}
             />
-          </li>
-          <li className={`ml-5 select-box ${isCreateLoading ? 'box-display' : ''}`}>
+          </div>
+          <div className={`ml-5 select-box ${isCreateLoading ? 'box-display' : ''}`}>
             {(isCreateLoading || createMutation.isPending) && <DesignLoadingBox type={'select'} />}
-          </li>
-          <li className={`select-box ${!isLoading.create && show.selectBox ? 'box-display' : ''}`}>
+          </div>
+          <div className={`select-box ${!isLoading.create && show.selectBox ? 'box-display' : ''}`}>
             {!isCreateLoading && !createMutation.isPending && show.selectBox && (
               <DesignSelectBox
                 onSelectDesign={handleDesignSelection}
@@ -80,14 +80,14 @@ export default function Design() {
                 error={error}
               />
             )}
-          </li>
-          <li className={`ml-5 select-box ${isLoading.select ? 'box-display' : ''}`}>
+          </div>
+          <div className={`ml-5 select-box ${isLoading.select ? 'box-display' : ''}`}>
             {isLoading.select && <DesignLoadingBox type={'preview'} />}
-          </li>
-          <li className={`select-box ${show.previewBox ? 'box-display' : ''}`}>
+          </div>
+          <div className={`select-box ${show.previewBox ? 'box-display' : ''}`}>
             {!isLoading.select && show.previewBox && <DesignPreviewBox />}
-          </li>
-        </ul>
+          </div>
+        </div>
       </section>
     </main>
   );

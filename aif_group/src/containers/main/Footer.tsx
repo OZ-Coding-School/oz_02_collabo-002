@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <main className="w-full h-footer flex flex-col justify-center items-center relative sm:h-[22rem]">
+    <main className="w-full h-footer flex flex-col justify-center items-center relative sm:h-fit sm:py-8">
       <div className="w-3/4 flex justify-between align-top mmd:flex-col-reverse sm:items-center">
         <div className="mr-8">
           <div className="text-base text-footer_text mb-[15.5px] sm:text-center">AI Fashionista l AI 패셔니스타</div>
@@ -14,7 +14,7 @@ export default function Footer() {
             Copyright 2024 © AI Fashionista, All right reserved
           </div>
         </div>
-        <div className="min-w-[14.875rem] h-[2.5rem] flex justify-between items-center space-x-3 mb-7 mmd:w-[14rem] sm:!w-[12rem] sm:space-x-1 sm:mt-8 sm:mb-10">
+        <div className="min-w-[14.875rem] h-[2.5rem] flex justify-between items-center space-x-3 mb-7 mmd:w-[14rem] sm:!w-[12rem] sm:space-x-1 sm:h-fit">
           <Link href="https://www.instagram.com/AI_Fashionista__/" rel="noopener noreferrer" target="_blank">
             <Image
               alt="insta_icon"

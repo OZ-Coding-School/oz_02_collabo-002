@@ -20,9 +20,9 @@ const config: Config = {
         form_color: '#8F8F8F',
       },
       screens: {
-        sm: { min: '393px', max: '768px' },
-        mmd: { min: '393px', max: '974px' },
-        md: { min: '393px', max: '1220px' },
+        sm: { min: '330px', max: '768px' },
+        mmd: { min: '330px', max: '974px' },
+        md: { min: '330px', max: '1220px' },
         lg: { min: '1220px' },
       },
       fontFamily: {
