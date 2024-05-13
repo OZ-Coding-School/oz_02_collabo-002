@@ -27,12 +27,11 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
         <div className="w-[35.75rem] h-[25.375rem] flex mt-[2.8125rem] mx-[1.875rem] mb-[4.3125rem] gap-[1.6875rem]">
           <div className="w-[12.625rem] h-[25.375rem]">
             <ul className="grid gap-[0.625rem] h-full grid-cols-2">
-
               {dummyDesignData?.map((image, idx) => {
                 const isSelected = selectImage.some(selectImage => selectImage.img_id === image.img_id);
                 return (
                   <div key={image.img_id}>
-                    <ImageItem image={image} onSelect={handleClickImage} isSelected={isSelected} />
+                    <ImageItem image={image.img_url} onSelect={handleClickImage} isSelected={isSelected} />
                   </div>
                 );
               })}
