@@ -1,6 +1,5 @@
 import { AxiosError } from 'axios';
 import { apiClient } from './getImages';
-import { CreationResult } from '@/hooks/useImages';
 
 interface ImageCreationRequest {
   keyword: string;
@@ -16,7 +15,7 @@ function encodeFormData(data: ImageCreationRequest) {
 }
 
 // POST 요청 보내기
-export async function createImages(keyword: string, style: string): Promise<CreationResult | void> {
+export async function createImages(keyword: string, style: string) {
   try {
     const data = {
       keyword,
