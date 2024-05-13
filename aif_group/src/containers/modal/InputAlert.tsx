@@ -42,7 +42,6 @@ const InputAlert: React.FC<InputAlertProps> = ({ onClose }) => {
         </p>
 
         <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center">
-
           <div className="w-fit flex flex-col justify-start">
             <p className="text-base text-btn_text">
               &bull; 이메일 주소를 입력하면 AI이미지와 티셔츠 이미지를 다운로드할 수 있습니다.
@@ -60,8 +59,8 @@ const InputAlert: React.FC<InputAlertProps> = ({ onClose }) => {
           <input
             type="email"
             onChange={handleEmailChange}
-            placeholder="&nbsp;&nbsp;이메일주소를 입력해주세요."
-            className="bg-gray-100 placeholder-[#79DDCB] rounded-md w-[24.625rem] h-[2.5rem] text-[15px] mb-5"
+            placeholder="이메일주소를 입력해주세요."
+            className="p-2 bg-gray-100 placeholder-[#79DDCB] rounded-md w-[24.625rem] h-[2.5rem] text-[15px] mb-5"
             required
           />
           <button type="submit" className="bg-main_active w-[15rem] h-[2.5rem] rounded-md font-medium">

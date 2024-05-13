@@ -31,7 +31,7 @@ export default function ScrollUpButton() {
 
   return toggleBtn ? (
     <button className={`fixed bottom-[9.6875rem] right-[1.875rem] animate-up_fadeIn z-10`} onClick={goToTop}>
-      <Image alt="scroll_up" src={'/icons/scroll_up.svg'} width={60} height={60} />
+      <Image alt="scroll_up" src={'/icons/scroll_up.svg'} width={60} height={60} className="sm:w-11 sm:h-11" />
     </button>
   ) : null;
 }
