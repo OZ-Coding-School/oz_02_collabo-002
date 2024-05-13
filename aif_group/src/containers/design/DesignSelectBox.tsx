@@ -31,7 +31,7 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
                 const isSelected = selectImage.some(selectImage => selectImage.img_id === image.img_id);
                 return (
                   <div key={image.img_id}>
-                    <ImageItem image={image.img_url} onSelect={handleClickImage} isSelected={isSelected} />
+                    <ImageItem image={image} onSelect={handleClickImage} isSelected={isSelected} />
                   </div>
                 );
               })}
