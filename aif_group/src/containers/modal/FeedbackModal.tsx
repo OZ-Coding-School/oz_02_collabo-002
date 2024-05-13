@@ -34,6 +34,7 @@ const FeedbackModal = () => {
       router.replace('/thanks');
     } catch (e) {
       alert(`${e}번 문항에 답변해주세요`);
+      return e;
     }
   };
 
