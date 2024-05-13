@@ -52,7 +52,7 @@ function useShowBox() {
     setIsLoading(state => ({ ...state, select: true }));
     setTimeout(() => {
       setIsLoading(state => ({ ...state, select: false }));
-    }, 1000);
+    }, 3000);
     setShow(state => ({ ...state, previewBox: true }));
   };
 

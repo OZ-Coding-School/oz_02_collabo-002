@@ -58,7 +58,7 @@ export default function Header() {
           </button>
         )}
         {pathname === '/' ? (
-          <div className="w-[49.8125rem] flex justify-between ml-12 md:w-[38rem] mmd:ml-5">
+          <div className="w-[49.8125rem] flex justify-between ml-12 md:w-[38rem] mmd:ml-8">
             <button className="text-[1.375rem] text-[#3A3A3A] font-medium mmd:text-[1.3rem]" onClick={moveToAbout}>
               About
             </button>

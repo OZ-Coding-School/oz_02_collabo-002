@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 
-const DesignLoadingBox = ({ type }: { type: string }) => {
+const DesignLoadingBox = ({ type, show }: { type: string; show: boolean }) => {
   return (
     <div
       className={`h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl bg-black ${

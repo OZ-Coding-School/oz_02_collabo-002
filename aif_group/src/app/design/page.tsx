@@ -55,10 +55,10 @@ export default function Design() {
             <ErrorAlert2 onClose={() => setShow(prev => ({ ...prev, errorAlert2: false }))} />
           </div>
         )}
+        <ErrorAlert1 onClose={() => setShowErrorAlert1(false)} show={showErrorAlert1} />
+        <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} show={show.errorAlert3} />
 
-        <div className="w-fit h-fit m-6 flex justify-center items-center flex-1 list-none relative">
-          <ErrorAlert1 onClose={() => setShowErrorAlert1(false)} show={showErrorAlert1} />
-          <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} show={show.errorAlert3} />
+        <div className="w-fit h-fit m-6 flex justify-center items-center space-x-4 list-none relative">
           <div>
             <DesignStartBox
               onCreateDesign={handleCreateDesign}
@@ -68,25 +68,31 @@ export default function Design() {
               disabled={isLoading.create || isLoading.select}
             />
           </div>
-          <div className={`ml-5 select-box ${isCreateLoading ? 'box-display' : ''}`}>
-            {(isCreateLoading || createMutation.isPending) && <DesignLoadingBox type={'select'} />}
-          </div>
-          <div className={`select-box ${!isLoading.create && show.selectBox ? 'box-display' : ''}`}>
-            {!isCreateLoading && !createMutation.isPending && show.selectBox && (
+          {(isCreateLoading || createMutation.isPending) && (
+            <div className={`ml-4 select-box ${isCreateLoading ? 'box-display' : ''}`}>
+              <DesignLoadingBox type={'select'} show={isCreateLoading || createMutation.isPending} />
+            </div>
+          )}
+          {!isCreateLoading && !createMutation.isPending && show.selectBox && (
+            <div className={`select-box ${!isLoading.create && show.selectBox ? 'box-display' : ''}`}>
               <DesignSelectBox
                 onSelectDesign={handleDesignSelection}
                 onRetry={handleRetryDesign}
                 data={data}
                 error={error}
               />
-            )}
-          </div>
-          <div className={`ml-5 select-box ${isLoading.select ? 'box-display' : ''}`}>
-            {isLoading.select && <DesignLoadingBox type={'preview'} />}
-          </div>
-          <div className={`select-box ${show.previewBox ? 'box-display' : ''}`}>
-            {!isLoading.select && show.previewBox && <DesignPreviewBox />}
-          </div>
+            </div>
+          )}
+          {isLoading.select && (
+            <div className={`ml-4 select-box ${isLoading.select ? 'box-display' : ''}`}>
+              <DesignLoadingBox type={'preview'} show={isLoading.select} />
+            </div>
+          )}
+          {!isLoading.select && show.previewBox && (
+            <div className={`select-box ${show.previewBox ? 'box-display' : ''}`}>
+              <DesignPreviewBox />
+            </div>
+          )}
         </div>
       </section>
     </main>

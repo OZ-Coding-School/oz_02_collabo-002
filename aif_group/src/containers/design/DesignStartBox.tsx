@@ -97,6 +97,7 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({
               <div key={style.id} className="flex flex-col items-center">
                 <button
                   onClick={() => handleStyleSelect(style.id)}
+                  disabled={disabled}
                   className={`w-20 h-20 rounded-full border overflow-hidden ${
                     userInput.style === style.id ? 'ring-4 ring-main_active' : 'ring-1 ring-[#AFAFAF]'
                   } focus:outline-none`}>
@@ -113,7 +114,7 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({
             ))}
           </div>
         </div>
-        <div className="w-[15rem] h-[2.5rem] mt-[1.4375rem] mx-[6.1875rem] flex justify-between">
+        <div className="w-[15rem] h-[2.5rem] mt-[1.03rem] mx-[6.1875rem] flex justify-between">
           <button
             onClick={handleCreateDesign}
             disabled={disabled}
