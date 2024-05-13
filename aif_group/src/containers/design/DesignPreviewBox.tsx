@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import drawSelectedImage from '@/utils/drawSelectedImage';
 import ThumbnailImage from '@/components/ThumbnailImage';
 import { RootState } from '@/states/store';
+import { useSaveImages } from '@/hooks/useSaveImages';
 
 const DesignPreviewBox = () => {
   const [selectedColorArray, setSelectedColorArray] = useState<string[]>(['white', 'white', 'white']);
@@ -31,7 +32,9 @@ const DesignPreviewBox = () => {
     copyColorArray[currentId] = color;
     setSelectedColorArray(copyColorArray);
   };
+  const { error, refetch } = useSaveImages(selectImage);
 
+  if (error) return <div>{error.message}</div>;
   return (
     <div className="w-[27rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
       <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center mb-10">
@@ -124,6 +127,7 @@ const DesignPreviewBox = () => {
           onClick={() => {
             drawSelectedImage({ selectImage, selectedColorArray, tShirtImage, dispatch });
             router.push('/design/feedback');
+            refetch();
           }}>
           다운로드
         </button>
