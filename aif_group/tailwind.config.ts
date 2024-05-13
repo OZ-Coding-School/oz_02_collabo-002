@@ -19,14 +19,15 @@ const config: Config = {
         footer_text: '#787878',
         form_color: '#8F8F8F',
       },
-
       screens: {
         sm: { min: '393px', max: '768px' },
-        md: { min: '768px', max: '1023px' },
-        lg: { min: '1080px' },
+        mmd: { min: '393px', max: '974px' },
+        md: { min: '393px', max: '1220px' },
+        lg: { min: '1220px' },
       },
       fontFamily: {
         saira: ['Saira', 'sans-serif'],
+        inter: ['var(--font-inter)'],
       },
       height: {
         header: '8.875rem',
@@ -36,7 +37,10 @@ const config: Config = {
       animation: {
         slide1: '64s linear 0s infinite normal forwards running slide1',
         slide2: '64s linear 0s infinite normal forwards running slide2',
+        slide1_reverse: '64s linear 0s infinite normal forwards running slide1_reverse',
+        slide2_reverse: '64s linear 0s infinite normal forwards running slide2_reverse',
         up_fadeIn: '1s linear 0s up_fadeIn',
+        fadeIn_sideMenu: '0.6s linear 0s fadeIn_sideMenu',
       },
       keyframes: {
         slide1: {
@@ -45,18 +49,34 @@ const config: Config = {
           '50.01%': { transform: 'translateX(100%)' },
           '100%': { transform: 'translateX(0)' },
         },
+        slide1_reverse: {
+          '0%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(100%)' },
+          '50.01%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
         slide2: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-200%)' },
+        },
+        slide2_reverse: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(200%)' },
         },
         up_fadeIn: {
           '0%': { transform: 'translateY(20%)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
+        fadeIn_sideMenu: {
+          '0%': { transform: 'translateX(50%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
       },
       dropShadow: {
         gray: '0 0 20px rgba(0, 0, 0, 0.25)',
         mint: '0 0 30px rgba(0, 255, 209, 0.32)',
+        tShirt: '0 4px 4px rgba(0, 0, 0, 0.2)',
+        tShirtMini: '0 1.6px 1.6px rgba(0, 0, 0, 0.2)',
       },
     },
   },

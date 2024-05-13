@@ -17,10 +17,8 @@ export default function Thanks() {
           // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
           mobileWebUrl: 'https://localhost:3000',
           webUrl: 'https://localhost:3000',
-          // webUrl: location.href,
         },
       },
-
       buttons: [
         {
           title: 'AIF 바로가기',
@@ -48,31 +46,46 @@ export default function Thanks() {
   };
 
   return (
-    <main className="h-screen">
+    <main className="h-full">
       <Header />
-      <section className="bg-bg w-full h-[calc(100vh-8.875rem)] flex justify-center">
-        <div className="bg-white w-2/3 h-[46.5rem] mx-5 rounded-[15px] shadow-[0_0_10px_rgba(0,0,0,0.25)] mt-[3.375rem]">
+      <section className="bg-bg w-full h-[calc(100%-8.875rem)] flex justify-center py-14 sm:bg-white">
+        <div className="bg-white w-2/3 h-[46.5rem] mx-5 rounded-[15px] shadow-[0_0_10px_rgba(0,0,0,0.25)] mmd:px-5 sm:shadow-none sm:w-full">
           <div className="h-full flex flex-col justify-center items-center">
-            <div className="font-saira text-[1.875rem] leading-[90%] tracking-[-0.02em]">AI Fashionista</div>
-            <div className="font-bold text-[2rem] leading-[3.9375rem] mt-[3.375rem]">
+            <div className="font-saira text-[1.875rem] leading-[90%] tracking-[-0.02em] sm:text-2xl">
+              AI Fashionista
+            </div>
+            <div className="font-bold text-[2rem] leading-[3.9375rem] mt-[3.375rem] text-center break-keep sm:text-3xl sm:font-medium">
               AIF 서비스를 이용해 주셔서 감사합니다.
             </div>
-            <div className="w-[24.5625rem] h-1 border-t border-black my-[1.6875rem]"></div>
-            <div className="font-bold text-[1.875rem] text-center leading-[3.125rem] mb-[3.875rem]">
-              커스텀 디자인 경험이 즐겁고 유쾌하셨다면 <br /> 친구에게 공유해 주세요!
+            <div className="w-[24.5625rem] h-1 border-t border-black my-[1.6875rem] sm:w-[60%] sm:my-10"></div>
+            <div className="font-semibold text-[1.875rem] text-center leading-[3.125rem] mb-[3.875rem] sm:text-2xl sm:font-normal">
+              <span className="sm:font-semibold">커스텀 디자인 경험</span>이 즐겁고 유쾌하셨다면 <br />{' '}
+              <span className="sm:font-semibold">친구에게 공유</span>해 주세요!
             </div>
             <div className="w-[12.5rem] h-[5.625rem] flex justify-center items-center">
               <div className="h-[5.625rem] flex flex-col justify-between items-center mr-[1.375rem]">
                 <button onClick={handleShearToKakao}>
-                  <Image alt="kakao_link_icon" src={'/icons/kakao_link_icon.svg'} width={56} height={56} />
+                  <Image
+                    alt="kakao_link_icon"
+                    src={'/icons/kakao_link_icon.svg'}
+                    width={56}
+                    height={56}
+                    className="sm:w-12 sm:h-12"
+                  />
                 </button>
-                <div className="text-[0.9375rem]">카카오톡</div>
+                <div className="text-[1rem]">카카오톡</div>
               </div>
               <div className="h-[5.625rem] flex flex-col justify-between items-center">
                 <button onClick={handleCopyClick}>
-                  <Image alt="link_icon" src={'/icons/link_icon.svg'} width={56} height={56} />
+                  <Image
+                    alt="link_icon"
+                    src={'/icons/link_icon.svg'}
+                    width={56}
+                    height={56}
+                    className="sm:w-12 sm:h-12"
+                  />
                 </button>
-                <div className="text-[0.9375rem]">링크공유</div>
+                <div className="text-[1rem]">링크공유</div>
               </div>
             </div>
           </div>

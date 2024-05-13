@@ -1,51 +1,59 @@
 'use client';
 import { MAX_SELECTIONS } from '@/constants';
-import { CurrentImage, SelectImage } from '@/types/designSelectBoxType';
-import { useRef, useState } from 'react';
+import { ImageInfo } from '@/types/designSelectBoxType';
+import { useEffect, useRef, useState } from 'react';
+import { useAppDispatch, useAppSelector } from './reduxHooks';
+import { RootState } from '@/states/store';
+import { deleteImgFile, resetImgFile, setImgFileUrl } from '@/states/imageSlice';
 
 function useSelectImage() {
+  const [isDisabled, setIsDisabled] = useState(false);
   const checkboxRef = useRef<HTMLInputElement>(null);
-  const [currentImage, setCurrentImage] = useState<CurrentImage>({
-    image: '',
-    idx: undefined,
-  });
-  const [selectImage, setSelectImage] = useState<SelectImage>({
-    image: [],
-    idx: [],
-  });
+  const [currentImage, setCurrentImage] = useState<ImageInfo>();
 
-  function toggleCheck() {
-    if (!checkboxRef.current) return;
-    checkboxRef.current.checked = false;
+  const selectImage = useAppSelector((state: RootState) => state.ref);
+  const dispatch = useAppDispatch();
 
-    if (currentImage.idx === undefined) return;
-    handleSelectImage(currentImage.image, currentImage.idx);
+  useEffect(() => {
+    dispatch(resetImgFile());
+  }, [dispatch]);
+
+  function handleDisabled(id: number) {
+    if (selectImage.length === MAX_SELECTIONS && !selectImage.filter(image => image.img_id === id)) {
+      setIsDisabled(true);
+    } else {
+      setIsDisabled(false);
+    }
   }
 
-  function handleSelectImage(image: string, idx: number) {
-    if (selectImage.idx.includes(idx)) {
-      setSelectImage(prevState => ({
-        ...prevState,
-        idx: selectImage.idx.filter(item => item !== idx),
-      }));
-
-      if (currentImage.idx === idx) {
-        setCurrentImage({ image: '', idx: undefined });
-      }
+  function handleSelectImage(selectedImage: ImageInfo) {
+    if (selectImage.find(image => image.img_id === selectedImage.img_id)) {
+      // selectImage에서 빼는 로직
+      dispatch(deleteImgFile(selectedImage.img_id));
+      setCurrentImage(undefined);
+      if (!checkboxRef.current) return;
+      checkboxRef.current.checked = false;
     } else {
-      if (selectImage.idx.length < MAX_SELECTIONS) {
-        setCurrentImage({ image: image, idx: idx });
-
-        setSelectImage(prevState => ({
-          image: [...prevState.image, image],
-          idx: [...prevState.idx, idx],
-        }));
+      if (selectImage.length < MAX_SELECTIONS) {
+        dispatch(setImgFileUrl(selectedImage));
         if (!checkboxRef.current) return;
         checkboxRef.current.checked = true;
       }
     }
   }
-  return { toggleCheck, handleSelectImage, selectImage, currentImage, checkboxRef };
+
+  function handleClickImage(clickedImage: ImageInfo) {
+    if (!checkboxRef.current) return;
+    if (selectImage.some(image => image.img_id === clickedImage.img_id)) {
+      checkboxRef.current.checked = true;
+    } else {
+      checkboxRef.current.checked = false;
+    }
+    setCurrentImage(clickedImage);
+    handleDisabled(clickedImage.img_id);
+  }
+
+  return { handleSelectImage, handleClickImage, selectImage, currentImage, checkboxRef, isDisabled };
 }
 
 export default useSelectImage;

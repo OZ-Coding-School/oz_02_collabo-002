@@ -4,13 +4,18 @@ import '@/styles/globals.css';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from 'antd';
 import KakaoScript from '@/services/kakaoScript';
+import { ReactQueryClientProvider } from '@/components/ReactQueryClientProvider';
 
 declare global {
   interface Window {
     Kakao: any;
   }
 }
-const inter = Inter({ subsets: ['latin'] });
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -31,14 +36,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <KakaoScript />
-        <div id="modal-root" />
-        <AntdRegistry>
-          <ConfigProvider theme={theme}>{children}</ConfigProvider>
-        </AntdRegistry>
-      </body>
-    </html>
+    <ReactQueryClientProvider>
+      <html lang="ko">
+        <body className={`${inter.variable}`}>
+          <KakaoScript />
+          <AntdRegistry>
+            <ConfigProvider theme={theme}>{children}</ConfigProvider>
+          </AntdRegistry>
+        </body>
+      </html>
+    </ReactQueryClientProvider>
   );
 }
