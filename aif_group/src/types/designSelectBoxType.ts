@@ -12,9 +12,9 @@ export interface SelectImage {
 export interface ImageInfo {
   img_id: number;
   img_url: string;
-  keyword_input: string;
-  member_id: number;
-  style_code: string;
+  keyword_input?: string;
+  member_id?: number;
+  style_code?: string;
 }
 export interface FetchImageData {
   data: ImageInfo[];
