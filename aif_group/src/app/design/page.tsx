@@ -66,7 +66,7 @@ export default function Design() {
         <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} show={show.errorAlert3} />
 
         <div className="w-fit h-full flex justify-center items-center space-x-4 list-none p-6 xm:p-0 xm:w-full">
-          {innerWidth <= 490 ? (
+          {innerWidth < 490 ? (
             !isCreateLoading &&
             !isLoading.select &&
             !disable &&
@@ -89,13 +89,15 @@ export default function Design() {
             />
           )}
           {(isCreateLoading || createMutation.isPending) && innerWidth <= 490 && disable && (
-            <DesignLoadingBox type={'select'} show={isCreateLoading || createMutation.isPending} />
+            <DesignLoadingBox type={'select'} />
           )}
-          {innerWidth <= 490
+          {innerWidth < 490
             ? !isCreateLoading &&
               !createMutation.isPending &&
               show.selectBox &&
-              disable && (
+              disable &&
+              !isLoading.select &&
+              !show.previewBox && (
                 <DesignSelectBox
                   onSelectDesign={handleDesignSelection}
                   onRetry={handleRetryDesign}
@@ -113,7 +115,7 @@ export default function Design() {
                   error={error}
                 />
               )}
-          {isLoading.select && <DesignLoadingBox type={'preview'} show={isLoading.select} />}
+          {isLoading.select && <DesignLoadingBox type={'preview'} />}
           {!isLoading.select && show.previewBox && <DesignPreviewBox />}
         </div>
       </section>

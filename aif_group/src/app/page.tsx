@@ -9,24 +9,10 @@ import AIImageSection from '@/containers/main/AIImageSection';
 import ScrollUpButton from '@/components/ScrollUpButton';
 import React, { useEffect, useState } from 'react';
 import MobileMainBanner from '@/containers/main/MobileMainBanner';
+import useCheckWidth from '@/hooks/useCheckWidth';
 
 export default function Home() {
-  const [innerWidth, setInnerWidth] = useState(1220);
-
-  useEffect(() => {
-    setInnerWidth(window.innerWidth);
-  }, []);
-
-  const resizeListener = () => {
-    setInnerWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', resizeListener);
-    return () => {
-      window.removeEventListener('resize', resizeListener);
-    };
-  }, [innerWidth]);
+  const innerWidth = useCheckWidth();
 
   return (
     <main>

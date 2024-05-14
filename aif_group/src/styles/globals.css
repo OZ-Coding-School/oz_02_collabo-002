@@ -64,12 +64,12 @@ body {
 
 .mobile-swiper .swiper-button-prev,
 .mobile-swiper .swiper-button-next {
-  top: 50% !important;
+  top: 45% !important;
 }
 
 .swiper-button-prev:after,
 .swiper-button-next:after {
-  font-size: 2rem !important;
+  font-size: 1.6rem !important;
   font-weight: 600 !important;
   color: black !important;
 }

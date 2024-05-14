@@ -70,7 +70,7 @@ const SampleModalMobile = () => {
                 />
               </div>
               <div className="w-full h-14 bg-input_bg relative z-30 flex justify-center items-center">
-                <div className="text-lg text-btn_text">{item.keyword}</div>
+                <div className="text-lg text-btn_text xm:text-base">{item.keyword}</div>
               </div>
             </SwiperSlide>
           );

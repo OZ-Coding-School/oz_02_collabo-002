@@ -14,7 +14,7 @@ export default function AboutSection() {
               AI Fashionista
             </div>
           </div>
-          <div className="h-[8.0625rem] font-bold text-[2.625rem] leading-[58px] mt-[2.25rem] tracking-wider sm:text-[2.125rem] sm:leading-[44px] sm:h-fit sm:mb-4">
+          <div className="h-[8.0625rem] font-bold text-[2.625rem] leading-[58px] mt-[2.25rem] tracking-wider sm:text-[2rem] sm:leading-[44px] sm:h-fit sm:mb-4">
             내가 디자인하는 <br /> 나만의 AI 맞춤형 티셔츠
           </div>
           <div className="lg:max-w-[42.5rem] lg:min-w-[38.625rem] h-fit text-[1.375rem] leading-[37px] tracking-tighter mt-[5px] mb-[2.4375rem] md:w-full sm:text-lg sm:leading-6 sm:mb-[2rem]">

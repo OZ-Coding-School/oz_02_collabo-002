@@ -1,11 +1,10 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function useCheckWidth() {
   const [innerWidth, setInnerWidth] = useState(1220);
-  //   const innerWidth = useRef<number>(1220);
+
   useEffect(() => {
-    // innerWidth.current = window.innerWidth;
     setInnerWidth(window.innerWidth);
   }, []);
 

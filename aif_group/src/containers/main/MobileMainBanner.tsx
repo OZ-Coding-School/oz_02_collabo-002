@@ -26,7 +26,7 @@ export default function MobileMainBanner() {
               src={'/icons/logo_mint.svg'}
               width={300}
               height={100}
-              className="w-[18.75rem] h-[6.25rem] ml-[1.75rem] mt-[1.75rem]"
+              className="w-[18.75rem] h-[6.25rem] ml-[1.75rem] mt-[1.75rem] xm:w-56 xm:h-16"
             />
           </button>
           <button onClick={() => setShowSideMenu(true)}>
@@ -35,7 +35,7 @@ export default function MobileMainBanner() {
               src={'/icons/hamburger_icon.svg'}
               width={30}
               height={30}
-              className="w-[1.875rem] h-[1.875rem] mr-6"
+              className="w-[1.875rem] h-[1.875rem] mr-6 xm:w-7 xm:h-7"
             />
           </button>
         </div>

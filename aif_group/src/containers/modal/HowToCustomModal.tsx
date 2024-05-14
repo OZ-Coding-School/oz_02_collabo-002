@@ -1,33 +1,19 @@
 'use client';
+import useCheckWidth from '@/hooks/useCheckWidth';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 function HowToCustomModal() {
   const router = useRouter();
-  const [innerWidth, setInnerWidth] = useState(1220);
-
-  useEffect(() => {
-    setInnerWidth(window.innerWidth);
-  }, []);
-
-  const resizeListener = () => {
-    setInnerWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', resizeListener);
-    return () => {
-      window.removeEventListener('resize', resizeListener);
-    };
-  }, [innerWidth]);
+  const innerWidth = useCheckWidth();
 
   return (
     <main className="w-full h-full">
-      <div className="flex flex-col justify-center items-center mt-[3rem] mx-auto sm:w-[80%]">
-        <div className="font-bold text-[3.725rem] text-center mb-4 sm:text-4xl">How to Custom</div>
-        <div className="text-[1.6rem] sm:text-xl">AIF 디자인 툴 사용 방법입니다.</div>
-        <div className="w-[90%] h-1 border-t border-black mt-[1.6875rem] mb-[2.6rem] sm:w-full"></div>
+      <div className="flex flex-col justify-center items-center mt-[3rem] mx-auto sm:w-[80%] xm:mt-4">
+        <div className="font-bold text-[3.725rem] text-center mb-4 sm:text-4xl xm:text-3xl">How to Custom</div>
+        <div className="text-[1.6rem] sm:text-xl xm:text-lg">AIF 디자인 툴 사용 방법입니다.</div>
+        <div className="w-full h-1 border-t border-black mt-[1.6875rem] mb-[2.6rem] sm:w-full"></div>
       </div>
       <div className="flex flex-col justify-center items-center">
         {innerWidth >= 768 ? (
@@ -112,9 +98,9 @@ function HowToCustomModal() {
           </div>
         )}
         <button
-          className="w-[10rem] h-[3.5rem] bg-black group hover:bg-main_active active:bg-main_active flex justify-center items-center rounded-[4px] mt-[5rem] mb-2 sm:w-32 sm:h-12 sm:mt-14"
+          className="w-[10rem] h-[3.5rem] bg-black group hover:bg-main_active active:bg-main_active flex justify-center items-center rounded-[4px] mt-[5rem] mb-2 sm:w-30 sm:h-10 sm:mt-14 xm:w-28"
           onClick={() => router.back()}>
-          <div className="font-bold text-[1.4rem] text-main_active group-hover:text-black group-active:text-black sm:text-xl">
+          <div className="font-bold text-[1.4rem] text-main_active group-hover:text-black group-active:text-black sm:text-lg xm:text-base">
             창닫기
           </div>
         </button>

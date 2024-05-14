@@ -11,7 +11,7 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
 
   return (
     <section className="w-[39.75rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl xm:w-full xm:min-h-screen xm:h-full xm:rounded-none xm:border-none">
-      <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center xm:h-[40%] xm:rounded-none">
+      <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center py-6 xm:h-[40%] xm:rounded-none">
         <div className="bg-main_active flex mt-[1.9375rem] w-[4.375rem] h-[1.25rem] justify-center items-center rounded-[3px]">
           <p>STEP</p>
           <p className="font-black ml-[2px]">02</p>
