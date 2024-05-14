@@ -35,7 +35,7 @@ const InputAlert: React.FC<InputAlertProps> = ({ onClose }) => {
       </div>
 
       <div className="w-[90%] flex flex-col justify-center items-center mx-auto mt-11 mb-10 text-center">
-        <p className="bg-main_active text-[28px] font-bold px-2 mb-4">이메일 주소를 입력해주세요.</p>
+        <p className="bg-main_active text-[28px] font-bold px-2 mb-4 sm:text-2xl">이메일 주소를 입력해주세요.</p>
         <p className="w-full text-xl mb-3">
           <span className="font-bold">이메일주소</span> 등록 시 이미지를&nbsp;
           <span className="font-bold">최대 8개 무료로 생성</span>할 수 있습니다.

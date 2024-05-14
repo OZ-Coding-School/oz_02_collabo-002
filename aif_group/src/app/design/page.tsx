@@ -8,6 +8,7 @@ import ErrorAlert1 from '@/containers/modal/ErrorAlert1';
 import ErrorAlert2 from '@/containers/modal/ErrorAlert2';
 import ErrorAlert3 from '@/containers/modal/ErrorAlert3';
 import InputAlert from '@/containers/modal/InputAlert';
+import useCheckWidth from '@/hooks/useCheckWidth';
 import useShowBox from '@/hooks/useShowBox';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -33,6 +34,7 @@ export default function Design() {
 
   const [showErrorAlert1, setShowErrorAlert1] = useState(false);
   const pathname = usePathname();
+  const innerWidth = useCheckWidth();
 
   // 모달이 떠있는 경우 바깥 스크롤 동작 막기
   useEffect(() => {
@@ -64,24 +66,53 @@ export default function Design() {
         <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} show={show.errorAlert3} />
 
         <div className="w-fit h-full flex justify-center items-center space-x-4 list-none p-6 xm:p-0 xm:w-full">
-          <DesignStartBox
-            onCreateDesign={handleCreateDesign}
-            userInput={userInput}
-            setUserInput={setUserInput}
-            onError={() => setShowErrorAlert1(true)}
-            disabled={isLoading.create || isLoading.select || disable}
-          />
-          {(isCreateLoading || createMutation.isPending) && (
-            <DesignLoadingBox type={'select'} show={isCreateLoading || createMutation.isPending} />
-          )}
-          {!isCreateLoading && !createMutation.isPending && show.selectBox && (
-            <DesignSelectBox
-              onSelectDesign={handleDesignSelection}
-              onRetry={handleRetryDesign}
-              data={data}
-              error={error}
+          {innerWidth <= 490 ? (
+            !isCreateLoading &&
+            !isLoading.select &&
+            !disable &&
+            !show.previewBox && (
+              <DesignStartBox
+                onCreateDesign={handleCreateDesign}
+                userInput={userInput}
+                setUserInput={setUserInput}
+                onError={() => setShowErrorAlert1(true)}
+                disabled={isLoading.create || isLoading.select || disable}
+              />
+            )
+          ) : (
+            <DesignStartBox
+              onCreateDesign={handleCreateDesign}
+              userInput={userInput}
+              setUserInput={setUserInput}
+              onError={() => setShowErrorAlert1(true)}
+              disabled={isLoading.create || isLoading.select || disable}
             />
           )}
+          {(isCreateLoading || createMutation.isPending) && innerWidth <= 490 && disable && (
+            <DesignLoadingBox type={'select'} show={isCreateLoading || createMutation.isPending} />
+          )}
+          {innerWidth <= 490
+            ? !isCreateLoading &&
+              !createMutation.isPending &&
+              show.selectBox &&
+              disable && (
+                <DesignSelectBox
+                  onSelectDesign={handleDesignSelection}
+                  onRetry={handleRetryDesign}
+                  data={data}
+                  error={error}
+                />
+              )
+            : !isCreateLoading &&
+              !createMutation.isPending &&
+              show.selectBox && (
+                <DesignSelectBox
+                  onSelectDesign={handleDesignSelection}
+                  onRetry={handleRetryDesign}
+                  data={data}
+                  error={error}
+                />
+              )}
           {isLoading.select && <DesignLoadingBox type={'preview'} show={isLoading.select} />}
           {!isLoading.select && show.previewBox && <DesignPreviewBox />}
         </div>

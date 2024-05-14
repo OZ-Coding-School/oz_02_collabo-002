@@ -1,13 +1,14 @@
 'use client';
+import useCheckWidth from '@/hooks/useCheckWidth';
 import useMoveScroll from '@/hooks/useMoveScroll';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 export default function Header() {
-  const [innerWidth, setInnerWidth] = useState(1220);
   const router = useRouter();
   const pathname = usePathname();
+  const innerWidth = useCheckWidth();
 
   const { element: aboutRef, onMoveToElement: moveToAbout } = useMoveScroll();
   const { element: aiRef, onMoveToElement: moveToAi } = useMoveScroll();
@@ -29,21 +30,6 @@ export default function Header() {
     aiRef.current = document.querySelector('#ai');
     howRef.current = document.querySelector('#how');
   }, [aboutRef, aiRef, howRef]);
-
-  useEffect(() => {
-    setInnerWidth(window.innerWidth);
-  }, []);
-
-  const resizeListener = () => {
-    setInnerWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', resizeListener);
-    return () => {
-      window.removeEventListener('resize', resizeListener);
-    };
-  }, [innerWidth]);
 
   return (
     <div className="w-full h-header px-[3rem] py-[2.3125rem] flex justify-center items-center mmd:px-8 sm:h-[7rem] sm:!px-4">

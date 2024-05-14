@@ -10,8 +10,8 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
   const slicingData = data?.slice(0, 8);
 
   return (
-    <section className="w-[39.75rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl">
-      <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center">
+    <section className="w-[39.75rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl xm:w-full xm:min-h-screen xm:h-full xm:rounded-none xm:border-none">
+      <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center xm:h-[40%] xm:rounded-none">
         <div className="bg-main_active flex mt-[1.9375rem] w-[4.375rem] h-[1.25rem] justify-center items-center rounded-[3px]">
           <p>STEP</p>
           <p className="font-black ml-[2px]">02</p>
@@ -22,8 +22,8 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
           <p className="text-white">원하는 디자인을 최대 3개 선택하세요.</p>
         </div>
       </div>
-      <div className="w-full h-fit rounded-b-[14px]">
-        <div className="w-[35.75rem] h-[25.375rem] flex mt-[2.8125rem] mx-[1.875rem] mb-[4.3125rem] gap-[1.6875rem]">
+      <div className="w-full h-fit rounded-b-[14px] xm:h-[60%]">
+        <div className="w-[35.75rem] h-[25.375rem] flex mt-[2.8125rem] mx-[1.875rem] mb-[4.3125rem] gap-[1.6875rem] xm:m-0 xm:flex-col xm:h-full">
           <div className="w-[12.625rem] h-[25.375rem]">
             <ul className="grid gap-[0.625rem] h-full grid-cols-2">
               {slicingData?.map((image, idx) => {
@@ -65,15 +65,15 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
             </div>
           </div>
         </div>
-        <div className="w-[33.375rem] h-[2.5rem] mb-[1.9375rem] mx-[3.1875rem] flex justify-between">
+        <div className="w-[33.375rem] h-[2.5rem] my-[1.9375rem] mx-auto flex justify-between xm:w-full xm:justify-around">
           <button
             onClick={onRetry}
-            className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text hover:text-black hover:border-none">
+            className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text hover:text-black hover:border-none xm:w-[40%]">
             다시 생성하기
           </button>
           <button
             onClick={onSelectDesign}
-            className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text hover:text-black hover:border-none">
+            className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text hover:text-black hover:border-none xm:w-[40%]">
             디자인 선택하기
           </button>
         </div>
