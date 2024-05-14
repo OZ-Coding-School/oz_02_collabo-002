@@ -20,6 +20,7 @@ const config: Config = {
         form_color: '#8F8F8F',
       },
       screens: {
+        xm: { min: '330px', max: '490px' },
         sm: { min: '330px', max: '768px' },
         mmd: { min: '330px', max: '974px' },
         md: { min: '330px', max: '1220px' },
@@ -43,6 +44,7 @@ const config: Config = {
         fadeIn_sideMenu: '0.6s linear 0s fadeIn_sideMenu',
         fadeIn_opacity: '0.5s linear 0s fadeIn_opacity',
         fadeOut_opacity: '0.5s linear 0s fadeOut_opacity',
+        fadeIn_box: '0.5s linear 0s fadeIn_box',
       },
       keyframes: {
         slide1: {
@@ -80,6 +82,10 @@ const config: Config = {
         fadeOut_opacity: {
           '0%': { opacity: '1' },
           '100%': { opacity: '0' },
+        },
+        fadeIn_box: {
+          '0%': { opacity: '0', transform: 'translateX(-20%)', zIndex: '0' },
+          '100%': { opacity: '1', transform: 'translateX(0%)', zIndex: '1' },
         },
       },
       dropShadow: {

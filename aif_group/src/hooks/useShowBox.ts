@@ -33,6 +33,8 @@ function useShowBox() {
     }));
   };
 
+  const [disable, setDisable] = useState(false);
+
   const handleCreateDesign = async () => {
     if (designCreateCount < 2) {
       console.log(userInput);
@@ -42,6 +44,7 @@ function useShowBox() {
         selectBox: true,
         previewBox: false,
       }));
+      setDisable(true);
       setDesignCreateCount(prev => prev + 1);
     } else {
       setShow(state => ({ ...state, errorAlert3: true }));
@@ -76,9 +79,11 @@ function useShowBox() {
     isCreateLoading,
     data,
     error,
+    disable,
     createMutation,
     designCreateCount,
     setShow,
+    setDisable,
   };
 }
 

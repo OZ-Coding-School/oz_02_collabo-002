@@ -23,10 +23,12 @@ export default function Design() {
     isLoading,
     data,
     error,
+    disable,
     isCreateLoading,
     createMutation,
     handleRetryDesign,
     setShow,
+    setDisable,
   } = useShowBox();
 
   const [showErrorAlert1, setShowErrorAlert1] = useState(false);
@@ -42,9 +44,9 @@ export default function Design() {
   }, [pathname]);
 
   return (
-    <main className="w-full h-full bg-bg">
+    <main className="bg-bg">
       <DesignHeader />
-      <section className="bg-bg w-full min-w-fit min-h-[calc(100vh-8.875rem)] h-[calc(100%-8.875rem)] flex justify-center items-center relative">
+      <section className="bg-bg w-full min-w-fit min-h-[calc(100vh-8.875rem)] h-[calc(100%-8.875rem)] flex justify-center items-center relative xm:min-w-full sm:min-h-screen sm:h-full">
         {show.alert && (
           <div className="absolute inset-0 bg-black bg-opacity-50 z-10 flex flex-row justify-center items-center">
             <InputAlert onClose={handleStartDesign} />
@@ -52,47 +54,36 @@ export default function Design() {
         )}
         {show.errorAlert2 && (
           <div className="absolute inset-0 bg-opacity-50 z-20 flex justify-center items-center">
-            <ErrorAlert2 onClose={() => setShow(prev => ({ ...prev, errorAlert2: false }))} />
+            <ErrorAlert2
+              onClose={() => setShow(prev => ({ ...prev, errorAlert2: false }))}
+              setDisable={() => setDisable(false)}
+            />
           </div>
         )}
         <ErrorAlert1 onClose={() => setShowErrorAlert1(false)} show={showErrorAlert1} />
         <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} show={show.errorAlert3} />
 
-        <div className="w-fit h-fit m-6 flex justify-center items-center space-x-4 list-none relative">
-          <div>
-            <DesignStartBox
-              onCreateDesign={handleCreateDesign}
-              userInput={userInput}
-              setUserInput={setUserInput}
-              onError={() => setShowErrorAlert1(true)}
-              disabled={isLoading.create || isLoading.select}
-            />
-          </div>
+        <div className="w-fit h-full flex justify-center items-center space-x-4 list-none p-6 xm:p-0 xm:w-full">
+          <DesignStartBox
+            onCreateDesign={handleCreateDesign}
+            userInput={userInput}
+            setUserInput={setUserInput}
+            onError={() => setShowErrorAlert1(true)}
+            disabled={isLoading.create || isLoading.select || disable}
+          />
           {(isCreateLoading || createMutation.isPending) && (
-            <div className={`ml-4 select-box ${isCreateLoading ? 'box-display' : ''}`}>
-              <DesignLoadingBox type={'select'} show={isCreateLoading || createMutation.isPending} />
-            </div>
+            <DesignLoadingBox type={'select'} show={isCreateLoading || createMutation.isPending} />
           )}
           {!isCreateLoading && !createMutation.isPending && show.selectBox && (
-            <div className={`select-box ${!isLoading.create && show.selectBox ? 'box-display' : ''}`}>
-              <DesignSelectBox
-                onSelectDesign={handleDesignSelection}
-                onRetry={handleRetryDesign}
-                data={data}
-                error={error}
-              />
-            </div>
+            <DesignSelectBox
+              onSelectDesign={handleDesignSelection}
+              onRetry={handleRetryDesign}
+              data={data}
+              error={error}
+            />
           )}
-          {isLoading.select && (
-            <div className={`ml-4 select-box ${isLoading.select ? 'box-display' : ''}`}>
-              <DesignLoadingBox type={'preview'} show={isLoading.select} />
-            </div>
-          )}
-          {!isLoading.select && show.previewBox && (
-            <div className={`select-box ${show.previewBox ? 'box-display' : ''}`}>
-              <DesignPreviewBox />
-            </div>
-          )}
+          {isLoading.select && <DesignLoadingBox type={'preview'} show={isLoading.select} />}
+          {!isLoading.select && show.previewBox && <DesignPreviewBox />}
         </div>
       </section>
     </main>

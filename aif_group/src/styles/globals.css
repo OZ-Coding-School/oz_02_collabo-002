@@ -29,19 +29,8 @@ html {
 
 body {
   font-family: var(--font-inter);
-}
-
-.select-box {
-  display: grid;
-  grid-template-columns: 0fr;
-  opacity: 0;
-  transition: opacity 3s, grid-template-columns 3s;
-  will-change: opacity, grid-template-columns;
-}
-
-.box-display {
-  grid-template-columns: 1fr;
-  opacity: 1;
+  width: 100%;
+  height: 100%;
 }
 
 .swiper-pagination {

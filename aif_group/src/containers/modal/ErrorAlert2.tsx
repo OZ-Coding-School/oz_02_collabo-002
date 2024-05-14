@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { SetStateAction } from 'react';
 import Image from 'next/image';
+import { Action, Dispatch } from '@reduxjs/toolkit';
 
 interface ErrorAlert2Props {
   onClose: () => void;
+  setDisable: () => void;
 }
 
-const ErrorAlert2: React.FC<ErrorAlert2Props> = ({ onClose }) => {
+const ErrorAlert2: React.FC<ErrorAlert2Props> = ({ onClose, setDisable }) => {
   return (
     <div>
       <div className="relative w-[28rem] h-fit bg-main_active border-[2px] border-black rounded-[16px] shadow-xl">
@@ -33,6 +35,7 @@ const ErrorAlert2: React.FC<ErrorAlert2Props> = ({ onClose }) => {
             </button>
             <button
               onClick={() => {
+                setDisable();
                 onClose();
               }}
               className="text-lg text-main_active bg-black hover:bg-main_active hover:text-black w-[50%] h-[3.25rem] rounded-br-[14px]">
