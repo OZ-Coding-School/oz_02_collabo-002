@@ -32,8 +32,10 @@ export default function Design() {
   const [showErrorAlert1, setShowErrorAlert1] = useState(false);
   const pathname = usePathname();
 
+  useEffect;
+  // 모달이 떠있는 경우 바깥 스크롤 동작 막기
   useEffect(() => {
-    if (pathname !== '/') {
+    if (pathname.includes('design/')) {
       document.body.style.overflowY = 'hidden';
     } else {
       document.body.style.overflowY = 'auto';
