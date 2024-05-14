@@ -2,8 +2,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useQuery } from '@tanstack/react-query';
-import { postValidation } from '@/services/postValidation';
+import useValidation from '@/hooks/useValidation';
 interface InputAlertProps {
   onClose: () => void;
 }
@@ -11,21 +10,25 @@ interface InputAlertProps {
 const InputAlert: React.FC<InputAlertProps> = ({ onClose }) => {
   const router = useRouter();
   const [email, setEmail] = useState<string>('');
+  const [isValid, setIsValid] = useState(false);
+  const [isFirstTry, setIsFirstTry] = useState(true);
 
+  const { refetch } = useValidation(email);
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    //refetch();
-    onClose();
+    const { data: isValid } = await refetch();
+    isValid ? setIsValid(true) : setIsValid(false);
+    setIsFirstTry(false);
+    isValid ? onClose() : null;
   };
 
   const handleClose = () => {
     router.push('/');
   };
-
   return (
     <div className=" w-[43.75rem] h-[21.25rem] border border-black rounded-[16px] shadow-xl bg-white">
       <div className="relative">
@@ -60,9 +63,14 @@ const InputAlert: React.FC<InputAlertProps> = ({ onClose }) => {
             type="email"
             onChange={handleEmailChange}
             placeholder="이메일주소를 입력해주세요."
-            className="p-2 bg-gray-100 placeholder-[#79DDCB] rounded-md w-[24.625rem] h-[2.5rem] text-[15px] mb-5"
+            className="p-2 bg-gray-100 placeholder-[#79DDCB] rounded-md w-[24.625rem] h-[2.5rem] text-[15px]"
             required
+            value={email}
           />
+          <div className={`${(isFirstTry || isValid) && 'h-[1.949375rem]'}`} />
+          <div className={`text-red-500 w-[23.625rem] text-[0.9rem] p-[0.3rem] ${(isFirstTry || isValid) && 'hidden'}`}>
+            유효한 이메일을 입력해주세요.
+          </div>
           <button type="submit" className="bg-main_active w-[15rem] h-[2.5rem] rounded-md font-medium">
             디자인 시작하기
           </button>

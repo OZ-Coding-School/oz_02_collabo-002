@@ -1,20 +1,13 @@
-import { postValidation } from '@/services/postValidation';
+import { validateEmail } from '@/services/validateEmail';
 import { useQuery } from '@tanstack/react-query';
 
-// function useValidation() {
-//   const { isLoading, error, refetch } = useQuery({
-//     queryKey: ['postValidation', email],
-//     queryFn: async () => {
-//       try {
-//         const res = await postValidation(email);
-//         console.log(res);
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     },
-//     enabled: false,
-//   });
-//   return { isLoading, error, refetch };
-// }
+function useValidation(email: string) {
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ['validateEmail', email],
+    queryFn: () => validateEmail(email),
+    enabled: false,
+  });
+  return { data, isLoading, error, refetch };
+}
 
-// export default useValidation;
+export default useValidation;
