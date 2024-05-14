@@ -16,8 +16,7 @@ interface DesignStartBoxProps {
 }
 
 const styles = [
-  { id: '레트로', src: '/icons/Ellipse 152.svg' },
-  { id: '꼴라쥬', src: '/icons/Ellipse 153.svg' },
+  { id: '팝아트', src: '/icons/팝아트.png' },
   { id: '데코', src: '/icons/Ellipse 154.svg' },
   { id: '그라피티', src: '/icons/Ellipse 155.svg' },
   { id: '키덜트', src: '/icons/Ellipse 156.svg' },
@@ -26,6 +25,7 @@ const styles = [
   { id: '빈티지포스터', src: '/icons/Ellipse 159.svg' },
   { id: '엠블럼', src: '/icons/Ellipse 160.svg' },
   { id: '애니메이션', src: '/icons/Ellipse 161.svg' },
+  { id: '픽셀아트', src: '/icons/픽셀아트.png' },
 ];
 
 const DesignStartBox: React.FC<DesignStartBoxProps> = ({
