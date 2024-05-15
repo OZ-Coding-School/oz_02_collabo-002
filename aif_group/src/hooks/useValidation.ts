@@ -10,12 +10,9 @@ function useValidation(email: string, status: string = 'user', password: string 
     queryKey: ['validateEmail', email],
     queryFn: async () => {
       const isValid = await validateEmail(email);
-      //await getUsers();
       if (isValid) {
-        // if (!finduser(email, users)) {
-        //   await registerEmail(email);
+        await registerEmail(email);
         await setToken(email, status, password);
-        // }
       }
       return true;
     },
