@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { apiClient } from './instance';
+import { apiClient, emailClient } from './instance';
 import { setToken } from './setToken';
 
 //users/check_email
@@ -11,7 +11,7 @@ export async function validateEmail(email: string) {
     email,
   });
   try {
-    const response = await apiClient.post('/users/check_email/', jsonData);
+    const response = await emailClient.post('/slash/users/check_email', jsonData);
     const isValid = response.status === 200;
     return isValid;
   } catch (error) {

@@ -1,4 +1,5 @@
-import { apiClient } from './instance';
+import { emailClient } from './instance';
+import Cookies from 'js-cookie';
 
 export async function setToken(email: string, status: string, password: string) {
   const isStaff = status === 'staff';
@@ -14,14 +15,11 @@ export async function setToken(email: string, status: string, password: string) 
       };
   const jsonData = JSON.stringify(body);
   try {
-    const response = await apiClient.post('/users/jwt-login', jsonData);
+    const response = await emailClient.post('users/jwt-login', jsonData);
     if (response.status === 200) {
       //set cookie
-      const jwtToken = response.data;
-      apiClient.interceptors.request.use(function (config) {
-        config.headers.Authorization = `Bearer ${jwtToken}`;
-        return config;
-      });
+      const jwtToken = 'Bearer ' + response.data.token;
+      Cookies.set('Authorization', jwtToken, { expires: 1 }); // 1일 후 만료
     }
   } catch (error) {
     console.error(error);

@@ -6,6 +6,12 @@ export const apiClient = axios.create({
   headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json' },
 });
 
+export const emailClient = axios.create({
+  baseURL: '/api',
+  timeout: 0,
+  headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+});
+
 export const imageClient = axios.create({
   baseURL: '/api',
   timeout: 0,
