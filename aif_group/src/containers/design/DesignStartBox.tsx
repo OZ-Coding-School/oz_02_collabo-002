@@ -64,7 +64,7 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({
 
   return (
     <div className="w-[27rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl xm:w-full xm:min-h-screen xm:h-full xm:rounded-none xm:border-none">
-      <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center py-6 xm:h-[40%] xm:rounded-none">
+      <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center xm:py-5 xm:h-[40%] xm:rounded-none">
         <div className="bg-main_active flex mt-[1.9375rem] w-[4.375rem] h-[1.25rem] justify-center items-center rounded-[3px]">
           <p>STEP</p>
           <p className="font-black ml-[2px]">01</p>
@@ -75,7 +75,7 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({
           <p className="text-white">상상을 현실로 만들어보세요.</p>
         </div>
         {innerWidth < 490 && (
-          <div className="absolute right-5 top-14 flex flex-col justify-start items-center">
+          <div className="absolute right-5 top-12 flex flex-col justify-start items-center">
             <button
               className="flex flex-col justify-center items-center space-y-1"
               onClick={() => router.push(`/design/howtouse`)}>

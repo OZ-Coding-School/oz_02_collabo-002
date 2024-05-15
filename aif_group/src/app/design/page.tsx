@@ -48,7 +48,7 @@ export default function Design() {
   return (
     <main className="bg-bg">
       <DesignHeader />
-      <section className="bg-bg w-full min-w-fit min-h-[calc(100vh-8.875rem)] h-[calc(100%-8.875rem)] flex justify-center items-center relative xm:min-w-full sm:min-h-screen sm:h-full">
+      <section className="bg-bg w-full min-w-fit min-h-[calc(100vh-8.875rem)] h-[calc(100%-8.875rem)] flex justify-center items-center relative md:min-h-[calc(100vh-6rem)] sm:min-h-screen sm:h-full xm:min-w-full">
         {show.alert && (
           <div className="absolute inset-0 bg-black bg-opacity-50 z-10 flex flex-row justify-center items-center">
             <InputAlert onClose={handleStartDesign} />
