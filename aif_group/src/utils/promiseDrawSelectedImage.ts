@@ -38,8 +38,8 @@ const promiseDrawSelectedImage = async (props: drawPropsType) => {
               const file = new File([blob], `${img.img_id}.png`, { type: 'image/png' });
 
               const dataUrl = canvas.toDataURL(`image/png`);
-              props.addFile({ img_url: dataUrl, img_id: `티셔츠합성이미지${index}` });
-              props.addFile({ img_url: img.img_url, img_id: `합성이미지${index}` });
+              props.addFile({ img_url: dataUrl, img_name: `티셔츠합성이미지${index}` });
+              props.addFile({ img_url: img.img_url, img_name: `합성이미지${index}` });
 
               resolve(file);
             });

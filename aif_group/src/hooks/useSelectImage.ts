@@ -50,6 +50,7 @@ function useSelectImage() {
       checkboxRef.current.checked = false;
     }
     setCurrentImage(clickedImage);
+    if (!clickedImage.img_id) return;
     handleDisabled(clickedImage.img_id);
   }
 
