@@ -1,6 +1,7 @@
-import { useAppDispatch } from '@/hooks/reduxHooks';
-import { saveImages } from '@/services/saveImages';
-import { setFileUrl } from '@/states/fileSlice';
+import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
+import { setDownloadFileUrl } from '@/states/imageFileSlice';
+import { setImgFileUrl } from '@/states/imageSlice';
+import { RootState } from '@/states/store';
 import { ImageInfo } from '@/types/designSelectBoxType';
 
 type drawPropsType = {
@@ -9,6 +10,7 @@ type drawPropsType = {
   tShirtImage: { white: string; black: string };
 };
 const drawSelectedImage = async (props: drawPropsType) => {
+
   const dispatch = useAppDispatch();
 
   const promises = props.selectImage.map(
@@ -36,9 +38,12 @@ const drawSelectedImage = async (props: drawPropsType) => {
               if (!blob) return;
 
               const file = new File([blob], `${img.img_id}.png`, { type: 'image/png' });
-
-              dispatch(setFileUrl(file));
-
+              
+              const dataUrl = canvas.toDataURL(`image/png`);
+      
+              props.dispatch(setDownloadFileUrl({ img_url: dataUrl, img_id: `티셔츠합성이미지${index}` }));
+              props.dispatch(setDownloadFileUrl({ img_url: img.img_url, img_id: `합성이미지${index}` }));
+              
               resolve(file);
             });
           };

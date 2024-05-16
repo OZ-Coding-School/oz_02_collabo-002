@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import imageReducer from './imageSlice';
+import imageFileSlice from './imageFileSlice';
 
 export const store = configureStore({
   reducer: {
     ref: imageReducer,
+    imageFile: imageFileSlice,
   },
 });
 
