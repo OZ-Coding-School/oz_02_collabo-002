@@ -99,7 +99,9 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
           </button>
           <button
             onClick={onSelectDesign}
-            className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text hover:text-black hover:border-none xm:w-[40%]">
+
+            className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] bg-black hover:bg-main_active text-main_active hover:text-black hover:border-none">
+
             디자인 선택하기
           </button>
         </div>
