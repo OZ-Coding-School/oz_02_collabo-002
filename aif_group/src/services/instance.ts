@@ -16,11 +16,11 @@ export const apiClient = axios.create({
 export const emailClient = axios.create({
   baseURL: '/api',
   timeout: 0,
-  headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+  headers: { 'Content-Type': 'application/json', Accept: 'application/json', Authorization: `Bearer ${token}` },
 });
 
 export const imageClient = axios.create({
   baseURL: '/api',
   timeout: 0,
-  headers: { 'Content-Type': 'multipart/form-data', Accept: 'application/json' },
+  headers: { 'Content-Type': 'multipart/form-data', Accept: 'application/json', Authorization: `Bearer ${token}` },
 });

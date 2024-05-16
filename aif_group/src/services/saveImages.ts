@@ -4,16 +4,10 @@ import { ImageInfo } from '@/types/designSelectBoxType';
 
 export async function saveImages(images: ImageInfo[]) {
   try {
-    const response = await imageClient.post(
-      '/image/save-images',
-      {
-        //image formdata
-        images,
-      },
-      {
-        withCredentials: true, //header에 쿠키 포함
-      },
-    );
+    const response = await imageClient.post('/image/save-images', {
+      //image formdata
+      images,
+    });
     console.log('Response:', response.data);
     return response.data;
   } catch (error) {
