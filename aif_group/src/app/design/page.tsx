@@ -26,7 +26,6 @@ export default function Design() {
     error,
     disable,
     isCreateLoading,
-    createMutation,
     handleRetryDesign,
     setShow,
     setDisable,
@@ -97,6 +96,7 @@ export default function Design() {
               onError={() => setShowErrorAlert1(true)}
               disabled={isLoading.create || isLoading.select || disable}
             />
+
           )}
           {innerWidth < 490
             ? (isCreateLoading || createMutation.isPending) && disable && <DesignLoadingBox type={'select'} />
