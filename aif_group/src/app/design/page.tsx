@@ -96,12 +96,14 @@ export default function Design() {
               onError={() => setShowErrorAlert1(true)}
               disabled={isLoading.create || isLoading.select || disable}
             />
+
           )}
           {innerWidth < 490
-            ? isCreateLoading && disable && <DesignLoadingBox type={'select'} />
-            : isCreateLoading && <DesignLoadingBox type={'select'} />}
+            ? (isCreateLoading || createMutation.isPending) && disable && <DesignLoadingBox type={'select'} />
+            : (isCreateLoading || createMutation.isPending) && <DesignLoadingBox type={'select'} />}
           {innerWidth < 490
             ? !isCreateLoading &&
+              !createMutation.isPending &&
               show.selectBox &&
               disable &&
               !isLoading.select &&
@@ -114,6 +116,7 @@ export default function Design() {
                 />
               )
             : !isCreateLoading &&
+              !createMutation.isPending &&
               show.selectBox && (
                 <DesignSelectBox
                   onSelectDesign={handleDesignSelection}

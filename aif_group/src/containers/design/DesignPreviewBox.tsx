@@ -124,7 +124,7 @@ const DesignPreviewBox: React.FC<DesignPreviewBoxProps> = ({ goBack }) => {
             }}
             modules={[Navigation, Pagination]}
             className="px-4 w-full h-[415px]">
-            {selectImage?.map((item, index) => {
+            {selectImage.image?.map((item, index) => {
               return (
                 <SwiperSlide key={index} className={'flex justify-center items-center absolute top-0'}>
                   <div className="w-[330px] h-[340px] relative -top-5 left-[50%] translate-x-[-50%] flex justify-center items-center">
@@ -134,19 +134,19 @@ const DesignPreviewBox: React.FC<DesignPreviewBoxProps> = ({ goBack }) => {
                       fill
                       className="drop-shadow-tShirt"
                     />
-                    <NextImage src={item.img_url} alt="T-shirt" priority width={125} height={125} className="z-10" />
+                    <NextImage src={item} alt="T-shirt" priority width={125} height={125} className="z-10" />
                   </div>
                 </SwiperSlide>
               );
             })}
           </Swiper>
           <div className="w-full h-[4.8rem] flex justify-center items-center absolute bottom-2">
-            {selectImage?.map((item, index) => {
+            {selectImage.image?.map((item, index) => {
               return (
                 <ThumbnailImage
                   key={index}
                   tShirtImage={selectedColorArray[index] === 'white' ? tShirtImage.white : tShirtImage.black}
-                  image={item.img_url}
+                  image={item}
                   isSelected={currentId === index ? true : false}
                 />
               );

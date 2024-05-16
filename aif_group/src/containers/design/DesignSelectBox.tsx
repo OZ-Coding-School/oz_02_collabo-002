@@ -5,11 +5,9 @@ import useSelectImage from '@/hooks/useSelectImage';
 import { DesignSelectBoxProps } from '@/types/designSelectBoxType';
 
 import { dummyDesignData } from '../../../public';
-import { useRouter } from 'next/navigation';
 
 const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data, error, onRetry }) => {
   const { handleSelectImage, handleClickImage, selectImage, currentImage, checkboxRef, isDisabled } = useSelectImage();
-  const router = useRouter();
   if (error) return <div>{error.message}</div>;
   const slicingData = data?.slice(0, 8);
 
