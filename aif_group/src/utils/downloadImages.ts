@@ -1,6 +1,7 @@
 import JSZip from 'jszip';
 import saveAs from 'file-saver';
 import { ImageInfo } from '@/types/designSelectBoxType';
+import { useAppSelector } from '@/hooks/reduxHooks';
 
 const downloadImage = async (files: ImageInfo[]) => {
   const zip = new JSZip();

@@ -1,23 +1,9 @@
+import useCheckWidth from '@/hooks/useCheckWidth';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 export default function AIImageSection() {
-  const [innerWidth, setInnerWidth] = useState(1220);
-
-  useEffect(() => {
-    setInnerWidth(window.innerWidth);
-  }, []);
-
-  const resizeListener = () => {
-    setInnerWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', resizeListener);
-    return () => {
-      window.removeEventListener('resize', resizeListener);
-    };
-  }, [innerWidth]);
+  const innerWidth = useCheckWidth();
 
   let latestImageList = [
     '/images/sample_img_1.png',
@@ -36,7 +22,7 @@ export default function AIImageSection() {
     <main className="w-full h-banner flex justify-center items-center bg-bg">
       <section className="w-full h-[33.1875rem] flex flex-col justify-center items-center sm:h-fit">
         <div className="flex flex-col justify-center items-center sm:w-[80%]">
-          <div className="font-bold text-[2.625rem] leading-[58px] tracking-wider sm:text-[2.125rem] sm:leading-[56px]">
+          <div className="font-bold text-[2.625rem] leading-[58px] tracking-wider sm:text-[2rem] sm:leading-[56px]">
             AI 생성 이미지
           </div>
           <div className="text-[1.3125rem] leading-[37px] tracking-[-0.06em] text-center sm:text-lg">
@@ -76,7 +62,7 @@ export default function AIImageSection() {
               })}
             </div>
           </div>
-          {innerWidth <= 768 && (
+          {innerWidth < 768 && (
             <div className="w-fit h-[24.1875rem] flex flex-row mt-[1.5rem] relative sm:h-[14.25rem]">
               <div className="flex flex-row animate-slide1_reverse w-[151.25rem] h-[14.25rem]">
                 {latestImageList.map((image, index) => {
