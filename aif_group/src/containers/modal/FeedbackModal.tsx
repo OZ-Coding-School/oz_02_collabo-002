@@ -54,7 +54,7 @@ const FeedbackModal = () => {
     if (resultError === 'true') {
       const result = await postSurveys(JSONdata);
       if (result?.status === 200) {
-        const downloadImgFilter = imgFile.filter(img => img.imageUrl !== '' && img.imageName !== '');
+        const downloadImgFilter = imgFile.filter(img => img.img_url !== '');
         if (downloadImgFilter.length !== 0) {
           downloadImage(downloadImgFilter);
         }
