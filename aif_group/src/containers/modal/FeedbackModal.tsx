@@ -6,14 +6,13 @@ import Question2 from '@/components/feedbackModal/Question2';
 import Question3 from '@/components/feedbackModal/Question3';
 import Question4 from '@/components/feedbackModal/Question4';
 import Question56 from '@/components/feedbackModal/Question56';
-import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
+import { useAppSelector } from '@/hooks/reduxHooks';
 import { RootState } from '@/states/store';
 import downloadImage from '@/utils/downloadImages';
-import { getSurveys } from '@/services/getSurveys';
+import { postSurveys } from '@/services/postSurveys';
 
 const FeedbackModal = () => {
   const imgFile = useAppSelector((state: RootState) => state.ref);
-  const dispatch = useAppDispatch();
   const router = useRouter();
 
   const handleError = (data: { [key: string]: FormDataEntryValue | FormDataEntryValue[] | null }) => {
@@ -28,11 +27,6 @@ const FeedbackModal = () => {
           }
         }
       });
-      // const downloadImgFilter = imgFile.filter(img => img.imageUrl !== '' && img.imageName !== '');
-      // if (downloadImgFilter.length !== 0) {
-      //   downloadImage(downloadImgFilter);
-      // }
-      // router.replace('/thanks');
       return 'true';
     } catch (e) {
       alert(`${e}번 문항에 답변해주세요`);
@@ -54,34 +48,19 @@ const FeedbackModal = () => {
     };
 
     const resultError = handleError(data);
-    console.log('resultError:', resultError);
-
     const JSONdata = JSON.stringify(data);
+    console.log(JSONdata);
 
     if (resultError === 'true') {
-      getSurveys();
+      const result = await postSurveys(JSONdata);
+      if (result?.status === 200) {
+        const downloadImgFilter = imgFile.filter(img => img.imageUrl !== '' && img.imageName !== '');
+        if (downloadImgFilter.length !== 0) {
+          downloadImage(downloadImgFilter);
+        }
+        router.replace('/thanks');
+      }
     }
-
-    // // Define the API endpoint where the form data will be sent
-    // const endpoint = 'api/surveys/answer/1';
-
-    // // Set up options for the fetch request
-    // const options = {
-    //   method: 'POST', // Use the POST method to send data
-    //   headers: {
-    //     'Content-Type': 'application/json', // Specify the content type as JSON
-    //   },
-    //   // body: JSONdata, // Set the request body to the JSON data
-    // };
-
-    // // Send the form data to the API endpoint using fetch
-    // const response = await fetch(endpoint, options);
-
-    // // Analyse the response data as JSON
-    // const result = await response.json();
-    // console.log('result:', result);
-
-    console.log(JSONdata);
   };
 
   return (
