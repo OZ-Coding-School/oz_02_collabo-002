@@ -40,6 +40,7 @@ const drawSelectedImage = async (props: drawPropsType) => {
         context?.drawImage(image, canvas.width / 2 - 540 / 2, canvas.height / 2 - 540 / 2, 540, 540);
 
         const dataUrl = canvas.toDataURL(`image/png`);
+        console.log(dataUrl);
         props.dispatch(setImgFileUrl({ img_url: dataUrl, img_id: `티셔츠합성이미지${index}` }));
       };
     };

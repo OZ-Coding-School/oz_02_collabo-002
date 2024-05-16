@@ -3,10 +3,14 @@ import { imageClient } from './instance';
 import { ImageInfo } from '@/types/designSelectBoxType';
 
 export async function saveImages(images: ImageInfo[]) {
+  const imageFormData = new FormData();
+  images.forEach(image => {
+    imageFormData.append('files', image.img_url);
+  });
   try {
     const response = await imageClient.post('/image/save-images', {
       //image formdata
-      images,
+      imageFormData,
     });
     console.log('Response:', response.data);
     return response.data;
