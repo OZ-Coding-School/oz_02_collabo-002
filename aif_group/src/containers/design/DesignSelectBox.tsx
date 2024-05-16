@@ -60,7 +60,7 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
         <div className="w-[35.75rem] h-[25.375rem] flex mt-[2.8125rem] mx-[1.875rem] mb-[4.3125rem] gap-[1.6875rem] xm:m-0 xm:flex-col xm:h-full">
           <div className="w-[12.625rem] h-[25.375rem]">
             <ul className="grid gap-[0.625rem] h-full grid-cols-2">
-              {slicingData?.map((image, idx) => {
+              {dummyDesignData?.map((image, idx) => {
                 const isSelected = selectImage.some(selectImage => selectImage.img_id === image.img_id);
                 return (
                   <div key={image.img_id}>
