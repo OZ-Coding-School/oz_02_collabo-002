@@ -13,6 +13,7 @@ function useShowBox() {
 
   const [show, setShow] = useState({
     alert: true,
+    startBox: true,
     selectBox: false,
     previewBox: false,
     errorAlert2: false,
@@ -33,6 +34,8 @@ function useShowBox() {
     }));
   };
 
+  const [disable, setDisable] = useState(false);
+
   const handleCreateDesign = async () => {
     if (designCreateCount < 2) {
       console.log(userInput);
@@ -42,6 +45,8 @@ function useShowBox() {
         selectBox: true,
         previewBox: false,
       }));
+
+      setDisable(true);
       //setDesignCreateCount(prev => prev + 1);
     } else {
       setShow(state => ({ ...state, errorAlert3: true }));
@@ -52,8 +57,8 @@ function useShowBox() {
     setIsLoading(state => ({ ...state, select: true }));
     setTimeout(() => {
       setIsLoading(state => ({ ...state, select: false }));
-    }, 1000);
-    setShow(state => ({ ...state, previewBox: true }));
+    }, 3000);
+    setShow(state => ({ ...state, selectBox: false, previewBox: true }));
   };
 
   const handleRetryDesign = () => {
@@ -75,9 +80,11 @@ function useShowBox() {
     isLoading,
     isCreateLoading,
     data,
+    error,
+    disable,
     designCreateCount,
     setShow,
-    error,
+    setDisable,
   };
 }
 

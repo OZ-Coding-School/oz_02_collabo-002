@@ -21,14 +21,14 @@ export default function SideNavigationMenu({ setShowSideMenu }: { setShowSideMen
   return (
     <section className="w-full h-screen absolute top-0 right-0 z-20">
       <div className="w-full h-full bg-black opacity-50 absolute top-0" onClick={setShowSideMenu}></div>
-      <div className="w-[40%] h-full bg-black absolute right-0 flex flex-col justify-start items-start space-y-9 pl-9 pt-24 animate-fadeIn_sideMenu">
+      <div className="w-1/2 h-full bg-black absolute right-0 flex flex-col justify-start items-start space-y-9 pl-9 pt-24 animate-fadeIn_sideMenu xm:pl-6">
         <button className="mb-12" onClick={setShowSideMenu}>
           <Image
             alt="close"
             src={'/icons/close_icon_mint.svg'}
             width={50}
             height={50}
-            className="w-[3.125rem] h-[3.125rem]"
+            className="w-[3.125rem] h-[3.125rem] xm:w-10 xm:h-10"
           />
         </button>
         <button className="flex justify-start items-center ml-0.5" onClick={() => handleMoveToScroll(moveToAbout)}>
@@ -37,9 +37,9 @@ export default function SideNavigationMenu({ setShowSideMenu }: { setShowSideMen
             src={'/icons/about_icon.svg'}
             width={35}
             height={35}
-            className="w-[2.1875rem] h-[2.1875rem]"
+            className="w-[2.1875rem] h-[2.1875rem] xm:w-[2rem] xm:h-[2rem]"
           />
-          <div className="text-main_active text-xl ml-3">About</div>
+          <div className="text-main_active text-xl ml-3 xm:text-base">About</div>
         </button>
         <button className="flex justify-start items-center" onClick={() => handleMoveToScroll(moveToHow)}>
           <Image
@@ -47,9 +47,9 @@ export default function SideNavigationMenu({ setShowSideMenu }: { setShowSideMen
             src={'/icons/question_icon.svg'}
             width={39}
             height={39}
-            className="w-[2.4375rem] h-[2.4375rem]"
+            className="w-[2.4375rem] h-[2.4375rem] xm:w-[2.2rem] xm:h-[2.2rem]"
           />
-          <div className="text-main_active text-xl ml-3">사용방법</div>
+          <div className="text-main_active text-xl ml-3 xm:text-base">사용방법</div>
         </button>
         <button className="flex justify-start items-center ml-[3px]" onClick={() => handleMoveToScroll(moveToAi)}>
           <Image
@@ -57,9 +57,9 @@ export default function SideNavigationMenu({ setShowSideMenu }: { setShowSideMen
             src={'/icons/image_icon.svg'}
             width={35}
             height={35}
-            className="w-[2.1875rem] h-[2.1875rem]"
+            className="w-[2.1875rem] h-[2.1875rem] xm:w-[2rem] xm:h-[2rem]"
           />
-          <div className="text-main_active text-xl ml-[11px]">생성 이미지</div>
+          <div className="text-main_active text-xl ml-[11px] xm:text-base">생성 이미지</div>
         </button>
       </div>
     </section>

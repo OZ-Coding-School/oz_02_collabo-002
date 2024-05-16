@@ -1,19 +1,24 @@
 import axios, { AxiosError } from 'axios';
+import Cookies from 'js-cookie';
+
+const token = Cookies.get('Authorization');
 
 export const apiClient = axios.create({
   baseURL: '/api/surveys',
   timeout: 0,
-  headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    Authorization: `Bearer ${token}`,
+  },
 });
 
-export async function getSurveys() {
+export async function postSurveys(JSONdata: string) {
   try {
-    const response = await apiClient.get('/answer/1', {
-      withCredentials: true,
-    });
+    const response = await apiClient.post('/submit', JSONdata);
 
     console.log('Response:', response.data);
-    return response.data;
+    return response;
   } catch (error) {
     const axiosError = error as AxiosError;
     if (axiosError.response) {

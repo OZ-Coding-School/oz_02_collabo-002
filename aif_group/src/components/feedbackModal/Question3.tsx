@@ -3,11 +3,11 @@ import React from 'react';
 const Question3 = () => {
   return (
     <div className="max-w-[43.8125rem] w-[90%]">
-      <p className="font-bold text-2xl mb-3 sm:text-xl">
+      <p className="font-bold text-2xl mb-3 sm:text-lg">
         3. 해당 이미지 제작 서비스 편의성에 대한 만족도를 체크 해 주세요.
       </p>
-      <div className="bg-input_bg w-full h-[11.75rem] flex justify-start items-center py-16 mb-14 sm:h-[9rem] sm:py-0">
-        <div className="w-[90%] h-fit flex justify-between text-center mx-auto my-auto sm:w-full sm:px-4 sm:pt-3">
+      <div className="bg-input_bg w-full h-[11.75rem] flex justify-start items-center py-16 mb-14 sm:h-[9rem] sm:py-0 xm:mb-8">
+        <div className="w-[90%] h-fit flex justify-between text-center mx-auto my-auto sm:w-full sm:px-4 sm:pt-3 xm:px-2">
           <label className="w-[7rem] min-h-[4.3125rem] h-fit text-xl text-form_color flex flex-col justify-center items-center">
             <input
               type="radio"
@@ -15,7 +15,7 @@ const Question3 = () => {
               name="satisfaction"
               value={'매우불만족'}
             />
-            <span className="block mt-4 peer-checked:text-black break-keep sm:text-lg sm:h-12">매우 불만족</span>
+            <span className="block mt-4 peer-checked:text-black break-keep sm:text-base sm:h-12">매우 불만족</span>
           </label>
           <label className="w-[7rem] min-h-[4.3125rem] h-fit text-xl text-form_color flex flex-col justify-center items-center">
             <input
@@ -24,7 +24,7 @@ const Question3 = () => {
               name="satisfaction"
               value={'불만족'}
             />
-            <span className="block mt-4 peer-checked:text-black sm:text-lg sm:h-12">불만족</span>
+            <span className="block mt-4 peer-checked:text-black sm:text-base sm:h-12">불만족</span>
           </label>
           <label className="w-[7rem] min-h-[4.3125rem] h-fit text-xl text-form_color flex flex-col justify-center items-center">
             <input
@@ -33,7 +33,7 @@ const Question3 = () => {
               name="satisfaction"
               value={'보통'}
             />
-            <span className="block mt-4 peer-checked:text-black sm:text-lg sm:h-12">보통</span>
+            <span className="block mt-4 peer-checked:text-black sm:text-base sm:h-12">보통</span>
           </label>
           <label className="w-[7rem] min-h-[4.3125rem] h-fit text-xl text-form_color flex flex-col justify-center items-center">
             <input
@@ -42,7 +42,7 @@ const Question3 = () => {
               name="satisfaction"
               value={'만족'}
             />
-            <span className="block mt-4 peer-checked:text-black sm:text-lg sm:h-12">만족</span>
+            <span className="block mt-4 peer-checked:text-black sm:text-base sm:h-12">만족</span>
           </label>
           <label className="w-[7rem] min-h-[4.3125rem] h-fit text-xl text-form_color flex flex-col justify-center items-center">
             <input
@@ -51,7 +51,7 @@ const Question3 = () => {
               name="satisfaction"
               value={'매우만족'}
             />
-            <span className="block mt-4 peer-checked:text-black break-keep sm:text-lg sm:h-12">매우 만족</span>
+            <span className="block mt-4 peer-checked:text-black break-keep sm:text-base sm:h-12">매우 만족</span>
           </label>
         </div>
       </div>

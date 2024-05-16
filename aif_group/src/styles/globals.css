@@ -29,19 +29,8 @@ html {
 
 body {
   font-family: var(--font-inter);
-}
-
-.select-box {
-  display: grid;
-  grid-template-columns: 0fr;
-  opacity: 0;
-  transition: opacity 1s, grid-template-columns 3s;
-  will-change: opacity, grid-template-columns;
-}
-
-.box-display {
-  grid-template-columns: 1fr;
-  opacity: 1;
+  width: 100%;
+  height: 100%;
 }
 
 .swiper-pagination {
@@ -63,11 +52,6 @@ body {
   cursor: pointer;
 }
 
-/* .swiper-button-prev,
-.swiper-button-next {
-  transform: translateY(-50%);
-} */
-
 .swiper-button-prev {
   top: 40% !important;
   left: 15px !important;
@@ -80,12 +64,12 @@ body {
 
 .mobile-swiper .swiper-button-prev,
 .mobile-swiper .swiper-button-next {
-  top: 50% !important;
+  top: 45% !important;
 }
 
 .swiper-button-prev:after,
 .swiper-button-next:after {
-  font-size: 2rem !important;
+  font-size: 1.6rem !important;
   font-weight: 600 !important;
   color: black !important;
 }
