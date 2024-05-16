@@ -1,28 +1,14 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import SampleModalMobile from '../design/SampleModalMobile';
+import useCheckWidth from '@/hooks/useCheckWidth';
 
 const SampleImageModal = () => {
   const router = useRouter();
   const [moreShow, setMoreShow] = useState(false);
-  const [innerWidth, setInnerWidth] = useState(1220);
-
-  useEffect(() => {
-    setInnerWidth(window.innerWidth);
-  }, []);
-
-  const resizeListener = () => {
-    setInnerWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', resizeListener);
-    return () => {
-      window.removeEventListener('resize', resizeListener);
-    };
-  }, [innerWidth]);
+  const innerWidth = useCheckWidth();
 
   let sampleImageList = [
     {
@@ -69,12 +55,12 @@ const SampleImageModal = () => {
 
   return (
     <main className="w-full h-full">
-      <div className="flex flex-col justify-center items-center mt-[3rem] mx-auto sm:w-[80%]">
-        <div className="font-bold text-[3.725rem] text-center mb-4 sm:text-4xl">Images</div>
-        <div className="text-[1.6rem] sm:text-xl">AIF 디자인 툴로 생성한 이미지입니다.</div>
-        <div className="w-[90%] h-1 border-t border-black mt-[1.6875rem] mb-[2.6rem] sm:w-full"></div>
+      <div className="h-fit flex flex-col justify-center items-center mt-[3rem] mx-auto sm:w-[80%] xm:mt-4">
+        <div className="font-bold text-[3.725rem] text-center mb-4 sm:text-4xl xm:text-3xl">Images</div>
+        <div className="text-[1.6rem] sm:text-xl xm:text-lg">AIF 디자인 툴로 생성한 이미지입니다.</div>
+        <div className="w-[90%] h-1 border-t border-black mt-[1.6875rem] mb-[2.4rem] sm:w-full"></div>
       </div>
-      <div className="w-[90%] flex flex-col justify-center items-center m-auto">
+      <div className="w-[90%] flex flex-col justify-center items-center m-auto xm:overflow-auto">
         {innerWidth >= 768 ? (
           <div className="flex flex-col justify-center items-center">
             <div className="grid grid-cols-2 gap-2 max-w-[63.5625rem]">

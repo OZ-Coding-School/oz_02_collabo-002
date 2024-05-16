@@ -35,13 +35,13 @@ const Modal = ({ children }: ModalProps) => {
       />
       <div
         className={`max-w-[75rem] w-[90%] h-[92%] z-50 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-[50px]`}>
-        <div className="w-full h-[7rem] flex justify-center items-end fixed top-0 sm:h-24">
+        <div className="w-full h-[7rem] flex justify-center items-end fixed top-0 sm:h-20">
           <div className="w-[90%] flex justify-between items-center mb-[1rem]">
-            <div className="font-light font-saira text-[2rem] leading-[80%] tracking-[-0.002em] sm:text-2xl sm:ml-2">
+            <div className="font-light font-saira text-[2rem] leading-[80%] tracking-[-0.002em] sm:text-xl sm:ml-2">
               AI Fashionista
             </div>
             <button onClick={() => router.back()} className="p-3">
-              <Image alt="close_icon" src={'/icons/close.svg'} width={25} height={25} className="sm:w-5 sm:h-5" />
+              <Image alt="close_icon" src={'/icons/close.svg'} width={25} height={25} className="sm:w-4 sm:h-4" />
             </button>
           </div>
         </div>
@@ -53,8 +53,8 @@ const Modal = ({ children }: ModalProps) => {
         </div>
 
         {toggleBtn && (
-          <button className={`fixed bottom-[6rem] right-[2.8rem] animate-up_fadeIn z-10`} onClick={goToTop}>
-            <Image alt="scroll_up" src={'/icons/scroll_up.svg'} width={40} height={40} />
+          <button className={`fixed bottom-[6rem] right-[2.8rem] animate-up_fadeIn z-10 xm:right-8`} onClick={goToTop}>
+            <Image alt="scroll_up" src={'/icons/scroll_up.svg'} width={40} height={40} className="xm:w-8 xm:h-8" />
           </button>
         )}
       </div>

@@ -8,7 +8,7 @@ const nextConfig = {
       },
       {
         source: '/api/surveys/:path*',
-        destination: 'http://0.0.0.0:8000/surveys/:path*',
+        destination: 'http://localhost:8000/surveys/:path*',
       },
     ];
   },
