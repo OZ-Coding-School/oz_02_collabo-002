@@ -11,14 +11,14 @@ import IconClose from './icons/close.svg';
 import IconArrow from './icons/arrow.svg';
 
 export const dummyDesignData = [
-  { img_url: ImageSample1, img_id: 1 },
-  { img_url: ImageSample2, img_id: 2 },
-  { img_url: ImageSample3, img_id: 3 },
-  { img_url: ImageSample4, img_id: 4 },
-  { img_url: ImageSample5, img_id: 5 },
-  { img_url: ImageSample6, img_id: 6 },
-  { img_url: ImageSample7, img_id: 7 },
-  { img_url: ImageSample8, img_id: 8 },
+  { img_url: ImageSample1.src, img_id: 1 },
+  { img_url: ImageSample2.src, img_id: 2 },
+  { img_url: ImageSample3.src, img_id: 3 },
+  { img_url: ImageSample4.src, img_id: 4 },
+  { img_url: ImageSample5.src, img_id: 5 },
+  { img_url: ImageSample6.src, img_id: 6 },
+  { img_url: ImageSample7.src, img_id: 7 },
+  { img_url: ImageSample8.src, img_id: 8 },
 ];
 
 export { IconLogo, IconClose, IconArrow };

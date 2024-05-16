@@ -1,4 +1,5 @@
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
+import { setDownloadFileUrl } from '@/states/imageFileSlice';
 import { setImgFileUrl } from '@/states/imageSlice';
 import { RootState } from '@/states/store';
 import { ImageInfo } from '@/types/designSelectBoxType';
@@ -41,7 +42,8 @@ const drawSelectedImage = async (props: drawPropsType) => {
 
         const dataUrl = canvas.toDataURL(`image/png`);
         console.log(dataUrl);
-        props.dispatch(setImgFileUrl({ img_url: dataUrl, img_id: `티셔츠합성이미지${index}` }));
+        props.dispatch(setDownloadFileUrl({ img_url: dataUrl, img_id: `티셔츠합성이미지${index}` }));
+        props.dispatch(setDownloadFileUrl({ img_url: img.img_url, img_id: `합성이미지${index}` }));
       };
     };
   });

@@ -12,7 +12,7 @@ import downloadImage from '@/utils/downloadImages';
 import { postSurveys } from '@/services/postSurveys';
 
 const FeedbackModal = () => {
-  const imgFile = useAppSelector((state: RootState) => state.ref);
+  const imgFile = useAppSelector((state: RootState) => state.imageFile);
   const router = useRouter();
 
   const handleError = (data: { [key: string]: FormDataEntryValue | FormDataEntryValue[] | null }) => {
@@ -27,6 +27,7 @@ const FeedbackModal = () => {
           }
         }
       });
+      return 'true';
     } catch (e) {
       alert(`${e}번 문항에 답변해주세요`);
       return e;
@@ -53,6 +54,7 @@ const FeedbackModal = () => {
 
     if (resultError === 'true') {
       const result = await postSurveys(JSONdata);
+      console.log(result);
       if (result?.status === 200) {
         const downloadImgFilter = imgFile.filter(img => img.img_url !== '');
         if (downloadImgFilter.length !== 0) {
