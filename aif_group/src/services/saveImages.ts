@@ -1,12 +1,19 @@
-import axios, { AxiosError } from 'axios';
-import { apiClient } from './instance';
+import { AxiosError } from 'axios';
+import { imageClient } from './instance';
+import { ImageInfo } from '@/types/designSelectBoxType';
 
-export async function getImages() {
+export async function saveImages(images: ImageInfo[]) {
   try {
-    const response = await apiClient.get('/image/show-samples', {
-      withCredentials: true,
-    });
-
+    const response = await imageClient.post(
+      '/image/save-images',
+      {
+        //image formdata
+        images,
+      },
+      {
+        withCredentials: true, //header에 쿠키 포함
+      },
+    );
     console.log('Response:', response.data);
     return response.data;
   } catch (error) {
