@@ -11,7 +11,7 @@ import InputAlert from '@/containers/modal/InputAlert';
 import useCheckWidth from '@/hooks/useCheckWidth';
 import useShowBox from '@/hooks/useShowBox';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Design() {
   const {
@@ -35,6 +35,7 @@ export default function Design() {
   const [showErrorAlert1, setShowErrorAlert1] = useState(false);
   const pathname = usePathname();
   const innerWidth = useCheckWidth();
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
   // 모달이 떠있는 경우 바깥 스크롤 동작 막기
   useEffect(() => {
@@ -44,6 +45,12 @@ export default function Design() {
       document.body.style.overflowY = 'auto';
     }
   }, [pathname]);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+    }
+  }, [isLoading, show]);
 
   return (
     <main className="bg-bg">
@@ -65,8 +72,11 @@ export default function Design() {
         <ErrorAlert1 onClose={() => setShowErrorAlert1(false)} show={showErrorAlert1} />
         <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} show={show.errorAlert3} />
 
-        <div className="w-fit h-full flex items-center space-x-4 list-none p-6 xm:p-0 xm:w-full overflow-y-auto">
+        <div
+          ref={scrollRef}
+          className="w-fit h-full flex items-center space-x-4 list-none p-6 xm:p-0 xm:w-full overflow-y-auto">
           {innerWidth < 490 ? (
+            show.startBox &&
             !isCreateLoading &&
             !isLoading.select &&
             !disable &&
@@ -116,7 +126,9 @@ export default function Design() {
                 />
               )}
           {isLoading.select && <DesignLoadingBox type={'preview'} />}
-          {!isLoading.select && show.previewBox && <DesignPreviewBox />}
+          {!isLoading.select && show.previewBox && !show.selectBox && (
+            <DesignPreviewBox goBack={() => setShow(prev => ({ ...prev, selectBox: true, previewBox: false }))} />
+          )}
         </div>
       </section>
     </main>

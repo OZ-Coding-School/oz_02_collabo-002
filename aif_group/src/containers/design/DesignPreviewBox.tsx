@@ -15,7 +15,11 @@ import drawSelectedImage from '@/utils/drawSelectedImage';
 import ThumbnailImage from '@/components/ThumbnailImage';
 import useCheckWidth from '@/hooks/useCheckWidth';
 
-const DesignPreviewBox = () => {
+interface DesignPreviewBoxProps {
+  goBack: () => void;
+}
+
+const DesignPreviewBox: React.FC<DesignPreviewBoxProps> = ({ goBack }) => {
   const [selectedColorArray, setSelectedColorArray] = useState<string[]>(['white', 'white', 'white']);
   const [currentId, setCurrentId] = useState(0);
   const [imageFile, setImageFile] = useState<{ imageUrl: string; imageName: string }[]>([]);
@@ -49,8 +53,17 @@ const DesignPreviewBox = () => {
 
   return (
     <div className="w-[27rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl xm:w-full xm:min-h-screen xm:h-full xm:rounded-none xm:border-none">
-      <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center xm:py-5 relative xm:h-[40%] xm:rounded-none">
-        <div className="bg-main_active flex mt-[1.9375rem] w-[4.375rem] h-[1.25rem] justify-center items-center rounded-[3px]">
+      <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center relative pt-8 pb-7 xm:h-[40%] xm:rounded-none">
+        {innerWidth < 490 && (
+          <div>
+            <div className="absolute left-4 top-7 flex flex-col justify-start items-center">
+              <button className="flex flex-col justify-center items-center space-y-1" onClick={goBack}>
+                <Image alt="go-back" src={'/icons/back_icon.svg'} width={36} height={36} />
+              </button>
+            </div>
+          </div>
+        )}
+        <div className="bg-main_active flex w-[4.375rem] h-[1.25rem] mt-2 justify-center items-center rounded-[3px]">
           <p>STEP</p>
           <p className="font-black ml-[2px]">03</p>
         </div>
@@ -60,18 +73,18 @@ const DesignPreviewBox = () => {
           <p className="text-white">패셔너블한 티셔츠가 완성됐어요!</p>
         </div>
         {innerWidth < 490 && (
-          <div className="absolute right-5 top-12 flex flex-col justify-start items-center">
+          <div className="absolute right-5 bottom-3 flex flex-col justify-start items-center">
             <button
-              className="flex flex-col justify-center items-center space-y-1"
+              className="flex flex-col justify-center items-center"
               onClick={() => router.push(`/design/howtouse`)}>
-              <Image alt="how-to-custom" src={'/icons/question_icon.svg'} width={32} height={32} />
-              <div className="text-main_active text-sm">사용법</div>
+              <Image alt="how-to-custom" src={'/icons/question_icon.svg'} width={28} height={28} />
+              <div className="text-main_active text-[0.8rem]">사용법</div>
             </button>
             <button
-              className="flex flex-col justify-center items-center space-y-1 mt-2"
+              className="flex flex-col justify-center items-center mt-1"
               onClick={() => router.push('/design/sampleImage')}>
-              <Image alt="sample-image" src={'/icons/image_icon.svg'} width={32} height={32} />
-              <div className="text-main_active text-sm">샘플</div>
+              <Image alt="sample-image" src={'/icons/image_icon.svg'} width={28} height={28} />
+              <div className="text-main_active text-[0.8rem]">샘플</div>
             </button>
           </div>
         )}

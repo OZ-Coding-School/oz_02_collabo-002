@@ -3,16 +3,32 @@ import Image from 'next/image';
 import ImageItem from './ImageItem';
 import useSelectImage from '@/hooks/useSelectImage';
 import { DesignSelectBoxProps } from '@/types/designSelectBoxType';
+import { useRouter } from 'next/navigation';
 
 const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data, error, onRetry }) => {
   const { handleSelectImage, handleClickImage, selectImage, currentImage, checkboxRef, isDisabled } = useSelectImage();
   // if (error) return <div>{error.message}</div>;
   const slicingData = data?.slice(0, 8);
+  const router = useRouter();
 
   return (
     <section className="w-[39.75rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl xm:w-full xm:min-h-screen xm:h-full xm:rounded-none xm:border-none">
-      <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center xm:py-5 xm:h-[40%] xm:rounded-none">
-        <div className="bg-main_active flex mt-[1.9375rem] w-[4.375rem] h-[1.25rem] justify-center items-center rounded-[3px]">
+      <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center relative pt-8 pb-7 xm:h-[40%] xm:rounded-none">
+        {innerWidth < 490 && (
+          <div>
+            <div className="absolute left-4 top-7 flex flex-col justify-start items-center">
+              <button className="flex flex-col justify-center items-center space-y-1">
+                <Image alt="go-back" src={'/icons/back_icon.svg'} width={36} height={36} />
+              </button>
+            </div>
+            <div className="absolute right-4 top-7 flex flex-col justify-start items-center">
+              <button className="flex flex-col justify-center items-center space-y-1">
+                <Image alt="go-back" src={'/icons/next_icon.svg'} width={36} height={36} />
+              </button>
+            </div>
+          </div>
+        )}
+        <div className="bg-main_active flex w-[4.375rem] h-[1.25rem] mt-2 justify-center items-center rounded-[3px]">
           <p>STEP</p>
           <p className="font-black ml-[2px]">02</p>
         </div>
@@ -21,6 +37,22 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
           <p className="text-white">생성된 디자인이 마음에 드시나요?</p>
           <p className="text-white">원하는 디자인을 최대 3개 선택하세요.</p>
         </div>
+        {innerWidth < 490 && (
+          <div className="absolute right-5 bottom-4 flex flex-col justify-start items-center">
+            <button
+              className="flex flex-col justify-center items-center"
+              onClick={() => router.push(`/design/howtouse`)}>
+              <Image alt="how-to-custom" src={'/icons/question_icon.svg'} width={28} height={28} />
+              <div className="text-main_active text-[0.8rem]">사용법</div>
+            </button>
+            <button
+              className="flex flex-col justify-center items-center mt-1"
+              onClick={() => router.push('/design/sampleImage')}>
+              <Image alt="sample-image" src={'/icons/image_icon.svg'} width={28} height={28} />
+              <div className="text-main_active text-[0.8rem]">샘플</div>
+            </button>
+          </div>
+        )}
       </div>
       <div className="w-full h-fit rounded-b-[14px] xm:h-[60%]">
         <div className="w-[35.75rem] h-[25.375rem] flex mt-[2.8125rem] mx-[1.875rem] mb-[4.3125rem] gap-[1.6875rem] xm:m-0 xm:flex-col xm:h-full">

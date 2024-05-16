@@ -13,6 +13,7 @@ function useShowBox() {
 
   const [show, setShow] = useState({
     alert: true,
+    startBox: true,
     selectBox: false,
     previewBox: false,
     errorAlert2: false,
@@ -56,7 +57,7 @@ function useShowBox() {
     setTimeout(() => {
       setIsLoading(state => ({ ...state, select: false }));
     }, 3000);
-    setShow(state => ({ ...state, previewBox: true }));
+    setShow(state => ({ ...state, selectBox: false, previewBox: true }));
   };
 
   const handleRetryDesign = () => {
