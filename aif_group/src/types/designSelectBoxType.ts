@@ -10,7 +10,7 @@ export interface SelectImage {
   image: ImageInfo[];
 }
 export interface ImageInfo {
-  img_id: number;
+  img_id: string;
   img_url: string;
   keyword_input?: string;
   member_id?: number;

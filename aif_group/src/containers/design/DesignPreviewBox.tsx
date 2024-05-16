@@ -13,7 +13,8 @@ import drawSelectedImage from '@/utils/drawSelectedImage';
 import ThumbnailImage from '@/components/ThumbnailImage';
 import useCheckWidth from '@/hooks/useCheckWidth';
 import { RootState } from '@/states/store';
-import { useSaveImages } from '@/hooks/useSaveImages';
+import { setDownloadFileUrl } from '@/states/imageFileSlice';
+import promiseDrawSelectedImage from '@/utils/promiseDrawSelectedImage';
 
 interface DesignPreviewBoxProps {
   goBack: () => void;
@@ -38,9 +39,6 @@ const DesignPreviewBox: React.FC<DesignPreviewBoxProps> = ({ goBack }) => {
     copyColorArray[currentId] = color;
     setSelectedColorArray(copyColorArray);
   };
-  const { error, refetch } = useSaveImages(selectImage);
-
-  if (error) return <div>{error.message}</div>;
 
   return (
     <div className="w-[27rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl xm:w-full xm:min-h-screen xm:h-full xm:rounded-none xm:border-none">
@@ -157,9 +155,13 @@ const DesignPreviewBox: React.FC<DesignPreviewBoxProps> = ({ goBack }) => {
           <button
             className="w-[15rem] h-full text-btn_text border-btn_border border-[1px] rounded-[4px] hover:bg-main_active hover:border-none hover:text-black"
             onClick={() => {
-              drawSelectedImage({ selectImage, selectedColorArray, tShirtImage, dispatch });
+              promiseDrawSelectedImage({
+                selectImage,
+                selectedColorArray,
+                tShirtImage,
+                addFile: file => dispatch(setDownloadFileUrl(file)),
+              });
               router.push('/design/feedback');
-              // refetch();
             }}>
             다운로드
           </button>
