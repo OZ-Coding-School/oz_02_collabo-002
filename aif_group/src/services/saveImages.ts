@@ -2,16 +2,13 @@ import { AxiosError } from 'axios';
 import { imageClient } from './instance';
 import { ImageInfo } from '@/types/designSelectBoxType';
 
-export async function saveImages(images: ImageInfo[]) {
+export async function saveImages(images: File[]) {
   const imageFormData = new FormData();
   images.forEach(image => {
-    imageFormData.append('files', image.img_url);
+    imageFormData.append('files', image);
   });
   try {
-    const response = await imageClient.post('/image/save-images', {
-      //image formdata
-      imageFormData,
-    });
+    const response = await imageClient.post('/image/save-images', imageFormData);
     console.log('Response:', response.data);
     return response.data;
   } catch (error) {
