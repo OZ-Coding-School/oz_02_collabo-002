@@ -48,7 +48,7 @@ export default function Design() {
   return (
     <main className="bg-bg">
       <DesignHeader />
-      <section className="bg-bg w-full min-w-fit min-h-[calc(100vh-8.875rem)] h-[calc(100%-8.875rem)] flex justify-center items-center relative md:min-h-[calc(100vh-6rem)] sm:min-h-screen sm:h-full xm:min-w-full">
+      <section className="bg-bg w-full min-h-[calc(100vh-8.875rem)] h-[calc(100%-8.875rem)] flex justify-center items-center relative md:min-h-[calc(100vh-6rem)] sm:min-h-screen sm:h-full xm:min-w-full">
         {show.alert && (
           <div className="absolute inset-0 bg-black bg-opacity-50 z-10 flex flex-row justify-center items-center">
             <InputAlert onClose={handleStartDesign} />
@@ -65,7 +65,7 @@ export default function Design() {
         <ErrorAlert1 onClose={() => setShowErrorAlert1(false)} show={showErrorAlert1} />
         <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} show={show.errorAlert3} />
 
-        <div className="w-fit h-full flex justify-center items-center space-x-4 list-none p-6 xm:p-0 xm:w-full">
+        <div className="w-fit h-full flex items-center space-x-4 list-none p-6 xm:p-0 xm:w-full overflow-y-auto">
           {innerWidth < 490 ? (
             !isCreateLoading &&
             !isLoading.select &&
@@ -88,9 +88,9 @@ export default function Design() {
               disabled={isLoading.create || isLoading.select || disable}
             />
           )}
-          {(isCreateLoading || createMutation.isPending) && innerWidth <= 490 && disable && (
-            <DesignLoadingBox type={'select'} />
-          )}
+          {innerWidth < 490
+            ? (isCreateLoading || createMutation.isPending) && disable && <DesignLoadingBox type={'select'} />
+            : (isCreateLoading || createMutation.isPending) && <DesignLoadingBox type={'select'} />}
           {innerWidth < 490
             ? !isCreateLoading &&
               !createMutation.isPending &&

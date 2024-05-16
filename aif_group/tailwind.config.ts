@@ -84,8 +84,8 @@ const config: Config = {
           '100%': { opacity: '0' },
         },
         fadeIn_box: {
-          '0%': { opacity: '0', transform: 'translateX(-20%)', zIndex: '0' },
-          '100%': { opacity: '1', transform: 'translateX(0%)', zIndex: '1' },
+          '0%': { opacity: '0', transform: 'translateX(-20%)' },
+          '100%': { opacity: '1', transform: 'translateX(0%)' },
         },
       },
       dropShadow: {
