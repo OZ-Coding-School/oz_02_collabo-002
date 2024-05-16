@@ -18,7 +18,7 @@ export async function setToken(email: string, status: string, password: string) 
     const response = await emailClient.post('users/jwt-login', jsonData);
     if (response.status === 200) {
       //set cookie
-      const jwtToken = 'Bearer ' + response.data.token;
+      const jwtToken = response.data.token;
       Cookies.set('Authorization', jwtToken, { expires: 1 }); // 1일 후 만료
     }
   } catch (error) {

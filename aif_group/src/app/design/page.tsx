@@ -24,7 +24,6 @@ export default function Design() {
     data,
     error,
     isCreateLoading,
-    createMutation,
     handleRetryDesign,
     setShow,
   } = useShowBox();
@@ -78,10 +77,10 @@ export default function Design() {
             />
           </li>
           <li className={`ml-5 select-box ${isCreateLoading ? 'box-display' : ''}`}>
-            {(isCreateLoading || createMutation.isPending) && <DesignLoadingBox type={'select'} />}
+            {isCreateLoading && <DesignLoadingBox type={'select'} />}
           </li>
           <li className={`select-box ${!isLoading.create && show.selectBox ? 'box-display' : ''}`}>
-            {!isCreateLoading && !createMutation.isPending && show.selectBox && (
+            {!isCreateLoading && show.selectBox && (
               <DesignSelectBox
                 onSelectDesign={handleDesignSelection}
                 onRetry={handleRetryDesign}

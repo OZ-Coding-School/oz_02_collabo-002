@@ -1,12 +1,10 @@
-import { getUsers } from '@/services/getUsers';
 import { registerEmail } from '@/services/registerEmail';
 import { setToken } from '@/services/setToken';
 import { validateEmail } from '@/services/validateEmail';
-import { finduser } from '@/utils/findUser';
 import { useQuery } from '@tanstack/react-query';
 
 function useValidation(email: string, status: string = 'user', password: string = '') {
-  const { data, isLoading, error, refetch } = useQuery({
+  const { data, isLoading, refetch } = useQuery({
     queryKey: ['validateEmail', email],
     queryFn: async () => {
       const isValid = await validateEmail(email);
@@ -14,11 +12,11 @@ function useValidation(email: string, status: string = 'user', password: string 
         await registerEmail(email);
         await setToken(email, status, password);
       }
-      return true;
+      return isValid;
     },
     enabled: false,
   });
-  return { data, isLoading, error, refetch };
+  return { data, isLoading, refetch };
 }
 
 export default useValidation;

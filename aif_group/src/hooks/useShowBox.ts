@@ -9,7 +9,7 @@ function useShowBox() {
     style: '',
   });
 
-  const { data, isLoading: isCreateLoading, error, createMutation } = useImages();
+  const { data, isLoading: isCreateLoading, error, refetch } = useImages(userInput.keyword, userInput.style);
 
   const [show, setShow] = useState({
     alert: true,
@@ -36,13 +36,13 @@ function useShowBox() {
   const handleCreateDesign = async () => {
     if (designCreateCount < 2) {
       console.log(userInput);
-      createMutation.mutate(userInput);
+      refetch();
       setShow(state => ({
         ...state,
         selectBox: true,
         previewBox: false,
       }));
-      setDesignCreateCount(prev => prev + 1);
+      //setDesignCreateCount(prev => prev + 1);
     } else {
       setShow(state => ({ ...state, errorAlert3: true }));
     }
@@ -75,10 +75,9 @@ function useShowBox() {
     isLoading,
     isCreateLoading,
     data,
-    error,
-    createMutation,
     designCreateCount,
     setShow,
+    error,
   };
 }
 
