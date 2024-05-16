@@ -159,7 +159,7 @@ const DesignPreviewBox: React.FC<DesignPreviewBoxProps> = ({ goBack }) => {
             onClick={() => {
               drawSelectedImage({ selectImage, selectedColorArray, tShirtImage, dispatch });
               router.push('/design/feedback');
-              refetch();
+              // refetch();
             }}>
             다운로드
           </button>

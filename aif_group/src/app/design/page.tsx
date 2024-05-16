@@ -123,9 +123,16 @@ export default function Design() {
                 />
               )}
           {isLoading.select && <DesignLoadingBox type={'preview'} />}
-          {!isLoading.select && show.previewBox && !show.selectBox && (
-            <DesignPreviewBox goBack={() => setShow(prev => ({ ...prev, selectBox: true, previewBox: false }))} />
-          )}
+          {innerWidth < 490
+            ? !isLoading.select &&
+              show.previewBox &&
+              !show.selectBox && (
+                <DesignPreviewBox goBack={() => setShow(prev => ({ ...prev, selectBox: true, previewBox: false }))} />
+              )
+            : !isLoading.select &&
+              show.previewBox && (
+                <DesignPreviewBox goBack={() => setShow(prev => ({ ...prev, selectBox: true, previewBox: false }))} />
+              )}
         </div>
       </section>
     </main>

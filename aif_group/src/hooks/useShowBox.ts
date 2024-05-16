@@ -58,7 +58,7 @@ function useShowBox() {
     setTimeout(() => {
       setIsLoading(state => ({ ...state, select: false }));
     }, 3000);
-    setShow(state => ({ ...state, selectBox: false, previewBox: true }));
+    setShow(state => ({ ...state, previewBox: true }));
   };
 
   const handleRetryDesign = () => {
