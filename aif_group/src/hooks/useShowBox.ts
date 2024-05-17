@@ -1,15 +1,15 @@
 'use client';
-import { FetchImageData } from '@/types/designSelectBoxType';
-import { useEffect, useState } from 'react';
-import { useImages } from './useImages';
+import { useState } from 'react';
+import { createImages } from '@/services/createImages';
+import { getImages } from '@/services/getImages';
+import { ImageInfo } from '@/types/designSelectBoxType';
 
 function useShowBox() {
   const [userInput, setUserInput] = useState({
     keyword: '',
     style: '',
   });
-
-  const { data, isLoading: isCreateLoading, error, refetch } = useImages(userInput.keyword, userInput.style);
+  const [createdImages, setCreatedImages] = useState<ImageInfo[]>([]);
 
   const [show, setShow] = useState({
     alert: true,
@@ -38,8 +38,13 @@ function useShowBox() {
 
   const handleCreateDesign = async () => {
     if (designCreateCount < 2) {
-      console.log(userInput);
-      refetch();
+      setIsLoading(state => ({ ...state, create: true }));
+      await createImages(userInput.keyword, userInput.style);
+      const response = await getImages();
+      if (response) {
+        setCreatedImages(state => state.concat(response));
+      }
+      setIsLoading(state => ({ ...state, create: false }));
       setShow(state => ({
         ...state,
         selectBox: true,
@@ -57,7 +62,7 @@ function useShowBox() {
     setIsLoading(state => ({ ...state, select: true }));
     setTimeout(() => {
       setIsLoading(state => ({ ...state, select: false }));
-    }, 3000);
+    }, 2000);
     setShow(state => ({ ...state, previewBox: true }));
   };
 
@@ -78,9 +83,7 @@ function useShowBox() {
     handleStartDesign,
     show,
     isLoading,
-    isCreateLoading,
-    data,
-    error,
+    createdImages,
     disable,
     designCreateCount,
     setShow,

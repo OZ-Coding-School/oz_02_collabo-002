@@ -22,10 +22,8 @@ export default function Design() {
     handleDesignSelection,
     show,
     isLoading,
-    data,
-    error,
+    createdImages: data,
     disable,
-    isCreateLoading,
     handleRetryDesign,
     setShow,
     setDisable,
@@ -76,7 +74,7 @@ export default function Design() {
           className="w-fit h-full flex items-center space-x-4 list-none p-6 xm:p-0 xm:w-full overflow-y-auto">
           {innerWidth < 490 ? (
             show.startBox &&
-            !isCreateLoading &&
+            !isLoading.create &&
             !isLoading.select &&
             !disable &&
             !show.previewBox && (
@@ -98,29 +96,19 @@ export default function Design() {
             />
           )}
           {innerWidth < 490
-            ? isCreateLoading && disable && <DesignLoadingBox type={'select'} />
-            : isCreateLoading && <DesignLoadingBox type={'select'} />}
+            ? isLoading.create && disable && <DesignLoadingBox type={'select'} />
+            : isLoading.create && <DesignLoadingBox type={'select'} />}
           {innerWidth < 490
-            ? !isCreateLoading &&
+            ? !isLoading.create &&
               show.selectBox &&
               disable &&
               !isLoading.select &&
               !show.previewBox && (
-                <DesignSelectBox
-                  onSelectDesign={handleDesignSelection}
-                  onRetry={handleRetryDesign}
-                  data={data}
-                  error={error}
-                />
+                <DesignSelectBox onSelectDesign={handleDesignSelection} onRetry={handleRetryDesign} data={data} />
               )
-            : !isCreateLoading &&
+            : !isLoading.create &&
               show.selectBox && (
-                <DesignSelectBox
-                  onSelectDesign={handleDesignSelection}
-                  onRetry={handleRetryDesign}
-                  data={data}
-                  error={error}
-                />
+                <DesignSelectBox onSelectDesign={handleDesignSelection} onRetry={handleRetryDesign} data={data} />
               )}
           {isLoading.select && <DesignLoadingBox type={'preview'} />}
           {innerWidth < 490

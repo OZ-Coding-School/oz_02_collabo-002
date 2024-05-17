@@ -4,7 +4,7 @@ export interface DesignSelectBoxProps {
   onSelectDesign: () => void;
   onRetry: () => void;
   data?: ImageInfo[];
-  error: Error | null;
+  error?: Error | null;
 }
 export interface SelectImage {
   image: ImageInfo[];

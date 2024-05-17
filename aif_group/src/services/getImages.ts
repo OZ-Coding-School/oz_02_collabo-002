@@ -1,11 +1,10 @@
 import axios, { AxiosError } from 'axios';
 import { apiClient } from './instance';
+import { ImageInfo } from '@/types/designSelectBoxType';
 
-export async function getImages() {
+export async function getImages(): Promise<ImageInfo[] | undefined> {
   try {
-    const response = await apiClient.get('/image/show-samples', {
-      withCredentials: true,
-    });
+    const response = await apiClient.get('/image/show-samples');
 
     console.log('Response:', response.data);
     return response.data;
@@ -20,5 +19,6 @@ export async function getImages() {
     } else {
       console.error('Error Message:', axiosError.message);
     }
+    return undefined;
   }
 }
