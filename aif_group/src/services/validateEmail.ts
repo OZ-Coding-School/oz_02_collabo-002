@@ -6,7 +6,7 @@ import { setToken } from './setToken';
 // users/jwt-login 토큰 생성 및 발행
 // users/register_email 이메일을 db에 등록
 
-export async function validateEmail(email: string) {
+export async function validateEmail(email: string): Promise<boolean> {
   const jsonData = JSON.stringify({
     email,
   });
@@ -25,5 +25,6 @@ export async function validateEmail(email: string) {
     } else {
       console.error('Error Message:', axiosError.message);
     }
+    return false;
   }
 }

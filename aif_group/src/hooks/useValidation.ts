@@ -1,12 +1,17 @@
 import { registerEmail } from '@/services/registerEmail';
 import { setToken } from '@/services/setToken';
 import { validateEmail } from '@/services/validateEmail';
-import { useQuery } from '@tanstack/react-query';
+import { UseMutationResult, useMutation } from '@tanstack/react-query';
 
-function useValidation(email: string, status: string = 'user', password: string = '') {
-  const { data, isLoading, refetch } = useQuery({
-    queryKey: ['validateEmail', email],
-    queryFn: async () => {
+export interface ValidationArgs {
+  email: string;
+  status?: string;
+  password?: string;
+}
+
+function useValidation() {
+  const mutation = useMutation({
+    mutationFn: async ({ email, status = 'user', password = '' }: ValidationArgs) => {
       const isValid = await validateEmail(email);
       if (isValid) {
         await registerEmail(email);
@@ -14,9 +19,9 @@ function useValidation(email: string, status: string = 'user', password: string 
       }
       return isValid;
     },
-    enabled: false,
   });
-  return { data, isLoading, refetch };
+
+  return mutation;
 }
 
 export default useValidation;

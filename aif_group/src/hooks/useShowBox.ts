@@ -3,8 +3,10 @@ import { useState } from 'react';
 import { createImages } from '@/services/createImages';
 import { getImages } from '@/services/getImages';
 import { ImageInfo } from '@/types/designSelectBoxType';
+import { useAppSelector } from './reduxHooks';
 
 function useShowBox() {
+  const selectedImage = useAppSelector(state => state.ref);
   const [userInput, setUserInput] = useState({
     keyword: '',
     style: '',
@@ -59,11 +61,13 @@ function useShowBox() {
   };
 
   const handleDesignSelection = () => {
-    setIsLoading(state => ({ ...state, select: true }));
-    setTimeout(() => {
-      setIsLoading(state => ({ ...state, select: false }));
-    }, 2000);
-    setShow(state => ({ ...state, previewBox: true }));
+    if (selectedImage.length > 0) {
+      setIsLoading(state => ({ ...state, select: true }));
+      setTimeout(() => {
+        setIsLoading(state => ({ ...state, select: false }));
+      }, 2000);
+      setShow(state => ({ ...state, previewBox: true }));
+    }
   };
 
   const handleRetryDesign = () => {

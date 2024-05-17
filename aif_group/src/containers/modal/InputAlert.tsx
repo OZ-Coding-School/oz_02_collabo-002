@@ -13,14 +13,14 @@ const InputAlert: React.FC<InputAlertProps> = ({ onClose }) => {
   const [isValid, setIsValid] = useState(false);
   const [isFirstTry, setIsFirstTry] = useState(true);
 
-  const { refetch } = useValidation(email);
+  const { mutateAsync } = useValidation();
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const { data: isValid } = await refetch();
+    const isValid = await mutateAsync({ email });
     isValid ? setIsValid(true) : setIsValid(false);
     setIsFirstTry(false);
     isValid ? onClose() : null;
@@ -63,7 +63,6 @@ const InputAlert: React.FC<InputAlertProps> = ({ onClose }) => {
             type="email"
             onChange={handleEmailChange}
             placeholder="이메일주소를 입력해주세요."
-
             className="p-2 bg-gray-100 placeholder-[#79DDCB] rounded-md max-w-[24.625rem] w-full h-[2.5rem] text-[15px] mb-5 xm:text-sm"
             required
             value={email}
