@@ -51,6 +51,8 @@ export default function Design() {
     }
   }, [isLoading, show]);
 
+  // console.log('isCreateLoading', isCreateLoading);
+
   return (
     <main className="bg-bg">
       <DesignHeader />
@@ -71,15 +73,9 @@ export default function Design() {
         <ErrorAlert1 onClose={() => setShowErrorAlert1(false)} show={showErrorAlert1} />
         <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} show={show.errorAlert3} />
 
-        <div
-          ref={scrollRef}
-          className="w-fit h-full flex items-center space-x-4 list-none p-6 xm:p-0 xm:w-full overflow-y-auto">
-          {innerWidth < 490 ? (
-            show.startBox &&
-            !isCreateLoading &&
-            !isLoading.select &&
-            !disable &&
-            !show.previewBox && (
+        {innerWidth < 490 ? (
+          <div className="w-full h-full flex items-center">
+            {show.startBox && !isCreateLoading && !isLoading.select && !disable && !show.previewBox && (
               <DesignStartBox
                 onCreateDesign={handleCreateDesign}
                 userInput={userInput}
@@ -87,8 +83,25 @@ export default function Design() {
                 onError={() => setShowErrorAlert1(true)}
                 disabled={isLoading.create || isLoading.select || disable}
               />
-            )
-          ) : (
+            )}
+            {isCreateLoading && disable && <DesignLoadingBox type={'select'} />}
+            {!isCreateLoading && show.selectBox && disable && !isLoading.select && !show.previewBox && (
+              <DesignSelectBox
+                onSelectDesign={handleDesignSelection}
+                onRetry={handleRetryDesign}
+                data={data}
+                error={error}
+              />
+            )}
+            {isLoading.select && <DesignLoadingBox type={'preview'} />}
+            {!isLoading.select && show.previewBox && !show.selectBox && (
+              <DesignPreviewBox goBack={() => setShow(prev => ({ ...prev, selectBox: true, previewBox: false }))} />
+            )}
+          </div>
+        ) : (
+          <div
+            ref={scrollRef}
+            className="w-fit h-full flex items-center space-x-4 p-6 xm:p-0 xm:w-full overflow-y-auto">
             <DesignStartBox
               onCreateDesign={handleCreateDesign}
               userInput={userInput}
@@ -96,44 +109,21 @@ export default function Design() {
               onError={() => setShowErrorAlert1(true)}
               disabled={isLoading.create || isLoading.select || disable}
             />
-          )}
-          {innerWidth < 490
-            ? isCreateLoading && disable && <DesignLoadingBox type={'select'} />
-            : isCreateLoading && <DesignLoadingBox type={'select'} />}
-          {innerWidth < 490
-            ? !isCreateLoading &&
-              show.selectBox &&
-              disable &&
-              !isLoading.select &&
-              !show.previewBox && (
-                <DesignSelectBox
-                  onSelectDesign={handleDesignSelection}
-                  onRetry={handleRetryDesign}
-                  data={data}
-                  error={error}
-                />
-              )
-            : !isCreateLoading &&
-              show.selectBox && (
-                <DesignSelectBox
-                  onSelectDesign={handleDesignSelection}
-                  onRetry={handleRetryDesign}
-                  data={data}
-                  error={error}
-                />
-              )}
-          {isLoading.select && <DesignLoadingBox type={'preview'} />}
-          {innerWidth < 490
-            ? !isLoading.select &&
-              show.previewBox &&
-              !show.selectBox && (
-                <DesignPreviewBox goBack={() => setShow(prev => ({ ...prev, selectBox: true, previewBox: false }))} />
-              )
-            : !isLoading.select &&
-              show.previewBox && (
-                <DesignPreviewBox goBack={() => setShow(prev => ({ ...prev, selectBox: true, previewBox: false }))} />
-              )}
-        </div>
+            {isCreateLoading && <DesignLoadingBox type={'select'} />}
+            {!isCreateLoading && show.selectBox && (
+              <DesignSelectBox
+                onSelectDesign={handleDesignSelection}
+                onRetry={handleRetryDesign}
+                data={data}
+                error={error}
+              />
+            )}
+            {isLoading.select && <DesignLoadingBox type={'preview'} />}
+            {!isLoading.select && show.previewBox && (
+              <DesignPreviewBox goBack={() => setShow(prev => ({ ...prev, selectBox: true, previewBox: false }))} />
+            )}
+          </div>
+        )}
       </section>
     </main>
   );

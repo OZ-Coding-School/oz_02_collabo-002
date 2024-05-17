@@ -28,7 +28,7 @@ export default function SideNavigationMenu({ setShowSideMenu }: { setShowSideMen
             src={'/icons/close_icon_mint.svg'}
             width={50}
             height={50}
-            className="w-[3.125rem] h-[3.125rem] xm:w-10 xm:h-10"
+            className="w-[3.125rem] h-[3.125rem] xm:w-8 xm:h-8"
           />
         </button>
         <button className="flex justify-start items-center ml-0.5" onClick={() => handleMoveToScroll(moveToAbout)}>
@@ -37,7 +37,7 @@ export default function SideNavigationMenu({ setShowSideMenu }: { setShowSideMen
             src={'/icons/about_icon.svg'}
             width={35}
             height={35}
-            className="w-[2.1875rem] h-[2.1875rem] xm:w-[2rem] xm:h-[2rem]"
+            className="w-[2.1875rem] h-[2.1875rem] xm:w-7 xm:h-7"
           />
           <div className="text-main_active text-xl ml-3 xm:text-base">About</div>
         </button>
@@ -47,7 +47,7 @@ export default function SideNavigationMenu({ setShowSideMenu }: { setShowSideMen
             src={'/icons/question_icon.svg'}
             width={39}
             height={39}
-            className="w-[2.4375rem] h-[2.4375rem] xm:w-[2.2rem] xm:h-[2.2rem]"
+            className="w-[2.4375rem] h-[2.4375rem] xm:w-[1.9rem] xm:h-[1.9rem]"
           />
           <div className="text-main_active text-xl ml-3 xm:text-base">사용방법</div>
         </button>
@@ -57,7 +57,7 @@ export default function SideNavigationMenu({ setShowSideMenu }: { setShowSideMen
             src={'/icons/image_icon.svg'}
             width={35}
             height={35}
-            className="w-[2.1875rem] h-[2.1875rem] xm:w-[2rem] xm:h-[2rem]"
+            className="w-[2.1875rem] h-[2.1875rem] xm:w-7 xm:h-7"
           />
           <div className="text-main_active text-xl ml-[11px] xm:text-base">생성 이미지</div>
         </button>

@@ -17,16 +17,16 @@ export default function MobileMainBanner() {
   }, [showSideMenu]);
 
   return (
-    <main className="w-full h-[50rem] relative">
+    <main className="w-full h-[40.625rem] relative">
       <div className="w-full h-full relative">
-        <div className="w-full h-[8rem] flex justify-between items-center absolute top-0 z-10">
+        <div className="w-full h-[6rem] flex justify-between items-center absolute top-0 z-10">
           <button onClick={() => router.refresh()}>
             <Image
               alt="main-logo"
               src={'/icons/logo_mint.svg'}
-              width={300}
-              height={100}
-              className="w-[18.75rem] h-[6.25rem] ml-[1.75rem] mt-[1.75rem] xm:w-56 xm:h-16"
+              width={280}
+              height={80}
+              className="w-[18.75rem] h-[6.25rem] ml-[1.75rem] mt-[1.75rem] xm:w-52 xm:h-14"
             />
           </button>
           <button onClick={() => setShowSideMenu(true)}>
@@ -35,7 +35,7 @@ export default function MobileMainBanner() {
               src={'/icons/hamburger_icon.svg'}
               width={30}
               height={30}
-              className="w-[1.875rem] h-[1.875rem] mr-6 xm:w-7 xm:h-7"
+              className="w-[1.875rem] h-[1.875rem] mr-6 xm:w-6 xm:h-6"
             />
           </button>
         </div>

@@ -56,9 +56,9 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
         )}
       </div>
       <div className="w-full h-fit rounded-b-[14px] xm:h-[60%]">
-        <div className="w-[35.75rem] h-[25.375rem] flex mt-[2.8125rem] mx-[1.875rem] mb-[4.3125rem] gap-[1.6875rem] xm:m-0 xm:flex-col xm:h-full">
-          <div className="w-[12.625rem] h-[25.375rem]">
-            <ul className="grid gap-[0.625rem] h-full grid-cols-2">
+        <div className="w-[35.75rem] h-[25.375rem] flex mt-[2.8125rem] mx-[1.875rem] mb-[4.3125rem] gap-[1.6875rem] xm:gap-4 xm:mt-4 xm:items-center xm:w-full xm:m-0 xm:flex-col xm:h-fit">
+          <div className="w-[12.625rem] h-[25.375rem] xm:w-[90%] xm:h-fit">
+            <ul className="grid gap-[0.625rem] h-full grid-cols-2 xm:grid-cols-4">
               {dummyDesignData?.map((image, idx) => {
                 const isSelected = selectImage.some(selectImage => selectImage.img_id === image.img_id);
                 return (
@@ -69,10 +69,18 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
               })}
             </ul>
           </div>
-          <div className="w-[21.6875rem] h-[25.375rem]">
-            {currentImage && <Image src={currentImage.img_url} width={345} height={345} alt="선택된 ai 디자인" />}
+          <div className="w-[21.6875rem] h-[25.375rem] xm:w-[90%] xm:h-fit">
+            {currentImage && (
+              <Image
+                src={currentImage.img_url}
+                width={345}
+                height={345}
+                alt="선택된 ai 디자인"
+                className="object-cover xm:w-full"
+              />
+            )}
             {!currentImage && (
-              <div className="w-full h-[21.5625rem] bg-sample_img_bg flex items-center justify-center font-semibold text-xl">
+              <div className="w-full h-[21.5625rem] bg-sample_img_bg flex items-center justify-center font-semibold text-xl xm:text-base xm:w-full xm:h-[18.75rem]">
                 사진을 선택하세요
               </div>
             )}
@@ -91,7 +99,7 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
             </div>
           </div>
         </div>
-        <div className="w-[33.375rem] h-[2.5rem] my-[1.9375rem] mx-auto flex justify-between xm:w-full xm:justify-around">
+        <div className="w-[33.375rem] h-[2.5rem] my-[1.9375rem] mx-auto flex justify-between xm:w-full xm:justify-around xm:my-4">
           <button
             onClick={onRetry}
             className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text hover:text-black hover:border-none xm:w-[40%]">
