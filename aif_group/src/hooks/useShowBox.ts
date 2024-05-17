@@ -25,6 +25,7 @@ function useShowBox() {
     select: false,
   });
 
+  const [step, setStep] = useState(1);
   const [designCreateCount, setDesignCreateCount] = useState(0);
 
   const handleStartDesign = () => {
@@ -39,13 +40,14 @@ function useShowBox() {
   const handleCreateDesign = async () => {
     if (designCreateCount < 2) {
       console.log(userInput);
-      refetch();
+      // await refetch();
       setShow(state => ({
         ...state,
+        startBox: false,
         selectBox: true,
         previewBox: false,
       }));
-
+      setStep(2);
       setDisable(true);
       //setDesignCreateCount(prev => prev + 1);
     } else {
@@ -53,12 +55,17 @@ function useShowBox() {
     }
   };
 
-  const handleDesignSelection = () => {
+  const handleDesignSelection = async () => {
     setIsLoading(state => ({ ...state, select: true }));
-    setTimeout(() => {
-      setIsLoading(state => ({ ...state, select: false }));
-    }, 3000);
-    setShow(state => ({ ...state, previewBox: true }));
+    console.log(1);
+    await new Promise((resolve, reject) => {
+      setTimeout(() => {
+        setIsLoading(state => ({ ...state, select: false }));
+      }, 1000);
+      resolve('true');
+    });
+    setStep(3);
+    setShow(state => ({ ...state, selectBox: false, previewBox: true }));
   };
 
   const handleRetryDesign = () => {
@@ -77,6 +84,7 @@ function useShowBox() {
     handleRetryDesign,
     handleStartDesign,
     show,
+    step,
     isLoading,
     isCreateLoading,
     data,

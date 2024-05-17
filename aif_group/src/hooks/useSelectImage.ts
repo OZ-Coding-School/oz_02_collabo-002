@@ -14,9 +14,9 @@ function useSelectImage() {
   const selectImage = useAppSelector((state: RootState) => state.ref);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(resetImgFile());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(resetImgFile());
+  // }, [dispatch]);
 
   function handleDisabled(id: number) {
     if (selectImage.length === MAX_SELECTIONS && !selectImage.filter(image => image.img_id === id)) {

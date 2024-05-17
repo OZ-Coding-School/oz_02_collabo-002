@@ -5,6 +5,9 @@ export interface DesignSelectBoxProps {
   onRetry: () => void;
   data?: ImageInfo[];
   error: Error | null;
+  step: number;
+  goBack: () => void;
+  goNext: () => void;
 }
 export interface SelectImage {
   image: ImageInfo[];

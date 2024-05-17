@@ -7,7 +7,15 @@ import { DesignSelectBoxProps } from '@/types/designSelectBoxType';
 import { dummyDesignData } from '../../../public';
 import { useRouter } from 'next/navigation';
 
-const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data, error, onRetry }) => {
+const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({
+  onSelectDesign,
+  data,
+  error,
+  onRetry,
+  step,
+  goBack,
+  goNext,
+}) => {
   const { handleSelectImage, handleClickImage, selectImage, currentImage, checkboxRef, isDisabled } = useSelectImage();
   const slicingData = data?.slice(0, 8);
   const router = useRouter();
@@ -18,15 +26,17 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
         {innerWidth < 490 && (
           <div>
             <div className="absolute left-4 top-7 flex flex-col justify-start items-center">
-              <button className="flex flex-col justify-center items-center space-y-1">
+              <button className="flex flex-col justify-center items-center space-y-1" onClick={goBack}>
                 <Image alt="go-back" src={'/icons/back_icon.svg'} width={36} height={36} />
               </button>
             </div>
-            <div className="absolute right-4 top-7 flex flex-col justify-start items-center">
-              <button className="flex flex-col justify-center items-center space-y-1">
-                <Image alt="go-back" src={'/icons/next_icon.svg'} width={36} height={36} />
-              </button>
-            </div>
+            {step >= 3 && (
+              <div className="absolute right-4 top-7 flex flex-col justify-start items-center">
+                <button className="flex flex-col justify-center items-center space-y-1" onClick={goNext}>
+                  <Image alt="go-back" src={'/icons/next_icon.svg'} width={36} height={36} />
+                </button>
+              </div>
+            )}
           </div>
         )}
         <div className="bg-main_active flex w-[4.375rem] h-[1.25rem] mt-2 justify-center items-center rounded-[3px]">
