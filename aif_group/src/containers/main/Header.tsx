@@ -32,7 +32,7 @@ export default function Header() {
   }, [aboutRef, aiRef, howRef]);
 
   return (
-    <div className="w-full h-header px-[3rem] py-[2.3125rem] flex justify-center items-center mmd:px-8 md:h-[6rem] md:py-6 sm:h-[4.6rem] sm:!px-4">
+    <div className="w-full h-header px-[3rem] py-[2.3125rem] flex justify-center items-center mmd:px-8 md:h-[6rem] md:py-6 sm:!h-[4.6rem] sm:!px-4">
       <div className="lg:w-[78.75rem] w-full flex justify-between items-center">
         {innerWidth >= 768 && (
           <button
