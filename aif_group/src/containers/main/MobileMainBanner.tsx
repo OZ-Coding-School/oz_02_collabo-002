@@ -24,18 +24,18 @@ export default function MobileMainBanner() {
             <Image
               alt="main-logo"
               src={'/icons/logo_mint.svg'}
-              width={280}
-              height={80}
-              className="w-[18.75rem] h-[6.25rem] ml-[1.75rem] mt-[1.75rem] xm:w-52 xm:h-14"
+              width={208}
+              height={56}
+              className="w-52 h-14 ml-[1.75rem] mt-[1.75rem]"
             />
           </button>
           <button onClick={() => setShowSideMenu(true)}>
             <Image
               alt="hamburger-menu"
               src={'/icons/hamburger_icon.svg'}
-              width={30}
-              height={30}
-              className="w-[1.875rem] h-[1.875rem] mr-6 xm:w-6 xm:h-6"
+              width={24}
+              height={24}
+              className="w-6 h-6 mr-6"
             />
           </button>
         </div>
