@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-function ManagerButton() {
+function ManagerButton({ isAccept }: { isAccept: boolean }) {
   const [isActive, setIsActive] = useState(false);
 
   function handleClickButton() {
-    setIsActive(state => !state);
+    setIsActive(isAccept);
   }
   return (
     <button

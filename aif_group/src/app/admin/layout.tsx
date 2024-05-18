@@ -9,7 +9,7 @@ function AdminLayout({ children }: { children: React.ReactNode }) {
   const shouldRender = currenPath.startsWith('/admin/manage');
   const [activeContent, setActiveContent] = useState('manager');
   return (
-    <section className="bg-bg h-full">
+    <section className="bg-bg h-full min-w-[1080px]">
       <Header />
       <div className={`${shouldRender && 'flex w-full min-w-[1080px]'}`}>
         {shouldRender && <SideBar setActiveContent={setActiveContent} activeContent={activeContent} />}

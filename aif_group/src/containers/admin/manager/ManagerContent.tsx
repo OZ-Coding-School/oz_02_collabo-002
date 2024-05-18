@@ -5,6 +5,19 @@ import { Switch } from 'antd';
 import React from 'react';
 
 function ManagerContent() {
+  const dummyData = [
+    {
+      index: 1,
+      id: 1,
+      name: '호범',
+      phone_number: '010-4799-5022',
+      status: 'admin',
+      authority: 'staff',
+      isApproval: true,
+      isAccept: false,
+    },
+  ];
+  function handleOnClick() {}
   return (
     <div className="mt-[3.3125rem] mx-[5.4375rem]">
       <table className="w-[100%] table-fixed text-[#828282] text-[1rem]">
@@ -19,20 +32,21 @@ function ManagerContent() {
             <th className="border-t-[1px] border-table_border w-[14.039408867%]">가입 승인</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-center">
           <tr className="h-[3.375rem]">
-            <td className="bg-white border-b-[1px] border-table_border"></td>
-            <td className="bg-white border-x-[1px] border-b-[1px] border-table_border"></td>
-            <td className="bg-white border-x-[1px] border-b-[1px] border-table_border"></td>
-            <td className="bg-white border-x-[1px] border-b-[1px] border-table_border"></td>
-            <td className="bg-white border-x-[1px] border-b-[1px] border-table_border"></td>
+            <td className="bg-white border-b-[1px] border-table_border">{dummyData[0].index}</td>
+            <td className="bg-white border-x-[1px] border-b-[1px] border-table_border">{dummyData[0].id}</td>
+            <td className="bg-white border-x-[1px] border-b-[1px] border-table_border">{dummyData[0].name}</td>
+            <td className="bg-white border-x-[1px] border-b-[1px] border-table_border">{dummyData[0].phone_number}</td>
+            <td className="bg-white border-x-[1px] border-b-[1px] border-table_border">{dummyData[0].status}</td>
             <td className="bg-white border-x-[1px] border-b-[1px] border-table_border text-center">
               <div>
-                <Switch />
+                <Switch checked={dummyData[0].isApproval} onClick={handleOnClick} />
               </div>
+              {/* 양방향 바인딩이 필요 */}
             </td>
             <td className="bg-white border-b-[1px] border-table_border text-center">
-              <ManagerButton />
+              <ManagerButton isAccept={dummyData[0].isAccept} />
             </td>
           </tr>
 
