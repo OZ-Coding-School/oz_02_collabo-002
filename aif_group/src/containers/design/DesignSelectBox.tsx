@@ -21,8 +21,8 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({
   const router = useRouter();
 
   return (
-    <section className="w-[39.75rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl xm:w-full xm:min-h-screen xm:h-full xm:rounded-none xm:border-none">
-      <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center relative pt-8 pb-7 xm:h-[40%] xm:rounded-none">
+    <div className="w-[39.75rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl xm:w-full xm:min-h-screen xm:h-full xm:rounded-none xm:border-none">
+      <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center relative xm:py-5 xm:h-[40%] xm:rounded-none">
         {innerWidth < 490 && (
           <div>
             <div className="absolute left-4 top-7 flex flex-col justify-start items-center">
@@ -39,7 +39,7 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({
             )}
           </div>
         )}
-        <div className="bg-main_active flex w-[4.375rem] h-[1.25rem] mt-2 justify-center items-center rounded-[3px]">
+        <div className="bg-main_active flex mt-[1.9375rem] w-[4.375rem] h-[1.25rem] justify-center items-center rounded-[3px]">
           <p>STEP</p>
           <p className="font-black ml-[2px]">02</p>
         </div>
@@ -72,7 +72,7 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({
               {dummyDesignData?.map((image, idx) => {
                 const isSelected = selectImage.some(selectImage => selectImage.img_id === image.img_id);
                 return (
-                  <div key={image.img_id}>
+                  <div key={image.img_id} className="cursor-pointer">
                     <ImageItem image={image} onSelect={handleClickImage} isSelected={isSelected} />
                   </div>
                 );
@@ -95,7 +95,7 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({
               </div>
             )}
             <div
-              className="w-full h-[3.83125rem] bg-black flex justify-center items-center hover:bg-[#3f3f3f]"
+              className="w-full h-[3.83125rem] bg-black flex justify-center items-center hover:bg-[#3f3f3f] cursor-pointer"
               onClick={() => {
                 currentImage !== undefined && handleSelectImage(currentImage);
               }}>
@@ -116,13 +116,16 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({
             다시 생성하기
           </button>
           <button
-            onClick={onSelectDesign}
+            disabled={selectImage.length === 0}
+            onClick={() => {
+              step < 3 && onSelectDesign();
+            }}
             className="w-[15rem] h-full border-btn_border border-[1px] rounded-[4px] hover:bg-main_active text-btn_text hover:text-black hover:border-none xm:w-[40%]">
             디자인 선택하기
           </button>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

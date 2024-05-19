@@ -1,6 +1,6 @@
 'use client';
 import { FetchImageData } from '@/types/designSelectBoxType';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useImages } from './useImages';
 
 function useShowBox() {
@@ -25,7 +25,7 @@ function useShowBox() {
     select: false,
   });
 
-  const [step, setStep] = useState(1);
+  const step = useRef(1);
   const [designCreateCount, setDesignCreateCount] = useState(0);
 
   const handleStartDesign = () => {
@@ -47,7 +47,7 @@ function useShowBox() {
         selectBox: true,
         previewBox: false,
       }));
-      setStep(2);
+      step.current = 2;
       setDisable(true);
       //setDesignCreateCount(prev => prev + 1);
     } else {
@@ -57,14 +57,13 @@ function useShowBox() {
 
   const handleDesignSelection = async () => {
     setIsLoading(state => ({ ...state, select: true }));
-    console.log(1);
     await new Promise((resolve, reject) => {
       setTimeout(() => {
         setIsLoading(state => ({ ...state, select: false }));
       }, 1000);
       resolve('true');
     });
-    setStep(3);
+    step.current = 3;
     setShow(state => ({ ...state, selectBox: false, previewBox: true }));
   };
 

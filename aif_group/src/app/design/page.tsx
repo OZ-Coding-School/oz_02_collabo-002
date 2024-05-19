@@ -9,6 +9,7 @@ import ErrorAlert2 from '@/containers/modal/ErrorAlert2';
 import ErrorAlert3 from '@/containers/modal/ErrorAlert3';
 import InputAlert from '@/containers/modal/InputAlert';
 import useCheckWidth from '@/hooks/useCheckWidth';
+import usePreventMoves from '@/hooks/usePreventMoves';
 import useShowBox from '@/hooks/useShowBox';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
@@ -37,6 +38,8 @@ export default function Design() {
   const innerWidth = useCheckWidth();
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
+  usePreventMoves();
+
   // 모달이 떠있는 경우 바깥 스크롤 동작 막기
   useEffect(() => {
     if (pathname.includes('design/')) {
@@ -46,6 +49,7 @@ export default function Design() {
     }
   }, [pathname]);
 
+  // 박스가 나타날때마다 스크롤 오른쪽으로 자동 이동
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollLeft = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
@@ -83,7 +87,7 @@ export default function Design() {
                 userInput={userInput}
                 setUserInput={setUserInput}
                 onError={() => setShowErrorAlert1(true)}
-                step={step}
+                step={step.current}
                 disabled={isLoading.create || isLoading.select || disable}
                 goNext={() => setShow(prev => ({ ...prev, startBox: false, selectBox: true }))}
               />
@@ -95,7 +99,7 @@ export default function Design() {
                 onRetry={handleRetryDesign}
                 data={data}
                 error={error}
-                step={step}
+                step={step.current}
                 goBack={() => setShow(prev => ({ ...prev, startBox: true, selectBox: false, previewBox: false }))}
                 goNext={() => setShow(prev => ({ ...prev, startBox: false, selectBox: false, previewBox: true }))}
               />
@@ -114,24 +118,24 @@ export default function Design() {
               userInput={userInput}
               setUserInput={setUserInput}
               onError={() => setShowErrorAlert1(true)}
-              step={step}
+              step={step.current}
               disabled={isLoading.create || isLoading.select || disable}
               goNext={() => setShow(prev => ({ ...prev, startBox: false, selectBox: true }))}
             />
             {isCreateLoading && <DesignLoadingBox type={'select'} />}
-            {!isCreateLoading && step >= 2 && (
+            {!isCreateLoading && step.current >= 2 && (
               <DesignSelectBox
                 onSelectDesign={handleDesignSelection}
                 onRetry={handleRetryDesign}
                 data={data}
                 error={error}
-                step={step}
+                step={step.current}
                 goBack={() => setShow(prev => ({ ...prev, startBox: true, selectBox: false, previewBox: false }))}
                 goNext={() => setShow(prev => ({ ...prev, startBox: false, selectBox: false, previewBox: true }))}
               />
             )}
             {isLoading.select && <DesignLoadingBox type={'preview'} />}
-            {!isLoading.select && step >= 3 && (
+            {!isLoading.select && step.current >= 3 && (
               <DesignPreviewBox goBack={() => setShow(prev => ({ ...prev, selectBox: true, previewBox: false }))} />
             )}
           </div>
