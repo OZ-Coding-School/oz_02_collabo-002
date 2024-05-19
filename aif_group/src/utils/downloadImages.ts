@@ -12,7 +12,7 @@ const downloadImage = async (files: ImageInfo[]) => {
       })
       .catch((err: any) => console.log(err));
     if (fetchedFile) {
-      zip.file(`${file.img_id}.png`, fetchedFile, {
+      zip.file(`${file.img_name}.png`, fetchedFile, {
         binary: true,
       });
     }

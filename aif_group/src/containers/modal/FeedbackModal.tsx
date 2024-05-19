@@ -51,14 +51,14 @@ const FeedbackModal = () => {
     const resultError = handleError(data);
     const JSONdata = JSON.stringify(data);
     console.log(JSONdata);
+    console.log(imgFile);
 
     if (resultError === 'true') {
       const result = await postSurveys(JSONdata);
       console.log(result);
       if (result?.status === 200) {
-        const downloadImgFilter = imgFile.filter(img => img.img_url !== '');
-        if (downloadImgFilter.length !== 0) {
-          downloadImage(downloadImgFilter);
+        if (imgFile.length !== 0) {
+          downloadImage(imgFile);
         }
         router.replace('/thanks');
       }
