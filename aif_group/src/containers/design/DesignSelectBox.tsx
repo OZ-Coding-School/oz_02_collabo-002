@@ -16,7 +16,8 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({
   goBack,
   goNext,
 }) => {
-  const { handleSelectImage, handleClickImage, selectImage, currentImage, checkboxRef, isDisabled } = useSelectImage();
+  const { handleSelectImage, handleClickImage, selectImage, currentImage, checkboxRef, isDisabled } =
+    useSelectImage(step);
   const slicingData = data?.slice(0, 8);
   const router = useRouter();
 

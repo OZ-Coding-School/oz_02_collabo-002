@@ -9,7 +9,7 @@ function usePreventMoves() {
   const router = useRouter();
 
   // 새로고침, 페이지 이동 막기
-  const beforeUnloadHandler = useCallback(
+  const handleBeforeUnload = useCallback(
     (event: BeforeUnloadEvent) => {
       if (isDirty) {
         event.preventDefault();
@@ -30,12 +30,10 @@ function usePreventMoves() {
       return;
     };
     router.push = newPush;
-    window.onbeforeunload = beforeUnloadHandler;
     return () => {
       router.push = originalPush;
-      window.onbeforeunload = null;
     };
-  }, [isDirty, router, beforeUnloadHandler]);
+  }, [isDirty, router, handleBeforeUnload]);
 
   // 뒤로가기 막기
   const handlePopState = useCallback(() => {
@@ -48,20 +46,22 @@ function usePreventMoves() {
   }, [isDirty]);
 
   useEffect(() => {
-    if (!isClickedFirst.current && !pathname.includes('design/')) {
+    if (!isClickedFirst.current) {
       history.pushState(null, '', '');
       isClickedFirst.current = true;
     }
-  }, [pathname]);
+  }, []);
 
   useEffect(() => {
     if (!pathname.includes('design/')) {
       window.addEventListener('popstate', handlePopState);
+      window.addEventListener('beforeunload', handleBeforeUnload);
       return () => {
         window.removeEventListener('popstate', handlePopState);
+        window.removeEventListener('beforeunload', handleBeforeUnload);
       };
     }
-  }, [handlePopState, pathname]);
+  }, [handlePopState, handleBeforeUnload, pathname]);
 }
 
 export default usePreventMoves;
