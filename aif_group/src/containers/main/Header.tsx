@@ -32,7 +32,7 @@ export default function Header() {
   }, [aboutRef, aiRef, howRef]);
 
   return (
-    <div className="w-full h-header px-[3rem] py-[2.3125rem] flex justify-center items-center mmd:px-8 md:h-fit md:py-6 sm:h-[4.6rem] sm:!px-4">
+    <div className="w-full h-header px-[3rem] py-[2.3125rem] flex justify-center items-center mmd:px-8 md:h-[6rem] md:py-6 sm:!h-[4.6rem] sm:!px-4">
       <div className="lg:w-[78.75rem] w-full flex justify-between items-center">
         {innerWidth >= 768 && (
           <button
@@ -61,10 +61,10 @@ export default function Header() {
             </button>
           </div>
         ) : (
-          <div className="w-[49.8125rem] flex justify-end ml-12 md:w-[38rem] mmd:w-[28rem] mmd:ml-7 sm:!w-full sm:mr-4">
+          <div className="w-[49.8125rem] flex justify-end ml-12 md:w-[38rem] mmd:w-[28rem] sm:!w-full sm:mr-4">
             {innerWidth >= 768 ? (
               <button
-                className="text-[1.375rem] w-[12.5rem] h-[3.25rem] bg-black text-main_active group hover:bg-main_active active:bg-main_active rounded-md font-bold"
+                className="text-[1.375rem] w-[12.5rem] h-[3.25rem] bg-black text-main_active group hover:bg-main_active active:bg-main_active rounded-md font-bold md:text-[1.2rem] md:w-44 md:h-12"
                 onClick={() => router.push('/')}>
                 <div className="group-hover:text-black group-active:text-black">Home</div>
               </button>

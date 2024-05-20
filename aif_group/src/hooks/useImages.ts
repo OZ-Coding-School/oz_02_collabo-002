@@ -5,7 +5,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 
 export const useImages = (keyword: string, style: string) => {
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ['getImages'],
+    queryKey: [],
     queryFn: async () => {
       await createImages(keyword, style);
       const imageData = await getImages();

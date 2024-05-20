@@ -9,6 +9,7 @@ import ErrorAlert2 from '@/containers/modal/ErrorAlert2';
 import ErrorAlert3 from '@/containers/modal/ErrorAlert3';
 import InputAlert from '@/containers/modal/InputAlert';
 import useCheckWidth from '@/hooks/useCheckWidth';
+import usePreventMoves from '@/hooks/usePreventMoves';
 import useShowBox from '@/hooks/useShowBox';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
@@ -21,6 +22,7 @@ export default function Design() {
     handleStartDesign,
     handleDesignSelection,
     show,
+    step,
     isLoading,
     data,
     error,
@@ -36,6 +38,8 @@ export default function Design() {
   const innerWidth = useCheckWidth();
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
+  usePreventMoves();
+
   // 모달이 떠있는 경우 바깥 스크롤 동작 막기
   useEffect(() => {
     if (pathname.includes('design/')) {
@@ -45,11 +49,14 @@ export default function Design() {
     }
   }, [pathname]);
 
+  // 박스가 나타날때마다 스크롤 오른쪽으로 자동 이동
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollLeft = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
     }
-  }, [isLoading, show]);
+  }, [isLoading, show, isCreateLoading]);
+
+  // console.log('isCreateLoading', isCreateLoading);
 
   return (
     <main className="bg-bg">
@@ -65,75 +72,74 @@ export default function Design() {
             <ErrorAlert2
               onClose={() => setShow(prev => ({ ...prev, errorAlert2: false }))}
               setDisable={() => setDisable(false)}
+              setShow={() => setShow(prev => ({ ...prev, errorAlert2: false, startBox: true, selectBox: false }))}
             />
           </div>
         )}
         <ErrorAlert1 onClose={() => setShowErrorAlert1(false)} show={showErrorAlert1} />
         <ErrorAlert3 onClose={() => setShow(prev => ({ ...prev, errorAlert3: false }))} show={show.errorAlert3} />
 
-        <div
-          ref={scrollRef}
-          className="w-fit h-full flex items-center space-x-4 list-none p-6 xm:p-0 xm:w-full overflow-y-auto">
-          {innerWidth < 490 ? (
-            show.startBox &&
-            !isCreateLoading &&
-            !isLoading.select &&
-            !disable &&
-            !show.previewBox && (
+        {innerWidth < 490 ? (
+          <div className="w-full h-full flex items-center">
+            {show.startBox && !isCreateLoading && !isLoading.select && !show.previewBox && (
               <DesignStartBox
                 onCreateDesign={handleCreateDesign}
                 userInput={userInput}
                 setUserInput={setUserInput}
                 onError={() => setShowErrorAlert1(true)}
+                step={step.current}
                 disabled={isLoading.create || isLoading.select || disable}
+                goNext={() => setShow(prev => ({ ...prev, startBox: false, selectBox: true }))}
               />
-            )
-          ) : (
+            )}
+            {isCreateLoading && <DesignLoadingBox type={'select'} />}
+            {!isCreateLoading && show.selectBox && !show.startBox && !isLoading.select && !show.previewBox && (
+              <DesignSelectBox
+                onSelectDesign={handleDesignSelection}
+                onRetry={handleRetryDesign}
+                data={data}
+                error={error}
+                step={step.current}
+                goBack={() => setShow(prev => ({ ...prev, startBox: true, selectBox: false, previewBox: false }))}
+                goNext={() => setShow(prev => ({ ...prev, startBox: false, selectBox: false, previewBox: true }))}
+              />
+            )}
+            {isLoading.select && <DesignLoadingBox type={'preview'} />}
+            {!isLoading.select && show.previewBox && !show.selectBox && (
+              <DesignPreviewBox goBack={() => setShow(prev => ({ ...prev, selectBox: true, previewBox: false }))} />
+            )}
+          </div>
+        ) : (
+          <div
+            ref={scrollRef}
+            className="w-fit h-full flex items-center space-x-4 p-6 xm:p-0 xm:w-full overflow-y-auto">
             <DesignStartBox
               onCreateDesign={handleCreateDesign}
               userInput={userInput}
               setUserInput={setUserInput}
               onError={() => setShowErrorAlert1(true)}
+              step={step.current}
               disabled={isLoading.create || isLoading.select || disable}
+              goNext={() => setShow(prev => ({ ...prev, startBox: false, selectBox: true }))}
             />
-          )}
-          {innerWidth < 490
-            ? isCreateLoading && disable && <DesignLoadingBox type={'select'} />
-            : isCreateLoading && <DesignLoadingBox type={'select'} />}
-          {innerWidth < 490
-            ? !isCreateLoading &&
-              show.selectBox &&
-              disable &&
-              !isLoading.select &&
-              !show.previewBox && (
-                <DesignSelectBox
-                  onSelectDesign={handleDesignSelection}
-                  onRetry={handleRetryDesign}
-                  data={data}
-                  error={error}
-                />
-              )
-            : !isCreateLoading &&
-              show.selectBox && (
-                <DesignSelectBox
-                  onSelectDesign={handleDesignSelection}
-                  onRetry={handleRetryDesign}
-                  data={data}
-                  error={error}
-                />
-              )}
-          {isLoading.select && <DesignLoadingBox type={'preview'} />}
-          {innerWidth < 490
-            ? !isLoading.select &&
-              show.previewBox &&
-              !show.selectBox && (
-                <DesignPreviewBox goBack={() => setShow(prev => ({ ...prev, selectBox: true, previewBox: false }))} />
-              )
-            : !isLoading.select &&
-              show.previewBox && (
-                <DesignPreviewBox goBack={() => setShow(prev => ({ ...prev, selectBox: true, previewBox: false }))} />
-              )}
-        </div>
+            {isCreateLoading && <DesignLoadingBox type={'select'} />}
+            {!isCreateLoading && step.current >= 2 && (
+              <DesignSelectBox
+                onSelectDesign={handleDesignSelection}
+                onRetry={handleRetryDesign}
+                data={data}
+                error={error}
+                step={step.current}
+                goBack={() => setShow(prev => ({ ...prev, startBox: true, selectBox: false, previewBox: false }))}
+                goNext={() => setShow(prev => ({ ...prev, startBox: false, selectBox: false, previewBox: true }))}
+              />
+            )}
+            {isLoading.select && <DesignLoadingBox type={'preview'} />}
+            {!isLoading.select && step.current >= 3 && (
+              <DesignPreviewBox goBack={() => setShow(prev => ({ ...prev, selectBox: true, previewBox: false }))} />
+            )}
+          </div>
+        )}
       </section>
     </main>
   );

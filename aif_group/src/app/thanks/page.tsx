@@ -46,40 +46,42 @@ export default function Thanks() {
   };
 
   return (
-    <main className="w-full h-full">
+    <main className="">
       <Header />
-      <section className="bg-bg w-full min-h-[calc(100vh-8.875rem)] h-[calc(100%-8.875rem)] flex justify-center items-center m-auto py-4 sm:bg-white">
+      <section className="bg-bg w-full min-h-[calc(100vh-8.875rem)] h-[calc(100%-8.875rem)] flex justify-center items-center m-auto py-4 sm:bg-white md:min-h-[calc(100vh-6rem)] md:h-[calc(100%-6rem)] sm:h-[calc(100%-4.6rem)] xm:min-w-full">
         <div className="bg-white w-2/3 h-[40rem] mx-5 rounded-[15px] shadow-[0_0_10px_rgba(0,0,0,0.25)] mmd:px-5 sm:shadow-none sm:w-full sm:h-fit">
           <div className="h-full flex flex-col justify-center items-center">
-            <div className="font-saira text-[1.875rem] leading-[90%] tracking-[-0.02em] sm:text-xl">AI Fashionista</div>
-            <div className="font-bold text-[2rem] leading-[3.9375rem] mt-[3.375rem] text-center break-keep sm:text-2xl sm:font-medium">
+            <div className="font-saira text-[1.875rem] leading-[90%] tracking-[-0.02em] mmd:text-2xl sm:!text-lg">
+              AI Fashionista
+            </div>
+            <div className="font-bold text-[2rem] leading-[3.9375rem] mt-[3.375rem] text-center break-keep mmd:text-2xl sm:!text-lg sm:font-medium">
               AIF 서비스를 이용해 주셔서 감사합니다.
             </div>
             <div className="w-[24.5625rem] h-1 border-t border-black my-[1.6875rem] sm:w-[60%] sm:my-8"></div>
-            <div className="font-semibold text-[1.8rem] text-center leading-[3.125rem] mb-[3.875rem] sm:text-lg sm:font-normal sm:mb-12">
+            <div className="font-semibold text-[1.8rem] text-center leading-[3.125rem] mb-[3.875rem] md:text-xl sm:!text-base sm:font-normal sm:mb-12">
               <span className="sm:font-semibold">커스텀 디자인 경험</span>이 즐겁고 유쾌하셨다면 <br />{' '}
               <span className="sm:font-semibold">친구에게 공유</span>해 주세요!
             </div>
-            <div className="w-[12.5rem] h-[5.625rem] flex justify-center items-center">
-              <div className="h-[5.625rem] flex flex-col justify-between items-center mr-[1.375rem] sm:h-[4rem]">
+            <div className="w-[12.5rem] h-[5rem] flex justify-center items-center">
+              <div className="h-[5rem] flex flex-col justify-between items-center mr-[1.375rem] sm:h-[4rem]">
                 <button onClick={handleShearToKakao}>
                   <Image
                     alt="kakao_link_icon"
                     src={'/icons/kakao_link_icon.svg'}
-                    width={56}
-                    height={56}
+                    width={48}
+                    height={48}
                     className="sm:w-10 sm:h-10"
                   />
                 </button>
                 <div className="text-base sm:text-sm">카카오톡</div>
               </div>
-              <div className="h-[5.625rem] flex flex-col justify-between items-center sm:h-[4rem]">
+              <div className="h-[5rem] flex flex-col justify-between items-center sm:h-[4rem]">
                 <button onClick={handleCopyClick}>
                   <Image
                     alt="link_icon"
                     src={'/icons/link_icon.svg'}
-                    width={56}
-                    height={56}
+                    width={48}
+                    height={48}
                     className="sm:w-10 sm:h-10"
                   />
                 </button>

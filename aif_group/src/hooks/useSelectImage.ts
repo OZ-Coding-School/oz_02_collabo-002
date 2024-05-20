@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from './reduxHooks';
 import { RootState } from '@/states/store';
 import { deleteImgFile, resetImgFile, setImgFileUrl } from '@/states/imageSlice';
 
-function useSelectImage() {
+function useSelectImage(step: number) {
   const [isDisabled, setIsDisabled] = useState(false);
   const checkboxRef = useRef<HTMLInputElement>(null);
   const [currentImage, setCurrentImage] = useState<ImageInfo>();
@@ -14,9 +14,12 @@ function useSelectImage() {
   const selectImage = useAppSelector((state: RootState) => state.ref);
   const dispatch = useAppDispatch();
 
+  // 이거 넣으면 모바일 버전에서 앞/뒤 이동하면 selectImage가 reset됨
   useEffect(() => {
-    dispatch(resetImgFile());
-  }, [dispatch]);
+    if (step === 1) {
+      dispatch(resetImgFile());
+    }
+  }, [step]);
 
   function handleDisabled(id: number) {
     if (selectImage.length === MAX_SELECTIONS && !selectImage.filter(image => image.img_id === id)) {
