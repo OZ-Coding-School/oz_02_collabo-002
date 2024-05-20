@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useValidation from '@/hooks/useValidation';
+import { RiErrorWarningLine } from 'react-icons/ri';
 interface InputAlertProps {
   onClose: () => void;
 }
@@ -63,13 +64,15 @@ const InputAlert: React.FC<InputAlertProps> = ({ onClose }) => {
             type="email"
             onChange={handleEmailChange}
             placeholder="이메일주소를 입력해주세요."
-            className="p-2 bg-gray-100 placeholder-[#79DDCB] rounded-md max-w-[24.625rem] w-full h-[2.5rem] text-[15px] mb-5 xm:text-sm"
+            className="p-2 bg-gray-100 placeholder-[#79DDCB] rounded-md max-w-[24.625rem] w-full h-[2.5rem] text-[15px] xm:text-sm"
             required
             value={email}
           />
-          <div className={`${(isFirstTry || isValid) && 'h-[1.949375rem]'}`} />
-          <div className={`text-red-500 w-[23.625rem] text-[0.9rem] p-[0.3rem] ${(isFirstTry || isValid) && 'hidden'}`}>
-            유효한 이메일을 입력해주세요.
+          <div className="flex items-center w-[23.625rem] text-[0.9rem] h-[2.5rem]">
+            <p className={`flex justify-start items-center text-red-600 ${(isFirstTry || isValid) && 'hidden'}`}>
+              <RiErrorWarningLine />
+              &nbsp;유효한 이메일을 입력해주세요.
+            </p>
           </div>
           <button type="submit" className="bg-main_active w-[15rem] h-[2.5rem] rounded-md font-medium">
             디자인 시작하기
