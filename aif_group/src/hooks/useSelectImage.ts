@@ -15,7 +15,7 @@ function useSelectImage(step: number) {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (step === 1) {
+    if (step === 2) {
       dispatch(resetImgFile());
     }
   }, [step]);
