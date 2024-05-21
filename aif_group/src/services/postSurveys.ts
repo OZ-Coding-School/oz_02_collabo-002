@@ -1,11 +1,12 @@
 import axios, { AxiosError } from 'axios';
 import Cookies from 'js-cookie';
 
-const token = Cookies.get('Authorization');
+const token = Cookies.get('access_token');
 
 export const apiClient = axios.create({
   baseURL: '/api/surveys',
   timeout: 0,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
