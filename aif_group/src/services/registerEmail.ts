@@ -6,7 +6,7 @@ export async function registerEmail(email: string) {
   });
   try {
     const response = await emailClient.post('slash/users/register_email', jsonData);
-    console.log(response.data.message);
+    console.log(response.data);
     if (response.status === 200 || response.data.message === '이미 존재하는 이메일입니다.') {
       return true;
     }

@@ -1,23 +1,40 @@
 'use client';
 
 import ManagerButton from '@/components/admin/button/ManagerButton';
+import { getManagers } from '@/services/admin/getManagers';
 import { Switch } from 'antd';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+const dummyData = [
+  {
+    index: 1,
+    id: 1,
+    name: '호범',
+    phone_number: '010-4799-5022',
+    status: 'admin',
+    authority: 'staff',
+    isApproval: true,
+    isAccept: false,
+  },
+];
 
 function ManagerContent() {
-  const dummyData = [
-    {
-      index: 1,
-      id: 1,
-      name: '호범',
-      phone_number: '010-4799-5022',
-      status: 'admin',
-      authority: 'staff',
-      isApproval: true,
-      isAccept: false,
-    },
-  ];
-  function handleOnClick() {}
+  const [managers, setManagers] = useState([]);
+  useEffect(() => {
+    //const data = getManagers();
+    //console.log(data);
+  }, []);
+  const [isApproval, setIsApproval] = useState(dummyData[0].isApproval);
+  const [isAccept, setIsAccept] = useState(dummyData[0].isAccept);
+  function handleOnClickSwitch() {
+    dummyData[0].isApproval = !dummyData[0].isApproval;
+    setIsApproval(dummyData[0].isApproval);
+    // 권한 변경 api 호출
+  }
+  function handleOnClickButton() {
+    dummyData[0].isAccept = !dummyData[0].isAccept;
+    setIsAccept(dummyData[0].isAccept);
+    // 권한 변경 api 호출
+  }
   return (
     <div className="mt-[3.3125rem] mx-[5.4375rem]">
       <table className="w-[100%] table-fixed text-[#828282] text-[1rem]">
@@ -41,12 +58,12 @@ function ManagerContent() {
             <td className="bg-white border-x-[1px] border-b-[1px] border-table_border">{dummyData[0].status}</td>
             <td className="bg-white border-x-[1px] border-b-[1px] border-table_border text-center">
               <div>
-                <Switch checked={dummyData[0].isApproval} onClick={handleOnClick} />
+                <Switch checked={isApproval} onClick={handleOnClickSwitch} />
               </div>
               {/* 양방향 바인딩이 필요 */}
             </td>
             <td className="bg-white border-b-[1px] border-table_border text-center">
-              <ManagerButton isAccept={dummyData[0].isAccept} />
+              <ManagerButton isAccept={isAccept} onClick={handleOnClickButton} />
             </td>
           </tr>
 
