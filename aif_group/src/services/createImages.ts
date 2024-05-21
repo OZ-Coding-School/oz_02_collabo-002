@@ -8,7 +8,7 @@ export async function createImages(keyword: string, style: string) {
   formData.append('style', style);
 
   try {
-    const response = await apiClient.post('/image/create-load', formData);
+    const response = await apiClient.post('/image/tmp-create-load', formData);
     console.log('Response:', response.data);
     return response.data;
   } catch (error) {

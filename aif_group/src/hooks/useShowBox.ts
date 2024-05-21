@@ -43,7 +43,9 @@ function useShowBox() {
       if (response) {
         setCreatedImages(state => state.concat(response));
       }
-      setIsLoading(state => ({ ...state, create: false }));
+      setTimeout(() => {
+        setIsLoading(state => ({ ...state, create: false }));
+      }, 1000);
       setShow(state => ({
         ...state,
         startBox: false,
