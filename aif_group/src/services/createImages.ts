@@ -9,6 +9,12 @@ export async function createImages(keyword: string, style: string) {
 
   try {
     const response = await apiClient.post('/image/tmp-create-load', formData);
+  const formData = new FormData();
+  formData.append('keyword', keyword);
+  formData.append('style', style);
+
+  try {
+    const response = await apiClient.post('/image/create-load');
     console.log('Response:', response.data);
     return response.data;
   } catch (error) {
