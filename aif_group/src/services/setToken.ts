@@ -20,8 +20,10 @@ export async function setToken(email: string, status: string, password: string) 
       //set cookie
       const jwtToken = response.data.token;
       Cookies.set('Authorization', jwtToken, { expires: 1 }); // 1일 후 만료
+      return true;
     }
   } catch (error) {
     console.error(error);
+    return false;
   }
 }

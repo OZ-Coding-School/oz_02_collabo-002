@@ -8,10 +8,10 @@ import { setToken } from './setToken';
 
 export async function validateEmail(email: string): Promise<boolean> {
   const jsonData = JSON.stringify({
-    email,
+    member_email: email,
   });
   try {
-    const response = await emailClient.post('/slash/users/check_email', jsonData);
+    const response = await emailClient.post('/users/create', jsonData);
     const isValid = response.status === 200;
     return isValid;
   } catch (error) {

@@ -13,11 +13,9 @@ function useValidation() {
   const mutation = useMutation({
     mutationFn: async ({ email, status = 'user', password = '' }: ValidationArgs) => {
       const isValid = await validateEmail(email);
-      if (isValid) {
-        await registerEmail(email);
-        await setToken(email, status, password);
-      }
-      return isValid;
+      const hasToken = await setToken(email, status, password);
+
+      return isValid || hasToken;
     },
   });
 

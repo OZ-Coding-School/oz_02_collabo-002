@@ -9,18 +9,18 @@ export const apiClient = axios.create({
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
     Accept: 'application/json',
-    Authorization: `Bearer ${token}`,
+    refresh_token: `Bearer ${token}`,
   },
 });
 
 export const emailClient = axios.create({
   baseURL: '/api',
   timeout: 0,
-  headers: { 'Content-Type': 'application/json', Accept: 'application/json', Authorization: `Bearer ${token}` },
+  headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
 });
 
 export const imageClient = axios.create({
   baseURL: '/api',
   timeout: 0,
-  headers: { 'Content-Type': 'multipart/form-data', Accept: 'application/json', Authorization: `Bearer ${token}` },
+  headers: { 'Content-Type': 'multipart/form-data', Accept: 'application/json', refresh_token: `Bearer ${token}` },
 });

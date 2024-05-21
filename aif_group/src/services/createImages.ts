@@ -22,7 +22,7 @@ export async function createImages(keyword: string, style: string) {
   };
   try {
     console.log(encodeFormData(data));
-    const response = await apiClient.post('/image/tmp_create', encodeFormData(data), {});
+    const response = await apiClient.post('/image/create-load', encodeFormData(data), {});
     console.log('Response:', response.data);
     return response.data;
   } catch (error) {

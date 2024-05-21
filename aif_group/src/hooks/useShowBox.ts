@@ -41,8 +41,7 @@ function useShowBox() {
   const handleCreateDesign = async () => {
     if (designCreateCount < 2) {
       setIsLoading(state => ({ ...state, create: true }));
-      await createImages(userInput.keyword, userInput.style);
-      const response = await getImages();
+      const response = await createImages(userInput.keyword, userInput.style);
       if (response) {
         setCreatedImages(state => state.concat(response));
       }
