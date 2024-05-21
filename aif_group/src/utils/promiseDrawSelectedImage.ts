@@ -19,12 +19,12 @@ const promiseDrawSelectedImage = async (props: drawPropsType) => {
         canvas.height = 1800;
         const context = canvas.getContext('2d');
         context?.clearRect(0, 0, canvas.width, canvas.height);
-        const Tshirt = new Image();
-        Tshirt.crossOrigin = 'anonymous';
-        Tshirt.src = props.selectedColorArray[index] === 'white' ? props.tShirtImage.white : props.tShirtImage.black;
-        Tshirt.onload = () => {
+        const tShirt = new Image();
+        tShirt.crossOrigin = 'anonymous';
+        tShirt.src = props.selectedColorArray[index] === 'white' ? props.tShirtImage.white : props.tShirtImage.black;
+        tShirt.onload = () => {
           context?.clearRect(0, 0, canvas.width, canvas.height);
-          context?.drawImage(Tshirt, 0, 0, canvas.width, canvas.height);
+          context?.drawImage(tShirt, 0, 0, canvas.width, canvas.height);
 
           const image = new Image();
           image.crossOrigin = 'anonymous';
