@@ -18,10 +18,14 @@ export async function setToken(email: string, status: string, password: string) 
     const response = await emailClient.post('users/jwt-login', jsonData);
     if (response.status === 200) {
       //set cookie
-      const jwtToken = response.data.token;
-      Cookies.set('Authorization', jwtToken, { expires: 1 }); // 1일 후 만료
+      const access_token = response.data.access_token;
+      const refresh_token = response.data.refresh_token;
+      Cookies.set('access_token', access_token, { expires: 1 }); // 1일 후 만료
+      // Cookies.set('refresh_token', refresh_token, { expires: 1 }); // 1일 후 만료
+      return true;
     }
   } catch (error) {
     console.error(error);
+    return false;
   }
 }

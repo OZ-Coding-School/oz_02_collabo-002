@@ -1,14 +1,11 @@
-import { AxiosError } from 'axios';
-import { apiClient } from './instance';
+import axios, { AxiosError } from 'axios';
+import { sampleClient } from './instance';
 
-// POST 요청 보내기
-export async function createImages(keyword: string, style: string) {
-  const formData = new FormData();
-  formData.append('keyword', keyword);
-  formData.append('style', style);
+export async function getSamples() {
   try {
-    const response = await apiClient.post('/image/create-load');
-    console.log('Response:', response.data);
+    const response = await sampleClient.get('/slash', {
+      withCredentials: true,
+    });
     return response.data;
   } catch (error) {
     const axiosError = error as AxiosError;

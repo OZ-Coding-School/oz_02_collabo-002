@@ -11,7 +11,6 @@ import InputAlert from '@/containers/modal/InputAlert';
 import useCheckWidth from '@/hooks/useCheckWidth';
 import usePreventMoves from '@/hooks/usePreventMoves';
 import useShowBox from '@/hooks/useShowBox';
-import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 export default function Design() {
@@ -24,39 +23,25 @@ export default function Design() {
     show,
     step,
     isLoading,
-    data,
-    error,
     disable,
-    isCreateLoading,
+    createdImages: data,
     handleRetryDesign,
     setShow,
     setDisable,
   } = useShowBox();
 
   const [showErrorAlert1, setShowErrorAlert1] = useState(false);
-  const pathname = usePathname();
   const innerWidth = useCheckWidth();
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   usePreventMoves();
-
-  // 모달이 떠있는 경우 바깥 스크롤 동작 막기
-  useEffect(() => {
-    if (pathname.includes('design/')) {
-      document.body.style.overflowY = 'hidden';
-    } else {
-      document.body.style.overflowY = 'auto';
-    }
-  }, [pathname]);
 
   // 박스가 나타날때마다 스크롤 오른쪽으로 자동 이동
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollLeft = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
     }
-  }, [isLoading, show, isCreateLoading]);
-
-  // console.log('isCreateLoading', isCreateLoading);
+  }, [isLoading, show]);
 
   return (
     <main className="bg-bg">
@@ -81,7 +66,7 @@ export default function Design() {
 
         {innerWidth < 490 ? (
           <div className="w-full h-full flex items-center">
-            {show.startBox && !isCreateLoading && !isLoading.select && !show.previewBox && (
+            {show.startBox && !isLoading.create && !isLoading.select && !show.previewBox && (
               <DesignStartBox
                 onCreateDesign={handleCreateDesign}
                 userInput={userInput}
@@ -92,13 +77,12 @@ export default function Design() {
                 goNext={() => setShow(prev => ({ ...prev, startBox: false, selectBox: true }))}
               />
             )}
-            {isCreateLoading && <DesignLoadingBox type={'select'} />}
-            {!isCreateLoading && show.selectBox && !show.startBox && !isLoading.select && !show.previewBox && (
+            {isLoading.create && <DesignLoadingBox type={'select'} />}
+            {!isLoading.create && show.selectBox && !show.startBox && !isLoading.select && !show.previewBox && (
               <DesignSelectBox
                 onSelectDesign={handleDesignSelection}
                 onRetry={handleRetryDesign}
                 data={data}
-                error={error}
                 step={step.current}
                 goBack={() => setShow(prev => ({ ...prev, startBox: true, selectBox: false, previewBox: false }))}
                 goNext={() => setShow(prev => ({ ...prev, startBox: false, selectBox: false, previewBox: true }))}
@@ -122,13 +106,12 @@ export default function Design() {
               disabled={isLoading.create || isLoading.select || disable}
               goNext={() => setShow(prev => ({ ...prev, startBox: false, selectBox: true }))}
             />
-            {isCreateLoading && <DesignLoadingBox type={'select'} />}
-            {!isCreateLoading && step.current >= 2 && (
+            {isLoading.create && <DesignLoadingBox type={'select'} />}
+            {!isLoading.create && step.current >= 2 && (
               <DesignSelectBox
                 onSelectDesign={handleDesignSelection}
                 onRetry={handleRetryDesign}
                 data={data}
-                error={error}
                 step={step.current}
                 goBack={() => setShow(prev => ({ ...prev, startBox: true, selectBox: false, previewBox: false }))}
                 goNext={() => setShow(prev => ({ ...prev, startBox: false, selectBox: false, previewBox: true }))}

@@ -14,9 +14,8 @@ function useSelectImage(step: number) {
   const selectImage = useAppSelector((state: RootState) => state.ref);
   const dispatch = useAppDispatch();
 
-  // 이거 넣으면 모바일 버전에서 앞/뒤 이동하면 selectImage가 reset됨
   useEffect(() => {
-    if (step === 1) {
+    if (step === 2) {
       dispatch(resetImgFile());
     }
   }, [step]);

@@ -1,21 +1,9 @@
 import axios, { AxiosError } from 'axios';
-import Cookies from 'js-cookie';
-
-const token = Cookies.get('Authorization');
-
-export const apiClient = axios.create({
-  baseURL: '/api/surveys',
-  timeout: 0,
-  headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-    Authorization: `Bearer ${token}`,
-  },
-});
+import { surveyClient } from './instance';
 
 export async function postSurveys(JSONdata: string) {
   try {
-    const response = await apiClient.post('/submit', JSONdata);
+    const response = await surveyClient.post('/surveys/submit', JSONdata);
 
     console.log('Response:', response.data);
     return response;
