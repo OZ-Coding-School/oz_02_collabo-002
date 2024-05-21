@@ -9,7 +9,6 @@ export const apiClient = axios.create({
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
     Accept: 'application/json',
-    Authorization: `Bearer ${token}`,
   },
 });
 
@@ -40,3 +39,16 @@ export const surveyClient = axios.create({
     Authorization: `Bearer ${token}`,
   },
 });
+
+apiClient.interceptors.request.use(
+  config => {
+    const token = Cookies.get('access_token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  },
+);
