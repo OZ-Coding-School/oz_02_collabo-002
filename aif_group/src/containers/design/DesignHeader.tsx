@@ -13,7 +13,7 @@ export default function DesignHeader() {
   return (
     <div>
       {innerWidth >= 490 && (
-        <div className="w-full h-header px-[3rem] py-[2.3125rem] flex justify-center items-center bg-white sm:px-3 md:h-[6rem] md:py-6 sm:h-[4.6rem]">
+        <div className="w-full h-header px-[3rem] py-[2.3125rem] flex justify-center items-center bg-white mmd:pl-8 sm:px-4 md:h-[6rem] md:py-6 sm:h-[4.6rem]">
           <div className="w-[78.75rem] h-full flex justify-between items-center">
             <button onClick={() => router.push('/')} className="h-full md:w-[40%]">
               <Image

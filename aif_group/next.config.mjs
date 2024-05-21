@@ -28,6 +28,12 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'aif-bucket-240429.s3.ap-northeast-2.amazonaws.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };

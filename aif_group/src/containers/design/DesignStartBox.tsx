@@ -14,12 +14,13 @@ interface DesignStartBoxProps {
   >;
   userInput: { keyword: string; style: string };
   onError: () => void;
+  step: number;
   disabled: boolean;
+  goNext: () => void;
 }
 
 const styles = [
-  { id: '레트로', src: '/icons/Ellipse 152.svg' },
-  { id: '꼴라쥬', src: '/icons/Ellipse 153.svg' },
+  { id: '팝아트', src: '/icons/팝아트.png' },
   { id: '데코', src: '/icons/Ellipse 154.svg' },
   { id: '그라피티', src: '/icons/Ellipse 155.svg' },
   { id: '키덜트', src: '/icons/Ellipse 156.svg' },
@@ -28,6 +29,7 @@ const styles = [
   { id: '빈티지포스터', src: '/icons/Ellipse 159.svg' },
   { id: '엠블럼', src: '/icons/Ellipse 160.svg' },
   { id: '애니메이션', src: '/icons/Ellipse 161.svg' },
+  { id: '픽셀아트', src: '/icons/픽셀아트.png' },
 ];
 
 const DesignStartBox: React.FC<DesignStartBoxProps> = ({
@@ -35,7 +37,9 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({
   setUserInput,
   userInput,
   onError,
+  step,
   disabled,
+  goNext,
 }) => {
   const innerWidth = useCheckWidth();
   const router = useRouter();
@@ -65,6 +69,17 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({
   return (
     <div className="w-[27rem] h-[46.875rem] border-[2px] border-black rounded-[16px] shadow-xl xm:w-full xm:min-h-screen xm:h-full xm:rounded-none xm:border-none">
       <div className="w-full h-[9.9375rem] bg-black rounded-t-[14px] flex flex-col items-center relative xm:py-5 xm:h-[40%] xm:rounded-none">
+        {innerWidth < 490 && (
+          <div>
+            {step >= 2 && (
+              <div className="absolute right-4 top-7 flex flex-col justify-start items-center">
+                <button className="flex flex-col justify-center items-center space-y-1" onClick={goNext}>
+                  <Image alt="go-back" src={'/icons/next_icon.svg'} width={36} height={36} />
+                </button>
+              </div>
+            )}
+          </div>
+        )}
         <div className="bg-main_active flex mt-[1.9375rem] w-[4.375rem] h-[1.25rem] justify-center items-center rounded-[3px]">
           <p>STEP</p>
           <p className="font-black ml-[2px]">01</p>

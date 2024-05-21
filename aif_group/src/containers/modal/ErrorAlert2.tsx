@@ -5,9 +5,10 @@ import { Action, Dispatch } from '@reduxjs/toolkit';
 interface ErrorAlert2Props {
   onClose: () => void;
   setDisable: () => void;
+  setShow: () => void;
 }
 
-const ErrorAlert2: React.FC<ErrorAlert2Props> = ({ onClose, setDisable }) => {
+const ErrorAlert2: React.FC<ErrorAlert2Props> = ({ onClose, setDisable, setShow }) => {
   return (
     <div className="xm:w-[92%] flex justify-center">
       <div className="relative w-[28rem] h-fit bg-main_active border-[2px] border-black rounded-[16px] shadow-xl xm:w-full">
@@ -36,7 +37,7 @@ const ErrorAlert2: React.FC<ErrorAlert2Props> = ({ onClose, setDisable }) => {
             <button
               onClick={() => {
                 setDisable();
-                onClose();
+                setShow();
               }}
               className="text-main_active bg-black hover:bg-main_active hover:text-black w-[50%] h-[3.25rem] rounded-br-[14px]">
               네, 다시 생성하기

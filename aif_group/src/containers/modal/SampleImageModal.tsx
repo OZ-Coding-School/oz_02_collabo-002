@@ -4,54 +4,14 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import SampleModalMobile from '../design/SampleModalMobile';
 import useCheckWidth from '@/hooks/useCheckWidth';
+import { sampleImageList } from '../../../public';
 
 const SampleImageModal = () => {
   const router = useRouter();
   const [moreShow, setMoreShow] = useState(false);
   const innerWidth = useCheckWidth();
 
-  let sampleImageList = [
-    {
-      src: '/images/sample_img_1.png',
-      keyword: '키워드1',
-    },
-    {
-      src: '/images/sample_img_2.png',
-      keyword: '키워드2',
-    },
-    {
-      src: '/images/sample_img_3.png',
-      keyword: '키워드3',
-    },
-    {
-      src: '/images/sample_img_4.png',
-      keyword: '키워드4',
-    },
-    {
-      src: '/images/sample_img_5.png',
-      keyword: '키워드5',
-    },
-    {
-      src: '/images/sample_img_6.png',
-      keyword: '키워드6',
-    },
-    {
-      src: '/images/sample_img_7.png',
-      keyword: '키워드7',
-    },
-    {
-      src: '/images/sample_img_8.png',
-      keyword: '키워드8',
-    },
-    {
-      src: '/images/sample_img_9.png',
-      keyword: '키워드9',
-    },
-    {
-      src: '/images/sample_img_10.png',
-      keyword: '키워드10',
-    },
-  ];
+  const sampleImages = sampleImageList;
 
   return (
     <main className="w-full h-full">
@@ -64,11 +24,11 @@ const SampleImageModal = () => {
         {innerWidth >= 768 ? (
           <div className="flex flex-col justify-center items-center">
             <div className="grid grid-cols-2 gap-2 max-w-[63.5625rem]">
-              {sampleImageList.slice(0, 6).map((image, index) => {
+              {sampleImages.slice(0, 6).map((image, index) => {
                 return (
                   <div
                     key={index}
-                    className="bg-sample_img_bg max-w-[31.25rem] max-h-[32.25rem] flex justify-center items-center rounded-md relative group">
+                    className="bg-sample_img_bg max-w-[31.25rem] max-h-[32.25rem] flex justify-center items-center rounded-md relative group p-3">
                     <Image
                       src={image.src}
                       alt={`sample_image_${index + 1}`}
@@ -77,17 +37,17 @@ const SampleImageModal = () => {
                       className="object-contain"
                     />
                     <div className="w-full h-full absolute bottom-0 items-end rounded-md bg-gradient-to-b from-[rgba(0,0,0,0)] from-0% via-[rgba(0,0,0,0.28785)] via-[68.5%] to-[rgba(0,0,0,0.57)] to-100% hidden group-hover:flex">
-                      <div className="ml-4 mb-2.5 text-lg text-white">{image.keyword}</div>
+                      <div className="mx-3 mb-2.5 text-lg text-white">{image.keyword}</div>
                     </div>
                   </div>
                 );
               })}
               {moreShow &&
-                sampleImageList.slice(6, 10).map((image, index) => {
+                sampleImages.slice(6, 10).map((image, index) => {
                   return (
                     <div
                       key={index}
-                      className="bg-sample_img_bg max-w-[31.25rem] max-h-[32.25rem] flex justify-center items-center rounded-md relative group">
+                      className="bg-sample_img_bg max-w-[31.25rem] max-h-[32.25rem] flex justify-center items-center rounded-md relative group p-3">
                       <Image
                         src={image.src}
                         alt={`sample_image_${index + 1}`}
@@ -96,7 +56,7 @@ const SampleImageModal = () => {
                         className="object-contain"
                       />
                       <div className="w-full h-full absolute bottom-0 items-end rounded-md bg-gradient-to-b from-[rgba(0,0,0,0)] from-0% via-[rgba(0,0,0,0.28785)] via-[68.5%] to-[rgba(0,0,0,0.57)] to-100% hidden group-hover:flex">
-                        <div className="ml-4 mb-2.5 text-lg text-white">{image.keyword}</div>
+                        <div className="mx-3 mb-2.5 text-lg text-white">{image.keyword}</div>
                       </div>
                     </div>
                   );

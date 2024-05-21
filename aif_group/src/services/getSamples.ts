@@ -1,12 +1,12 @@
 import axios, { AxiosError } from 'axios';
-import { surveyClient } from './instance';
+import { sampleClient } from './instance';
 
-export async function postSurveys(JSONdata: string) {
+export async function getSamples() {
   try {
-    const response = await surveyClient.post('/surveys/submit', JSONdata);
-
-    console.log('Response:', response.data);
-    return response;
+    const response = await sampleClient.get('/slash', {
+      withCredentials: true,
+    });
+    return response.data;
   } catch (error) {
     const axiosError = error as AxiosError;
     if (axiosError.response) {

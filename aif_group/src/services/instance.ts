@@ -26,3 +26,19 @@ export const imageClient = axios.create({
   withCredentials: true,
   headers: { 'Content-Type': 'multipart/form-data', Accept: 'application/json', Authorization: `Bearer ${token}` },
 });
+
+export const sampleClient = axios.create({
+  baseURL: '/api',
+  timeout: 0,
+  headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+});
+
+export const surveyClient = axios.create({
+  baseURL: '/api',
+  timeout: 0,
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    Authorization: `Bearer ${token}`,
+  },
+});

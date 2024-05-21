@@ -1,9 +1,8 @@
 'use client';
-import { useState } from 'react';
 import { createImages } from '@/services/createImages';
-import { getImages } from '@/services/getImages';
 import { ImageInfo } from '@/types/designSelectBoxType';
 import { useAppSelector } from './reduxHooks';
+import { useRef, useState } from 'react';
 
 function useShowBox() {
   const selectedImage = useAppSelector(state => state.ref);
@@ -27,6 +26,7 @@ function useShowBox() {
     select: false,
   });
 
+  const step = useRef(1);
   const [designCreateCount, setDesignCreateCount] = useState(0);
 
   const handleStartDesign = () => {
@@ -48,10 +48,11 @@ function useShowBox() {
       setIsLoading(state => ({ ...state, create: false }));
       setShow(state => ({
         ...state,
+        startBox: false,
         selectBox: true,
         previewBox: false,
       }));
-
+      step.current = 2;
       setDisable(true);
       //setDesignCreateCount(prev => prev + 1);
     } else {
@@ -59,14 +60,16 @@ function useShowBox() {
     }
   };
 
-  const handleDesignSelection = () => {
-    if (selectedImage.length > 0) {
-      setIsLoading(state => ({ ...state, select: true }));
+  const handleDesignSelection = async () => {
+    setIsLoading(state => ({ ...state, select: true }));
+    await new Promise((resolve, reject) => {
       setTimeout(() => {
         setIsLoading(state => ({ ...state, select: false }));
-      }, 2000);
-      setShow(state => ({ ...state, previewBox: true }));
-    }
+      }, 1000);
+      resolve('true');
+    });
+    step.current = 3;
+    setShow(state => ({ ...state, selectBox: false, previewBox: true }));
   };
 
   const handleRetryDesign = () => {
@@ -85,6 +88,7 @@ function useShowBox() {
     handleRetryDesign,
     handleStartDesign,
     show,
+    step,
     isLoading,
     createdImages,
     disable,
