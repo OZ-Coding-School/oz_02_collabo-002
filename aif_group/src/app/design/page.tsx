@@ -11,7 +11,6 @@ import InputAlert from '@/containers/modal/InputAlert';
 import useCheckWidth from '@/hooks/useCheckWidth';
 import usePreventMoves from '@/hooks/usePreventMoves';
 import useShowBox from '@/hooks/useShowBox';
-import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 export default function Design() {
@@ -34,20 +33,10 @@ export default function Design() {
   } = useShowBox();
 
   const [showErrorAlert1, setShowErrorAlert1] = useState(false);
-  const pathname = usePathname();
   const innerWidth = useCheckWidth();
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   usePreventMoves();
-
-  // 모달이 떠있는 경우 바깥 스크롤 동작 막기
-  useEffect(() => {
-    if (pathname.includes('design/')) {
-      document.body.style.overflowY = 'hidden';
-    } else {
-      document.body.style.overflowY = 'auto';
-    }
-  }, [pathname]);
 
   // 박스가 나타날때마다 스크롤 오른쪽으로 자동 이동
   useEffect(() => {
@@ -55,8 +44,6 @@ export default function Design() {
       scrollRef.current.scrollLeft = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
     }
   }, [isLoading, show, isCreateLoading]);
-
-  // console.log('isCreateLoading', isCreateLoading);
 
   return (
     <main className="bg-bg">

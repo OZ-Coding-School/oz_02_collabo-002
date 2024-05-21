@@ -1,9 +1,13 @@
 import useCheckWidth from '@/hooks/useCheckWidth';
+import { getSamples } from '@/services/getSamples';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import SampleImage from '../../app/design/@modal/(.)sampleImage/page';
+import { ImageInfo } from '@/types/designSelectBoxType';
 
 export default function AIImageSection() {
   const innerWidth = useCheckWidth();
+  const [sampleImages, setSampleImages] = useState<ImageInfo[]>([]);
 
   let latestImageList = [
     '/images/sample_img_1.png',
@@ -17,6 +21,14 @@ export default function AIImageSection() {
     '/images/sample_img_9.png',
     '/images/sample_img_10.png',
   ];
+
+  useEffect(() => {
+    async function getSampleImages() {
+      setSampleImages(await getSamples());
+    }
+    getSampleImages();
+    console.log(sampleImages);
+  }, []);
 
   return (
     <main className="w-full h-banner flex justify-center items-center bg-bg">
@@ -34,7 +46,7 @@ export default function AIImageSection() {
             <div className="w-[241.25rem] h-[24.1875rem] flex flex-row animate-slide1 sm:w-[151.25rem] sm:h-[14.25rem]">
               {latestImageList.map((image, index) => {
                 return (
-                  <li key={index} className="bg-sample_img_bg p-[20px] list-none mr-[0.6875rem] rounded-md sm:p-3">
+                  <li key={index} className="bg-sample_img_bg px-[20px] list-none mr-[0.6875rem] rounded-md sm:p-3">
                     <Image
                       alt={`${index}`}
                       src={image}
@@ -49,7 +61,7 @@ export default function AIImageSection() {
             <div className="w-[241.25rem] h-[24.1875rem] flex flex-row absolute left-[241.25rem] animate-slide2 sm:w-[151.25rem] sm:h-[14.25rem] sm:left-[151.25rem]">
               {latestImageList.map((image, index) => {
                 return (
-                  <li key={index} className="bg-sample_img_bg p-[20px] list-none mr-[0.6875rem] rounded-md sm:p-3">
+                  <li key={index} className="bg-sample_img_bg px-[20px] list-none mr-[0.6875rem] rounded-md sm:p-3">
                     <Image
                       alt={`${index}`}
                       src={image}
