@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const token = Cookies.get('Authorization');
+const token = Cookies.get('access_token');
 
 export const apiClient = axios.create({
   baseURL: '/api',
@@ -9,7 +9,7 @@ export const apiClient = axios.create({
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
     Accept: 'application/json',
-    refresh_token: `Bearer ${token}`,
+    Authorization: `Bearer ${token}`,
   },
 });
 
@@ -22,5 +22,5 @@ export const emailClient = axios.create({
 export const imageClient = axios.create({
   baseURL: '/api',
   timeout: 0,
-  headers: { 'Content-Type': 'multipart/form-data', Accept: 'application/json', refresh_token: `Bearer ${token}` },
+  headers: { 'Content-Type': 'multipart/form-data', Accept: 'application/json', Authorization: `Bearer ${token}` },
 });

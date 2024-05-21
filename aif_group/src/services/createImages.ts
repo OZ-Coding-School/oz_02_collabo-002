@@ -1,5 +1,6 @@
 import { AxiosError } from 'axios';
 import { apiClient } from './instance';
+import Cookies from 'js-cookie';
 
 interface ImageCreationRequest {
   keyword: string;
@@ -16,13 +17,14 @@ function encodeFormData(data: ImageCreationRequest) {
 
 // POST 요청 보내기
 export async function createImages(keyword: string, style: string) {
-  const data = {
-    keyword,
-    style,
-  };
+  const refresh_token = Cookies.get('refresh_token');
+  const formData = new FormData();
+  formData.append('keyword', keyword);
+  formData.append('style', style);
+  if (refresh_token) formData.append('refresh_token', refresh_token);
+
   try {
-    console.log(encodeFormData(data));
-    const response = await apiClient.post('/image/create-load', encodeFormData(data), {});
+    const response = await apiClient.post('/image/create-load', formData);
     console.log('Response:', response.data);
     return response.data;
   } catch (error) {
