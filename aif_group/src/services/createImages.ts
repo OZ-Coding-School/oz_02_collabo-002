@@ -1,28 +1,14 @@
 import { AxiosError } from 'axios';
 import { apiClient } from './instance';
 
-interface ImageCreationRequest {
-  keyword: string;
-  style: string;
-  [key: string]: string; // 인덱스 시그니처 추가
-}
-
-// 데이터를 URL 인코딩된 형식으로 변환하는 함수
-function encodeFormData(data: ImageCreationRequest) {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&');
-}
-
 // POST 요청 보내기
 export async function createImages(keyword: string, style: string) {
-  const data = {
-    keyword,
-    style,
-  };
+  const formData = new FormData();
+  formData.append('keyword', keyword);
+  formData.append('style', style);
+
   try {
-    console.log(encodeFormData(data));
-    const response = await apiClient.post('/image/create-load', encodeFormData(data), {});
+    const response = await apiClient.post('/image/create-load', formData);
     console.log('Response:', response.data);
     return response.data;
   } catch (error) {
