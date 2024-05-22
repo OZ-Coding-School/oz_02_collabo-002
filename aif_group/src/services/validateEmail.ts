@@ -1,15 +1,23 @@
 import { AxiosError } from 'axios';
-import { apiClient, emailClient } from './instance';
-import { setToken } from './setToken';
-
-//users/check_email
-// users/jwt-login 토큰 생성 및 발행
-// users/register_email 이메일을 db에 등록
+import { emailClient } from './instance';
+import Cookies from 'js-cookie';
 
 export async function validateEmail(email: string) {
   const jsonData = JSON.stringify({
     member_email: email,
   });
+  emailClient.interceptors.request.use(
+    config => {
+      const token = Cookies.get('access_token');
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
+    },
+    error => {
+      return Promise.reject(error);
+    },
+  );
   try {
     const response = await emailClient.post('/users/create', jsonData);
     const isValid = response.status === 200;
