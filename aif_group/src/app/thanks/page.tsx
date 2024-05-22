@@ -22,8 +22,8 @@ export default function Thanks() {
         {
           title: 'AIF 바로가기',
           link: {
-            mobileWebUrl: 'https://localhost:3000',
-            webUrl: 'https://localhost:3000',
+            mobileWebUrl: 'https://aifgroup-ai-fashionista.vercel.app/',
+            webUrl: 'https://aifgroup-ai-fashionista.vercel.app/',
           },
         },
       ],
@@ -40,7 +40,7 @@ export default function Thanks() {
   };
 
   const handleCopyClick = () => {
-    const textToCopy = `http://localhost:3000`; // 나중에 배포 링크로 수정
+    const textToCopy = `https://aifgroup-ai-fashionista.vercel.app/`; // 나중에 배포 링크로 수정
     copyToClipboard(textToCopy);
   };
 
