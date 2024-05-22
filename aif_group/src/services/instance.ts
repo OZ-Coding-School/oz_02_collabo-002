@@ -53,3 +53,42 @@ apiClient.interceptors.request.use(
     return Promise.reject(error);
   },
 );
+
+emailClient.interceptors.request.use(
+  config => {
+    const token = Cookies.get('access_token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  },
+);
+
+imageClient.interceptors.request.use(
+  config => {
+    const token = Cookies.get('access_token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  },
+);
+
+surveyClient.interceptors.request.use(
+  config => {
+    const token = Cookies.get('access_token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  },
+);
