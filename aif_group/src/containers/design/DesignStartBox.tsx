@@ -115,7 +115,7 @@ const DesignStartBox: React.FC<DesignStartBoxProps> = ({
           <input
             type="text"
             placeholder="ex)테니스, 호랑이, 여성1명, 얼굴..."
-            className="placeholder-[#92EADA] bg-gray-100 text-[15px] px-2 w-[23.625rem] mt-1 h-[2.5rem] ml-4 mb-7 rounded-sm disabled:text-btn_border xm:w-[90%]"
+            className="placeholder-[#92EADA] bg-gray-100 text-[15px] px-2 w-[23.625rem] mt-1 h-[2.5rem] mx-4 mb-7 rounded-sm disabled:text-btn_border xm:w-[90%]"
             onChange={handleChangeInput}
             value={userInput.keyword}
             disabled={disabled}

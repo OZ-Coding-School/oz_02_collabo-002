@@ -18,7 +18,7 @@ function ImageItem({ onSelect, image, isSelected }: ImageItemProps) {
         onSelect(image);
       }}
       className={`border-[0.25rem] flex justify-center items-center ${isSelected && 'border-main_active'} `}>
-      <Image src={image.img_url} width={size.width} height={size.height} alt="ai 디자인" />
+      <Image src={image.img_url} width={size.width} height={size.height} alt="ai 디자인" priority />
     </li>
   );
 }

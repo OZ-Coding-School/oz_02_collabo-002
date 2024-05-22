@@ -6,8 +6,9 @@ const token = Cookies.get('access_token');
 export const apiClient = axios.create({
   baseURL: '/api',
   timeout: 0,
+  withCredentials: true,
   headers: {
-    'Content-Type': 'application/x-www-form-urlencoded',
+    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
     Accept: 'application/json',
     Authorization: `Bearer ${token}`,
   },
@@ -22,6 +23,7 @@ export const emailClient = axios.create({
 export const imageClient = axios.create({
   baseURL: '/api',
   timeout: 0,
+  withCredentials: true,
   headers: { 'Content-Type': 'multipart/form-data', Accept: 'application/json', Authorization: `Bearer ${token}` },
 });
 
@@ -40,3 +42,16 @@ export const surveyClient = axios.create({
     Authorization: `Bearer ${token}`,
   },
 });
+
+apiClient.interceptors.request.use(
+  config => {
+    const token = Cookies.get('access_token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  },
+);

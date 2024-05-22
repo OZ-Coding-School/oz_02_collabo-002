@@ -3,14 +3,13 @@ import Image from 'next/image';
 import ImageItem from './ImageItem';
 import useSelectImage from '@/hooks/useSelectImage';
 import { DesignSelectBoxProps } from '@/types/designSelectBoxType';
-
 import { dummyDesignData } from '../../../public';
 import { useRouter } from 'next/navigation';
 
 const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data, onRetry, step, goBack, goNext }) => {
   const { handleSelectImage, handleClickImage, selectImage, currentImage, checkboxRef, isDisabled } =
     useSelectImage(step);
-  const slicingData = data?.slice(0, 8);
+  const slicingData = data?.slice(0, 4);
   const router = useRouter();
 
   return (
