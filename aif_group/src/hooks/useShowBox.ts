@@ -42,7 +42,9 @@ function useShowBox() {
       const response = await createImages(userInput.keyword, userInput.style);
       if (response !== undefined) {
         setCreatedImages(state => state.concat(response));
+
         setIsLoading(state => ({ ...state, create: false }));
+
         setShow(state => ({
           ...state,
           startBox: false,
@@ -56,9 +58,7 @@ function useShowBox() {
         setIsLoading(state => ({ ...state, create: false }));
         return;
       }
-      setTimeout(() => {
-        setIsLoading(state => ({ ...state, create: false }));
-      }, 5000);
+
       setShow(state => ({
         ...state,
         startBox: false,
