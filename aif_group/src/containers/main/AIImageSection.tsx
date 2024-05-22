@@ -13,7 +13,6 @@ export default function AIImageSection() {
       setSampleImages(await getSamples());
     }
     getSampleImages();
-    console.log(sampleImages);
   }, []);
 
   return (

@@ -30,7 +30,7 @@ const promiseDrawSelectedImage = async (props: drawPropsType) => {
           image.crossOrigin = 'anonymous';
           image.src = img.img_url;
           image.onload = () => {
-            context?.drawImage(image, canvas.width / 2 - 540 / 2, canvas.height / 2 - 540 / 2, 540, 540);
+            context?.drawImage(image, canvas.width / 2 - 560 / 2, canvas.height / 2 - 560 / 2, 560, 560);
 
             canvas.toBlob(blob => {
               if (!blob) return;

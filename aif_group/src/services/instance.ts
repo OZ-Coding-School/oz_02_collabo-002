@@ -6,8 +6,9 @@ const token = Cookies.get('access_token');
 export const apiClient = axios.create({
   baseURL: '/api',
   timeout: 0,
+  withCredentials: true,
   headers: {
-    'Content-Type': 'application/x-www-form-urlencoded',
+    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
     Accept: 'application/json',
   },
 });
@@ -21,6 +22,7 @@ export const emailClient = axios.create({
 export const imageClient = axios.create({
   baseURL: '/api',
   timeout: 0,
+  withCredentials: true,
   headers: { 'Content-Type': 'multipart/form-data', Accept: 'application/json', Authorization: `Bearer ${token}` },
 });
 
