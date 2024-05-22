@@ -10,9 +10,11 @@ import { useAppSelector } from '@/hooks/reduxHooks';
 import { RootState } from '@/states/store';
 import downloadImage from '@/utils/downloadImages';
 import { postSurveys } from '@/services/postSurveys';
+import { setToken } from '@/services/setToken';
 
 const FeedbackModal = () => {
   const imgFile = useAppSelector((state: RootState) => state.imageFile);
+  const email = useAppSelector((state: RootState) => state.email);
   const router = useRouter();
 
   const handleError = (data: { [key: string]: FormDataEntryValue | FormDataEntryValue[] | null }) => {
@@ -54,6 +56,7 @@ const FeedbackModal = () => {
     console.log(imgFile);
 
     if (resultError === 'true') {
+      await setToken(email, 'user');
       const result = await postSurveys(JSONdata);
       console.log(result);
       if (result?.status === 200) {
