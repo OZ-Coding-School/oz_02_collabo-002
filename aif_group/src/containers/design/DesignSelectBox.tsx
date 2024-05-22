@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data, onRetry, step, goBack, goNext }) => {
   const { handleSelectImage, handleClickImage, selectImage, currentImage, checkboxRef, isDisabled } =
     useSelectImage(step);
+
   const router = useRouter();
 
   let slicingData;
