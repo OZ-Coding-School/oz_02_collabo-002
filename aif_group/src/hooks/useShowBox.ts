@@ -54,7 +54,7 @@ function useShowBox() {
       }));
       step.current = 2;
       setDisable(true);
-      //setDesignCreateCount(prev => prev + 1);
+      setDesignCreateCount(prev => prev + 1);
     } else {
       setShow(state => ({ ...state, errorAlert3: true }));
     }
