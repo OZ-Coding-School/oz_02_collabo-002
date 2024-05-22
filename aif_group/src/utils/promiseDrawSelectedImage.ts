@@ -8,6 +8,7 @@ type drawPropsType = {
   selectedColorArray: string[];
   tShirtImage: { white: string; black: string };
   addFile: (file: ImageInfo) => { payload: ImageInfo; type: 'imageFile/setDownloadFileUrl' };
+  email: string | null;
 };
 
 const promiseDrawSelectedImage = async (props: drawPropsType) => {
@@ -49,8 +50,7 @@ const promiseDrawSelectedImage = async (props: drawPropsType) => {
   );
 
   const imageFiles = await Promise.all(promises);
-  const email = useAppSelector(state => state.email.email);
-  if (email) await setToken(email, 'user');
+  if (props.email) await setToken(props.email, 'user');
   const result = await saveImages(imageFiles);
   console.log(result);
 };

@@ -7,12 +7,18 @@ import LastBanner from '@/containers/main/LastBanner';
 import Footer from '@/containers/main/Footer';
 import AIImageSection from '@/containers/main/AIImageSection';
 import ScrollUpButton from '@/components/ScrollUpButton';
-import React from 'react';
+import React, { useEffect } from 'react';
 import MobileMainBanner from '@/containers/main/MobileMainBanner';
 import useCheckWidth from '@/hooks/useCheckWidth';
+import Cookies from 'js-cookie';
 
 export default function Home() {
   const innerWidth = useCheckWidth();
+
+  useEffect(() => {
+    // 쿠키 리셋
+    Cookies.remove('access_token');
+  }, []);
 
   return (
     <main>

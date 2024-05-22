@@ -26,6 +26,7 @@ const DesignPreviewBox: React.FC<DesignPreviewBoxProps> = ({ goBack }) => {
   const router = useRouter();
   const innerWidth = useCheckWidth();
 
+  const email = useAppSelector(state => state.email.email);
   const selectImage = useAppSelector((state: RootState) => state.ref);
   const dispatch = useAppDispatch();
 
@@ -160,6 +161,7 @@ const DesignPreviewBox: React.FC<DesignPreviewBoxProps> = ({ goBack }) => {
                 selectedColorArray,
                 tShirtImage,
                 addFile: file => dispatch(setDownloadFileUrl(file)),
+                email,
               });
               router.push('/design/feedback');
             }}>
