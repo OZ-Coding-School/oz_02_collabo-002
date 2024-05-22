@@ -24,10 +24,12 @@ const InputAlert: React.FC<InputAlertProps> = ({ onClose }) => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const isValid = await mutateAsync({ email });
-    isValid ? setIsValid(true) : setIsValid(false);
     setIsFirstTry(false);
-    isValid ? onClose() : null;
-    dispatch(setUserEmail(email));
+    setIsValid(isValid);
+    if (isValid) {
+      dispatch(setUserEmail(email));
+      onClose();
+    }
   };
 
   const handleClose = () => {
