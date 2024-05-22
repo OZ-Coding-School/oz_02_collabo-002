@@ -6,9 +6,8 @@ const token = Cookies.get('access_token');
 export const apiClient = axios.create({
   baseURL: '/api',
   timeout: 0,
-  withCredentials: true,
   headers: {
-    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    'Content-Type': 'application/x-www-form-urlencoded',
     Accept: 'application/json',
   },
 });

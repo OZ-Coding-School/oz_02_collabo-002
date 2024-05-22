@@ -40,7 +40,6 @@ function useShowBox() {
     if (designCreateCount < 2) {
       setIsLoading(state => ({ ...state, create: true }));
       const response = await createImages(userInput.keyword, userInput.style);
-      console.log('response', response);
       if (response !== undefined) {
         setCreatedImages(state => state.concat(response));
         setIsLoading(state => ({ ...state, create: false }));
@@ -52,7 +51,7 @@ function useShowBox() {
         }));
         step.current = 2;
         setDisable(true);
-        //setDesignCreateCount(prev => prev + 1);
+        setDesignCreateCount(prev => prev + 1);
       } else {
         setIsLoading(state => ({ ...state, create: false }));
         return;
@@ -69,7 +68,6 @@ function useShowBox() {
       step.current = 2;
       setDisable(true);
       setDesignCreateCount(prev => prev + 1);
-
     } else {
       setShow(state => ({ ...state, errorAlert3: true }));
     }
