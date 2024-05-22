@@ -1,5 +1,6 @@
 import { AxiosError } from 'axios';
 import { apiClient } from './instance';
+import Cookies from 'js-cookie';
 
 // POST 요청 보내기
 export async function createImages(keyword: string, style: string) {
@@ -9,6 +10,18 @@ export async function createImages(keyword: string, style: string) {
   try {
     const response = await apiClient.post('/image/tmp-create-load', formData);
 
+    apiClient.interceptors.request.use(
+      config => {
+        const token = Cookies.get('access_token');
+        if (token) {
+          config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+      },
+      error => {
+        return Promise.reject(error);
+      },
+    );
     return response.data;
   } catch (error) {
     const axiosError = error as AxiosError;

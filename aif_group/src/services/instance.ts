@@ -40,3 +40,16 @@ export const surveyClient = axios.create({
     Authorization: `Bearer ${token}`,
   },
 });
+
+apiClient.interceptors.request.use(
+  config => {
+    const token = Cookies.get('access_token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  },
+);
