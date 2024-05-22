@@ -1,8 +1,7 @@
+import { useAppSelector } from '@/hooks/reduxHooks';
 import { saveImages } from '@/services/saveImages';
-import { setDownloadFileUrl } from '@/states/imageFileSlice';
-
+import { setToken } from '@/services/setToken';
 import { ImageInfo } from '@/types/designSelectBoxType';
-import { Dispatch } from '@reduxjs/toolkit';
 
 type drawPropsType = {
   selectImage: ImageInfo[];
@@ -10,6 +9,7 @@ type drawPropsType = {
   tShirtImage: { white: string; black: string };
   addFile: (file: ImageInfo) => { payload: ImageInfo; type: 'imageFile/setDownloadFileUrl' };
 };
+
 const promiseDrawSelectedImage = async (props: drawPropsType) => {
   const promises = props.selectImage.map(
     (img, index) =>
@@ -49,6 +49,8 @@ const promiseDrawSelectedImage = async (props: drawPropsType) => {
   );
 
   const imageFiles = await Promise.all(promises);
+  const email = useAppSelector(state => state.email.email);
+  if (email) await setToken(email, 'user');
   const result = await saveImages(imageFiles);
   console.log(result);
 };
