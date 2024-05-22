@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { imageClient } from './instance';
+import { formDataTypeApi } from './instance';
 import Cookies from 'js-cookie';
 
 export async function saveImages(images: File[]) {
@@ -8,21 +8,8 @@ export async function saveImages(images: File[]) {
     imageFormData.append('files', image);
   });
 
-  imageClient.interceptors.request.use(
-    config => {
-      const token = Cookies.get('access_token');
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
-      return config;
-    },
-    error => {
-      return Promise.reject(error);
-    },
-  );
-
   try {
-    const response = await imageClient.post('/image/save-images', imageFormData);
+    const response = await formDataTypeApi('/image/save-images', imageFormData);
     console.log('Response:', response.data);
     return response.data;
   } catch (error) {

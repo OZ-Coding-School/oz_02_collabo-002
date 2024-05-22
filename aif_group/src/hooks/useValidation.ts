@@ -1,7 +1,7 @@
 import { registerEmail } from '@/services/registerEmail';
 import { setToken } from '@/services/setToken';
 import { validateEmail } from '@/services/validateEmail';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 
 export interface ValidationArgs {
   email: string;

@@ -1,23 +1,9 @@
 import { AxiosError } from 'axios';
-import { surveyClient } from './instance';
-import Cookies from 'js-cookie';
+import { jsonTypeApi } from './instance';
 
 export async function postSurveys(JSONdata: string) {
   try {
-    const response = await surveyClient.post('/surveys/submit', JSONdata);
-
-    surveyClient.interceptors.request.use(
-      config => {
-        const token = Cookies.get('access_token');
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
-        }
-        return config;
-      },
-      error => {
-        return Promise.reject(error);
-      },
-    );
+    const response = await jsonTypeApi('/surveys/submit', JSONdata);
 
     console.log('Response:', response.data);
     return response;

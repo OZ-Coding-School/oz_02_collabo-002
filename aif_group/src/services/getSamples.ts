@@ -1,11 +1,9 @@
 import axios, { AxiosError } from 'axios';
-import { sampleClient } from './instance';
+import { sampleApi } from './instance';
 
 export async function getSamples() {
   try {
-    const response = await sampleClient.get('/slash', {
-      withCredentials: true,
-    });
+    const response = await sampleApi('/slash');
     return response.data;
   } catch (error) {
     const axiosError = error as AxiosError;
