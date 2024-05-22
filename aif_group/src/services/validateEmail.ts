@@ -25,5 +25,6 @@ export async function validateEmail(email: string) {
     } else {
       console.error('Error Message:', axiosError.message);
     }
+    return false;
   }
 }

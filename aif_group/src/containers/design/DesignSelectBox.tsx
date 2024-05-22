@@ -3,7 +3,6 @@ import Image from 'next/image';
 import ImageItem from './ImageItem';
 import useSelectImage from '@/hooks/useSelectImage';
 import { DesignSelectBoxProps } from '@/types/designSelectBoxType';
-import { dummyDesignData } from '../../../public';
 import { useRouter } from 'next/navigation';
 
 const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data, onRetry, step, goBack, goNext }) => {
@@ -67,7 +66,7 @@ const DesignSelectBox: React.FC<DesignSelectBoxProps> = ({ onSelectDesign, data,
         <div className="w-[35.75rem] h-[25.375rem] flex mt-[2.8125rem] mx-[1.875rem] mb-[4.3125rem] gap-[1.6875rem] xm:gap-4 xm:mt-4 xm:items-center xm:w-full xm:m-0 xm:flex-col xm:h-fit">
           <div className="w-[12.625rem] h-[25.375rem] xm:w-[90%] xm:h-fit">
             <ul className="grid gap-[0.625rem] grid-cols-2 xm:grid-cols-4 grid-flow-row">
-              {dummyDesignData?.map((image, idx) => {
+              {slicingData?.map((image, idx) => {
                 const isSelected = selectImage.some(selectImage => selectImage.img_id === image.img_id);
                 return (
                   <div key={image.img_id} className="cursor-pointer">

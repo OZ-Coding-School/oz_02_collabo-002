@@ -9,7 +9,6 @@ export async function createImages(keyword: string, style: string) {
   try {
     const response = await apiClient.post('/image/tmp-create-load', formData);
 
-    console.log('Response:', response.data);
     return response.data;
   } catch (error) {
     const axiosError = error as AxiosError;
