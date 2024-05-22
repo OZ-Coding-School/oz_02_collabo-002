@@ -10,7 +10,6 @@ export const apiClient = axios.create({
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
     Accept: 'application/json',
-    Authorization: `Bearer ${token}`,
   },
 });
 

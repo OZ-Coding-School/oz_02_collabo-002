@@ -57,6 +57,19 @@ function useShowBox() {
         setIsLoading(state => ({ ...state, create: false }));
         return;
       }
+      setTimeout(() => {
+        setIsLoading(state => ({ ...state, create: false }));
+      }, 1000);
+      setShow(state => ({
+        ...state,
+        startBox: false,
+        selectBox: true,
+        previewBox: false,
+      }));
+      step.current = 2;
+      setDisable(true);
+      setDesignCreateCount(prev => prev + 1);
+
     } else {
       setShow(state => ({ ...state, errorAlert3: true }));
     }
