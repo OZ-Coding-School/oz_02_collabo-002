@@ -6,11 +6,11 @@ const emailSlice = createSlice({
   name: 'email',
   initialState: initialState,
   reducers: {
-    setEmail: (state, { payload: email }) => {
+    setUserEmail: (state, { payload: email }) => {
       state = email;
     },
   },
 });
 
-export const { setEmail } = emailSlice.actions;
+export const { setUserEmail } = emailSlice.actions;
 export default emailSlice.reducer;

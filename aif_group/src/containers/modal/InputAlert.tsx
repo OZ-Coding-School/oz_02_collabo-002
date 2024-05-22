@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useValidation from '@/hooks/useValidation';
+import { useAppDispatch } from '@/hooks/reduxHooks';
+import { setUserEmail } from '@/states/emailSlice';
 interface InputAlertProps {
   onClose: () => void;
 }
@@ -12,6 +14,7 @@ const InputAlert: React.FC<InputAlertProps> = ({ onClose }) => {
   const [email, setEmail] = useState<string>('');
   const [isValid, setIsValid] = useState(false);
   const [isFirstTry, setIsFirstTry] = useState(true);
+  const dispatch = useAppDispatch();
 
   const { mutateAsync } = useValidation();
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,6 +27,7 @@ const InputAlert: React.FC<InputAlertProps> = ({ onClose }) => {
     isValid ? setIsValid(true) : setIsValid(false);
     setIsFirstTry(false);
     isValid ? onClose() : null;
+    dispatch(setUserEmail(email));
   };
 
   const handleClose = () => {
