@@ -45,7 +45,7 @@ function useShowBox() {
       }
       setTimeout(() => {
         setIsLoading(state => ({ ...state, create: false }));
-      }, 1000);
+      }, 5000);
       setShow(state => ({
         ...state,
         startBox: false,
