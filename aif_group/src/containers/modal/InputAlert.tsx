@@ -1,11 +1,13 @@
 'use client';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useValidation from '@/hooks/useValidation';
 import { useAppDispatch } from '@/hooks/reduxHooks';
 import { setUserEmail } from '@/states/emailSlice';
 import { RiErrorWarningLine } from 'react-icons/ri';
+import Cookies from 'js-cookie';
+
 interface InputAlertProps {
   onClose: () => void;
 }
@@ -17,6 +19,10 @@ const InputAlert: React.FC<InputAlertProps> = ({ onClose }) => {
   const [isFirstTry, setIsFirstTry] = useState(true);
   const dispatch = useAppDispatch();
 
+  useEffect(() => {
+    // 쿠키 리셋
+    Cookies.remove('access_token');
+  }, []);
   const { mutateAsync } = useValidation();
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
