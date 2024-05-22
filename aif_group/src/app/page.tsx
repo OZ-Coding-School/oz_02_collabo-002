@@ -7,7 +7,7 @@ import LastBanner from '@/containers/main/LastBanner';
 import Footer from '@/containers/main/Footer';
 import AIImageSection from '@/containers/main/AIImageSection';
 import ScrollUpButton from '@/components/ScrollUpButton';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import MobileMainBanner from '@/containers/main/MobileMainBanner';
 import useCheckWidth from '@/hooks/useCheckWidth';
 
